@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+// ============================================= *
+//                                               *
+// 変数宣言                                      *
+//                                               *
+// ============================================= */
+$color: #333;
+$bg-color: #fff;
+
+$main-color: #1586BF; //blue
+$main-color2: lighten($main-color, 15%); //sky blue
+
+$accent-color: #CD384B; //red
+
+$link-color: #58C7AD; //green
+$link-v-color: darken($link-color, 15%);
+$link-ha-color: lighten($link-color, 15%);
+
+// media query sample
+//	@media (max-width: 767px) {
+//	}
+//	@media (min-width: 768px) {
+//	}

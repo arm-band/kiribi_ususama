@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.eyecatch {
+    $background-position: center center;
+    $eyecathc-height: 100vh;
+    
+    height: $eyecathc-height;
+    overflow: hidden;
+    background: url("../img/eyecatch.jpg") no-repeat $background-position fixed;
+    @include PropertySetPrefix(background-size, cover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0; //jumbtoron erase
+    .container-fluid {
+        box-sizing: border-box; //IEバグフィックス
+        max-width: 100%; //IEバグフィックス
+        h1 {
+            color: $link-color;
+            z-index: 3;
+            font: {
+                size: calc(4em + 4vw);
+                family: 'Dancing Script', cursive; /* googleフォント */
+            }
+        }
+    }
+    &.mobile_Safari { //index.jsでUAにより付与。mobile Safariバグ対策
+        background: {
+            position: $background-position;
+            size: auto $eyecathc-height;
+        }
+    }
+}

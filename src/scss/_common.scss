@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+// ============================================= *
+//                                               *
+// Import                                        *
+//                                               *
+// ============================================= */
+@import "assets/bootstrap/bootstrap"; //bootstrap(3.3.7)
+@import "base/var"; //変数
+@import "assets/snscolor"; //ソーシャルメディアなどのブランドカラー
+@import "assets/jugos"; //YuGochic用 //YuMinchoではfont-weight:500を指定しない限りは大丈夫
+@import "assets/jugosmin"; //YuGochic用省略形 //YuMinchoではfont-weight:500を指定しない限りは大丈夫
+@import "base/module"; //ベンダープレフィックス等のMixinモジュール
+@import "base/base"; //フォント指定やIE対処など
+@import "assets/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
+
+// ============================================= *
+//                                               *
+// 全体                                           *
+//                                               *
+// ============================================= */
+//ボタンの影とクリック時に影消える
+.btn {
+    @include dropShadowSkew();
+    &.active {
+        @include dropShadowSkewInset();
+    }
+}
+
+// ============================================= *
+//                                               *
+// メインコンテンツ                                 *
+//                                               *
+// ============================================= */
+main {
+	background-color: $bg-color;
+	color: $color;
+}
+
+// ============================================= *
+//                                               *
+// フッタ                                         *
+//                                               *
+// ============================================= */
+@import "common/footer";
+
+// ***** ページトップへ戻る ***** */
+@import "common/returnpagetop";

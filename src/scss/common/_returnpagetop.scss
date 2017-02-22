@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+$rpt-size: 44px;
+
+.returnPageTop {
+	display: none;
+	position: fixed;
+	bottom: 2%;
+	right: 6%;
+}
+.returnPageTop i {
+	display: block;
+	font-size: $rpt-size / 2;
+	width: $rpt-size;
+	height: $rpt-size;
+	line-height: $rpt-size;
+	background-color: $main-color2;
+	border-radius: $rpt-size / 2;
+	color: $bg-color;
+	text-align: center;
+	@include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4));
+	cursor: pointer;
+    @include transitionSet();
+    &:hover, &:active {
+        background-color: lighten($main-color2, 15%);
+    }
+}

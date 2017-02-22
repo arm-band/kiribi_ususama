@@ -1,0 +1,44 @@
+<%
+var param = {
+    "title": "概要",
+    "entitle": "About Page",
+    "css": "commons",
+    "js": "main.min",
+    "description": "このページについての説明です。"
+}; %>
+<% include common/_var %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<% include common/_head %>
+</head>
+<body>
+
+<div id="wrapper">
+<% include common/_header %>
+
+    <!-- main -->
+    <main>
+<% include common/_breadcrumb %>
+        <section class="container-fluid">
+            <div class="row">
+                <article class="col-xs-12">
+                    <div class="page-header">
+                        <h2>What's this page? <small>About page</small></h2>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+
+<% include common/_footer %>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="./js/<%= param["js"] %>.js"></script>
+</body>
+</html>

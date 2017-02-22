@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+// ============================================= *
+//                                               *
+// 全体設定                                       *
+//                                               *
+// ============================================= */
+a, a:link {
+	color: $link-color;
+	text-decoration: none;
+    @include transitionSet();
+}
+a:visited {
+	color: $link-v-color;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: $link-ha-color;
+	text-decoration: underline;
+}
+
+//フォント指定
+body {
+    @include jugos();
+}
+
+//IEでスクロールバーの背後までページが描画されてしまうのを防ぐ
+@-ms-viewport {
+    width: auto;
+    initial-scale: 1;
+}

@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+// ============================================= *
+//                                               *
+// モジュール                                    *
+//                                               *
+// ============================================= */
+
+//ベンダープレフィックスはAutoprefixerに投げた方が良い気がするけどとりあえず残しておく
+$set-prefix: -webkit-, -moz-, -ms-, ''; //ベンダープレフィックスの配列 //''はプレフィックスなし出力用
+
+//プロパティ名にベンダープレフィックス
+@mixin PropertySetPrefix($name, $value) {
+	@each $prefix in $set-prefix {
+		#{$prefix}#{$name}: $value;
+	}
+}
+
+//値にベンダープレフィックス
+@mixin ValueSetPrefix($name, $value) {
+	@each $prefix in $set-prefix {
+		#{$name}: #{$prefix}$value;
+	}
+}
+
+//YuGothic用
+@mixin jugos() {
+    font-family: cross-platform-yu-gothic, sans-serif;
+}
+@mixin jugosmin() {
+    font-family: Jugos, //Windows用
+                 YuGothic, //OS X
+                 -apple-system, //iOS San Francisco
+                 BlinkMacSystemFont, //iOS Chrome San Francisco
+                 "Hiragino Kaku Gothic ProN", //OS X, iOS ヒラギノ
+                 Meiryo, //Windowsメイリオ
+                 sans-serif;
+}
+
+//trasition
+@mixin transitionSet() {
+    @include PropertySetPrefix(transition, all 0.3s ease);
+}
+
+//dropShadow(垂直)
+@mixin dropShadowVertical() {
+    @include PropertySetPrefix(box-shadow, 0px 3px 3px rgba($color, 0.4));
+}
+
+//dropShadow(斜め)
+@mixin dropShadowSkew() {
+    @include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4));
+}
+
+//dropShadow(斜め、内側)
+@mixin dropShadowSkewInset() {
+    @include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4) inset);
+}
