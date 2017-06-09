@@ -19,6 +19,11 @@ var browserSync = require("browser-sync"); //ブラウザリロード
 
 //path difinition
 var dir = {
+  assets: {
+    jquery   : './node_modules/jquery/dist',
+    easing   : './node_modules/jquery-easing/dist',
+    bootstrap: './node_modules/Honoka/dist/js'
+  },
   src: {
     scss : './src/scss',
     js   : './src/js',
@@ -62,31 +67,40 @@ gulp.task("imagemin", function(){
 
 //js圧縮&結合&リネーム
 gulp.task("js.concat", function() {
-	return gulp.src([dir.src.js + "/assets/bootstrap.min.js", dir.src.js + "/assets/jquery.easing.1.3.js", dir.src.js + "/index.js"])
+	return gulp.src([dir.assets.jquery + "/jquery.min.js", dir.assets.bootstrap + "/bootstrap.min.js", dir.assets.easing + "/jquery.easing.1.3.umd.min.js"])
 		.pipe(plumber())
-		.pipe(concat("main.js"))
+		.pipe(concat("lib.js"))
 		.pipe(gulp.dest(dir.src.js + "/concat/")); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 });
 gulp.task("js.uglify", ["js.concat"], function() { //第2引数に先に実行して欲しい js.concat を指定する
-	return gulp.src(dir.src.js + "/concat/main.js")
+	return gulp.src(dir.src.js + "/concat/lib.js")
 		.pipe(plumber())
 		.pipe(uglify({
 			preserveComments: "some" // ! から始まるコメントを残すオプションを追加
 		}))
-		.pipe(rename(dir.dist.js + "/main.min.js"))  // 出力するファイル名を変更
+		.pipe(rename(dir.dist.js + "/lib.min.js"))  // 出力するファイル名を変更
 		.pipe(gulp.dest("./"));
 });
-gulp.task("js.uglify.progress", function() { //第2引数に先に実行して欲しい js.concat を指定する
+gulp.task("js.uglify.progress", function() {
 	return gulp.src(dir.src.js + "/progress.js")
 		.pipe(plumber())
 		.pipe(uglify({
-			preserveComments: "some" // ! から始まるコメントを残すオプションを追加
+			preserveComments: "some"
 		}))
-		.pipe(rename(dir.dist.js + "/progress.min.js"))  // 出力するファイル名を変更
+		.pipe(rename(dir.dist.js + "/progress.min.js"))
 		.pipe(gulp.dest("./"));
 });
-//上記2つをまとめておく
-gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress"]);
+gulp.task("js.uglify.app", function() {
+	return gulp.src(dir.src.js + "/index.js")
+		.pipe(plumber())
+		.pipe(uglify({
+			preserveComments: "some"
+		}))
+		.pipe(rename(dir.dist.js + "/app.min.js"))
+		.pipe(gulp.dest("./"));
+});
+//上記をまとめておく
+gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"]);
 
 //ejs
 gulp.task("ejs", function() {
@@ -101,7 +115,7 @@ gulp.task("ejs", function() {
 
 //proxy経由
 gulp.task("connect-sync", function() {
-/*	connect.server({ //今回はphp使わないのでプロキシも使わず
+/*	connect.server({ //php使うときはこっち
 		port: 8001,
 		base: dir.dist,
 		bin: "D:/xampp/php/php.exe",
@@ -127,7 +141,7 @@ gulp.task("reload", function(){
 gulp.task("default", ["sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
     gulp.watch([dir.dist + "/**/*.html"]).on("change", browserSync.reload);
-//	gulp.watch("./dist/**/*.php",["reload"]);
+//	gulp.watch("./dist/**/*.php",["reload"]); //php使うときはこっち
 
     gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch"]);
     gulp.watch([dir.dist.css + "/**/*.css"]).on("change", browserSync.reload);

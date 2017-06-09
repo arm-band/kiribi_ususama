@@ -14,25 +14,17 @@
 - Sass(ruby)がインストール・設定済
 - node.js(5以上)
     + npm
-    + (gulp)
-    + (ejs)
 
 ### Download
 
 このテンプレートは以下のライブラリ・フレームワークの使用を前提としています。  
 使用前にダウンロード等の準備をしてください。
 
-- Bootstrapテーマ(日本語対応) ※Scss版 … ver3.3.7
 - Font Awesome(CDN使用) … ver4.6.3
 - scss
     + sns色一覧
     + 游ゴシック対応フォント指定
     + ハンバーガーメニューのアニメーション
-        * Bootstrapテーマと計4つ./src/scss/assets/に入れる
-- jQuery
-    + jQuery(CDN使用) … ver3.1.0
-    + jQuery Easy Easing … ver1.3
-        * BootstrapとEasy Easingを./src/js/assets/に入れる
 
 ### Using
 
@@ -41,6 +33,10 @@ srcをダウンロードしてプロジェクトディレクトリにセット�
     npm install --save-dev
 
 で環境設定。
+
+    npm run proinit
+
+で初期設定を完了させます。その後に
 
     gulp
 
@@ -62,6 +58,15 @@ ejsの使い方をもっとしっかりしていきたい。
 - 特にパンくずはテストの為に追加したので柔軟性に欠ける
 - jsonから読み込めると楽そう
 
+どうせならばFont Awesomeも混ぜれば良かった。
+
 ## Release
 
+- 2017/6/9  ver1.1.0
+    - 後述パッケージをnpmで自動インストールするようにpackage.jsonを変更
+        - Bootstrap + Honoka(3.3.7)
+        - jQuery(3.2.1)
+        - jQuery.easing(1.3)
+        - 自前のコード（ローカルパスで指定）
+    - これに合わせて、gulpfile.jsとscssの読み込み部分も変更
 - 2017/2/22 ver1.0.0
