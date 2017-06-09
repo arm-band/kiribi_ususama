@@ -21,7 +21,7 @@
 使用前にダウンロード等の準備をしてください。
 
 - Font Awesome(CDN使用) … ver4.6.3
-- scss
+- scss(自前ソース。D:\xampp\htdocs\_lib\own-lib\ にpackage.jsonと共にファイル一式があるものと仮定)
     + sns色一覧
     + 游ゴシック対応フォント指定
     + ハンバーガーメニューのアニメーション
