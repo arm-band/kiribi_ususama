@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "proinit:mkdir": "mkdirp dist dist/img dist/js dist/css src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/bootstrap/mixins",
+    "proinit:mkdir": "mkdirp dist src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/bootstrap/mixins",
     "proinit:honoka1": "copyfiles -f \"./node_modules/Honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
     "proinit:honoka2": "copyfiles -f \"./node_modules/Honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka\"",
     "proinit:honoka3": "rename-files bootstrap.scss _bootstrap.scss --PATH=./src/scss/assets/bootstrap/",
@@ -34,7 +34,7 @@
     "jquery-easing": "^0.0.1",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.0.2",
-    "own-lib": "file:///D:\\xampp\\htdocs\\_lib\\own-lib",
+    "own-lib": "file:///xampp\\htdocs\\_lib\\own-lib",
     "rename-files-cli": "^1.0.1"
   }
 }

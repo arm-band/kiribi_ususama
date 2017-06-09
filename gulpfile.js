@@ -25,11 +25,13 @@ var dir = {
     bootstrap: './node_modules/Honoka/dist/js'
   },
   src: {
+    ejs  : './src/ejs',
     scss : './src/scss',
     js   : './src/js',
     img  : './src/img'
   },
   dist: {
+    html : './dist',
     css  : './dist/css',
     js   : './dist/js',
     img  : './dist/img'
@@ -105,19 +107,19 @@ gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"
 //ejs
 gulp.task("ejs", function() {
     gulp.src(
-        [dir.src.ejs + "/**/*.ejs", "!" + dir.src.rjs + "/**/_*.ejs"] //_*.ejsはhtmlにしない
+        [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs"] //_*.ejsはhtmlにしない
     )
     .pipe(plumber())
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
-    .pipe(gulp.dest(dir.dist));
+    .pipe(gulp.dest(dir.dist.html));
 });
 
 //proxy経由
 gulp.task("connect-sync", function() {
 /*	connect.server({ //php使うときはこっち
 		port: 8001,
-		base: dir.dist,
+		base: dir.dist.html,
 		bin: "D:/xampp/php/php.exe",
 		ini: "D:/xampp/php/php.ini"
 	}, function (){
@@ -127,7 +129,7 @@ gulp.task("connect-sync", function() {
 	});*/
     browserSync({
         server: {
-            baseDir: dir.dist
+            baseDir: dir.dist.html
         }
     });
 });
