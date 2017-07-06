@@ -155,6 +155,5 @@ gulp.task("default", ["sass-watch", "ejs", "js", "imagemin", "connect-sync"], fu
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)",["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js",["js"]);
 
-    gulp.watch([dir.dist.html + "/**/*.html", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", browserSync.reload);
-//    gulp.watch([dir.dist.html + "/**/*.php", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"], ["reload"]); //php使うときはこっち
+    gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", function () { browserSync.reload(); });
 });
