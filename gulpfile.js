@@ -1,3 +1,10 @@
+/**
+ * gulp task
+ *
+ * @author    アルム＝バンド
+ * @copyright Copyright (c) アルム＝バンド
+ */
+
 var gulp = require("gulp");
 
 //全般
@@ -121,7 +128,8 @@ gulp.task("connect-sync", function() {
 		port: 8001,
 		base: dir.dist.html,
 		bin: "D:/xampp/php/php.exe",
-		ini: "D:/xampp/php/php.ini"
+		ini: "D:/xampp/php/php.ini",
+        open: 'external'
 	}, function (){
 		browserSync({
 			proxy: "localhost:8001"
@@ -130,7 +138,8 @@ gulp.task("connect-sync", function() {
     browserSync({
         server: {
             baseDir: dir.dist.html
-        }
+        },
+        open: 'external'
     });
 });
 
@@ -142,15 +151,10 @@ gulp.task("reload", function(){
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
 gulp.task("default", ["sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
-    gulp.watch([dir.dist + "/**/*.html"]).on("change", browserSync.reload);
-//	gulp.watch("./dist/**/*.php",["reload"]); //php使うときはこっち
-
     gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch"]);
-    gulp.watch([dir.dist.css + "/**/*.css"]).on("change", browserSync.reload);
-
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)",["imagemin"]);
-    gulp.watch([dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)"]).on("change", browserSync.reload);
-
 	gulp.watch(dir.src.js + "/**/*.js",["js"]);
-    gulp.watch([dir.dist.js + "/**/*.js"]).on("change", browserSync.reload);
+
+    gulp.watch([dir.dist.html + "/**/*.html", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", browserSync.reload);
+//    gulp.watch([dir.dist.html + "/**/*.php", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"],["reload"]); //php使うときはこっち
 });

@@ -20,7 +20,7 @@
 このテンプレートは以下のライブラリ・フレームワークの使用を前提としています。  
 使用前にダウンロード等の準備をしてください。
 
-- Font Awesome(CDN使用) … ver4.6.3
+- Font Awesome(CDN使用) … ver4.7.0
 - scss(自前ソース。D:\xampp\htdocs\_lib\own-lib\ にpackage.jsonと共にファイル一式があるものと仮定)
     + sns色一覧
     + 游ゴシック対応フォント指定
@@ -64,6 +64,9 @@ ejsの使い方をもっとしっかりしていきたい。
 
 - 2017/7/6  ver1.1.1
     - Font CDNのAwesomeを4.7.0にバージョンアップ
+    - gulpfile.jsの記述を変更
+        - BrowserSyncのreloadタスクを集約
+        - open: 'external'を追加
 - 2017/6/9  ver1.1.0
     - 後述パッケージをnpmで自動インストールするようにpackage.jsonを変更
         - Bootstrap + Honoka(3.3.7)
