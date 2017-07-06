@@ -62,6 +62,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2017/7/6  ver1.1.1
+    - Font CDNのAwesomeを4.7.0にバージョンアップ
 - 2017/6/9  ver1.1.0
     - 後述パッケージをnpmで自動インストールするようにpackage.jsonを変更
         - Bootstrap + Honoka(3.3.7)
