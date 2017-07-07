@@ -2,9 +2,9 @@
 
 .eyecatch {
     $background-position: center center;
-    $eyecathc-height: 100vh;
+    $eyecacth-height: 100vh;
     
-    height: $eyecathc-height;
+    height: $eyecacth-height;
     overflow: hidden;
     background: url("../img/eyecatch.jpg") no-repeat $background-position fixed;
     @include PropertySetPrefix(background-size, cover);
@@ -27,7 +27,7 @@
     &.mobile_Safari { //index.jsでUAにより付与。mobile Safariバグ対策
         background: {
             position: $background-position;
-            size: auto $eyecathc-height;
+            size: auto $eyecacth-height;
         }
     }
 }
