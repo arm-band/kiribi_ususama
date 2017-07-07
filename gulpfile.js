@@ -128,11 +128,11 @@ gulp.task("connect-sync", function() {
 		port: 8001,
 		base: dir.dist.html,
 		bin: "D:/xampp/php/php.exe",
-		ini: "D:/xampp/php/php.ini",
-        open: 'external'
+		ini: "D:/xampp/php/php.ini"
 	}, function (){
 		browserSync({
-			proxy: "localhost:8001"
+			proxy: "localhost:8001",
+            open: 'external'
 		});
 	});*/
     browserSync({
@@ -146,6 +146,7 @@ gulp.task("connect-sync", function() {
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
 gulp.task("default", ["sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
+//    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch"]);
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)",["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js",["js"]);

@@ -1,6 +1,6 @@
 {
   "name": "bootstrap_minimal_template-for_gulp_and_ejs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-connect-php": "^0.0.8",
-    "gulp-ejs": "^2.3.0",
+    "gulp-ejs": "^3.0.1",
     "gulp-imagemin": "^3.1.1",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
