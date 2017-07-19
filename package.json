@@ -1,6 +1,6 @@
 {
   "name": "bootstrap_minimal_template-for_gulp_and_ejs",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
