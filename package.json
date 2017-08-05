@@ -5,8 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "proinit:mkdir": "mkdirp dist src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/bootstrap/mixins",
-    "proinit:honoka1": "copyfiles -f \"./node_modules/Honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
-    "proinit:honoka2": "copyfiles -f \"./node_modules/Honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka\"",
+    "proinit:honoka1": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
+    "proinit:honoka2": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka\"",
     "proinit:honoka3": "rename-files bootstrap.scss _bootstrap.scss --PATH=./src/scss/assets/bootstrap/",
     "proinit:bootstrap1": "copyfiles -f \"./node_modules/bootstrap-sass/assets/stylesheets/bootstrap/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap\"",
     "proinit:bootstrap2": "copyfiles -f \"./node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap/mixins\"",
