@@ -21,3 +21,11 @@
     //ハンバーガーアニメーション
     @include hamburger1();
 }
+.navbar {
+    &_head {
+        margin: {
+            top: 0;
+            bottom: 0;
+        }
+    }
+}

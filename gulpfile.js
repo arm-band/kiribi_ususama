@@ -29,7 +29,7 @@ var dir = {
   assets: {
     jquery   : './node_modules/jquery/dist',
     easing   : './node_modules/jquery-easing/dist',
-    bootstrap: './node_modules/Honoka/dist/js'
+    bootstrap: './node_modules/bootstrap-honoka/dist/js'
   },
   src: {
     ejs  : './src/ejs',
