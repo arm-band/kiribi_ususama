@@ -28,19 +28,10 @@
 
 ### Using
 
-srcをダウンロードしてプロジェクトディレクトリにセットし、distディレクトリを作成したら、
-
-    npm install --save-dev
-
-で環境設定。
-
-    npm run proinit
-
-で初期設定を完了させます。その後に
-
-    gulp
-
-で実行。browser-syncで既定のブラウザでページを表示します。
+1. `git clone REPOSITORY_URL.git`でリポジトリのクローンを作成
+2. `npm install --save-dev`で必要なプラグインを揃える
+3. `npm run proinit`で初期設定
+4. `gulp`で実行。browser-syncで既定のブラウザでページを表示します。
 
 ## Function
 

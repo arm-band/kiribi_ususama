@@ -84,27 +84,21 @@ gulp.task("js.concat", function() {
 gulp.task("js.uglify", ["js.concat"], function() { //第2引数に先に実行して欲しい js.concat を指定する
 	return gulp.src(dir.src.js + "/concat/lib.js")
 		.pipe(plumber())
-		.pipe(uglify({
-			preserveComments: "some" // ! から始まるコメントを残すオプションを追加
-		}))
+		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/lib.min.js"))  // 出力するファイル名を変更
 		.pipe(gulp.dest("./"));
 });
 gulp.task("js.uglify.progress", function() {
 	return gulp.src(dir.src.js + "/progress.js")
 		.pipe(plumber())
-		.pipe(uglify({
-			preserveComments: "some"
-		}))
+		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/progress.min.js"))
 		.pipe(gulp.dest("./"));
 });
 gulp.task("js.uglify.app", function() {
 	return gulp.src(dir.src.js + "/index.js")
 		.pipe(plumber())
-		.pipe(uglify({
-			preserveComments: "some"
-		}))
+		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/app.min.js"))
 		.pipe(gulp.dest("./"));
 });
