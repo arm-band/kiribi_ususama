@@ -53,6 +53,10 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2017/10/18 ver.1.1.3
+    - npmのプラグインのバージョン更新
+        - gulp-uglifyのコメントを残す方法が変化したらしい(参考: [gulp\-uglifyでコメントを残す方法が変わったの？ \- Qiita](https://qiita.com/tawatawa/items/515d8a58299b6dcd18f6))ので、gulpfile.jsを微修正
+    - HonokaをGithubからnpm経由に変更
 - 2017/7/19 ver.1.1.2
     - フッタの微修正（scssファイル、ejsファイル）
 - 2017/7/6  ver1.1.1

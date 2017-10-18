@@ -1,6 +1,6 @@
 {
   "name": "bootstrap_minimal_template-for_gulp_and_ejs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "gulp-ruby-sass": "^2.1.1",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "honoka": "git+https://github.com/windyakin/Honoka#master",
+    "bootstrap-honoka": "3.3.7-a",
     "jquery": "^3.2.1",
     "jquery-easing": "^0.0.1",
     "mkdirp": "^0.5.1",
