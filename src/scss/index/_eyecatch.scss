@@ -6,8 +6,10 @@
     
     height: $eyecacth-height;
     overflow: hidden;
-    background: url("../img/eyecatch.jpg") no-repeat $background-position fixed;
-    @include PropertySetPrefix(background-size, cover);
+    &:not(.mobile_Safari) {
+        background: url("../img/eyecatch.jpg") no-repeat center center fixed;
+        @include PropertySetPrefix(background-size, cover);
+    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,9 +27,18 @@
         }
     }
     &.mobile_Safari { //index.jsでUAにより付与。mobile Safariバグ対策
-        background: {
-            position: $background-position;
-            size: auto $eyecacth-height;
+        &:before {
+            background: url("../img/eyecatch.jpg") no-repeat left top;
+            background-size: auto 100%; //画像とデバイスによっては100% autoでも
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 108px;
+            content: " ";
+            z-index: -1;
         }
     }
 }
