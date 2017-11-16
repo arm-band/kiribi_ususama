@@ -12,6 +12,7 @@
 @import "../../node_modules/own-lib/jugosmin"; //YuGochic用省略形 //YuMinchoではfont-weight:500を指定しない限りは大丈夫
 @import "../../node_modules/own-lib/marugo"; //丸ゴシックフォントを使用したい場合
 @import "base/module"; //ベンダープレフィックス等のMixinモジュール
+@import "base/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
 @import "base/base"; //フォント指定やIE対処など
 @import "../../node_modules/own-lib/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
 
