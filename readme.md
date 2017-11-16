@@ -1,7 +1,7 @@
 # My web template for gulp & ejs
 
 自分用の小規模Webサイト制作用テンプレートです。  
-主にデモやテストサイト用で、gulpとejs対応版。
+主にデモやテストサイト用で、scss, gulp, ejs対応版。
 
 ## How to use?
 
@@ -12,7 +12,7 @@
 事前に以下の準備が必要です。
 
 - Sass(ruby)がインストール・設定済
-- node.js(5以上)
+- node.js(5.x以上)
     + npm
 
 ### Download
@@ -53,6 +53,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2017/11/16 ver.1.3.1
+    - Bootstrapでいつも気になる指定をキャンセルするscssを追加
 - 2017/10/18 ver.1.3.0
     - キービジュアルのmobileSafari対策が不十分だったのを修正
 - 2017/10/18 ver.1.2.0
