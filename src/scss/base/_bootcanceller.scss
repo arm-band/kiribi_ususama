@@ -23,6 +23,12 @@ ul,ol {
         left: 0;
         right: 0;
     }
+    & > .row {
+        margin: { //.row打ち消し
+            left: 0;
+            right: 0;
+        }
+    }
     & > .navbar-header, & > .navbar-collapse {
         margin: { //打ち消し
             left: 0;
