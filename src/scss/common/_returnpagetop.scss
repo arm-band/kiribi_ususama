@@ -8,19 +8,20 @@ $rpt-size: 44px;
 	bottom: 2%;
 	right: 6%;
     i {
-	display: block;
-	font-size: $rpt-size / 2;
-	width: $rpt-size;
-	height: $rpt-size;
-	line-height: $rpt-size;
-	background-color: $main-color2;
-	border-radius: $rpt-size / 2;
-	color: $bg-color;
-	text-align: center;
-	@include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4));
-	cursor: pointer;
-    @include transitionSet();
-    &:hover, &:active {
-        background-color: lighten($main-color2, 15%);
+	    display: block;
+	    font-size: $rpt-size / 2;
+	    width: $rpt-size;
+	    height: $rpt-size;
+	    line-height: $rpt-size;
+	    background-color: $main-color2;
+	    border-radius: $rpt-size / 2;
+	    color: $bg-color;
+	    text-align: center;
+	    @include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4));
+	    cursor: pointer;
+        @include transitionSet();
+        &:hover, &:active {
+            background-color: lighten($main-color2, 15%);
+        }
     }
 }
