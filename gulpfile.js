@@ -11,7 +11,7 @@ var gulp = require("gulp");
 var plumber = require("gulp-plumber"); //待機
 var notify = require("gulp-notify"); //標準出力
 //sass
-var sass = require('gulp-sass'); //sass
+var sass = require("gulp-sass"); //sass
 //img
 var imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
 //js
@@ -47,14 +47,15 @@ var dir = {
 
 //scssコンパイルタスク
 gulp.task("sass", function () {
-    return gulp.src(dir.src.scss + "/**/*.scss")
-        .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
-        .pipe(gulp.dest(dir.dist.css));
+	return gulp.src(dir.src.scss + "/**/*.scss")
+		.pipe(plumber())
+		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
+		.pipe(gulp.dest(dir.dist.css));
 });
 
 //watchタスク(Sassファイル変更時に実行するタスク)
 gulp.task("sass-watch", function () {
-  gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
+	gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
 });
 
 
