@@ -1,7 +1,9 @@
-# My web template for gulp & ejs
+# [Kiribi Ususama](https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png)
+
+## Abstract
 
 自分用の小規模Webサイト制作用テンプレートです。  
-主にデモやテストサイト用で、scss, gulp, ejs対応版。
+主にデモやテストサイト用で、scss, ejs, gulp対応。
 
 ## How to use?
 
@@ -53,6 +55,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2018/01/02 Ver 2.0.0
+    - 名前を付けました。
 - 2017/12/22 ver.1.3.3
     - Bootstrapキャンセラーに追記
 - 2017/12/05 ver.1.3.2

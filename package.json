@@ -1,6 +1,6 @@
 {
-  "name": "bootstrap_minimal_template-for_gulp_and_ejs",
-  "version": "1.3.3",
+  "name": "kiribi_ususama",
+  "version": "2.0.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
