@@ -130,7 +130,7 @@ gulp.task("connect-sync", function() {
 });
 
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
+gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch"]);
