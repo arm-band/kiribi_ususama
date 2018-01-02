@@ -11,7 +11,7 @@ var gulp = require("gulp");
 var plumber = require("gulp-plumber"); //待機
 var notify = require("gulp-notify"); //標準出力
 //sass
-var sass = require("gulp-ruby-sass"); //sass
+var sass = require('gulp-sass'); //sass
 //img
 var imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
 //js
@@ -46,26 +46,17 @@ var dir = {
 };
 
 //scssコンパイルタスク
-gulp.task("sass", function() {
-	var errorMessage = "Error: <%= error.message %>";
-	var sassOptions = {
-		style : "compressed"
-	}
-
-	return sass([dir.src.scss + "/**/*.scss"], sassOptions)
-	.pipe(plumber({
-		errorHandler: notify.onError( errorMessage )
-	}))
-	.pipe(gulp.dest(dir.dist.css));
+gulp.task("sass", function () {
+    return gulp.src(dir.src.scss + "/**/*.scss")
+        .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
+        .pipe(gulp.dest(dir.dist.css));
 });
 
 //watchタスク(Sassファイル変更時に実行するタスク)
-gulp.task("sass-watch", ["sass"], function(){
-	var watcher = gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
-	watcher.on("change", function(event) {
-		console.log("File " + event.path + " was " + event.type + ", running tasks..."); //ログ出力
-	});
+gulp.task("sass-watch", function () {
+  gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
 });
+
 
 //画像圧縮
 gulp.task("imagemin", function(){
