@@ -55,6 +55,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2018/01/02 Ver 2.2.0
+    - `gulp-autoprefixer`追加
 - 2018/01/02 Ver 2.1.0
     - `gulp-ruby-sass`から`gulp-sass`にsassコンパイラを変更。rubyから脱却
 - 2018/01/02 Ver 2.0.0

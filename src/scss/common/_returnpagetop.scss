@@ -17,7 +17,7 @@ $rpt-size: 44px;
 	    border-radius: $rpt-size / 2;
 	    color: $bg-color;
 	    text-align: center;
-	    @include PropertySetPrefix(box-shadow, 3px 3px 3px rgba($color, 0.4));
+	    box-shadow: 3px 3px 3px rgba($color, 0.4);
 	    cursor: pointer;
         @include transitionSet();
         &:hover, &:active {

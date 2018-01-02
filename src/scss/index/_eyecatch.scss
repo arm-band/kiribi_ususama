@@ -8,7 +8,7 @@
     overflow: hidden;
     &:not(.mobile_Safari) {
         background: url("../img/eyecatch.jpg") no-repeat center center fixed;
-        @include PropertySetPrefix(background-size, cover);
+        background-size: cover;
     }
     display: flex;
     justify-content: center;

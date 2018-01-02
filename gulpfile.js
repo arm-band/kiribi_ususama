@@ -12,6 +12,7 @@ var plumber = require("gulp-plumber"); //待機
 var notify = require("gulp-notify"); //標準出力
 //sass
 var sass = require("gulp-sass"); //sass
+var autoprefixer = require("gulp-autoprefixer");
 //img
 var imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
 //js
@@ -50,6 +51,10 @@ gulp.task("sass", function () {
 	return gulp.src(dir.src.scss + "/**/*.scss")
 		.pipe(plumber())
 		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 version', 'iOS >= 8.1', 'Android >= 4.4'],
+            cascade: false
+        }))
 		.pipe(gulp.dest(dir.dist.css));
 });
 
