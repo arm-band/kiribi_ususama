@@ -1,4 +1,4 @@
-# [Kiribi Ususama](https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png)
+# ![Kiribi Ususama](https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png)
 
 ## Abstract
 
