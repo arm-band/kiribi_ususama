@@ -28,4 +28,11 @@
             bottom: 0;
         }
     }
+    &-nav {
+        margin: 0 15px 0 0;
+    }
+    & > .container .navbar-brand, & > .container-fluid .navbar-brand
+    {
+        margin-left: 0;
+    }
 }
