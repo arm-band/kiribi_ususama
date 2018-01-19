@@ -21,7 +21,7 @@
 
 //trasition
 @mixin transitionSet() {
-    transition, all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 //dropShadow(垂直)
