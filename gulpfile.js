@@ -21,6 +21,8 @@ var concat = require("gulp-concat"); //ファイル結合
 var rename = require("gulp-rename"); //ファイル名変更
 //ejs
 var ejs = require("gulp-ejs");
+//file operation
+var fs = require("fs");
 //reload
 var connect = require("gulp-connect-php"); //proxy(phpファイル更新時リロード用)
 var browserSync = require("browser-sync"); //ブラウザリロード
@@ -104,11 +106,13 @@ gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"
 
 //ejs
 gulp.task("ejs", function() {
+    var commons = JSON.parse(fs.readFileSync("src/ejs/common/var.json"));
+    var newsjson = JSON.parse(fs.readFileSync("src/ejs/news/news.json"));
     gulp.src(
         [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs"] //_*.ejsはhtmlにしない
     )
     .pipe(plumber())
-    .pipe(ejs())
+    .pipe(ejs({commons, newsjson}))
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest(dir.dist.html));
 });

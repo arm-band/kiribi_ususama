@@ -1,0 +1,109 @@
+{
+    "news":[
+        {
+            "id": "releasenote",
+            "title": "ver.2.3.0",
+            "time": "2018/1/24",
+            "excerpt": "jsonによるパラメータ管理機能を追加",
+            "content": "<ul><li>jsonによるパラメータ管理機能を追加。<ul><li><code>/src/ejs/news/news.json</code>というjsonファイルで新着情報をトップページと更新履歴一覧ページに異なるhtmlで出力するサンプルを追加</li><li><code>/src/ejs/common/_var.ejs</code>で管理していた共通パラメータをjsonファイル(<code>/src/ejs/common/_var.json</code>)に変更</li></ul></li><li>ejsの変数の指定をチェーン方式に変更</li><li><code>.gitignore</code>追加</li></ul>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.2.1",
+            "time": "2018/01/17",
+            "excerpt": "各種微調整",
+            "content": "<p>各種微調整。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.2.0",
+            "time": "2018/01/02",
+            "excerpt": "<code>gulp-autoprefixer</code>追加",
+            "content": "<p><code>gulp-autoprefixer</code>追加。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.1.0",
+            "time": "2018/01/02",
+            "excerpt": "<code>gulp-ruby-sass</code>から<code>gulp-sass</code>にsassコンパイラを変更。rubyから脱却",
+            "content": "<p><code>gulp-ruby-sass</code>から<code>gulp-sass</code>にsassコンパイラを変更。rubyから脱却。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.0.0",
+            "time": "2018/01/02",
+            "excerpt": "名前を付けました。",
+            "content": "<ul><li>名前を付けました</li><li>各種微調整</li></ul>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.3.3",
+            "time": "2017/12/22",
+            "excerpt": "Bootstrapキャンセラーに追記",
+            "content": "<p>Bootstrapキャンセラーに追記。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.3.2",
+            "time": "2017/12/05",
+            "excerpt": "Bootstrapキャンセラーに追記",
+            "content": "<p>Bootstrapキャンセラーに追記。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.3.1",
+            "time": "2017/11/16",
+            "excerpt": "Bootstrapでいつも気になる指定をキャンセルするscssを追加",
+            "content": "<p>Bootstrapでいつも気になる指定をキャンセルするscssを追加。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.3.0",
+            "time": "2017/10/18",
+            "excerpt": "キービジュアルのmobileSafari対策が不十分だったのを修正",
+            "content": "<p>キービジュアルのmobileSafari対策が不十分だったのを修正。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.2.0",
+            "time": "2017/10/18",
+            "excerpt": "onw-libの中に丸ゴシックの記述を追加",
+            "content": "<p>onw-libの中に丸ゴシックの記述を追加。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.1.3",
+            "time": "2017/10/18",
+            "excerpt": "npmのプラグインのバージョン更新、HonokaをGithubからnpm経由に変更",
+            "content": "<ul><li>npmのプラグインのバージョン更新<ul><li>gulp-uglifyのコメントを残す方法が変化したらしい(参考: <a href=\"https://qiita.com/tawatawa/items/515d8a58299b6dcd18f6\">gulp-uglifyでコメントを残す方法が変わったの？ - Qiita</a>)ので、gulpfile.jsを微修正</li></ul></li><li>HonokaをGithubからnpm経由に変更</li></ul>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.1.1.2",
+            "time": "2017/7/19",
+            "excerpt": "フッタの微修正（scssファイル、ejsファイル）",
+            "content": "<p>フッタの微修正（scssファイル、ejsファイル）。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver1.1.1",
+            "time": "2017/7/6",
+            "excerpt": "いくつか修正",
+            "content": "<ul><li>Font CDNのAwesomeを4.7.0にバージョンアップ</li><li>gulpfile.jsの記述を変更<ul><li>BrowserSyncのreloadタスクを集約</li><li>open: &#39;external&#39;を追加</li></ul></li></ul>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver1.1.0",
+            "time": "2017/6/9",
+            "excerpt": "いくつかのパッケージをnpmで自動インストールするようにpackage.jsonを変更",
+            "content": "<p>後述パッケージをnpmで自動インストールするようにpackage.jsonを変更。</p><ul><li>Bootstrap + Honoka(3.3.7)</li><li>jQuery(3.2.1)</li><li>jQuery.easing(1.3)</li><li>自前のコード（ローカルパスで指定）</li></ul><p>これに合わせて、gulpfile.jsとscssの読み込み部分も変更。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver1.0.0",
+            "time": "2017/2/22",
+            "excerpt": "初版公開",
+            "content": "<p>初版を公開しました。</p>"
+        }
+    ]
+}

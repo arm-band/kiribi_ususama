@@ -1,0 +1,66 @@
+<%
+var param = {
+    "title": "更新履歴",
+    "entitle": "News",
+    "css": "commons",
+    "js": "app.min",
+    "description": "更新履歴の一覧です。"
+};
+var commons = commons;
+var newsjson = newsjson;
+%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<% include common/_head %>
+</head>
+<body>
+
+<div id="wrapper">
+<% include common/_header %>
+
+    <!-- main -->
+    <main class="main news">
+<% include common/_breadcrumb %>
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12　col-md-3">
+                    <div class="page-header">
+                        <h2>What's news? <small>news</small></h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9">
+<% for(var i in newsjson.news) {
+    var datetime = newsjson.news[i].time.replace(/\//g, "-");
+    var idTime = newsjson.news[i].time.replace(/\//g, "");
+%>
+                    <article class="news_article" id="<%= newsjson.news[i].id %>-<%= idTime %>">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		<h3 class="news_header"><%= newsjson.news[i].title %></h3>
+                        	</div>
+                        	<div class="panel-body">
+                                <div class="news_contents">
+                        	        <%- newsjson.news[i].content %>
+                                </div>
+                        	</div>
+                        	<div class="panel-footer">
+                        		<time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
+                        	</div>
+                        </div>
+                    </article>
+<% } %>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+
+<% include common/_footer %>
+
+</div>
+
+<script src="./js/lib.min.js"></script>
+<script src="./js/<%= param.js %>.js"></script>
+</body>
+</html>

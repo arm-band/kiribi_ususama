@@ -5,14 +5,16 @@ var param = {
     "css": "index",
     "js": "app.min",
     "description": "gulpとEJSに対応したBootstrap Minimal Template"
-}; %>
-<% include common/_var %>
+};
+var commons = commons;
+var newsjson = newsjson;
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <% include common/_head %>
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbarMenu" data-offset="80">
 
 <% include index/_loading %>
 
@@ -26,14 +28,41 @@ var param = {
         <ol class="breadcrumb">
             <li class="active"><a href="./index.html"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         </ol>
-        <section class="container-fluid">
+        <section class="container-fluid" id="news">
+            <div class="row">
+                <div class="col-sm-12 col-md-3">
+                    <div class="page-header">
+                        <h2>What's new? <small>news</small></h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9">
+                    <ul class="list-group">
+<% for(var i in newsjson.news) {
+    var datetime = newsjson.news[i].time.replace(/\//g, "-");
+    var idTime = newsjson.news[i].time.replace(/\//g, "");
+%>
+                        <li class="list-group-item">
+                            <a href="./news.html#<%= newsjson.news[i].id %>-<%= idTime %>">
+                                <h3 class="news_header"><%= newsjson.news[i].title %></h3>
+                                <time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
+                                <p><%- newsjson.news[i].excerpt %></p>
+                            </a>
+                        </li>
+<% } %>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid" id="about">
             <div class="row">
                 <article class="col-xs-12">
                     <div class="page-header">
                         <h2>What's this page? <small>About page</small></h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>自分用の小規模Webサイト制作用テンプレートです。<br>主にデモやテストサイト用で、scss, ejs, gulp対応。</p>
+                    <h3>名前の由来</h3>
+                    <p>Bootstrapを使っていることから。Bootstrapが電源投入、自動実行といった意味合いなので、何か物事を始めるイメージと火で火打石を連想。「Hiuchiishi」だと長いのと、これから事を始めるに当たって魔除けの意味も込めて切り火からKiribi。</p>
+                    <p>gulpを使っている方はgulpが飲み込む、ごくごくと飲むという意味(だからシェイクのロゴなのですね)なので、火の神様というか仏教の明王で、一切不浄を飲み込み浄化する烏枢沙摩明王からお名前をお借りしました。</p>
                 </article>
             </div>
         </section>
@@ -46,6 +75,6 @@ var param = {
 
 <script src="./js/lib.min.js"></script>
 <script src="./js/progress.min.js"></script>
-<script src="./js/<%= param["js"] %>.js"></script>
+<script src="./js/<%= param.js %>.js"></script>
 </body>
 </html>

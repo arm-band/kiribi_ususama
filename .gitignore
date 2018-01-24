@@ -1,0 +1,6 @@
+/dist/
+/node_modules/
+/src/js/concat/
+/src/scss/assets/
+package-lock.json
+/.sass-cache/

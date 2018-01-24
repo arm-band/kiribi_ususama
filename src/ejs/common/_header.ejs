@@ -1,5 +1,5 @@
 <!-- header -->
-<header class="header">
+<header class="header" id="navbarMenu">
     <nav class="navbar navbar-default navbar-fixed-top">
     	<div class="container-fluid">
     		<div class="navbar-header">
@@ -9,12 +9,13 @@
     				<span class="icon-bar"></span>
     				<span class="icon-bar"></span>
     			</button>
-    			<h1 class="navbar_head"><a class="navbar-brand" href="./index.html"><i class="fa fa-fw fa-html5" aria-hidden="true"></i><%= commons["sitename"] %></a></h1>
+    			<h1 class="navbar_head"><a class="navbar-brand" href="./"><%= commons.commons.sitename %></a></h1>
     		</div>
     		
     		<div class="collapse navbar-collapse navbar-right" id="navbarMenu">
     			<ul class="nav navbar-nav">
-    				<li><a href="./about.html">概要</a></li>
+    			    <li><a href="#news">更新履歴</a></li>
+    				<li><a href="#about">概要</a></li>
     			</ul>
     		</div>
     	</div>
