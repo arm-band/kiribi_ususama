@@ -24,7 +24,7 @@ Scss, ejs, gulp使用。
         - bootstrap-sass: 3.3.7
         - bootstrap-honoka: 3.3.7-a
         - jquery: 3.2.1
-        - jquery-easing: 0.0.1
+        - jquery-easing: 1.4.1
 
 ### Download
 
@@ -75,12 +75,6 @@ ejsの使い方をもっとしっかりしていきたい。
 - 特にパンくずはテストの為に追加したので柔軟性に欠ける
 
 <del>どうせならばFont Awesomeも混ぜれば良かった。</del>
-
-## Task
-
-- jquery-easingが違う人のものを使っているっぽい
-- jsonを上書きしたときに生成するようにウォッチタスクを追加
-- スタイルガイドを生成させたい
 
 ## Release
 
