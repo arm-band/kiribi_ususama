@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.3.1",
+            "time": "2018/1/30",
+            "excerpt": "jsonファイルをウォッチタスクに追加",
+            "content": "<ul><li>jsonファイルをウォッチタスクに追加しました</li><li><code>readme.md</code>を加筆修正しました</li></ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.3.0",
             "time": "2018/1/24",
             "excerpt": "jsonによるパラメータ管理機能を追加",
