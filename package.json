@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -32,10 +32,11 @@
     "gulp-util": "^3.0.8",
     "bootstrap-honoka": "3.3.7-a",
     "jquery": "^3.2.1",
-    "jquery-easing": "^0.0.1",
+    "jquery.easing": "^1.4.1",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.1",
     "own-lib": "file:///xampp\\htdocs\\_lib\\own-lib",
-    "rename-files-cli": "^1.0.1"
+    "rename-files-cli": "^1.0.1",
+    "gulp-frontnote": "^2.0.1"
   }
 }

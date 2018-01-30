@@ -26,12 +26,14 @@ var fs = require("fs");
 //reload
 var connect = require("gulp-connect-php"); //proxy(phpファイル更新時リロード用)
 var browserSync = require("browser-sync"); //ブラウザリロード
+//styleguide
+var frontnote = require("gulp-frontnote");
 
 //path difinition
 var dir = {
   assets: {
     jquery   : './node_modules/jquery/dist',
-    easing   : './node_modules/jquery-easing/dist',
+    easing   : './node_modules/jquery.easing',
     bootstrap: './node_modules/bootstrap-honoka/dist/js'
   },
   src: {
@@ -75,7 +77,7 @@ gulp.task("imagemin", function(){
 
 //js圧縮&結合&リネーム
 gulp.task("js.concat", function() {
-	return gulp.src([dir.assets.jquery + "/jquery.min.js", dir.assets.bootstrap + "/bootstrap.min.js", dir.assets.easing + "/jquery.easing.1.3.umd.min.js"])
+	return gulp.src([dir.assets.jquery + "/jquery.min.js", dir.assets.bootstrap + "/bootstrap.min.js", dir.assets.easing + "/jquery.easing.js"])
 		.pipe(plumber())
 		.pipe(concat("lib.js"))
 		.pipe(gulp.dest(dir.src.js + "/concat/")); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
@@ -138,8 +140,14 @@ gulp.task("connect-sync", function() {
     });
 });
 
+//styleguide
+gulp.task("styleguide", () => {
+    gulp.src(dir.src.scss + "/**/*.scss") // 監視対象のファイルを指定
+        .pipe(frontnote());
+});
+
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync"], function() {
+gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync", "styleguide"], function() {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
     gulp.watch(dir.src.ejs + "/**/*.json",["ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
