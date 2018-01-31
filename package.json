@@ -1,10 +1,10 @@
 {
   "name": "kiribi_ususama",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "proinit:mkdir": "mkdirp dist src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/bootstrap/mixins",
+    "proinit:mkdir": "mkdirp dist docs src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/bootstrap/mixins",
     "proinit:honoka1": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
     "proinit:honoka2": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka\"",
     "proinit:honoka3": "rename-files bootstrap.scss _bootstrap.scss --PATH=./src/scss/assets/bootstrap/",

@@ -2,6 +2,153 @@
 
 @import "common";
 
+/*
+#overview
+トップページスタイルガイド
+*/
+/*
+#colors
+カラーパレット
+```
+@color #333
+@bg-color #fff
+@main-color #1586BF
+@main-color2 #37aee9
+@accent-color #CD384B
+@link-color #58C7AD
+@link-v-color #359e85
+@link-ha-color #91dac9
+```
+*/
+/*
+#styleguide
+カラーパレット(Scss)
+Scssの変数を使えないものか……
+```
+@color $color
+@bg-color $bg-color
+@main-color $main-color
+@main-color2 $main-color2
+@accent-color $accent-color
+@link-color $link-color
+@link-v-color $link-v-color
+@link-ha-color $link-ha-color
+```
+*/
+/*
+#styleguide
+基本スタイル
+```
+<h1>見出し1</h1>
+<h2>見出し2</h2>
+<h3>見出し3</h3>
+<h4>見出し4</h4>
+<h5>見出し5</h5>
+<h6>見出し6</h6>
+<p>特に何も指定しないときの状態。<a href="#">リンク</a>。</p>
+```
+*/
+/*
+#styleguide
+ボタンクラスを付与したリンク
+```
+<p><a href="#" class="btn">ボタンリンク</a></p>
+```
+*/
+/*
+#styleguide
+トップページのアイキャッチ(ヒーロー)
+```
+    <section class="eyecatch">
+        <div class="container-fluid">
+            <h1 class="eyecatch_header">Site Name</h1>
+        </div>
+    </section>
+```
+*/
+/*
+#styleguide
+ローディング
+実際にはstyleの指定は不要
+```
+<div id="loading" style="position:relative;z-index:1;">
+	<div id="loadContent" style="display:block;position:relative;margin:0 auto;height:auto;top:auto;left:auto;transform:none;z-index:1;">
+		<i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i><br>
+		<progress>Now loading...</progress>
+		<p id="loadPercentage"></p>
+	</div>
+</div>
+```
+*/
+/*
+#styleguide
+ヘッダ(ハンバーガー使用)
+※常にページトップに固定させたい場合はnav.navbarにnavbar-fixed-topクラスも指定すること
+```
+<header class="header" id="navbar">
+    <nav class="navbar navbar-default">
+    	<div class="container-fluid">
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMenu">
+    				<span class="sr-only">トグルナビ</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    			<h1 class="navbar_head"><a class="navbar-brand" href="./">Site Name</a></h1>
+    		</div>
+    		
+    		<div class="collapse navbar-collapse navbar-right" id="navbarMenu">
+    			<ul class="nav navbar-nav">
+    			    <li><a href="#news">更新履歴</a></li>
+    				<li><a href="#about">概要</a></li>
+    			</ul>
+    		</div>
+    	</div>
+    </nav>
+</header>
+```
+*/
+/*
+#styleguide
+メイン
+実際はfont-size:16px;line-height:1.5;の指定は不要
+```
+    <main class="main" style="font-size:16px;line-height:1.5;">
+        <section class="container-fluid" id="about">
+            <div class="row">
+                <article class="col-xs-12">
+                    <div class="page-header">
+                        <h2>What's this page? <small>About page</small></h2>
+                    </div>
+                    <p>自分用の小規模Webサイト制作用テンプレートです。<br>主にデモやテストサイト用で、scss, ejs, gulp対応。</p>
+                    <h3>名前の由来</h3>
+                    <p>Bootstrapを使っていることから。Bootstrapが電源投入、自動実行といった意味合いなので、何か物事を始めるイメージと火で火打石を連想。「Hiuchiishi」だと長いのと、これから事を始めるに当たって魔除けの意味も込めて切り火からKiribi。</p>
+                    <p>gulpを使っている方はgulpが飲み込む、ごくごくと飲むという意味(だからシェイクのロゴなのですね)なので、火の神様というか仏教の明王で、一切不浄を飲み込み浄化する烏枢沙摩明王からお名前をお借りしました。</p>
+                </article>
+            </div>
+        </section>
+    </main>
+```
+*/
+/*
+#styleguide
+フッタ
+```
+    <footer class="footer">
+        <small class="copyRight">Copyright &#169; yyyy 著者名 All Right Reserved.</small>
+    </footer>
+```
+*/
+/*
+#styleguide
+ページトップへ戻る
+表示のためにstyleを直接指定しているが、実際使用時は指定不要
+```
+    <p class="returnPageTop" style="display:block;position:relative;bottom:auto;right:auto;"><i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i></p>
+```
+*/
+
 // ============================================= *
 //                                               *
 //  ローディング                                   *

@@ -47,11 +47,24 @@ var dir = {
     css  : './dist/css',
     js   : './dist/js',
     img  : './dist/img'
+  },
+  docs: {
+    html : './docs',
+    css  : '../dist/css',
+    js   : '../dist/js',
+    img  : '../dist/img'
   }
 };
+//jsonファイル取得
+var getCommons = function() {
+    return JSON.parse(fs.readFileSync("src/ejs/common/var.json"));
+}
+var getNews = function() {
+    return JSON.parse(fs.readFileSync("src/ejs/news/news.json"));
+}
 
 //scssコンパイルタスク
-gulp.task("sass", function () {
+gulp.task("sass", () => {
 	return gulp.src(dir.src.scss + "/**/*.scss")
 		.pipe(plumber())
 		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
@@ -63,40 +76,40 @@ gulp.task("sass", function () {
 });
 
 //watchタスク(Sassファイル変更時に実行するタスク)
-gulp.task("sass-watch", function () {
+gulp.task("sass-watch", () => {
 	gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
 });
 
 
 //画像圧縮
-gulp.task("imagemin", function(){
+gulp.task("imagemin", () => {
 	gulp.src(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)")
 		.pipe(imagemin())
 		.pipe(gulp.dest(dir.dist.img));
 });
 
 //js圧縮&結合&リネーム
-gulp.task("js.concat", function() {
+gulp.task("js.concat", () => {
 	return gulp.src([dir.assets.jquery + "/jquery.min.js", dir.assets.bootstrap + "/bootstrap.min.js", dir.assets.easing + "/jquery.easing.js"])
 		.pipe(plumber())
 		.pipe(concat("lib.js"))
 		.pipe(gulp.dest(dir.src.js + "/concat/")); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 });
-gulp.task("js.uglify", ["js.concat"], function() { //第2引数に先に実行して欲しい js.concat を指定する
+gulp.task("js.uglify", ["js.concat"], () => { //第2引数に先に実行して欲しい js.concat を指定する
 	return gulp.src(dir.src.js + "/concat/lib.js")
 		.pipe(plumber())
 		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/lib.min.js"))  // 出力するファイル名を変更
 		.pipe(gulp.dest("./"));
 });
-gulp.task("js.uglify.progress", function() {
+gulp.task("js.uglify.progress", () => {
 	return gulp.src(dir.src.js + "/progress.js")
 		.pipe(plumber())
 		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/progress.min.js"))
 		.pipe(gulp.dest("./"));
 });
-gulp.task("js.uglify.app", function() {
+gulp.task("js.uglify.app", () => {
 	return gulp.src(dir.src.js + "/index.js")
 		.pipe(plumber())
 		.pipe(uglify({output: {comments: "some"}}))
@@ -107,9 +120,9 @@ gulp.task("js.uglify.app", function() {
 gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"]);
 
 //ejs
-gulp.task("ejs", function() {
-    var commons = JSON.parse(fs.readFileSync("src/ejs/common/var.json"));
-    var newsjson = JSON.parse(fs.readFileSync("src/ejs/news/news.json"));
+gulp.task("ejs", () => {
+    var commons = getCommons();
+    var newsjson = getNews();
     gulp.src(
         [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs"] //_*.ejsはhtmlにしない
     )
@@ -120,7 +133,7 @@ gulp.task("ejs", function() {
 });
 
 //proxy経由
-gulp.task("connect-sync", function() {
+gulp.task("connect-sync", () => {
 /*	connect.server({ //php使うときはこっち
 		port: 8001,
 		base: dir.dist.html,
@@ -143,17 +156,22 @@ gulp.task("connect-sync", function() {
 //styleguide
 gulp.task("styleguide", () => {
     gulp.src(dir.src.scss + "/**/*.scss") // 監視対象のファイルを指定
-        .pipe(frontnote());
+        .pipe(frontnote({
+            out: dir.docs.html,
+            title: getCommons().commons.sitename,
+            css: [dir.docs.css + "/index.css", "http://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            js: dir.docs.js + "/index.js"
+        }));
 });
 
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync", "styleguide"], function() {
+gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync", "styleguide"], () => {
 	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
     gulp.watch(dir.src.ejs + "/**/*.json",["ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
-    gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch"]);
+    gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch", "styleguide"]);
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)",["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js",["js"]);
 
-    gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", function () { browserSync.reload(); });
+    gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
 });

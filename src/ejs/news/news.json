@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.4.1",
+            "time": "2018/1/31",
+            "excerpt": "スタイルガイド用の設定を追加",
+            "content": "<p><li>スタイルガイド用の設定を追加しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.4.0",
             "time": "2018/1/30",
             "excerpt": "スタイルガイド生成機能を追加、ほか",
