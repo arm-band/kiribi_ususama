@@ -2,10 +2,17 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.4.2",
+            "time": "2018/1/31",
+            "excerpt": "新着情報周りの微調整",
+            "content": "<p>新着情報周りを微調整しました。</p><ul><li>トップページに出力する件数を5件(変数で変更可)に制限</li><li>上記の伴い、リンクボタンを追加</li><li><code>news.html</code>の表示を微調整</li></ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.4.1",
             "time": "2018/1/31",
             "excerpt": "スタイルガイド用の設定を追加",
-            "content": "<p><li>スタイルガイド用の設定を追加しました。</p>"
+            "content": "<p>スタイルガイド用の設定を追加しました。</p>"
         },
         {
             "id": "releasenote",

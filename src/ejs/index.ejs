@@ -4,7 +4,8 @@ var param = {
     "entitle": "Home",
     "css": "index",
     "js": "app.min",
-    "description": "gulpとEJSに対応したBootstrap Minimal Template"
+    "description": "gulpとEJSに対応したBootstrap Minimal Template",
+    "newscount": 5
 };
 var commons = commons;
 var newsjson = newsjson;
@@ -34,12 +35,15 @@ var newsjson = newsjson;
                     <div class="page-header">
                         <h2>What's new? <small>news</small></h2>
                     </div>
+                    <p>新着情報一覧(最新<%= param.newscount %>件)です。過去の履歴は下記ボタンより。</p>
+                    <p><a href="./news.html" class="btn">過去の履歴</a></p>
                 </div>
                 <div class="col-sm-12 col-md-9">
                     <ul class="list-group">
 <% for(var i in newsjson.news) {
-    var datetime = newsjson.news[i].time.replace(/\//g, "-");
-    var idTime = newsjson.news[i].time.replace(/\//g, "");
+    if(i < param.newscount) {
+        var datetime = newsjson.news[i].time.replace(/\//g, "-");
+        var idTime = newsjson.news[i].time.replace(/\//g, "");
 %>
                         <li class="list-group-item">
                             <a href="./news.html#<%= newsjson.news[i].id %>-<%= idTime %>">
@@ -48,7 +52,10 @@ var newsjson = newsjson;
                                 <p><%- newsjson.news[i].excerpt %></p>
                             </a>
                         </li>
-<% } %>
+<%
+    }
+}
+%>
                     </ul>
                 </div>
             </div>
