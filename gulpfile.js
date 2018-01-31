@@ -159,8 +159,8 @@ gulp.task("styleguide", () => {
         .pipe(frontnote({
             out: dir.docs.html,
             title: getCommons().commons.sitename,
-            css: [dir.docs.css + "/index.css", "http://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
-            js: dir.docs.js + "/index.js"
+            css: [dir.docs.css + "/index.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            script: [dir.docs.js + "/lib.min.js", dir.docs.js + "/app.min.js"]
         }));
 });
 
