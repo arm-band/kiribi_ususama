@@ -24,7 +24,7 @@ Scss, ejs, gulp使用。
         - bootstrap-sass: 3.3.7
         - bootstrap-honoka: 3.3.7-a
         - jquery: 3.2.1
-        - jquery-easing: 1.4.1
+        - jquery.easing: 1.4.1
 
 ### Download
 
@@ -53,10 +53,20 @@ Scss, ejs, gulp使用。
 
 gulpで処理されるもの
 
-- ejs → htmlへの変換(`/src/ejs/*.ejs`→`/dist/*.html`) ※自動生成
-- Scss → cssへの変換(`/src/scss/*.scss`→`/dist/css/*.css`) ※自動生成。minifyされたものを生成。
-- jsの圧縮(`/src/js/*.js`→`/dist/js/*.min.js`) ※自動生成。1つのファイルでminifyされます。
-- 画像の圧縮(`/src/img/*`→`/dist/img/*.`) ※自動生成
+- ejs → htmlへの変換(`/src/ejs/*.ejs`→`/dist/*.html`)
+    - 自動生成
+- Scss → cssへの変換(`/src/scss/*.scss`→`/dist/css/*.css`)
+    - 自動生成
+        - minifyされたものを生成
+    - 自動でプレフィックスを付与
+        - 基本最新2バージョン
+        - `iOS >= 8.1`
+        - `Android >= 4.4`
+- jsの圧縮(`/src/js/*.js`→`/dist/js/*.min.js`)
+    - 自動生成
+        - 1つのファイルにminify
+- 画像の圧縮(`/src/img/*`→`/dist/img/*`)
+    - 自動生成
 
 ## Function2
 
