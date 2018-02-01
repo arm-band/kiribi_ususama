@@ -2,6 +2,20 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.4.4",
+            "time": "2018/2/1",
+            "excerpt": "ネタ更新:真言で<code>npm</code>が走るようにショートカットを追加",
+            "content": "<p>ネタ更新:真言で<code>npm</code>が走るようにショートカットを追加しました。</p>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.4.3",
+            "time": "2018/1/31",
+            "excerpt": "スタイルガイドにjsファイルを読み込んでいなかったバグを修正",
+            "content": "<p>スタイルガイドにjsファイルを読み込んでいなかったバグを修正しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.4.2",
             "time": "2018/1/31",
             "excerpt": "新着情報周りの微調整",

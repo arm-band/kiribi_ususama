@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -10,7 +10,14 @@
     "proinit:honoka3": "rename-files bootstrap.scss _bootstrap.scss --PATH=./src/scss/assets/bootstrap/",
     "proinit:bootstrap1": "copyfiles -f \"./node_modules/bootstrap-sass/assets/stylesheets/bootstrap/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap\"",
     "proinit:bootstrap2": "copyfiles -f \"./node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap/mixins\"",
-    "proinit": "npm-run-all -s proinit:mkdir proinit:honoka1 proinit:honoka2 proinit:honoka3 proinit:bootstrap1 proinit:bootstrap2"
+    "proinit": "npm-run-all -s proinit:mkdir proinit:honoka1 proinit:honoka2 proinit:honoka3 proinit:bootstrap1 proinit:bootstrap2",
+    "gueshingon": "npm run proinit:mkdir",
+    "om": "npm run proinit:honoka1",
+    "krodhana": "npm run proinit:honoka2",
+    "hum": "npm run proinit:honoka3",
+    "jah": "npm run proinit:bootstrap1",
+    "svaha": "npm run proinit:bootstrap2",
+    "gue": "npm-run-all -s gueshingon om krodhana hum jah svaha"
   },
   "author": "Arm Band",
   "license": "ISC",

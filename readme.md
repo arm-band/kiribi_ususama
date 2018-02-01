@@ -45,8 +45,8 @@ Scss, ejs, gulp使用。
 3. `git clone`するとリモートリポジトリがテンプレート元のパスのままなので、変更する
     1. `git remote rm origin <REPOSITORY_TEMPLATE_URL.git>`で現在のリモートリポジトリを削除
     2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
-4. `npm install --save-dev`で必要なプラグインを揃える
-5. `npm run proinit`で初期設定を行う
+4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
+5. `npm run gue`(`npm run proinit`でも良い)で初期設定を行う
 6. `gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Function1
@@ -88,6 +88,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release
 
+- 2018/2/1 ver.2.4.4
+    - ネタ更新:真言で`npm`が走るようにショートカットを追加
 - 2018/1/31 ver.2.4.3
     - スタイルガイドにjsファイルを読み込んでいなかったバグを修正
 - 2018/1/31 ver.2.4.2
