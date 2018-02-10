@@ -8,7 +8,8 @@ var param = {
     "css": "commons",
     "js": "app.min",
     "description": "更新履歴の一覧です。",
-    "hierarchy": 1
+    "hierarchy": 1,
+    "indexFlag": false
 };
 var commons = commons;
 var newsBlock = newsBlock;
@@ -22,7 +23,7 @@ var newsBlock = newsBlock;
 <body>
 
 <div id="wrapper">
-<%- include("common/_header", { commons }) %>
+<%- include("common/_header", { commons, param }) %>
 
     <!-- main -->
     <main class="main news">

@@ -1,3 +1,9 @@
+<%
+var navPath = "";
+if(param.indexFlag !== true) {
+    navPath = path;
+}
+%>
 <!-- header -->
 <header class="header" id="navbar">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -14,8 +20,8 @@
     		
     		<div class="collapse navbar-collapse navbar-right" id="navbarMenu">
     			<ul class="nav navbar-nav">
-    			    <li><a href="#news">更新履歴</a></li>
-    				<li><a href="#about">概要</a></li>
+    			    <li><a href="<%= navPath %>#news">更新履歴</a></li>
+    				<li><a href="<%= navPath %>#about">概要</a></li>
     			</ul>
     		</div>
     	</div>

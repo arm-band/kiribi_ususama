@@ -5,7 +5,8 @@ var param = {
     "css": "commons",
     "js": "app.min",
     "description": "このページについての説明です。",
-    "hierarchy": 0
+    "hierarchy": 0,
+    "indexFlag": false
 };
 var commons = commons;
 %>
@@ -18,7 +19,7 @@ var commons = commons;
 <body>
 
 <div id="wrapper">
-<%- include("common/_header", { commons }) %>
+<%- include("common/_header", { commons, param }) %>
 
     <!-- main -->
     <main class="main about">
