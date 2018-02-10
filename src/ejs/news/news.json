@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.5.0",
+            "time": "2018/2/10",
+            "excerpt": "新着情報を複数ページ生成するように修正しました",
+            "content": "<p>新着情報を<code>news.json</code>のパラメータで指定した件数ごとに複数ページ生成するように修正しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.4.4",
             "time": "2018/2/1",
             "excerpt": "ネタ更新:真言で<code>npm</code>が走るようにショートカットを追加",
@@ -147,5 +154,6 @@
             "excerpt": "初版公開",
             "content": "<p>初版を公開しました。</p>"
         }
-    ]
+    ],
+    "pagination": 5
 }

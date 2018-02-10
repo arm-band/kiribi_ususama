@@ -4,23 +4,25 @@ var param = {
     "entitle": "About Page",
     "css": "commons",
     "js": "app.min",
-    "description": "このページについての説明です。"
+    "description": "このページについての説明です。",
+    "hierarchy": 0
 };
 var commons = commons;
 %>
+<%- include("common/_pathdir", { param }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<% include common/_head %>
+<%- include("common/_head", { param }) %>
 </head>
 <body>
 
 <div id="wrapper">
-<% include common/_header %>
+<%- include("common/_header", { commons }) %>
 
     <!-- main -->
     <main class="main about">
-<% include common/_breadcrumb %>
+<%- include("common/_breadcrumb", { param }) %>
         <section class="container-fluid">
             <div class="row">
                 <article class="col-xs-12">
@@ -37,11 +39,11 @@ var commons = commons;
     </main>
     <!-- /main -->
 
-<% include common/_footer %>
+<%- include("common/_footer", { commons }) %>
 
 </div>
 
-<script src="./js/lib.min.js"></script>
-<script src="./js/<%= param.js %>.js"></script>
+<script src="<%= path %>js/lib.min.js"></script>
+<script src="<%= path %>js/<%= param.js %>.js"></script>
 </body>
 </html>

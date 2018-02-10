@@ -5,6 +5,7 @@ var param = {
     "css": "index",
     "js": "app.min",
     "description": "gulpとEJSに対応したBootstrap Minimal Template",
+    "hierarchy": 0,
     "newscount": 5
 };
 var commons = commons;
@@ -13,16 +14,16 @@ var newsjson = newsjson;
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<% include common/_head %>
+<%- include("common/_head", { param }) %>
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="80">
 
-<% include index/_loading %>
+<%- include("index/_loading") %>
 
 <div id="wrapper">
-<% include common/_header %>
+<%- include("common/_header", { commons }) %>
 
-<% include index/_eyecatch %>
+<%- include("index/_eyecatch", { commons }) %>
 
     <!-- main -->
     <main class="main">
@@ -36,7 +37,7 @@ var newsjson = newsjson;
                         <h2>What's new? <small>news</small></h2>
                     </div>
                     <p>新着情報一覧(最新<%= param.newscount %>件)です。過去の履歴は下記ボタンより。</p>
-                    <p><a href="./news.html" class="btn">過去の履歴</a></p>
+                    <p><a href="./news/news1.html" class="btn">過去の履歴</a></p>
                 </div>
                 <div class="col-sm-12 col-md-9">
                     <ul class="list-group">
@@ -46,7 +47,7 @@ var newsjson = newsjson;
         var idTime = newsjson.news[i].time.replace(/\//g, "");
 %>
                         <li class="list-group-item">
-                            <a href="./news.html#<%= newsjson.news[i].id %>-<%= idTime %>">
+                            <a href="./news/news1.html#<%= newsjson.news[i].id %>-<%= idTime %>">
                                 <h3 class="news_header"><%= newsjson.news[i].title %></h3>
                                 <time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
                                 <p><%- newsjson.news[i].excerpt %></p>
@@ -89,12 +90,12 @@ var newsjson = newsjson;
     </main>
     <!-- /main -->
 
-<% include common/_footer %>
+<%- include("common/_footer", { commons }) %>
 
 </div>
 
-<script src="./js/lib.min.js"></script>
-<script src="./js/progress.min.js"></script>
-<script src="./js/<%= param.js %>.js"></script>
+<script src="<%= path %>js/lib.min.js"></script>
+<script src="<%= path %>js/progress.min.js"></script>
+<script src="<%= path %>js/<%= param.js %>.js"></script>
 </body>
 </html>

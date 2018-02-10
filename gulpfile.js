@@ -44,6 +44,7 @@ var dir = {
   },
   dist: {
     html : './dist',
+    news : './dist/news',
     css  : './dist/css',
     js   : './dist/js',
     img  : './dist/img'
@@ -124,12 +125,47 @@ gulp.task("ejs", () => {
     var commons = getCommons();
     var newsjson = getNews();
     gulp.src(
-        [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs"] //_*.ejsはhtmlにしない
+        [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs", "!" + dir.src.ejs + "/news.ejs"] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
     )
     .pipe(plumber())
     .pipe(ejs({commons, newsjson}))
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest(dir.dist.html));
+});
+
+//新着情報専用のejaタスク
+gulp.task("news.ejs", function() {
+    var name = "news"; //テンプレート・生成するファイル名
+    var commons = getCommons();
+    var newsjson = getNews();
+    var tempFile = dir.src.ejs + "/" + name + ".ejs"; //テンプレート
+    var pages = 1; //ページカウンタ
+    var count = 0; //記事件数カウンタ
+    var pageLength = Math.ceil(newsjson.news.length / newsjson.pagination); //ページの最大数
+    var newsBlock = []; //1ページ辺りの記事のオブジェクト
+
+    for(var i = 0; i < newsjson.news.length; i++) { //新着情報の件数
+        newsBlock.push(newsjson.news[i]); //件数分スタック
+
+        if(i % newsjson.pagination == (newsjson.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
+            gulp.src(tempFile)
+            .pipe(plumber())
+            .pipe(ejs({commons, newsBlock, name, pages, pageLength}))
+            .pipe(rename(name + pages + ".html"))
+            .pipe(gulp.dest(dir.dist.news));
+
+            newsBlock = []; //空にする
+            pages++; //カウントアップ
+        }
+    }
+
+    if(newsBlock.length > 0) {
+       gulp.src(tempFile)
+       .pipe(plumber())
+       .pipe(ejs({commons, newsBlock, name, pages, pageLength}))
+       .pipe(rename(name + pages + ".html"))
+       .pipe(gulp.dest(dir.dist.news));
+    }
 });
 
 //proxy経由
@@ -165,13 +201,13 @@ gulp.task("styleguide", () => {
 });
 
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "connect-sync", "styleguide"], () => {
-	gulp.watch(dir.src.ejs + "/**/*.ejs",["ejs"]);
-    gulp.watch(dir.src.ejs + "/**/*.json",["ejs"]);
+gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "connect-sync", "styleguide"], () => {
+	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs"]);
+    gulp.watch(dir.src.ejs + "/**/*.json", ["ejs", "news.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
-    gulp.watch(dir.src.scss + "/**/*.scss",["sass-watch", "styleguide"]);
-	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)",["imagemin"]);
-	gulp.watch(dir.src.js + "/**/*.js",["js"]);
+    gulp.watch(dir.src.scss + "/**/*.scss", ["sass-watch", "styleguide"]);
+	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)", ["imagemin"]);
+	gulp.watch(dir.src.js + "/**/*.js", ["js"]);
 
     gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
 });

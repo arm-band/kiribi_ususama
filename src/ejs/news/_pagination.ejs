@@ -1,0 +1,44 @@
+        <section class="container-fluid">
+            <nav>
+            	<ul class="pagination">
+<%
+//前のページへ
+if(counter !== 1) { //最初のページ以外
+    var prev = counter - 1;
+%>
+            		<li>
+            			<a href="./<%= name + prev %>.html" aria-label="前のページへ">
+            				<span aria-hidden="true">«</span>
+            			</a>
+            		</li>
+<%
+}
+//ページネーション
+for(var i = 1; i <= pageLength; i++) { //ページ数分生成
+    //今いるページの場合、activeクラスを付与
+    if(i === counter) {
+%>
+            		<li class="active"><a href="./<%= name + i %>.html"><%= i %></a></li>
+<%
+    }
+    else {
+%>
+            		<li><a href="./<%= name + i %>.html"><%= i %></a></li>
+<%
+    }
+}
+//次のページへ
+if(counter !== pageLength) { //最後のページ以外
+    var next = counter + 1;
+%>
+            		<li>
+            			<a href="./<%= name + next %>.html" aria-label="次のページへ">
+            				<span aria-hidden="true">»</span>
+            			</a>
+            		</li>
+<%
+}
+%>
+            	</ul>
+            </nav>
+        </section>
