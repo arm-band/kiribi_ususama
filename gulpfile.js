@@ -37,23 +37,26 @@ var dir = {
     bootstrap: './node_modules/bootstrap-honoka/dist/js'
   },
   src: {
-    ejs  : './src/ejs',
-    scss : './src/scss',
-    js   : './src/js',
-    img  : './src/img'
+    ejs     : './src/ejs',
+    scss    : './src/scss',
+    js      : './src/js',
+    img     : './src/img',
+    favicon : './src/favicon'
   },
   dist: {
-    html : './dist',
-    news : './dist/news',
-    css  : './dist/css',
-    js   : './dist/js',
-    img  : './dist/img'
+    html    : './dist',
+    news    : './dist/news',
+    css     : './dist/css',
+    js      : './dist/js',
+    img     : './dist/img',
+    favicon : './dist/favicon'
   },
   docs: {
-    html : './docs',
-    css  : '../dist/css',
-    js   : '../dist/js',
-    img  : '../dist/img'
+    html    : './docs',
+    css     : '../dist/css',
+    js      : '../dist/js',
+    img     : '../dist/img',
+    favicon : '../dist/favicon'
   }
 };
 //jsonファイル取得
@@ -168,6 +171,15 @@ gulp.task("news.ejs", function() {
     }
 });
 
+//favicon
+gulp.task("favicon", () => {
+    gulp.src(
+        [dir.src.favicon + "/**/*"]
+    )
+    .pipe(plumber())
+    .pipe(gulp.dest(dir.dist.favicon));
+});
+
 //proxy経由
 gulp.task("connect-sync", () => {
 /*	connect.server({ //php使うときはこっち
@@ -201,7 +213,7 @@ gulp.task("styleguide", () => {
 });
 
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "connect-sync", "styleguide"], () => {
+gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
 	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs"]);
     gulp.watch(dir.src.ejs + "/**/*.json", ["ejs", "news.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち

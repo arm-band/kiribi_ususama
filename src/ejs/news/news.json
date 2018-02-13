@@ -2,6 +2,20 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.5.2",
+            "time": "2018/2/13",
+            "excerpt": "faviconを追加。<code>head</code>タグ内にテーマカラーを出力するように追記",
+            "content": "<ul><li>faviconを追加。<code>gulptask.js</code>もfaviconを出力するように追記</li><li><code>head</code>タグ内にテーマカラーを出力するように追記。色は<code>var.json</code>で指定</li></ul>"
+        },
+        {
+            "id": "releasenote",
+            "title": "ver.2.5.1",
+            "time": "2018/2/10",
+            "excerpt": "トップページか否かの判定でナビゲーションバーのリンクを切り替えるように変更",
+            "content": "<p>トップページか否かの判定でナビゲーションバーのリンクを切り替えるように変更しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.5.0",
             "time": "2018/2/10",
             "excerpt": "新着情報を複数ページ生成するように修正しました",
