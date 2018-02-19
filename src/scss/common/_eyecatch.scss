@@ -1,7 +1,11 @@
 @charset "utf-8";
 
 .eyecatch {
-    .container-fluid {
-        margin: 0 auto;
+    margin-top: $navbarer-height;
+    height: 20vh;
+    @include eyecatchBGImg("../img/eyecatch.jpg");
+    @include eyecatchCenter();
+    &_header {
+        @include eyecatchTypo(calc(4em + 3vw));
     }
 }

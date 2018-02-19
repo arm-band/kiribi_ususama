@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.5.3",
+            "time": "2018/2/19",
+            "excerpt": "キービジュアル周りを整理",
+            "content": "<p>トップページ・各ページのキービジュアル周りを整理しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.5.2",
             "time": "2018/2/13",
             "excerpt": "faviconを追加。<code>head</code>タグ内にテーマカラーを出力するように追記",

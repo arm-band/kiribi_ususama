@@ -3,41 +3,13 @@
 .eyecatch {
     $background-position: center center;
     $eyecacth-height: 100vh;
-    
+
+    margin-top: $navbarer-height;
     height: $eyecacth-height;
     overflow: hidden;
-    &:not(.mobile_Safari) {
-        background: url("../img/eyecatch.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .container-fluid {
-        box-sizing: border-box; //IEバグフィックス
-        max-width: 100%; //IEバグフィックス
-        h1 {
-            color: $link-color;
-            z-index: 3;
-            font: {
-                size: calc(4em + 4vw);
-                family: 'Dancing Script', cursive; /* googleフォント */
-            }
-        }
-    }
-    &.mobile_Safari { //index.jsでUAにより付与。mobile Safariバグ対策
-        &:before {
-            background: url("../img/eyecatch.jpg") no-repeat left top;
-            background-size: auto 100%; //画像とデバイスによっては100% autoでも
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding-bottom: 108px;
-            content: " ";
-            z-index: -1;
-        }
+    @include eyecatchBGImg("../img/eyecatch.jpg");
+    @include eyecatchCenter();
+    &_header {
+        @include eyecatchTypo(calc(4em + 4vw));
     }
 }
