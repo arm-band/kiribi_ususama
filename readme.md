@@ -112,6 +112,9 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/2/22 ver.2.5.5
+    - indexのmainにクラス付与、各ejsのbodyにクラス付与
+    - now loadingの背景色を変数に
 - 2018/2/19 ver.2.5.4
     - mainの左右paddingを削除
 - 2018/2/19 ver.2.5.3
