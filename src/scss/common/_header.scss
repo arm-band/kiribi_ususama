@@ -2,24 +2,23 @@
 
 // ============================================= *
 //                                                *
-//  ナビゲーションバー                            *
+//  ナビゲーションバー                               *
 //                                                *
 // ============================================= */
-
-.navbar-default .navbar-toggle {
-    //共通
-    border-color: transparent;
-    &:focus,
-    &:active,
-    &:hover {
-        background: none;
+.navbar-default {
+    .navbar-toggle {
+        //共通
         border-color: transparent;
+        &:focus, &:active, &:hover {
+            background: none;
+            border-color: transparent;
+        }
+        .icon-bar {
+            @include transitionSet();
+        }
+        //ハンバーガーアニメーション
+        @include hamburger1();
     }
-    .icon-bar {
-        @include transitionSet();
-    }
-    //ハンバーガーアニメーション
-    @include hamburger1();
 }
 .navbar {
     &_head {
@@ -31,8 +30,7 @@
     &-nav {
         margin: 0 15px 0 0;
     }
-    & > .container .navbar-brand, & > .container-fluid .navbar-brand
-    {
+    & > .container .navbar-brand, & > .container-fluid .navbar-brand {
         margin-left: 0;
     }
 }
