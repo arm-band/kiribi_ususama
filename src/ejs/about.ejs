@@ -10,13 +10,14 @@ var param = {
 };
 var commons = commons;
 %>
+<%- include("common/_year", { commons }) %>
 <%- include("common/_pathdir", { param }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <%- include("common/_head", { param }) %>
 </head>
-<body>
+<body class="aboutPage">
 
 <div id="wrapper">
 <%- include("common/_header", { commons, param }) %>
@@ -42,7 +43,7 @@ var commons = commons;
     </main>
     <!-- /main -->
 
-<%- include("common/_footer", { commons }) %>
+<%- include("common/_footer", { commons, copyRightYear }) %>
 
 </div>
 

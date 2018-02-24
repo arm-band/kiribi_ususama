@@ -14,6 +14,7 @@ var param = {
 var commons = commons;
 var newsBlock = newsBlock;
 %>
+<%- include("common/_year", { commons }) %>
 <%- include("common/_pathdir", { param }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -66,7 +67,7 @@ var newsBlock = newsBlock;
     </main>
     <!-- /main -->
 
-<%- include("common/_footer", { commons }) %>
+<%- include("common/_footer", { commons, copyRightYear }) %>
 
 </div>
 

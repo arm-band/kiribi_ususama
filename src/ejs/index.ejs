@@ -12,6 +12,7 @@ var param = {
 var commons = commons;
 var newsjson = newsjson;
 %>
+<%- include("common/_year", { commons }) %>
 <%- include("common/_pathdir", { param }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -93,7 +94,7 @@ var newsjson = newsjson;
     </main>
     <!-- /main -->
 
-<%- include("common/_footer", { commons }) %>
+<%- include("common/_footer", { commons, copyRightYear }) %>
 
 </div>
 
