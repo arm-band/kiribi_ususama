@@ -35,7 +35,7 @@
 //                                               *
 // ============================================= */
 @import "../../node_modules/own-lib/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
-@import "common/header";
+@import "partial/header";
 
 // ============================================= *
 //                                               *
@@ -52,7 +52,7 @@
 // フッタ                                         *
 //                                               *
 // ============================================= */
-@import "common/footer";
+@import "partial/footer";
 
 // ***** ページトップへ戻る ***** */
-@import "common/returnpagetop";
+@import "partial/returnpagetop";

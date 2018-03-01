@@ -2,7 +2,7 @@
 var param = {
     "title": "概要",
     "entitle": "About Page",
-    "css": "commons",
+    "css": "contents",
     "js": "app.min",
     "description": "このページについての説明です。",
     "hierarchy": 0,
@@ -10,23 +10,23 @@ var param = {
 };
 var commons = commons;
 %>
-<%- include("common/_year", { commons }) %>
-<%- include("common/_pathdir", { param }) %>
+<%- include("control/_year", { commons }) %>
+<%- include("control/_pathdir", { param }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("common/_head", { param }) %>
+<%- include("partial/_head", { param }) %>
 </head>
 <body class="aboutPage">
 
 <div id="wrapper">
-<%- include("common/_header", { commons, param }) %>
+<%- include("partial/_header", { commons, param }) %>
 
-<%- include("common/_eyecatch", { param }) %>
+<%- include("partial/_eyecatch", { param }) %>
 
     <!-- main -->
     <main class="main about">
-<%- include("common/_breadcrumb", { param }) %>
+<%- include("partial/_breadcrumb", { param }) %>
         <section class="container-fluid">
             <div class="row">
                 <article class="col-xs-12">
@@ -43,7 +43,7 @@ var commons = commons;
     </main>
     <!-- /main -->
 
-<%- include("common/_footer", { commons, copyRightYear }) %>
+<%- include("partial/_footer", { commons, copyRightYear }) %>
 
 </div>
 

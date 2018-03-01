@@ -43,6 +43,9 @@ var dir = {
     img     : './src/img',
     favicon : './src/favicon'
   },
+  data: {
+    json    : './src/data'
+  },
   dist: {
     html    : './dist',
     news    : './dist/news',
@@ -61,10 +64,10 @@ var dir = {
 };
 //jsonファイル取得
 var getCommons = function() {
-    return JSON.parse(fs.readFileSync("src/ejs/common/var.json"));
+    return JSON.parse(fs.readFileSync(dir.data.json + "/var.json"));
 }
 var getNews = function() {
-    return JSON.parse(fs.readFileSync("src/ejs/news/news.json"));
+    return JSON.parse(fs.readFileSync(dir.data.json + "/news.json"));
 }
 
 //scssコンパイルタスク

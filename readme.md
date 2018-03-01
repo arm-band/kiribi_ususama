@@ -112,6 +112,25 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/3/1 ver.2.5.7
+    - ファイル名・ディレクトリ名の整理
+        - ディレクトリ階層を変更
+            - `ejs`
+                - ヘッダやフッタなどのパーツ: `common`→`partial`
+                - パス階層の場合分けや年数表示などのパラメータ・計算関連(それ自体にhtml出力なし): `common`→`control`
+            - `scss`
+                - ヘッダやフッタなどのパーツ: `common`→`partial`
+            - `json`
+                - `ejs`用のパラメータである`var.json`を`src/ejs/common/var.json`から`src/data/var.json`へ変更
+                - 新着情報データの`news.json`を`src/ejs/news/news.json`から`src/data/news.json`へ変更
+        - 一部scss関連の名称を変更
+            1. 各コンテンツページ用のscssの名称を`common.scss`から`contents.scss`へ変更
+                - 共通パーツのディレクトリである`common`
+                - 共通読み込みの`_common.scss`
+                - 各コンテンツページ用の`common.scss`
+                - と`common`という名前が3つあって分かりづらかったため
+            2. 上記の通り、共通パーツのディレクトリの名前は`common`から`partial`へ変更
+            3. 共通読み込みの`_common.scss`はそのまま。`common`という名前はscssの中で1つのみにした
 - 2018/2/24 ver.2.5.6
     - コピーライトの年数を決め打ちではなく、計算で変化するように変更
 - 2018/2/22 ver.2.5.5
