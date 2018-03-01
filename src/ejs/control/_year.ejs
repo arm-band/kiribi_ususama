@@ -1,10 +1,10 @@
 <%
 copyRightYear = "";
 var getFullYear = new Date().getFullYear();
-if(parseInt(getFullYear) - parseInt(commons.commons.year) === 0) {
-   copyRightYear = commons.commons.year;
+if(parseInt(getFullYear) - parseInt(variables.commons.year) === 0) {
+   copyRightYear = variables.commons.year;
 }
 else {
-   copyRightYear = `${commons.commons.year}-${getFullYear}`;
+   copyRightYear = `${variables.commons.year}-${getFullYear}`;
 }
 %>

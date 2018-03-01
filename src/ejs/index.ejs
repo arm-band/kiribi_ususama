@@ -1,35 +1,27 @@
 <%
-var param = {
-    "title": "ホーム",
-    "entitle": "Home",
-    "css": "index",
-    "js": "app.min",
-    "description": "gulpとEJSに対応したBootstrap Minimal Template",
-    "hierarchy": 0,
-    "newscount": 5,
-    "indexFlag": true
-};
-var commons = commons;
+var variables = variables;
+//var pathlessFilename = filename.slice(filename.lastIndexOf("\\") + 1); //パスなし、単独のファイル名
+id = filename.slice(filename.lastIndexOf("\\") + 1, -4); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から.ejsの末尾4文字を除く範囲の文字列を切り取り=拡張子なしのファイル名
 var newsjson = newsjson;
 %>
-<%- include("control/_year", { commons }) %>
-<%- include("control/_pathdir", { param }) %>
+<%- include("control/_year", { variables, id }) %>
+<%- include("control/_pathdir", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { param }) %>
+<%- include("partial/_head", { variables, id }) %>
 </head>
-<body data-spy="scroll" data-target="#navbarMenu" data-offset="80" class="indexPage">
+<body data-spy="scroll" data-target="#navbarMenu" data-offset="80" class="<%= id %>Page">
 
 <%- include("index/_loading") %>
 
 <div id="wrapper">
-<%- include("partial/_header", { commons, param }) %>
+<%- include("partial/_header", { variables, id }) %>
 
-<%- include("index/_eyecatch", { commons }) %>
+<%- include("index/_eyecatch", { variables, id }) %>
 
     <!-- main -->
-    <main class="main index">
+    <main class="main <%= id %>">
         <ol class="breadcrumb">
             <li class="active"><a href="./"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         </ol>
@@ -39,13 +31,13 @@ var newsjson = newsjson;
                     <div class="page-header">
                         <h2>What's new? <small>news</small></h2>
                     </div>
-                    <p>新着情報一覧(最新<%= param.newscount %>件)です。過去の履歴は下記ボタンより。</p>
+                    <p>新着情報一覧(最新<%=  variables.param[id].newscount %>件)です。過去の履歴は下記ボタンより。</p>
                     <p><a href="./news/news1.html" class="btn">過去の履歴</a></p>
                 </div>
                 <div class="col-sm-12 col-md-9">
                     <ul class="list-group">
 <% for(var i in newsjson.news) {
-    if(i < param.newscount) {
+    if(i <  variables.param[id].newscount) {
         var datetime = newsjson.news[i].time.replace(/\//g, "-");
         var idTime = newsjson.news[i].time.replace(/\//g, "");
 %>
@@ -94,12 +86,12 @@ var newsjson = newsjson;
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { commons, copyRightYear }) %>
+<%- include("partial/_footer", { variables, id, copyRightYear }) %>
 
 </div>
 
 <script src="<%= path %>js/lib.min.js"></script>
 <script src="<%= path %>js/progress.min.js"></script>
-<script src="<%= path %>js/<%= param.js %>.js"></script>
+<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>

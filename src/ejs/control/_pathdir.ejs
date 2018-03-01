@@ -1,8 +1,8 @@
 <%
 //遡るパスの深さを指定
 path = ""; //グローバル変数
-if(param.hierarchy > 0) {
-    for(var i = 0; i < param.hierarchy; i++) {
+if(variables.param[id].hierarchy > 0) {
+    for(var i = 0; i < variables.param[id].hierarchy; i++) {
         path += "../";
     }
 }

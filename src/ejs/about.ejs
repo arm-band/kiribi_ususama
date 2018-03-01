@@ -1,32 +1,24 @@
 <%
-var param = {
-    "title": "概要",
-    "entitle": "About Page",
-    "css": "contents",
-    "js": "app.min",
-    "description": "このページについての説明です。",
-    "hierarchy": 0,
-    "indexFlag": false
-};
-var commons = commons;
+var variables = variables;
+id = filename.slice(filename.lastIndexOf("\\") + 1, -4); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から.ejsの末尾4文字を除く範囲の文字列を切り取り=拡張子なしのファイル名
 %>
-<%- include("control/_year", { commons }) %>
-<%- include("control/_pathdir", { param }) %>
+<%- include("control/_year", { variables, id }) %>
+<%- include("control/_pathdir", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { param }) %>
+<%- include("partial/_head", { variables, id }) %>
 </head>
-<body class="aboutPage">
+<body class="<%= id %>Page">
 
 <div id="wrapper">
-<%- include("partial/_header", { commons, param }) %>
+<%- include("partial/_header", { variables, id }) %>
 
-<%- include("partial/_eyecatch", { param }) %>
+<%- include("partial/_eyecatch", { variables, id }) %>
 
     <!-- main -->
-    <main class="main about">
-<%- include("partial/_breadcrumb", { param }) %>
+    <main class="main <%= id %>">
+<%- include("partial/_breadcrumb", { variables, id }) %>
         <section class="container-fluid">
             <div class="row">
                 <article class="col-xs-12">
@@ -43,11 +35,11 @@ var commons = commons;
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { commons, copyRightYear }) %>
+<%- include("partial/_footer", { variables, id, copyRightYear }) %>
 
 </div>
 
 <script src="<%= path %>js/lib.min.js"></script>
-<script src="<%= path %>js/<%= param.js %>.js"></script>
+<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>

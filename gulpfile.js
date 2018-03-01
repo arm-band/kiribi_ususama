@@ -21,6 +21,7 @@ var concat = require("gulp-concat"); //ファイル結合
 var rename = require("gulp-rename"); //ファイル名変更
 //ejs
 var ejs = require("gulp-ejs");
+var data = require("gulp-data"); //gulp-ejs内でファイル名を参照できるようにする
 //file operation
 var fs = require("fs");
 //reload
@@ -63,8 +64,8 @@ var dir = {
   }
 };
 //jsonファイル取得
-var getCommons = function() {
-    return JSON.parse(fs.readFileSync(dir.data.json + "/var.json"));
+var getVariables = function() {
+    return JSON.parse(fs.readFileSync(dir.data.json + "/variables.json"));
 }
 var getNews = function() {
     return JSON.parse(fs.readFileSync(dir.data.json + "/news.json"));
@@ -128,13 +129,16 @@ gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"
 
 //ejs
 gulp.task("ejs", () => {
-    var commons = getCommons();
+    var variables = getVariables();
     var newsjson = getNews();
     gulp.src(
         [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs", "!" + dir.src.ejs + "/news.ejs"] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
     )
     .pipe(plumber())
-    .pipe(ejs({commons, newsjson}))
+    .pipe(data(function(file) {
+        return { "filename": file.path }
+    }))
+    .pipe(ejs({ variables, newsjson }))
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest(dir.dist.html));
 });
@@ -142,7 +146,7 @@ gulp.task("ejs", () => {
 //新着情報専用のejaタスク
 gulp.task("news.ejs", function() {
     var name = "news"; //テンプレート・生成するファイル名
-    var commons = getCommons();
+    var variables = getVariables();
     var newsjson = getNews();
     var tempFile = dir.src.ejs + "/" + name + ".ejs"; //テンプレート
     var pages = 1; //ページカウンタ
@@ -156,7 +160,10 @@ gulp.task("news.ejs", function() {
         if(i % newsjson.pagination == (newsjson.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             gulp.src(tempFile)
             .pipe(plumber())
-            .pipe(ejs({commons, newsBlock, name, pages, pageLength}))
+            .pipe(data(function(file) {
+                return { "filename": file.path }
+            }))
+            .pipe(ejs({ variables, newsBlock, name, pages, pageLength }))
             .pipe(rename(name + pages + ".html"))
             .pipe(gulp.dest(dir.dist.news));
 
@@ -166,11 +173,14 @@ gulp.task("news.ejs", function() {
     }
 
     if(newsBlock.length > 0) {
-       gulp.src(tempFile)
-       .pipe(plumber())
-       .pipe(ejs({commons, newsBlock, name, pages, pageLength}))
-       .pipe(rename(name + pages + ".html"))
-       .pipe(gulp.dest(dir.dist.news));
+        gulp.src(tempFile)
+        .pipe(plumber())
+        .pipe(data(function(file) {
+            return { "filename": file.path }
+        }))
+        .pipe(ejs({ variables, newsBlock, name, pages, pageLength }))
+        .pipe(rename(name + pages + ".html"))
+        .pipe(gulp.dest(dir.dist.news));
     }
 });
 
@@ -209,7 +219,7 @@ gulp.task("styleguide", () => {
     gulp.src(dir.src.scss + "/**/*.scss") // 監視対象のファイルを指定
         .pipe(frontnote({
             out: dir.docs.html,
-            title: getCommons().commons.sitename,
+            title: getVariables().commons.sitename,
             css: [dir.docs.css + "/index.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
             script: [dir.docs.js + "/lib.min.js", dir.docs.js + "/app.min.js"]
         }));
@@ -218,11 +228,11 @@ gulp.task("styleguide", () => {
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
 gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
 	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs"]);
-    gulp.watch(dir.src.ejs + "/**/*.json", ["ejs", "news.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(dir.src.scss + "/**/*.scss", ["sass-watch", "styleguide"]);
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)", ["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js", ["js"]);
+    gulp.watch(dir.data.json + "/**/*.json", ["ejs", "news.ejs", "sass-watch", "js", "styleguide"]);
 
     gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
 });

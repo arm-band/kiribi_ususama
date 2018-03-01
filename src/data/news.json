@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.5.8",
+            "time": "2018/3/1",
+            "excerpt": "パラメータ周りを整理",
+            "content": "<p><code>json</code>で管理するパラメータを拡張。</p><ul><li>各<code>ejs</code>ファイルで設定していた連想配列<code>param</code>を丸ごと<code>variables.json</code>に格納</li><li>呼び出しにファイル名をを使用するので<code>gulp-data</code>を追加。この処理でファイル名をキーにして<code>variables.json</code>の<code>param</code>の中から探す</li><li>ついでに<code>body</code>タグと<code>main</code>タグに出力するページ識別用クラスを決め打ちではなく、上記のファイル名を使った出力に変更</li></ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.5.7",
             "time": "2018/3/1",
             "excerpt": "ファイル名・ディレクトリ名の整理",

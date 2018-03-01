@@ -2,42 +2,34 @@
 var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
-var param = {
-    "title": "更新履歴" + counter,
-    "entitle": "News" + counter,
-    "css": "contents",
-    "js": "app.min",
-    "description": "更新履歴の一覧です。",
-    "hierarchy": 1,
-    "indexFlag": false
-};
-var commons = commons;
+var variables = variables;
+id = filename.slice(filename.lastIndexOf("\\") + 1, -4); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から.ejsの末尾4文字を除く範囲の文字列を切り取り=拡張子なしのファイル名
 var newsBlock = newsBlock;
 %>
-<%- include("control/_year", { commons }) %>
-<%- include("control/_pathdir", { param }) %>
+<%- include("control/_year", { variables, id }) %>
+<%- include("control/_pathdir", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { param }) %>
+<%- include("partial/_head", { variables, id }) %>
 </head>
-<body class="newsPage">
+<body class="<%= id %>Page">
 
 <div id="wrapper">
-<%- include("partial/_header", { commons, param }) %>
+<%- include("partial/_header", { variables, id }) %>
 
-<%- include("partial/_eyecatch", { param }) %>
+<%- include("partial/_eyecatch", { variables, id }) %>
 
     <!-- main -->
-    <main class="main news">
-<%- include("partial/_breadcrumb", { param }) %>
+    <main class="main <%= id %>">
+<%- include("partial/_breadcrumb", { variables, id }) %>
         <section class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-header">
                         <h2>What's news? <small>news</small></h2>
                     </div>
-<%- include("news/_pagination", { counter, pageLength, name, param, commons }) %>
+<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
                 </div>
                 <div class="col-xs-12">
 <% for(var i in newsBlock) {
@@ -60,18 +52,18 @@ var newsBlock = newsBlock;
                         </div>
                     </article>
 <% } %>
-<%- include("news/_pagination", { counter, pageLength, name, param, commons }) %>
+<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
                 </div>
             </div>
         </section>
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { commons, copyRightYear }) %>
+<%- include("partial/_footer", { variables, id, copyRightYear }) %>
 
 </div>
 
 <script src="<%= path %>js/lib.min.js"></script>
-<script src="<%= path %>js/<%= param.js %>.js"></script>
+<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>

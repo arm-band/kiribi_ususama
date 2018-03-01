@@ -1,0 +1,38 @@
+{
+    "commons": {
+        "sitename": "Kiribi Ususama",
+        "year": "2018",
+        "author": "アルム＝バンド"
+    },
+    "color": {
+        "main": "#1586BF",
+        "main2": "#CD384B"
+    },
+    "param": {
+        "index": {
+            "title": "ホーム",
+            "entitle": "Home",
+            "css": "index",
+            "js": "app.min",
+            "description": "gulpとEJSに対応したBootstrap Minimal Template",
+            "hierarchy": 0,
+            "newscount": 5
+        },
+        "about": {
+            "title": "概要",
+            "entitle": "About Page",
+            "css": "contents",
+            "js": "app.min",
+            "description": "このページについての説明です。",
+            "hierarchy": 0
+        },
+        "news": {
+            "title": "更新履歴",
+            "entitle": "News",
+            "css": "contents",
+            "js": "app.min",
+            "description": "更新履歴の一覧です。",
+            "hierarchy": 1
+        }
+    }
+}

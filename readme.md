@@ -97,21 +97,39 @@ ejsの使い方をもっとしっかりしていきたい。
     - `hierarchy`: css、jsファイルのパスを遡る階層。ルートを0として、1つ目のサブディレクトリは1を指定します。Ver2.5.0で`news<ページ数>.html`が`/dist/news/`と1階層深くなったため、css、jsファイルのパスを遡るために追加
     - `newscount`: `index.ejs`のみ存在。新着情報一覧で出力する新着情報の件数
 - jsonファイル
-    - `var.json`
+    - `variables.json`
         - `commons`:
             - `sitename`: サイト名。タイトルタグやトップページのアイキャッチ、ヘッダのブランド、フッタのコピーライトなど各所に使われます
             - `year`: 年数。フッタのコピーライトで使います
             - `author`: 作者名。フッタのコピーライトで使います
         - `color`:
             - `main`: メインカラー。アドレスバーの色を指定するテーマカラーで使います
+        - `param`:
+            - キー名はファイル名と合わせること
+                - `title`: ページタイトル
+                - `entitle`: 英語ページタイトル
+                - `css`: 読み込むcssファイル名
+                - `js`: 読み込むjsファイル名
+                - `description`: metaタグのdescription
+                - `hierarchy`: ディレクトリ階層。ディレクトリを深くする場合は数字をカウントしていく
+                - `newscount`: トップページのみ。出力する新着情報のカウント
     - `news.json`
         - 各項目: 新着情報の出力で使います
         - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
         - ※`news.ejs`1つから設定項目に応じて、1～複数ページの`news<ページ数>.html`が`/dist/news/`に生成されます
 
-
 ## Release Notes
 
+- 2018/3/1 ver.2.5.8
+    - パラメータ周りを整理
+        - `json`で管理するパラメータを拡張
+            - `src/data/var.json`を`src/data/variables.json`に名称変更
+            - 各`ejs`ファイルで設定していた連想配列`param`を丸ごと`variables.json`に格納
+                - 呼び出しにファイル名をを使用するので`gulp-data`を追加。この処理でファイル名をキーにして`variables.json`の`param`の中から探す
+                    - 参考:
+                        - [EJS：インクルードしたファイル内で相対パスを設定する方法 \| NxWorld](https://www.nxworld.net/tips/ejs-relative-path-setting.html)
+                        - [gulp\-ejsで<%= filename %>が使えない問題の回避策としてgulp\-dataを使う \- Qiita](https://qiita.com/nibushibu/items/d1d9325a61520dc8c422)
+                - ついでに`body`タグと`main`タグに出力するページ識別用クラスを決め打ちではなく、上記のファイル名を使った出力に変更
 - 2018/3/1 ver.2.5.7
     - ファイル名・ディレクトリ名の整理
         - ディレクトリ階層を変更
