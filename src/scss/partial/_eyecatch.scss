@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .eyecatch {
-    margin-top: $navbarer-height;
+    margin-top: $navbar-height;
     height: 20vh;
     @include eyecatchBGImg("../img/eyecatch.jpg");
     @include eyecatchCenter();

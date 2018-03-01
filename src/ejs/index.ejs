@@ -1,22 +1,24 @@
 <%
 var variables = variables;
 //var pathlessFilename = filename.slice(filename.lastIndexOf("\\") + 1); //パスなし、単独のファイル名
-id = filename.slice(filename.lastIndexOf("\\") + 1, -4); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から.ejsの末尾4文字を除く範囲の文字列を切り取り=拡張子なしのファイル名
+id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsjson = newsjson;
+var commonVar = commonVar;
+var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 %>
-<%- include("control/_year", { variables, id }) %>
-<%- include("control/_pathdir", { variables, id }) %>
+<%- include("util/_year", { variables, id }) %>
+<%- include("util/_pathdir", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id }) %>
+<%- include("partial/_head", { variables, id, commonVar }) %>
 </head>
-<body data-spy="scroll" data-target="#navbarMenu" data-offset="80" class="<%= id %>Page">
+<body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page">
 
 <%- include("index/_loading") %>
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id }) %>
+<%- include("partial/_header", { variables, id, commonVar }) %>
 
 <%- include("index/_eyecatch", { variables, id }) %>
 

@@ -4,7 +4,7 @@
     $background-position: center center;
     $eyecacth-height: 100vh;
 
-    margin-top: $navbarer-height;
+    margin-top: $navbar-height;
     height: $eyecacth-height;
     overflow: hidden;
     @include eyecatchBGImg("../img/eyecatch.jpg");

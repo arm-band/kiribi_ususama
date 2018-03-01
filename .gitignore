@@ -2,6 +2,7 @@
 /node_modules/
 /src/js/concat/
 /src/scss/assets/
+/src/scss/base/_var.scss
 package-lock.json
 /.sass-cache/
 /docs/

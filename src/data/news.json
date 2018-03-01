@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.0",
+            "time": "2018/3/1",
+            "excerpt": "共通のjsonからパラメータを使いまわせるようにしました",
+            "content": "<p><code>gulp-json-to-sass</code>を使って、共通の<code>json</code>から<code>ejs</code>,<code>js</code>, <code>scss</code>でパラメータを使いまわせるようにしました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.5.8",
             "time": "2018/3/1",
             "excerpt": "パラメータ周りを整理",

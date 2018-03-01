@@ -3,20 +3,21 @@ var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
 var variables = variables;
-id = filename.slice(filename.lastIndexOf("\\") + 1, -4); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から.ejsの末尾4文字を除く範囲の文字列を切り取り=拡張子なしのファイル名
+var commonVar = commonVar;
+id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsBlock = newsBlock;
 %>
-<%- include("control/_year", { variables, id }) %>
-<%- include("control/_pathdir", { variables, id }) %>
+<%- include("util/_year", { variables, id }) %>
+<%- include("util/_pathdir", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id }) %>
+<%- include("partial/_head", { variables, id, commonVar }) %>
 </head>
 <body class="<%= id %>Page">
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id }) %>
+<%- include("partial/_header", { variables, id, commonVar }) %>
 
 <%- include("partial/_eyecatch", { variables, id }) %>
 

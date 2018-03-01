@@ -120,6 +120,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/3/1 ver.2.6.0
+    - `[gulp\-json\-to\-sass](https://www.npmjs.com/package/gulp-json-to-sass)`を使って、共通の`json`から`ejs`,`js`, `scss`でパラメータを使いまわせるようにした
 - 2018/3/1 ver.2.5.8
     - パラメータ周りを整理
         - `json`で管理するパラメータを拡張

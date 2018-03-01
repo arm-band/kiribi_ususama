@@ -6,13 +6,13 @@
  */
 
 var gulp = require("gulp");
-
 //全般
 var plumber = require("gulp-plumber"); //待機
 var notify = require("gulp-notify"); //標準出力
 //sass
 var sass = require("gulp-sass"); //sass
 var autoprefixer = require("gulp-autoprefixer");
+var json2sass = require("gulp-json-to-sass"); //jsonからsassファイルを生成
 //img
 var imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
 //js
@@ -33,48 +33,60 @@ var frontnote = require("gulp-frontnote");
 //path difinition
 var dir = {
   assets: {
-    jquery   : './node_modules/jquery/dist',
-    easing   : './node_modules/jquery.easing',
-    bootstrap: './node_modules/bootstrap-honoka/dist/js'
+    jquery    : './node_modules/jquery/dist',
+    easing    : './node_modules/jquery.easing',
+    bootstrap : './node_modules/bootstrap-honoka/dist/js'
   },
   src: {
-    ejs     : './src/ejs',
-    scss    : './src/scss',
-    js      : './src/js',
-    img     : './src/img',
-    favicon : './src/favicon'
+    ejs       : './src/ejs',
+    scss      : './src/scss',
+    js        : './src/js',
+    img       : './src/img',
+    favicon   : './src/favicon'
   },
   data: {
-    json    : './src/data'
+    dir       : './src/data',
+    variables : '/variables.json',
+    news      : '/news.json',
+    commonvar : '/commonvar.json'
   },
   dist: {
-    html    : './dist',
-    news    : './dist/news',
-    css     : './dist/css',
-    js      : './dist/js',
-    img     : './dist/img',
-    favicon : './dist/favicon'
+    html      : './dist',
+    news      : './dist/news',
+    css       : './dist/css',
+    js        : './dist/js',
+    img       : './dist/img',
+    favicon   : './dist/favicon'
   },
   docs: {
-    html    : './docs',
-    css     : '../dist/css',
-    js      : '../dist/js',
-    img     : '../dist/img',
-    favicon : '../dist/favicon'
+    html      : './docs',
+    css       : '../dist/css',
+    js        : '../dist/js',
+    img       : '../dist/img',
+    favicon   : '../dist/favicon'
   }
 };
 //jsonファイル取得
+//ejs内で使用するパラメータ
 var getVariables = function() {
-    return JSON.parse(fs.readFileSync(dir.data.json + "/variables.json"));
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.variables));
 }
 var getNews = function() {
-    return JSON.parse(fs.readFileSync(dir.data.json + "/news.json"));
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.news));
+}
+//ejs, js, scssにまたがって使用するパラメータ
+var getCommonVar = function() {
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.commonvar));
 }
 
 //scssコンパイルタスク
 gulp.task("sass", () => {
 	return gulp.src(dir.src.scss + "/**/*.scss")
 		.pipe(plumber())
+        .pipe(json2sass({
+            jsonPath: dir.data.dir + dir.data.commonvar,
+            scssPath: dir.src.scss + "/base/_var.scss"
+        }))
 		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'iOS >= 8.1', 'Android >= 4.4'],
@@ -82,12 +94,10 @@ gulp.task("sass", () => {
         }))
 		.pipe(gulp.dest(dir.dist.css));
 });
-
 //watchタスク(Sassファイル変更時に実行するタスク)
 gulp.task("sass-watch", () => {
 	gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
 });
-
 
 //画像圧縮
 gulp.task("imagemin", () => {
@@ -131,6 +141,7 @@ gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"
 gulp.task("ejs", () => {
     var variables = getVariables();
     var newsjson = getNews();
+    var commonVar = getCommonVar();
     gulp.src(
         [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs", "!" + dir.src.ejs + "/news.ejs"] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
     )
@@ -138,7 +149,7 @@ gulp.task("ejs", () => {
     .pipe(data(function(file) {
         return { "filename": file.path }
     }))
-    .pipe(ejs({ variables, newsjson }))
+    .pipe(ejs({ variables, newsjson, commonVar }))
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest(dir.dist.html));
 });
@@ -148,6 +159,7 @@ gulp.task("news.ejs", function() {
     var name = "news"; //テンプレート・生成するファイル名
     var variables = getVariables();
     var newsjson = getNews();
+    var commonVar = getCommonVar();
     var tempFile = dir.src.ejs + "/" + name + ".ejs"; //テンプレート
     var pages = 1; //ページカウンタ
     var count = 0; //記事件数カウンタ
@@ -163,7 +175,7 @@ gulp.task("news.ejs", function() {
             .pipe(data(function(file) {
                 return { "filename": file.path }
             }))
-            .pipe(ejs({ variables, newsBlock, name, pages, pageLength }))
+            .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength }))
             .pipe(rename(name + pages + ".html"))
             .pipe(gulp.dest(dir.dist.news));
 
@@ -178,7 +190,7 @@ gulp.task("news.ejs", function() {
         .pipe(data(function(file) {
             return { "filename": file.path }
         }))
-        .pipe(ejs({ variables, newsBlock, name, pages, pageLength }))
+        .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength }))
         .pipe(rename(name + pages + ".html"))
         .pipe(gulp.dest(dir.dist.news));
     }
@@ -214,7 +226,7 @@ gulp.task("connect-sync", () => {
     });
 });
 
-//styleguide
+//styleguide(FrontNote)
 gulp.task("styleguide", () => {
     gulp.src(dir.src.scss + "/**/*.scss") // 監視対象のファイルを指定
         .pipe(frontnote({
@@ -232,7 +244,7 @@ gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin",
     gulp.watch(dir.src.scss + "/**/*.scss", ["sass-watch", "styleguide"]);
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)", ["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js", ["js"]);
-    gulp.watch(dir.data.json + "/**/*.json", ["ejs", "news.ejs", "sass-watch", "js", "styleguide"]);
+    gulp.watch(dir.data.dir + "/**/*.json", ["ejs", "news.ejs", "sass-watch", "js", "styleguide"]);
 
     gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
 });
