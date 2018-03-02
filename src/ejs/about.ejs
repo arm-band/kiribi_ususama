@@ -10,7 +10,7 @@ id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PCå
 <head>
 <%- include("partial/_head", { variables, id, commonVar }) %>
 </head>
-<body class="<%= id %>Page">
+<body class="<%= id %>Page" id="<%= id %>Page">
 
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>

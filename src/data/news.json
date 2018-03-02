@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.1",
+            "time": "2018/3/2",
+            "excerpt": "トップページにスクロールスパイを追加。",
+            "content": "<p>トップページにスクロールスパイを追加。</p><ul><li><code>body</code>の<code>data-offset</code>を取得するため、結果として<code>commonVar.json</code>の値を使いまわしている</li><li>各ページの<code>body</code>タグにidを付与</li></ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.0",
             "time": "2018/3/1",
             "excerpt": "共通のjsonからパラメータを使いまわせるようにしました",

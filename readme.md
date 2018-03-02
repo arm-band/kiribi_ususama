@@ -120,6 +120,10 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/3/2 ver.2.6.1
+    - トップページにスクロールスパイを追加。`body`の`data-offset`を取得するため、結果として`commonVar.json`の値を使いまわしている
+    - 各ページの`body`タグにidを付与
+    - favicon参照に関するバグ修正
 - 2018/3/1 ver.2.6.0
     - `[gulp\-json\-to\-sass](https://www.npmjs.com/package/gulp-json-to-sass)`を使って、共通の`json`から`ejs`,`js`, `scss`でパラメータを使いまわせるようにした
 - 2018/3/1 ver.2.5.8

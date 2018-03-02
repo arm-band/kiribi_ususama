@@ -13,7 +13,7 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
 <head>
 <%- include("partial/_head", { variables, id, commonVar }) %>
 </head>
-<body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page">
+<body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page" id="<%= id %>Page">
 
 <%- include("index/_loading") %>
 
