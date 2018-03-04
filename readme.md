@@ -88,14 +88,6 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Settings
 
-- 各ejsファイルの先頭の`param`
-    - `title`: ページ名
-    - `entitle`: 英語のページ名
-    - `css`: 読み込むcssファイルのファイル名。拡張子不要
-    - `js`: 読み込むjsファイルのファイル名。拡張子不要
-    - `description`: `<meta description="">`に記述される説明
-    - `hierarchy`: css、jsファイルのパスを遡る階層。ルートを0として、1つ目のサブディレクトリは1を指定します。Ver2.5.0で`news<ページ数>.html`が`/dist/news/`と1階層深くなったため、css、jsファイルのパスを遡るために追加
-    - `newscount`: `index.ejs`のみ存在。新着情報一覧で出力する新着情報の件数
 - jsonファイル
     - `variables.json`
         - `commons`:
@@ -106,13 +98,13 @@ ejsの使い方をもっとしっかりしていきたい。
             - `main`: メインカラー。アドレスバーの色を指定するテーマカラーで使います
         - `param`:
             - キー名はファイル名と合わせること
-                - `title`: ページタイトル
-                - `entitle`: 英語ページタイトル
-                - `css`: 読み込むcssファイル名
-                - `js`: 読み込むjsファイル名
-                - `description`: metaタグのdescription
-                - `hierarchy`: ディレクトリ階層。ディレクトリを深くする場合は数字をカウントしていく
-                - `newscount`: トップページのみ。出力する新着情報のカウント
+                - `title`: ページ名
+                - `entitle`: 英語のページ名
+                - `css`: 読み込むcssファイルのファイル名。拡張子不要
+                - `js`: 読み込むjsファイルのファイル名。拡張子不要
+                - `description`: `<meta description="">`に記述される説明
+                - `hierarchy`: css、jsファイルのパスを遡る階層。ルートを0として、1つ目のサブディレクトリは1を指定します。Ver2.5.0で`news<ページ数>.html`が`/dist/news/`と1階層深くなったため、css、jsファイルのパスを遡るために追加。ディレクトリを深くする場合は数字をカウントしていく
+                - `newscount`: `index.ejs`のみ存在。新着情報一覧で出力する新着情報の件数
     - `news.json`
         - 各項目: 新着情報の出力で使います
         - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
