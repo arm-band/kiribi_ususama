@@ -117,6 +117,14 @@ ejsの使い方をもっとしっかりしていきたい。
         - 各項目: 新着情報の出力で使います
         - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
         - ※`news.ejs`1つから設定項目に応じて、1～複数ページの`news<ページ数>.html`が`/dist/news/`に生成されます
+    - `commonvar.json`
+        - 色、ナビゲーションバーの高さなど、基本的な情報をjson形式で記述
+        - このjsonからscssの各所で使用している変数の元となる`/src/base/_var.scss`が生成される
+        - ※既定で記述されているものはscssやejsで使用しているため、消さないこと
+            - `main-color`: scssの他、`/src/ejs/partial/head.ejs`の`meta`タグ、`theme-color`属性の指定で使用
+            - `/src/ejs/partial/header.ejs`の六角形svgの指定にも使用(通常はコメントアウト)
+            - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
+                - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
 
 ## Release Notes
 
