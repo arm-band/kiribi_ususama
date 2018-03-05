@@ -4,5 +4,7 @@
     "main-color": "#1586BF",
     "accent-color": "#CD384B",
     "link-color": "#58C7AD",
-    "navbar-height": "80px"
+    "navbar-height": "80px",
+    "line-height": "1.6",
+    "letter-spacing": "0.15rem"
 }

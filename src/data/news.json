@@ -2,10 +2,17 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.3",
+            "time": "2018/3/5",
+            "excerpt": "タイポグラフィ整理",
+            "content": "<p>タイポグラフィ整理。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.2",
             "time": "2018/3/5",
             "excerpt": "脱自前ライブラリ化",
-            "content": "<p>脱自前ライブラリ化</p>"
+            "content": "<p>脱自前ライブラリ化。</p>"
         },
         {
             "id": "releasenote",
