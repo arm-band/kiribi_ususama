@@ -69,10 +69,9 @@ Scssの変数を使えないものか……
 /*
 #styleguide
 ローディング
-実際にはstyleの指定は不要
 ```
-<div id="loading" style="position:relative;z-index:1;">
-	<div id="loadContent" style="display:block;position:relative;margin:0 auto;height:auto;top:auto;left:auto;transform:none;z-index:1;">
+<div id="loading">
+	<div id="loadContent">
 		<i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i><br>
 		<progress>Now loading...</progress>
 		<p id="loadPercentage"></p>
@@ -83,10 +82,9 @@ Scssの変数を使えないものか……
 /*
 #styleguide
 ヘッダ(ハンバーガー使用)
-※常にページトップに固定させたい場合はnav.navbarにnavbar-fixed-topクラスも指定すること
 ```
 <header class="header" id="navbar">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
     	<div class="container-fluid">
     		<div class="navbar-header">
     			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMenu">
@@ -112,9 +110,8 @@ Scssの変数を使えないものか……
 /*
 #styleguide
 メイン
-実際はfont-size:16px;line-height:1.5;の指定は不要
 ```
-    <main class="main" style="font-size:16px;line-height:1.5;">
+    <main class="main">
         <section class="container-fluid" id="about">
             <div class="row">
                 <article class="col-xs-12">
@@ -144,9 +141,8 @@ Scssの変数を使えないものか……
 /*
 #styleguide
 ページトップへ戻る
-表示のためにstyleを直接指定しているが、実際使用時は指定不要
 ```
-    <p class="returnPageTop" style="display:block;position:relative;bottom:auto;right:auto;"><i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i></p>
+    <p class="returnPageTop"><i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i></p>
 ```
 */
 

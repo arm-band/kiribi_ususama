@@ -63,7 +63,9 @@ var dir = {
     css       : '../dist/css',
     js        : '../dist/js',
     img       : '../dist/img',
-    favicon   : '../dist/favicon'
+    favicon   : '../dist/favicon',
+    canceller : '../misc/frontenote/css',
+    template  : './misc/frontenote/ejs'
   }
 };
 //jsonファイル取得
@@ -232,7 +234,7 @@ gulp.task("styleguide", () => {
         .pipe(frontnote({
             out: dir.docs.html,
             title: getVariables().commons.sitename,
-            css: [dir.docs.css + "/index.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            css: [dir.docs.css + "/index.css", dir.docs.canceller + "/fncanceller.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
             script: [dir.docs.js + "/lib.min.js", dir.docs.js + "/app.min.js"]
         }));
 });

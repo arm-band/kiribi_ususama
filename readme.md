@@ -114,6 +114,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/3/5 ver.2.6.5
+    - Frontnote用のキャンセラーを用意
 - 2018/3/5 ver.2.6.4
     - タイポグラフィ整理。明朝体の指定でGoogle Fonts +のSawarabi Minchoを指定
 - 2018/3/5 ver.2.6.3

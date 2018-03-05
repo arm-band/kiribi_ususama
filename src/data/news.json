@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.5",
+            "time": "2018/3/5",
+            "excerpt": "Frontnote用のキャンセラーを用意",
+            "content": "<p>Frontnote用のキャンセラーを用意。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.4",
             "time": "2018/3/5",
             "excerpt": "タイポグラフィ整理。明朝体の指定でGoogle Fonts +のSawarabi Minchoを指定",
