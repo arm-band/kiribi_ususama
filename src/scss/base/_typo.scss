@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+//游ゴシック指定
+//参考: 游ゴシックをWindows版Chromeでキレイに表示する@font-faceの設定 - Qiita https://qiita.com/unagi-man/items/f309ffc0c661ef81c4e7
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: bold;
+}
+
+@mixin jugos() {
+    font-family: YuGothic, "Custom Yu Gothic", "Yu Gothic", sans-serif;
+}
+
+//丸ゴシック指定
+@mixin marugo() {
+    font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO";
+}
+
+//游明朝指定
+//参考1: font-familyに游明朝を使用してはいけない理由 - Qiita https://qiita.com/RinoTsuka/items/32f3c015aac35b8e96a9
+//参考2: 2017年版個人的ベスト｜CSSフォント指定WIN、MACでキレイに表示（ゴシック、明朝）｜MWORKS http://mw-s.jp/2017css-font-win-mac/
+//注1: Android4, 6系は明朝体がないのでゴシックになってしまう。Noto Serif Japaneseなど、Webフォントを用意すべし
+//注2: font-weight: 500;はダメ！絶対！！
+@mixin mincho() {
+    font: {
+        family: "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia,メイリオ, Meiryo, serif;
+        feature-settings : "pkna";
+    }
+}

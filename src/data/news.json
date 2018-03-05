@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.2",
+            "time": "2018/3/5",
+            "excerpt": "脱自前ライブラリ化",
+            "content": "<p>脱自前ライブラリ化</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.1",
             "time": "2018/3/2",
             "excerpt": "トップページにスクロールスパイを追加。",
