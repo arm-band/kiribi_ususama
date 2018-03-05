@@ -30,11 +30,12 @@
 //游明朝指定
 //参考1: font-familyに游明朝を使用してはいけない理由 - Qiita https://qiita.com/RinoTsuka/items/32f3c015aac35b8e96a9
 //参考2: 2017年版個人的ベスト｜CSSフォント指定WIN、MACでキレイに表示（ゴシック、明朝）｜MWORKS http://mw-s.jp/2017css-font-win-mac/
-//注1: Android4, 6系は明朝体がないのでゴシックになってしまう。Noto Serif Japaneseなど、Webフォントを用意すべし
+//注1: Android4, 6系は明朝体がないのでゴシックになってしまうので、Sawarabi Minchoを用意
+//参考3: Android端末で明朝体フォントを表示させたい！ - ONZE http://on-ze.com/archives/6636
 //注2: font-weight: 500;はダメ！絶対！！
 @mixin mincho() {
     font: {
-        family: "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia,メイリオ, Meiryo, serif;
+        family: "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia, "Sawarabi Mincho", メイリオ, Meiryo, serif;
         feature-settings : "pkna";
     }
 }
