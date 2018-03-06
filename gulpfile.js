@@ -240,13 +240,13 @@ gulp.task("styleguide", () => {
 });
 
 //gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
+gulp.task("default", ["sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
 	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
-    gulp.watch(dir.src.scss + "/**/*.scss", ["sass-watch", "styleguide"]);
+    gulp.watch(dir.src.scss + "/**/*.scss", ["sass", "styleguide"]);
 	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)", ["imagemin"]);
 	gulp.watch(dir.src.js + "/**/*.js", ["js"]);
-    gulp.watch(dir.data.dir + "/**/*.json", ["ejs", "news.ejs", "sass-watch", "js", "styleguide"]);
+    gulp.watch(dir.data.dir + "/**/*.json", ["ejs", "news.ejs", "sass", "js", "styleguide"]);
 
     gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
 });
