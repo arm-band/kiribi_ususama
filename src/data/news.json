@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.6",
+            "time": "2018/3/6",
+            "excerpt": "Frontnote周りを改修。",
+            "content": "<p>Frontnote周りを改修。</p><ul><li>出力先パスを変更</li><li>Frontnote関連のコードを<code>sg/src/</code>ディレクトリにまとめた</li><li>テンプレートを作成。<code>commonVar.json</code>キーで\"color\"と入っているキーからカラーパレットを生成することで、疑似的に「scssの変数からカラーパレットを生成」を実現</li></ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.5",
             "time": "2018/3/5",
             "excerpt": "Frontnote用のキャンセラーを用意",

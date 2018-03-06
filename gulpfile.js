@@ -58,14 +58,15 @@ var dir = {
     img       : './dist/img',
     favicon   : './dist/favicon'
   },
-  docs: {
-    html      : './docs',
-    css       : '../dist/css',
-    js        : '../dist/js',
-    img       : '../dist/img',
-    favicon   : '../dist/favicon',
-    canceller : '../misc/frontenote/css',
-    template  : './misc/frontenote/ejs'
+  sg: {
+    html      : './sg/dist',
+    md        : './readme.md',
+    css       : '../../dist/css',
+    js        : '../../dist/js',
+    img       : '../../dist/img',
+    favicon   : '../../dist/favicon',
+    canceller : '../src/css',
+    template  : './sg/src/ejs'
   }
 };
 //jsonファイル取得
@@ -87,7 +88,7 @@ gulp.task("sass", () => {
 		.pipe(plumber())
         .pipe(json2sass({
             jsonPath: dir.data.dir + dir.data.commonvar,
-            scssPath: dir.src.scss + "/base/_var.scss"
+            scssPath: dir.src.scss + "/util/_var.scss"
         }))
 		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(autoprefixer({
@@ -232,10 +233,13 @@ gulp.task("connect-sync", () => {
 gulp.task("styleguide", () => {
     gulp.src(dir.src.scss + "/**/*.scss") // 監視対象のファイルを指定
         .pipe(frontnote({
-            out: dir.docs.html,
+            out: dir.sg.html,
             title: getVariables().commons.sitename,
-            css: [dir.docs.css + "/index.css", dir.docs.canceller + "/fncanceller.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
-            script: [dir.docs.js + "/lib.min.js", dir.docs.js + "/app.min.js"]
+            css: [dir.sg.css + "/contents.css", dir.sg.css + "/index.css", dir.sg.canceller + "/fncanceller.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            script: [dir.sg.js + "/lib.min.js", dir.sg.js + "/app.min.js"],
+            template: dir.sg.template + "/index.ejs",
+            overview: dir.sg.md,
+            params: { "commonVar": getCommonVar() }
         }));
 });
 

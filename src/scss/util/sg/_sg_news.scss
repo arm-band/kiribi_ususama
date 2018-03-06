@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/*
+#overview
+新着情報ページスタイルガイド
+*/
+/*
+#styleguide
+コンテンツページのアイキャッチ(ヒーロー)
+```
+    <section class="eyecatch">
+        <div class="container-fluid">
+            <h2 class="eyecatch_header">Page Name</h2>
+        </div>
+    </section>
+```
+*/
+/*
+#styleguide
+記事
+```
+                    <article class="news_article" id="releasenote-hoge">
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">
+                        		<h3 class="news_header">ほげ</h3>
+                        	</div>
+                        	<div class="panel-body">
+                                <div class="news_contents">
+                        	        <p>ふが。</p><ul><li>ほげほげ</li><li>ぴよぴよ</li></ul>
+                                </div>
+                        	</div>
+                        	<div class="panel-footer">
+                        		<time class="news_createtime" datetime="99999999">9999/99/99</time>
+                        	</div>
+                        </div>
+                    </article>
+```
+*/
+/*
+#styleguide
+ページネーション
+```
+            <nav>
+            	<ul class="pagination">
+            		<li>
+            			<a href="#" aria-label="前のページへ">
+            				<span aria-hidden="true">«</span>
+            			</a>
+            		</li>
+            		<li class="active"><a href="#">1</a></li>
+            		<li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+            		<li>
+            			<a href="#" aria-label="次のページへ">
+            				<span aria-hidden="true">»</span>
+            			</a>
+            		</li>
+            	</ul>
+            </nav>
+```
+*/

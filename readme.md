@@ -114,6 +114,13 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/3/5 ver.2.6.6
+    - Frontnote周りを改修
+        - 出力先パスを変更
+        - Frontnote関連のコードを`sg/src/`ディレクトリにまとめた
+        - テンプレートを作成。`commonVar.json`のキーで"color"と入っているキーからカラーパレットを生成することで、疑似的に「scssの変数からカラーパレットを生成」を実現
+        - スタイルガイド生成用のパーツは`src/scss/util/sg/`の下に分類
+    - `src/scss/base/`の名前を`src/scss/util/`に変更
 - 2018/3/5 ver.2.6.5
     - Frontnote用のキャンセラーを用意
 - 2018/3/5 ver.2.6.4
