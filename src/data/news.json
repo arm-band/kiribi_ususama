@@ -2,10 +2,22 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.7",
+            "time": "2018/3/9",
+            "excerpt": "jsonデータで改行を許すように、パース前に改行等を除去する処理を追記",
+            "content": "<p>jsonデータで改行を許すように、ファイルリードしたデータをエンコードしてパース前に半角スペース・タブ・改行を除去する処理を<code>gulpfile.js</code>に追記。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.6",
             "time": "2018/3/6",
-            "excerpt": "Frontnote周りを改修。",
-            "content": "<p>Frontnote周りを改修。</p><ul><li>出力先パスを変更</li><li>Frontnote関連のコードを<code>sg/src/</code>ディレクトリにまとめた</li><li>テンプレートを作成。<code>commonVar.json</code>キーで\"color\"と入っているキーからカラーパレットを生成することで、疑似的に「scssの変数からカラーパレットを生成」を実現</li></ul>"
+            "excerpt": "Frontnote周りを改修",
+            "content": "<p>Frontnote周りを改修。</p>
+            <ul>
+                <li>出力先パスを変更</li>
+                <li>Frontnote関連のコードを<code>sg/src/</code>ディレクトリにまとめた</li>
+                <li>テンプレートを作成。<code>commonVar.json</code>キーで\"color\"と入っているキーからカラーパレットを生成することで、疑似的に「scssの変数からカラーパレットを生成」を実現</li>
+            </ul>"
         },
         {
             "id": "releasenote",

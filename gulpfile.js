@@ -72,14 +72,14 @@ var dir = {
 //jsonファイル取得
 //ejs内で使用するパラメータ
 var getVariables = function() {
-    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.variables));
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.variables, { encoding: "UTF-8" }).replace(/\s/g, ""));
 }
 var getNews = function() {
-    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.news));
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.news, { encoding: "UTF-8" }).replace(/\s/g, ""));
 }
 //ejs, js, scssにまたがって使用するパラメータ
 var getCommonVar = function() {
-    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.commonvar));
+    return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.commonvar, { encoding: "UTF-8" }).replace(/\s/g, ""));
 }
 
 //scssコンパイルタスク
