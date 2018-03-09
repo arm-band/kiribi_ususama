@@ -243,8 +243,8 @@ gulp.task("styleguide", () => {
         }));
 });
 
-//gulpのみでsass-watchとejsとjsとimageminとconnect-syncを動かす
-gulp.task("default", ["sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
+//gulpのデフォルトタスクで諸々を動かす
+gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
 	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(dir.src.scss + "/**/*.scss", ["sass", "styleguide"]);
