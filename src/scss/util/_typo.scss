@@ -22,6 +22,16 @@
     font-family: YuGothic, "Custom Yu Gothic", "Yu Gothic", sans-serif;
 }
 
+@mixin jugosmin() {
+    font-family: Jugos, //Windows用
+                 YuGothic, //OS X
+                 -apple-system, //iOS San Francisco
+                 BlinkMacSystemFont, //iOS Chrome San Francisco
+                 "Hiragino Kaku Gothic ProN", //OS X, iOS ヒラギノ
+                 Meiryo, //Windowsメイリオ
+                 sans-serif;
+}
+
 //丸ゴシック指定
 @mixin marugo() {
     font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO";
@@ -39,3 +49,10 @@
         feature-settings : "pkna";
     }
 }
+
+//フォント・行間・文字間指定
+body {
+    @include jugos();
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+ }

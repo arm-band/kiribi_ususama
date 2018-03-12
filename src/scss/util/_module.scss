@@ -5,20 +5,6 @@
 // モジュール                                      *
 //                                               *
 // ============================================= */
-//YuGothic用
-@mixin jugos() {
-    font-family: cross-platform-yu-gothic, sans-serif;
-}
-@mixin jugosmin() {
-    font-family: Jugos, //Windows用
-                 YuGothic, //OS X
-                 -apple-system, //iOS San Francisco
-                 BlinkMacSystemFont, //iOS Chrome San Francisco
-                 "Hiragino Kaku Gothic ProN", //OS X, iOS ヒラギノ
-                 Meiryo, //Windowsメイリオ
-                 sans-serif;
-}
-
 //trasition
 @mixin transitionSet() {
     transition: all 0.3s ease;

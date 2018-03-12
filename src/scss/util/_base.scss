@@ -33,13 +33,6 @@ a:hover, a:active {
 	text-decoration: underline;
 }
 
-//フォント・行間・文字間指定
-body {
-    @include jugos();
-    line-height: $line-height;
-    letter-spacing: $letter-spacing;
- }
-
 //IEでスクロールバーの背後までページが描画されてしまうのを防ぐ
 @-ms-viewport {
     width: auto;
