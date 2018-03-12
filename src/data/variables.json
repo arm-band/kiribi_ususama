@@ -2,7 +2,10 @@
     "commons": {
         "sitename": "Kiribi Ususama",
         "year": "2018",
-        "author": "アルム＝バンド"
+        "author": "アルム＝バンド",
+        "twitteraccount": "Bredtn_1et",
+        "twitterimage": "https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png",
+        "twittersiteurl": "https://github.com/arm-band/kiribi_ususama"
     },
     "param": {
         "index": {

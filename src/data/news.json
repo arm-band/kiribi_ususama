@@ -2,6 +2,13 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.6.8",
+            "time": "2018/3/12",
+            "excerpt": "OGP仮対応",
+            "content": "<p>OGPに仮で対応しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.7",
             "time": "2018/3/9",
             "excerpt": "jsonデータで改行を許すように、パース前に改行等を除去する処理を追記",
