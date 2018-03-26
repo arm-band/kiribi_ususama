@@ -5,13 +5,11 @@ id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC�
 var newsjson = newsjson;
 var commonVar = commonVar;
 var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
-%>
-<%- include("util/_year", { variables, id }) %>
-<%- include("util/_pathdir", { variables, id }) %>
+%><%- include("util/_year", { variables, id }) %><%- include("util/_pathdir", { variables, id }) %><%- include("util/_headset", { variables, id, path }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id, commonVar }) %>
+<%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page" id="<%= id %>Page">
 
@@ -42,9 +40,10 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
     if(i <  variables.param[id].newscount) {
         var datetime = newsjson.news[i].time.replace(/\//g, "-");
         var idTime = newsjson.news[i].time.replace(/\//g, "");
+        var version = newsjson.news[i].title.replace(/\./g, "_");
 %>
                         <li class="list-group-item">
-                            <a href="./news/news1.html#<%= newsjson.news[i].id %>-<%= idTime %>">
+                            <a href="./articles/<%= newsjson.news[i].id %>_<%= version %>-<%= idTime %>.html">
                                 <h3 class="news_header"><%= newsjson.news[i].title %></h3>
                                 <time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
                                 <p><%- newsjson.news[i].excerpt %></p>

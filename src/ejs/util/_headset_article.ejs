@@ -1,0 +1,18 @@
+<%
+//headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
+metaTitle = variables.param[id].title; //グローバル変数
+metaDescription = variables.param[id].description;
+metaOgpimage = variables.commons.twittersiteurl + "img/" + variables.param[id].twitterimage;
+//タイトル
+if(newsBlock.title.length > 0) {
+    metaTitle = newsBlock.title;
+}
+//説明
+if(newsBlock.excerpt.length > 0) {
+    metaDescription = newsBlock.excerpt;
+}
+//OGP画像
+if(newsBlock.thumbnail.length > 0) {
+    metaOgpimage = variables.commons.twittersiteurl + "img/" + newsBlock.thumbnail;
+}
+%>

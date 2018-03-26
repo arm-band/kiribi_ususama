@@ -5,7 +5,7 @@
         "author": "アルム＝バンド",
         "twitteraccount": "Bredtn_1et",
         "twitterimage": "https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png",
-        "twittersiteurl": "https://github.com/arm-band/kiribi_ususama"
+        "twittersiteurl": "https://github.com/arm-band/kiribi_ususama/"
     },
     "param": {
         "index": {
@@ -15,6 +15,7 @@
             "js": "app.min",
             "description": "gulpとEJSに対応したBootstrap Minimal Template",
             "hierarchy": 0,
+            "twitterimage": "eyecatch.jpg",
             "newscount": 5
         },
         "about": {
@@ -23,7 +24,8 @@
             "css": "contents",
             "js": "app.min",
             "description": "このページについての説明です。",
-            "hierarchy": 0
+            "hierarchy": 0,
+            "twitterimage": "eyecatch.jpg"
         },
         "news": {
             "title": "更新履歴",
@@ -31,7 +33,17 @@
             "css": "contents",
             "js": "app.min",
             "description": "更新履歴の一覧です。",
-            "hierarchy": 1
+            "hierarchy": 1,
+            "twitterimage": "eyecatch.jpg"
+        },
+        "article": {
+            "title": "記事",
+            "entitle": "News",
+            "css": "contents",
+            "js": "app.min",
+            "description": "記事です。",
+            "hierarchy": 1,
+            "twitterimage": "eyecatch.jpg"
         }
     }
 }

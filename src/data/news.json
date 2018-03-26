@@ -2,8 +2,22 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.0",
+            "time": "2018/3/26",
+            "thumbnail": "",
+            "excerpt": "各記事を1つのhtmlとして出力するように改修し、OGP対応しました",
+            "content": "<ul>
+                <li>各記事を1つのhtmlとして出力するように改修しました<ul>
+                <li>各記事をOGPに対応しました</li>
+            </ul></li>
+                <li><code>\\s</code>だと半角スペースも取り除いてしまい、クラス付与などの状況でおかしくなるので取り除く特殊文字を<code>\\r|\\n|\\t</code>に限定</li>
+            </ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.6.8",
             "time": "2018/3/12",
+            "thumbnail": "",
             "excerpt": "OGP仮対応",
             "content": "<p>OGPに仮で対応しました。</p>"
         },
@@ -11,6 +25,7 @@
             "id": "releasenote",
             "title": "ver.2.6.7",
             "time": "2018/3/9",
+            "thumbnail": "",
             "excerpt": "jsonデータで改行を許すように、パース前に改行等を除去する処理を追記",
             "content": "<p>jsonデータで改行を許すように、ファイルリードしたデータをエンコードしてパース前に半角スペース・タブ・改行を除去する処理を<code>gulpfile.js</code>に追記。</p>"
         },
@@ -18,6 +33,7 @@
             "id": "releasenote",
             "title": "ver.2.6.6",
             "time": "2018/3/6",
+            "thumbnail": "",
             "excerpt": "Frontnote周りを改修",
             "content": "<p>Frontnote周りを改修。</p>
             <ul>
@@ -30,6 +46,7 @@
             "id": "releasenote",
             "title": "ver.2.6.5",
             "time": "2018/3/5",
+            "thumbnail": "",
             "excerpt": "Frontnote用のキャンセラーを用意",
             "content": "<p>Frontnote用のキャンセラーを用意。</p>"
         },
@@ -37,6 +54,7 @@
             "id": "releasenote",
             "title": "ver.2.6.4",
             "time": "2018/3/5",
+            "thumbnail": "",
             "excerpt": "タイポグラフィ整理。明朝体の指定でGoogle Fonts +のSawarabi Minchoを指定",
             "content": "<p>タイポグラフィ整理。明朝体の指定でGoogle Fonts +のSawarabi Minchoを指定。</p>"
         },
@@ -44,6 +62,7 @@
             "id": "releasenote",
             "title": "ver.2.6.3",
             "time": "2018/3/5",
+            "thumbnail": "",
             "excerpt": "タイポグラフィ整理",
             "content": "<p>タイポグラフィ整理。</p>"
         },
@@ -51,6 +70,7 @@
             "id": "releasenote",
             "title": "ver.2.6.2",
             "time": "2018/3/5",
+            "thumbnail": "",
             "excerpt": "脱自前ライブラリ化",
             "content": "<p>脱自前ライブラリ化。</p>"
         },
@@ -58,6 +78,7 @@
             "id": "releasenote",
             "title": "ver.2.6.1",
             "time": "2018/3/2",
+            "thumbnail": "",
             "excerpt": "トップページにスクロールスパイを追加。",
             "content": "<p>トップページにスクロールスパイを追加。</p><ul><li><code>body</code>の<code>data-offset</code>を取得するため、結果として<code>commonVar.json</code>の値を使いまわしている</li><li>各ページの<code>body</code>タグにidを付与</li></ul>"
         },
@@ -65,6 +86,7 @@
             "id": "releasenote",
             "title": "ver.2.6.0",
             "time": "2018/3/1",
+            "thumbnail": "",
             "excerpt": "共通のjsonからパラメータを使いまわせるようにしました",
             "content": "<p><code>gulp-json-to-sass</code>を使って、共通の<code>json</code>から<code>ejs</code>,<code>js</code>, <code>scss</code>でパラメータを使いまわせるようにしました。</p>"
         },
@@ -72,6 +94,7 @@
             "id": "releasenote",
             "title": "ver.2.5.8",
             "time": "2018/3/1",
+            "thumbnail": "",
             "excerpt": "パラメータ周りを整理",
             "content": "<p><code>json</code>で管理するパラメータを拡張。</p><ul><li>各<code>ejs</code>ファイルで設定していた連想配列<code>param</code>を丸ごと<code>variables.json</code>に格納</li><li>呼び出しにファイル名をを使用するので<code>gulp-data</code>を追加。この処理でファイル名をキーにして<code>variables.json</code>の<code>param</code>の中から探す</li><li>ついでに<code>body</code>タグと<code>main</code>タグに出力するページ識別用クラスを決め打ちではなく、上記のファイル名を使った出力に変更</li></ul>"
         },
@@ -79,6 +102,7 @@
             "id": "releasenote",
             "title": "ver.2.5.7",
             "time": "2018/3/1",
+            "thumbnail": "",
             "excerpt": "ファイル名・ディレクトリ名の整理",
             "content": "<p>ファイル名・ディレクトリ名の整理。</p>"
         },
@@ -86,6 +110,7 @@
             "id": "releasenote",
             "title": "ver.2.5.6",
             "time": "2018/2/24",
+            "thumbnail": "",
             "excerpt": "コピーライトの年数を決め打ちではなく、計算で変化するように変更",
             "content": "<p>コピーライトの年数を決め打ちではなく、計算で変化するように変更。</p>"
         },
@@ -93,6 +118,7 @@
             "id": "releasenote",
             "title": "ver.2.5.5",
             "time": "2018/2/22",
+            "thumbnail": "",
             "excerpt": "クラス付与の微調整、now loadingの背景色が決め打ちだったのを変数に修正",
             "content": "<ul><li><code>index</code>の<code>main</code>にクラス付与、各ejsの<code>body</code>にクラス付与</li><li>now loadingの背景色を変数に</li></ul>"
         },
@@ -100,6 +126,7 @@
             "id": "releasenote",
             "title": "ver.2.5.4",
             "time": "2018/2/19",
+            "thumbnail": "",
             "excerpt": "mainの左右paddingを削除",
             "content": "<p>mainの左右paddingを削除。</p>"
         },
@@ -107,6 +134,7 @@
             "id": "releasenote",
             "title": "ver.2.5.3",
             "time": "2018/2/19",
+            "thumbnail": "",
             "excerpt": "キービジュアル周りを整理",
             "content": "<p>トップページ・各ページのキービジュアル周りを整理しました。</p>"
         },
@@ -114,6 +142,7 @@
             "id": "releasenote",
             "title": "ver.2.5.2",
             "time": "2018/2/13",
+            "thumbnail": "",
             "excerpt": "faviconを追加。<code>head</code>タグ内にテーマカラーを出力するように追記",
             "content": "<ul><li>faviconを追加。<code>gulptask.js</code>もfaviconを出力するように追記</li><li><code>head</code>タグ内にテーマカラーを出力するように追記。色は<code>var.json</code>で指定</li></ul>"
         },
@@ -121,6 +150,7 @@
             "id": "releasenote",
             "title": "ver.2.5.1",
             "time": "2018/2/10",
+            "thumbnail": "",
             "excerpt": "トップページか否かの判定でナビゲーションバーのリンクを切り替えるように変更",
             "content": "<p>トップページか否かの判定でナビゲーションバーのリンクを切り替えるように変更しました。</p>"
         },
@@ -128,6 +158,7 @@
             "id": "releasenote",
             "title": "ver.2.5.0",
             "time": "2018/2/10",
+            "thumbnail": "",
             "excerpt": "新着情報を複数ページ生成するように修正しました",
             "content": "<p>新着情報を<code>news.json</code>のパラメータで指定した件数ごとに複数ページ生成するように修正しました。</p>"
         },
@@ -135,6 +166,7 @@
             "id": "releasenote",
             "title": "ver.2.4.4",
             "time": "2018/2/1",
+            "thumbnail": "",
             "excerpt": "ネタ更新:真言で<code>npm</code>が走るようにショートカットを追加",
             "content": "<p>ネタ更新:真言で<code>npm</code>が走るようにショートカットを追加しました。</p>"
         },
@@ -142,6 +174,7 @@
             "id": "releasenote",
             "title": "ver.2.4.3",
             "time": "2018/1/31",
+            "thumbnail": "",
             "excerpt": "スタイルガイドにjsファイルを読み込んでいなかったバグを修正",
             "content": "<p>スタイルガイドにjsファイルを読み込んでいなかったバグを修正しました。</p>"
         },
@@ -149,6 +182,7 @@
             "id": "releasenote",
             "title": "ver.2.4.2",
             "time": "2018/1/31",
+            "thumbnail": "",
             "excerpt": "新着情報周りの微調整",
             "content": "<p>新着情報周りを微調整しました。</p><ul><li>トップページに出力する件数を5件(変数で変更可)に制限</li><li>上記の伴い、リンクボタンを追加</li><li><code>news.html</code>の表示を微調整</li></ul>"
         },
@@ -156,6 +190,7 @@
             "id": "releasenote",
             "title": "ver.2.4.1",
             "time": "2018/1/31",
+            "thumbnail": "",
             "excerpt": "スタイルガイド用の設定を追加",
             "content": "<p>スタイルガイド用の設定を追加しました。</p>"
         },
@@ -163,6 +198,7 @@
             "id": "releasenote",
             "title": "ver.2.4.0",
             "time": "2018/1/30",
+            "thumbnail": "",
             "excerpt": "スタイルガイド生成機能を追加、ほか",
             "content": "<ul><li>スタイルガイド生成機能を追加しました(<code>gulp-frontnote</code>使用(まだテスト版))。</li><li>jQuery.easingのnpmでの参照元を変更</li></ul>"
         },
@@ -170,6 +206,7 @@
             "id": "releasenote",
             "title": "ver.2.3.1",
             "time": "2018/1/30",
+            "thumbnail": "",
             "excerpt": "jsonファイルをウォッチタスクに追加",
             "content": "<ul><li>jsonファイルをウォッチタスクに追加しました</li><li><code>readme.md</code>を加筆修正しました</li></ul>"
         },
@@ -177,6 +214,7 @@
             "id": "releasenote",
             "title": "ver.2.3.0",
             "time": "2018/1/24",
+            "thumbnail": "",
             "excerpt": "jsonによるパラメータ管理機能を追加",
             "content": "<ul><li>jsonによるパラメータ管理機能を追加。<ul><li><code>/src/ejs/news/news.json</code>というjsonファイルで新着情報をトップページと更新履歴一覧ページに異なるhtmlで出力するサンプルを追加</li><li><code>/src/ejs/common/_var.ejs</code>で管理していた共通パラメータをjsonファイル(<code>/src/ejs/common/_var.json</code>)に変更</li></ul></li><li>ejsの変数の指定をチェーン方式に変更</li><li><code>.gitignore</code>追加</li></ul>"
         },
@@ -184,6 +222,7 @@
             "id": "releasenote",
             "title": "ver.2.2.1",
             "time": "2018/01/17",
+            "thumbnail": "",
             "excerpt": "各種微調整",
             "content": "<p>各種微調整。</p>"
         },
@@ -191,6 +230,7 @@
             "id": "releasenote",
             "title": "ver.2.2.0",
             "time": "2018/01/02",
+            "thumbnail": "",
             "excerpt": "<code>gulp-autoprefixer</code>追加",
             "content": "<p><code>gulp-autoprefixer</code>追加。</p>"
         },
@@ -198,6 +238,7 @@
             "id": "releasenote",
             "title": "ver.2.1.0",
             "time": "2018/01/02",
+            "thumbnail": "",
             "excerpt": "<code>gulp-ruby-sass</code>から<code>gulp-sass</code>にsassコンパイラを変更。rubyから脱却",
             "content": "<p><code>gulp-ruby-sass</code>から<code>gulp-sass</code>にsassコンパイラを変更。rubyから脱却。</p>"
         },
@@ -205,6 +246,7 @@
             "id": "releasenote",
             "title": "ver.2.0.0",
             "time": "2018/01/02",
+            "thumbnail": "",
             "excerpt": "名前を付けました。",
             "content": "<ul><li>名前を付けました</li><li>各種微調整</li></ul>"
         },
@@ -212,6 +254,7 @@
             "id": "releasenote",
             "title": "ver.1.3.3",
             "time": "2017/12/22",
+            "thumbnail": "",
             "excerpt": "Bootstrapキャンセラーに追記",
             "content": "<p>Bootstrapキャンセラーに追記。</p>"
         },
@@ -219,6 +262,7 @@
             "id": "releasenote",
             "title": "ver.1.3.2",
             "time": "2017/12/05",
+            "thumbnail": "",
             "excerpt": "Bootstrapキャンセラーに追記",
             "content": "<p>Bootstrapキャンセラーに追記。</p>"
         },
@@ -226,6 +270,7 @@
             "id": "releasenote",
             "title": "ver.1.3.1",
             "time": "2017/11/16",
+            "thumbnail": "",
             "excerpt": "Bootstrapでいつも気になる指定をキャンセルするscssを追加",
             "content": "<p>Bootstrapでいつも気になる指定をキャンセルするscssを追加。</p>"
         },
@@ -233,6 +278,7 @@
             "id": "releasenote",
             "title": "ver.1.3.0",
             "time": "2017/10/18",
+            "thumbnail": "",
             "excerpt": "キービジュアルのmobileSafari対策が不十分だったのを修正",
             "content": "<p>キービジュアルのmobileSafari対策が不十分だったのを修正。</p>"
         },
@@ -240,6 +286,7 @@
             "id": "releasenote",
             "title": "ver.1.2.0",
             "time": "2017/10/18",
+            "thumbnail": "",
             "excerpt": "onw-libの中に丸ゴシックの記述を追加",
             "content": "<p>onw-libの中に丸ゴシックの記述を追加。</p>"
         },
@@ -247,6 +294,7 @@
             "id": "releasenote",
             "title": "ver.1.1.3",
             "time": "2017/10/18",
+            "thumbnail": "",
             "excerpt": "npmのプラグインのバージョン更新、HonokaをGithubからnpm経由に変更",
             "content": "<ul><li>npmのプラグインのバージョン更新<ul><li>gulp-uglifyのコメントを残す方法が変化したらしい(参考: <a href=\"https://qiita.com/tawatawa/items/515d8a58299b6dcd18f6\">gulp-uglifyでコメントを残す方法が変わったの？ - Qiita</a>)ので、gulpfile.jsを微修正</li></ul></li><li>HonokaをGithubからnpm経由に変更</li></ul>"
         },
@@ -254,6 +302,7 @@
             "id": "releasenote",
             "title": "ver.1.1.2",
             "time": "2017/7/19",
+            "thumbnail": "",
             "excerpt": "フッタの微修正（scssファイル、ejsファイル）",
             "content": "<p>フッタの微修正（scssファイル、ejsファイル）。</p>"
         },
@@ -261,6 +310,7 @@
             "id": "releasenote",
             "title": "ver1.1.1",
             "time": "2017/7/6",
+            "thumbnail": "",
             "excerpt": "いくつか修正",
             "content": "<ul><li>Font CDNのAwesomeを4.7.0にバージョンアップ</li><li>gulpfile.jsの記述を変更<ul><li>BrowserSyncのreloadタスクを集約</li><li>open: &#39;external&#39;を追加</li></ul></li></ul>"
         },
@@ -268,6 +318,7 @@
             "id": "releasenote",
             "title": "ver1.1.0",
             "time": "2017/6/9",
+            "thumbnail": "",
             "excerpt": "いくつかのパッケージをnpmで自動インストールするようにpackage.jsonを変更",
             "content": "<p>後述パッケージをnpmで自動インストールするようにpackage.jsonを変更。</p><ul><li>Bootstrap + Honoka(3.3.7)</li><li>jQuery(3.2.1)</li><li>jQuery.easing(1.3)</li><li>自前のコード（ローカルパスで指定）</li></ul><p>これに合わせて、gulpfile.jsとscssの読み込み部分も変更。</p>"
         },
@@ -275,6 +326,7 @@
             "id": "releasenote",
             "title": "ver1.0.0",
             "time": "2017/2/22",
+            "thumbnail": "",
             "excerpt": "初版公開",
             "content": "<p>初版を公開しました。</p>"
         }

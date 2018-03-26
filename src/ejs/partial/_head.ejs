@@ -2,8 +2,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="format-detection" content="telephone=no,address=no,email=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><%= variables.param[id].title %> | <%= variables.commons.sitename %></title>
-	<meta name="description" content="<%= variables.param[id].description %>">
+	<title><%= metaTitle %> | <%= variables.commons.sitename %></title>
+	<meta name="description" content="<%= metaDescription %>">
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>favicon/favicon.ico">
@@ -24,8 +24,8 @@
 	<meta name="twitter:card" content="photo" />
 	<meta name="twitter:site" content="@<%= variables.commons.twitteraccount %>" />
 	<meta property="og:type" content="website" />
-	<meta name="og:title" content="<%= variables.param[id].title %>" />
+	<meta name="og:title" content="<%= metaTitle %>" />
 	<meta name="og:site_name" content="<%= variables.commons.sitename %>" />
-	<meta name="og:description" content="<%= variables.param[id].description %>" />
-	<meta name="og:image" content="<%= variables.commons.twitterimage %>" />
+	<meta name="og:description" content="<%= metaDescription %>" />
+	<meta name="og:image" content="<%= metaOgpimage %>" />
 	<meta name="og:url" content="<%= variables.commons.twittersiteurl %>" />
