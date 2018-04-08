@@ -6,7 +6,7 @@
 	position: fixed;
 	text-align: center;
 	color: $main-color;
-	z-index: 100;
+	z-index: 1050;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -10%);
@@ -23,5 +23,5 @@
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	z-index: 99;
+	z-index: 1049;
 }
