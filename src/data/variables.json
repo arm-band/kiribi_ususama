@@ -3,9 +3,10 @@
         "sitename": "Kiribi Ususama",
         "year": "2018",
         "author": "アルム＝バンド",
-        "twitteraccount": "Bredtn_1et",
-        "twitterimage": "https://github.com/arm-band/kiribi_ususama/blob/master/misc/img/kiribi_ususama.png",
-        "twittersiteurl": "https://github.com/arm-band/kiribi_ususama/"
+        "baseurl": "/",
+        "ogpurl": "https://github.com/arm-band/kiribi_ususama/",
+        "ogpimage": "blob/master/misc/img/kiribi_ususama.png",
+        "twitteraccount": "Bredtn_1et"
     },
     "param": {
         "index": {
@@ -15,7 +16,7 @@
             "js": "app.min",
             "description": "gulpとEJSに対応したBootstrap Minimal Template",
             "hierarchy": 0,
-            "twitterimage": "eyecatch.jpg",
+            "ogpimage": "eyecatch.jpg",
             "newscount": 5
         },
         "about": {
@@ -25,7 +26,7 @@
             "js": "app.min",
             "description": "このページについての説明です。",
             "hierarchy": 0,
-            "twitterimage": "eyecatch.jpg"
+            "ogpimage": "eyecatch.jpg"
         },
         "news": {
             "title": "更新履歴",
@@ -34,7 +35,7 @@
             "js": "app.min",
             "description": "更新履歴の一覧です。",
             "hierarchy": 1,
-            "twitterimage": "eyecatch.jpg"
+            "ogpimage": "eyecatch.jpg"
         },
         "article": {
             "title": "記事",
@@ -43,7 +44,7 @@
             "js": "app.min",
             "description": "記事です。",
             "hierarchy": 1,
-            "twitterimage": "eyecatch.jpg"
+            "ogpimage": "eyecatch.jpg"
         }
     }
 }

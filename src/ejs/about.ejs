@@ -2,7 +2,7 @@
 var variables = variables;
 var commonVar = commonVar;
 id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
-%><%- include("util/_year", { variables, id }) %><%- include("util/_pathdir", { variables, id }) %><%- include("util/_headset", { variables, id, path }) %>
+%><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -38,7 +38,7 @@ id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC�
 
 </div>
 
-<script src="<%= path %>js/lib.min.js"></script>
-<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
+<script src="/js/lib.min.js"></script>
+<script src="/js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>

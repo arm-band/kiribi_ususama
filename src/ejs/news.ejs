@@ -6,7 +6,7 @@ var variables = variables;
 var commonVar = commonVar;
 id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsBlock = newsBlock;
-%><%- include("util/_year", { variables, id }) %><%- include("util/_pathdir", { variables, id }) %><%- include("util/_headset", { variables, id, path }) %>
+%><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -39,7 +39,7 @@ var newsBlock = newsBlock;
                     <article class="news_article" id="<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>">
                         <div class="panel panel-default">
                         	<div class="panel-heading">
-                        		<a href="../articles/<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>.html"><h3 class="news_header"><%= newsBlock[i].title %></h3></a>
+                        		<a href="articles/<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>.html"><h3 class="news_header"><%= newsBlock[i].title %></h3></a>
                         	</div>
                         	<div class="panel-body">
                                 <div class="news_contents">
@@ -63,7 +63,7 @@ var newsBlock = newsBlock;
 
 </div>
 
-<script src="<%= path %>js/lib.min.js"></script>
-<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
+<script src="js/lib.min.js"></script>
+<script src="js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>

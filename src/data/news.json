@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.4",
+            "time": "2018/4/28",
+            "thumbnail": "",
+            "excerpt": "baseurlを追加し、各種パスをルートからの絶対パスで記述しなおしました",
+            "content": "<p><code>baseurl</code>を追加し、各種パスをルートからの絶対パスで記述しなおしました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.0",
             "time": "2018/3/26",
             "thumbnail": "",

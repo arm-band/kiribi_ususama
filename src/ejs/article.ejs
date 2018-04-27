@@ -5,7 +5,7 @@ var commonVar = commonVar;
 id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsBlock = newsBlock;
 var returnNews = name + pages + ".html";
-%><%- include("util/_year", { variables, id }) %><%- include("util/_pathdir", { variables, id }) %><%- include("util/_headset_article", { variables, id, path, newsBlock }) %>
+%><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,7 +20,7 @@ var returnNews = name + pages + ".html";
 
     <!-- main -->
     <main class="main <%= id %>" id="<%= id %>Main">
-<%- include("partial/_breadcrumb_article", { variables, id, returnNews, newsBlock, path }) %>
+<%- include("partial/_breadcrumb_article", { variables, id, returnNews, newsBlock }) %>
         <section class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
@@ -39,7 +39,7 @@ var version = newsBlock.title.replace(/\./g, "_");
 if(newsBlock.thumbnail.length > 0) {
 %>
                                 <div class="news_thumbnail">
-                        	        <img src="../img/<%- newsBlock.thumbnail %>" class="img-responsive">
+                        	        <img src="img/<%- newsBlock.thumbnail %>" class="img-responsive">
                                 </div>
 <%
 }
@@ -53,7 +53,7 @@ if(newsBlock.thumbnail.length > 0) {
                         	</div>
                         </div>
                     </article>
-<p><a href="<%= path %>news/<%= returnNews %>" class="btn">記事一覧に戻る</a></p>
+<p><a href="news/<%= returnNews %>" class="btn">記事一覧に戻る</a></p>
                 </div>
             </div>
         </section>
@@ -64,7 +64,7 @@ if(newsBlock.thumbnail.length > 0) {
 
 </div>
 
-<script src="<%= path %>js/lib.min.js"></script>
-<script src="<%= path %>js/<%= variables.param[id].js %>.js"></script>
+<script src="js/lib.min.js"></script>
+<script src="js/<%= variables.param[id].js %>.js"></script>
 </body>
 </html>
