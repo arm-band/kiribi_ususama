@@ -2,6 +2,19 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.5",
+            "time": "2018/4/29",
+            "thumbnail": "",
+            "excerpt": "baseurl追加に伴う調整。articleのパスを変更し、画像パスも対応するように",
+            "content": "<p><img src=\"img/imgpath_test.jpg\" alt=\"コーヒーカップ\" class=\"img-responsive\"></p>
+            <p><code>baseurl</code>追加に伴う調整。</p>
+            <ul>
+                <li>articleのパスを<code>articles/</code>から<code>news/articles/</code>に変更し、画像パスも対応することを確認</li>
+                <li><code>hierarchy</code>パラメータ削除</li>
+            </ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.4",
             "time": "2018/4/28",
             "thumbnail": "",
@@ -12,7 +25,7 @@
             "id": "releasenote",
             "title": "ver.2.7.0",
             "time": "2018/3/26",
-            "thumbnail": "",
+            "thumbnail": "eyecatch.jpg",
             "excerpt": "各記事を1つのhtmlとして出力するように改修し、OGP対応しました",
             "content": "<ul>
                 <li>各記事を1つのhtmlとして出力するように改修しました<ul>

@@ -15,7 +15,6 @@
             "css": "index",
             "js": "app.min",
             "description": "gulpとEJSに対応したBootstrap Minimal Template",
-            "hierarchy": 0,
             "ogpimage": "eyecatch.jpg",
             "newscount": 5
         },
@@ -25,7 +24,6 @@
             "css": "contents",
             "js": "app.min",
             "description": "このページについての説明です。",
-            "hierarchy": 0,
             "ogpimage": "eyecatch.jpg"
         },
         "news": {
@@ -34,7 +32,6 @@
             "css": "contents",
             "js": "app.min",
             "description": "更新履歴の一覧です。",
-            "hierarchy": 1,
             "ogpimage": "eyecatch.jpg"
         },
         "article": {
@@ -43,7 +40,6 @@
             "css": "contents",
             "js": "app.min",
             "description": "記事です。",
-            "hierarchy": 1,
             "ogpimage": "eyecatch.jpg"
         }
     }

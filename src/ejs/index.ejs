@@ -43,7 +43,7 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarã
         var version = newsjson.news[i].title.replace(/\./g, "_");
 %>
                         <li class="list-group-item">
-                            <a href="articles/<%= newsjson.news[i].id %>_<%= version %>-<%= idTime %>.html">
+                            <a href="news/articles/<%= newsjson.news[i].id %>_<%= version %>-<%= idTime %>.html">
                                 <h3 class="news_header"><%= newsjson.news[i].title %></h3>
                                 <time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
                                 <p><%- newsjson.news[i].excerpt %></p>

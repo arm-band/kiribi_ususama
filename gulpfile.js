@@ -53,6 +53,7 @@ var dir = {
   dist: {
     html      : './dist',
     news      : './dist/news',
+    articles  : './dist/news/articles',
     css       : './dist/css',
     js        : './dist/js',
     img       : './dist/img',
@@ -218,7 +219,7 @@ gulp.task("article.ejs", function() {
         }))
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages }))
         .pipe(rename(newsBlock.id + "_" + version + "-" + idTime + ".html"))
-        .pipe(gulp.dest(dir.dist.html + "/articles"));
+        .pipe(gulp.dest(dir.dist.articles));
         if(i % newsjson.pagination == (newsjson.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             pages++; //カウントアップ
         }
