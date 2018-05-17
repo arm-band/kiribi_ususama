@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.6",
+            "time": "2018/5/17",
+            "thumbnail": "",
+            "excerpt": "npmのプラグインのバージョン更新",
+            "content": "<p>npmのプラグインのバージョン更新。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.5",
             "time": "2018/4/29",
             "thumbnail": "",
