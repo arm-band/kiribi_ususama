@@ -59,10 +59,10 @@
 }
 //キービジュアルの見出しのタイポグラフィ
 @mixin eyecatchTypo($fontSize) {
-    color: $link-color;
+    color: $main-color;
     z-index: 3;
     font: {
         size: $fontSize;
-        family: 'Dancing Script', cursive; /* googleフォント */
+        family: "Dancing Script", cursive; /* googleフォント */
     }
 }

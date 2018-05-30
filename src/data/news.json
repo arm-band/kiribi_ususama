@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.7",
+            "time": "2018/5/30",
+            "thumbnail": "",
+            "excerpt": "scssの微調整",
+            "content": "<p>scssの微調整。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.6",
             "time": "2018/5/17",
             "thumbnail": "",
