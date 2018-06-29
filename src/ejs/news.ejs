@@ -6,7 +6,7 @@ var variables = variables;
 var commonVar = commonVar;
 id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsBlock = newsBlock;
-%><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %>
+%><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %><%- include("util/_header_path", { id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
