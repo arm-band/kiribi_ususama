@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.7.8",
+            "time": "2018/6/29",
+            "thumbnail": "",
+            "excerpt": "パスをbaseurlに従って修正し、スクロールアニメーションが死なないようにパスなどを再調整。",
+            "content": "<p>パスをbaseurlに従って修正し、スクロールアニメーションが死なないようにパスなどを再調整。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.7",
             "time": "2018/5/30",
             "thumbnail": "",
