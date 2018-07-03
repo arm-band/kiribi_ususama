@@ -2,11 +2,19 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.8.1",
+            "time": "2018/7/3",
+            "thumbnail": "",
+            "excerpt": "mainタグに付与するIDとclassをファイル名から切り抜く処理がOSごとのパス文字で上手く動かない場合があるので対処",
+            "content": "<p><code>main</code>タグに付与するIDとclassをファイル名から切り抜く処理がOSごとのパス文字で上手く動かない場合があるので対処。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.8.0",
             "time": "2018/7/3",
             "thumbnail": "",
             "excerpt": "モバイルSafari判定の実装を見直しました",
-            "content": "<p>bowserを使ってモバイルSafari判定を行い、bodyタグにクラスを付与するように変更しました。</p>"
+            "content": "<p><a href=\"https://www.npmjs.com/package/bowser\">bowser</a>を使ってモバイルSafari判定を行い、<code>body</code>タグにクラスを付与するように変更しました。</p>"
         },
         {
             "id": "releasenote",
@@ -14,7 +22,7 @@
             "time": "2018/6/29",
             "thumbnail": "",
             "excerpt": "パスをbaseurlに従って修正し、スクロールアニメーションが死なないようにパスなどを再調整。",
-            "content": "<p>パスをbaseurlに従って修正し、スクロールアニメーションが死なないようにパスなどを再調整。</p>"
+            "content": "<p>パスを<code>baseurl</code>に従って修正し、スクロールアニメーションが死なないようにパスなどを再調整。</p>"
         },
         {
             "id": "releasenote",

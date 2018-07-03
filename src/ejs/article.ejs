@@ -2,10 +2,10 @@
 var name = name; //gulpfile.jsで指定されたファイル名
 var variables = variables;
 var commonVar = commonVar;
-id = filename.slice(filename.lastIndexOf("\\") + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 var newsBlock = newsBlock;
 var returnNews = name + pages + ".html";
-%><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %><%- include("util/_header_path", { id }) %>
+var os = os;
+%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %><%- include("util/_header_path", { id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

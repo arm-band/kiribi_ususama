@@ -17,7 +17,6 @@ $(function() {
 //mobile Saffari対策
 function mobileSafariRequiem() {
     var $body = $("body");
-console.log("os:" + bowser.ios + ", browser:" + bowser.safari);
     if (bowser.safari && bowser.ios) {
         //iPhoneかiPadならば
         $body.addClass("mobileSafari");
