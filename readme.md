@@ -118,6 +118,8 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/7/3 ver.2.8.0
+    - [bowser](https://www.npmjs.com/package/bowser)を使ってモバイルSafari判定を行い、bodyタグにクラスを付与するように変更しました
 - 2018/6/29 ver.2.7.8
     - パスをbaseurlに従って修正し、スクロールアニメーションが死なないようにパスなどを再調整
 - 2018/5/30 ver.2.7.7

@@ -27,11 +27,11 @@
 
 //キービジュアルの背景画像
 @mixin eyecatchBGImg($imgPath) {
-    &:not(.mobile_Safari) {
+    body:not(.mobileSafari) .eyecatch {
         background: url($imgPath) no-repeat center center fixed;
         background-size: cover;
     }
-    &.mobile_Safari { //index.jsでUAにより付与。mobile Safariバグ対策
+    body.mobileSafari .eyecatch { //index.jsでUAにより付与。mobile Safariバグ対策
         &:before {
             background: url($imgPath) no-repeat left top;
             background-size: auto 100%; //画像とデバイスによっては100% autoでも

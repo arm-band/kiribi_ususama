@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.2.8.0",
+            "time": "2018/7/3",
+            "thumbnail": "",
+            "excerpt": "モバイルSafari判定の実装を見直しました",
+            "content": "<p>bowserを使ってモバイルSafari判定を行い、bodyタグにクラスを付与するように変更しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.7.8",
             "time": "2018/6/29",
             "thumbnail": "",

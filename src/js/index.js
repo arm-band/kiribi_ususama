@@ -16,11 +16,11 @@ $(function() {
 
 //mobile Saffari対策
 function mobileSafariRequiem() {
-    var $eyeCatch = $(".eyecatch");
-    var device = navigator.userAgent;
-    if (device.indexOf("iPhone") !== -1 || device.indexOf("iPad") !== -1) {
+    var $body = $("body");
+console.log("os:" + bowser.ios + ", browser:" + bowser.safari);
+    if (bowser.safari && bowser.ios) {
         //iPhoneかiPadならば
-        $eyeCatch.addClass("mobile_Safari");
+        $body.addClass("mobileSafari");
     }
 }
 
