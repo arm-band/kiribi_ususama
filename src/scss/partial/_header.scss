@@ -5,26 +5,23 @@
 //  ナビゲーションバー                               *
 //                                                *
 // ============================================= */
-.navbar-default {
-    .navbar-toggle {
-        //共通
-        border-color: transparent;
-        &:focus, &:active, &:hover {
-            background: none;
-            border-color: transparent;
-        }
-        .icon-bar {
-            @include transitionSet();
-        }
-        //ハンバーガーアニメーション
-        @include hamburger1();
-    }
-}
+//.navbar-default {
+//    .navbar-toggle {
+//        //共通
+//        border-color: transparent;
+//        &:focus, &:active, &:hover {
+//            background: none;
+//            border-color: transparent;
+//        }
+//        .icon-bar {
+//            @include transitionSet();
+//        }
+//        //ハンバーガーアニメーション
+//        @include hamburger1();
+//    }
+//}
 .navbar {
     &_head {
-        margin: {
-            top: 0;
-            bottom: 0;
-        }
+        font-family: "Dancing Script", cursive; /* googleフォント */
     }
 }

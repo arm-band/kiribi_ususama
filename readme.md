@@ -21,8 +21,8 @@ Scss, ejs, gulp使用。
         - gulp-ejs: 3.0.1
         - gulp-sass: 3.1.0
         - gulp-autoprefixer: 4.1.0
-        - bootstrap-sass: 3.3.7
-        - bootstrap-honoka: 3.3.7-a
+        - bootstrap: **4.0.0**
+        - bootstrap-honoka: **4.0.0**
         - jquery: 3.2.1
         - jquery.easing: 1.4.1
 
@@ -40,7 +40,8 @@ Scss, ejs, gulp使用。
     1. `git remote rm origin <REPOSITORY_TEMPLATE_URL.git>`で現在のリモートリポジトリを削除
     2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
 4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
-5. `npm run gue`(`npm run proinit`でも良い)で初期設定を行う
+5. `npm run ususama`(`npm run proinit`でも良い)で初期設定を行う
+    - `npm run gue`ではなくなったので注意
 6. `gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
@@ -69,7 +70,7 @@ gulpで処理されるもの
 - Now Loading
 - アイキャッチ(高さ100vh, 背景fixed) ※画像は適宜用意
 - ページトップへ戻る
-- ハンバーガーメニューのアニメーション(1～8まで)
+- <del>ハンバーガーメニューのアニメーション(1～8まで)</del>
 - `src/ejs/news/news.json`による新着情報一覧の一元管理(トップページ: `index.ejs`と新着情報一覧: `news.ejs`の2箇所で使用)
 
 ## Futures
@@ -116,8 +117,23 @@ ejsの使い方をもっとしっかりしていきたい。
             - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
                 - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
 
+## Notes
+
+3.0.0以降のバージョン番号について
+
+`3.0.0-4.0.0`
+
+- ハイフンより前は独自のバージョン
+- ハイフン以降はHonokaのバージョン
+
 ## Release Notes
 
+- 2018/7/4 ver.3.0.0-4.0.0
+    - [Honoka](http://honokak.osaka/)のバージョンアップ(3.3.7→4.0.0)に対応
+        1. ナビゲーションバーの高さ変更
+        2. ハンバーガーアニメーションが死んだ
+        3. 游ゴシック・游明朝を非使用に
+        4. パネルコンポーネントからカードコンポーネントに変更
 - 2018/7/3 ver.2.8.1
     - `main`タグに付与するIDとclassをファイル名から切り抜く処理がOSごとのパス文字で上手く動かない場合があるので対処
 - 2018/7/3 ver.2.8.0

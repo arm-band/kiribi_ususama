@@ -10,7 +10,7 @@
 @import "../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
 @import "util/typo"; //ベンダープレフィックス等のMixinモジュール
 @import "util/module"; //ベンダープレフィックス等のMixinモジュール
-@import "util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
+//@import "util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
 @import "util/base"; //フォント指定やIE対処など
 
 // ============================================= *
@@ -31,7 +31,7 @@
 // ヘッダ                                         *
 //                                               *
 // ============================================= */
-@import "util/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
+//@import "util/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
 @import "partial/header";
 
 // ============================================= *

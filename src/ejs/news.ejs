@@ -30,30 +30,37 @@ var os = os;
                     </div>
 <%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
                 </div>
-                <div class="col-xs-12">
+            </div>
+            <div class="row">
 <% for(var i in newsBlock) {
     var datetime = newsBlock[i].time.replace(/\//g, "-");
     var idTime = newsBlock[i].time.replace(/\//g, "");
     var version = newsBlock[i].title.replace(/\./g, "_");
 %>
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
                     <article class="news_article" id="<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>">
-                        <div class="panel panel-default">
-                        	<div class="panel-heading">
-                        		<a href="news/articles/<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>.html"><h3 class="news_header"><%= newsBlock[i].title %></h3></a>
-                        	</div>
-                        	<div class="panel-body">
+                        <div class="card">
+<%
+if(newsBlock[i].thumbnail.length > 0) {
+%>
+                            <img class="card-img-top img-fluid" src="img/<%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
+<%
+}
+%>
+                        	<div class="card-body">
+                                <h3 class="news_header"><a href="news/articles/<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>.html"><%= newsBlock[i].title %></a></h3>
                                 <div class="news_contents">
                         	        <%- newsBlock[i].content %>
                                 </div>
                         	</div>
-                        	<div class="panel-footer">
+                        	<div class="card-body">
                         		<time class="news_createtime" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
                         	</div>
                         </div>
                     </article>
+                </div>
 <% } %>
 <%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
-                </div>
             </div>
         </section>
     </main>

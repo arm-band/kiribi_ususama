@@ -1,37 +1,5 @@
 @charset "utf-8";
 
-//游ゴシック指定
-//参考: 游ゴシックをWindows版Chromeでキレイに表示する@font-faceの設定 - Qiita https://qiita.com/unagi-man/items/f309ffc0c661ef81c4e7
-@font-face {
-  font-family: "Custom Yu Gothic";
-  src: local("Yu Gothic");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Custom Yu Gothic";
-  src: local("Yu Gothic");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Custom Yu Gothic";
-  src: local("Yu Gothic");
-  font-weight: bold;
-}
-
-@mixin jugos() {
-    font-family: YuGothic, "Custom Yu Gothic", "Yu Gothic", sans-serif;
-}
-
-@mixin jugosmin() {
-    font-family: Jugos, //Windows用
-                 YuGothic, //OS X
-                 -apple-system, //iOS San Francisco
-                 BlinkMacSystemFont, //iOS Chrome San Francisco
-                 "Hiragino Kaku Gothic ProN", //OS X, iOS ヒラギノ
-                 Meiryo, //Windowsメイリオ
-                 sans-serif;
-}
-
 //丸ゴシック指定
 @mixin marugo() {
     font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO";
@@ -45,14 +13,13 @@
 //注2: font-weight: 500;はダメ！絶対！！
 @mixin mincho() {
     font: {
-        family: "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia, "Sawarabi Mincho", メイリオ, Meiryo, serif;
+        family: "Sawarabi Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia, メイリオ, Meiryo, serif;
         feature-settings : "pkna";
     }
 }
 
 //フォント・行間・文字間指定
 body {
-    @include jugos();
     line-height: $line-height;
     letter-spacing: $letter-spacing;
  }

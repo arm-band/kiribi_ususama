@@ -1,13 +1,13 @@
         <section class="container-fluid">
-            <nav>
+            <nav aria-label="新着情報一覧のページ送り">
             	<ul class="pagination">
 <%
 //前のページへ
 if(counter !== 1) { //最初のページ以外
     var prev = counter - 1;
 %>
-            		<li>
-            			<a href="news/<%= name + prev %>.html" aria-label="前のページへ">
+            		<li class="page-item">
+            			<a href="news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
             				<span aria-hidden="true">«</span>
             			</a>
             		</li>
@@ -18,12 +18,12 @@ for(var i = 1; i <= pageLength; i++) { //ページ数分生成
     //今いるページの場合、activeクラスを付与
     if(i === counter) {
 %>
-            		<li class="active"><a href="news/<%= name + i %>.html"><%= i %></a></li>
+            		<li class="page-item active"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
 <%
     }
     else {
 %>
-            		<li><a href="news/<%= name + i %>.html"><%= i %></a></li>
+            		<li class="page-item"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
 <%
     }
 }
@@ -31,8 +31,8 @@ for(var i = 1; i <= pageLength; i++) { //ページ数分生成
 if(counter !== pageLength) { //最後のページ以外
     var next = counter + 1;
 %>
-            		<li>
-            			<a href="news/<%= name + next %>.html" aria-label="次のページへ">
+            		<li class="page-item">
+            			<a href="news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
             				<span aria-hidden="true">»</span>
             			</a>
             		</li>

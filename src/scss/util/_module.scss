@@ -50,7 +50,7 @@
 //キービジュアルに見出しを左右上下中央寄せ
 @mixin eyecatchCenter() {
     display: flex;
-    justify-content: center;
+    text-align: center;
     align-items: center;
     .container-fluid {
         box-sizing: border-box; //IEバグフィックス

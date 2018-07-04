@@ -2,6 +2,20 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.0.0-4.0.0",
+            "time": "2018/7/4",
+            "thumbnail": "",
+            "excerpt": "Honokaのバージョンアップ(3.3.7→4.0.0)に対応",
+            "content": "<p><a href=\"http://honokak.osaka\">Honoka</a>のバージョンアップ(3.3.7→4.0.0)に対応しました。</p>
+<ol>
+<li>ナビゲーションバーの高さ変更</li>
+<li>ハンバーガーアニメーションが死んだ</li>
+<li>游ゴシック・游明朝を非使用に</li>
+<li>パネルコンポーネントからカードコンポーネントに変更</li>
+</ol>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.2.8.1",
             "time": "2018/7/3",
             "thumbnail": "",

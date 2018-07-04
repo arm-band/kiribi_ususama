@@ -1,5 +1,7 @@
-<ol class="breadcrumb">
-	<li><a href="<%= variables.commons.baseurl %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
-	<li><a href="news/<%= returnNews %>"><%= variables.param["news"].title %></a></li>
-	<li class="active"><%= newsBlock.title %></li>
-</ol>
+<nav aria-label="パンくずリスト">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= variables.commons.baseurl %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+        <li class="breadcrumb-item"><a href="news/<%= returnNews %>"><%= variables.param["news"].title %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= variables.param[id].title %></li>
+    </ol>
+</nav>
