@@ -22,9 +22,9 @@ var os = os;
     <!-- main -->
     <main class="main <%= id %>">
 <%- include("partial/_breadcrumb", { variables, id }) %>
-        <section class="container-fluid">
+        <section class="container-fluid mb-4">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-12">
                     <div class="page-header">
                         <h2>What's news? <small>news</small></h2>
                     </div>
@@ -54,14 +54,14 @@ if(newsBlock[i].thumbnail.length > 0) {
                                 </div>
                         	</div>
                         	<div class="card-body">
-                        		<time class="news_createtime" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
+                        		<time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
                         	</div>
                         </div>
                     </article>
                 </div>
 <% } %>
-<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
             </div>
+<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
         </section>
     </main>
     <!-- /main -->

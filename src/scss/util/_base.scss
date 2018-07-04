@@ -8,11 +8,6 @@
 $main-color2: lighten($main-color, 15%);
 $link-v-color: darken($link-color, 15%);
 $link-ha-color: lighten($link-color, 15%);
-// media query sample
-//	@media (max-width: 767px) {
-//	}
-//	@media (min-width: 768px) {
-//	}
 
 // ============================================= *
 //                                               *
@@ -20,21 +15,31 @@ $link-ha-color: lighten($link-color, 15%);
 //                                               *
 // ============================================= */
 a, a:link {
-	color: $link-color;
-	text-decoration: none;
+    color: $link-color;
+    text-decoration: none;
     @include transitionSet();
 }
 a:visited {
-	color: $link-v-color;
-	text-decoration: none;
+    color: $link-v-color;
+    text-decoration: none;
 }
 a:hover, a:active {
-	color: $link-ha-color;
-	text-decoration: underline;
+    color: $link-ha-color;
+    text-decoration: underline;
 }
 
 //IEでスクロールバーの背後までページが描画されてしまうのを防ぐ
 @-ms-viewport {
     width: auto;
     initial-scale: 1;
+}
+//Chrome系のリストのpaddding打ち消し
+ul, ol {
+    -webkit: {
+        margin: {
+            before: 0;
+            after: 0;
+        }
+        padding-start: 0;
+    }
 }

@@ -21,7 +21,7 @@ var os = os;
     <!-- main -->
     <main class="main <%= id %>" id="<%= id %>Main">
 <%- include("partial/_breadcrumb_article", { variables, id, returnNews, newsBlock }) %>
-        <section class="container-fluid">
+        <section class="container-fluid mb-4">
             <div class="row">
 <%
 var datetime = newsBlock.time.replace(/\//g, "-");
@@ -45,7 +45,7 @@ if(newsBlock.thumbnail.length > 0) {
                                 </div>
                         	</div>
                         	<div class="card-body">
-                        		<time class="news_createtime" datetime="<%= datetime %>"><%= newsBlock.time %></time>
+                        		<time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock.time %></time>
                         	</div>
                         </div>
                     </article>

@@ -11,42 +11,21 @@ h1,h2,h3,h4,h5,h6 {
 //リスト
 ul,ol {
     margin-bottom: 0;
-    padding-left: 0;
 }
 //コンテナ
-.container-fluid {
-    margin: { //.container-fluid打ち消し
-        left: 0;
-        right: 0;
-    }
-    padding: { //.container-fluid打ち消し
-        left: 0;
-        right: 0;
-    }
-    & > .row {
-        margin: { //.row打ち消し
-            left: 0;
-            right: 0;
-        }
-    }
-    & > .navbar-header, & > .navbar-collapse {
-        margin: { //打ち消し
-            left: 0;
-            right: 0;
-        }
-    }
-}
-//ナビゲーションバー(ヘッダ)
-.navbar {
-    margin-bottom: 0;
-    &-nav {
-        margin: 0 15px 0 0;
-    }
-    & > .container .navbar-brand, & > .container-fluid .navbar-brand {
-        margin-left: 0;
-    }
-}
-//アイキャッチ(ジャンボトロン)
-.jumbotron {
-    margin-bottom: 0;
-}
+//.container-fluid {
+//    margin: { //.container-fluid打ち消し
+//        left: 0;
+//        right: 0;
+//    }
+//    padding: { //.container-fluid打ち消し
+//        left: 0;
+//        right: 0;
+//    }
+//    & > .row {
+//        margin: { //.row打ち消し
+//            left: 0;
+//            right: 0;
+//        }
+//    }
+//}

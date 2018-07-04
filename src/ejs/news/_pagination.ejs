@@ -1,16 +1,15 @@
-        <section class="container-fluid">
-            <nav aria-label="新着情報一覧のページ送り">
-            	<ul class="pagination">
+        <nav class="mt-3 mb-4" aria-label="新着情報一覧のページ送り">
+            <ul class="pagination">
 <%
 //前のページへ
 if(counter !== 1) { //最初のページ以外
     var prev = counter - 1;
 %>
-            		<li class="page-item">
-            			<a href="news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
-            				<span aria-hidden="true">«</span>
-            			</a>
-            		</li>
+                <li class="page-item">
+                    <a href="news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
 <%
 }
 //ページネーション
@@ -18,12 +17,12 @@ for(var i = 1; i <= pageLength; i++) { //ページ数分生成
     //今いるページの場合、activeクラスを付与
     if(i === counter) {
 %>
-            		<li class="page-item active"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
+                <li class="page-item active"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
 <%
     }
     else {
 %>
-            		<li class="page-item"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
+                <li class="page-item"><a href="news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
 <%
     }
 }
@@ -31,14 +30,13 @@ for(var i = 1; i <= pageLength; i++) { //ページ数分生成
 if(counter !== pageLength) { //最後のページ以外
     var next = counter + 1;
 %>
-            		<li class="page-item">
-            			<a href="news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
-            				<span aria-hidden="true">»</span>
-            			</a>
-            		</li>
+                <li class="page-item">
+                    <a href="news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
 <%
 }
 %>
-            	</ul>
-            </nav>
-        </section>
+            </ul>
+        </nav>

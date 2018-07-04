@@ -8,9 +8,10 @@
             "excerpt": "Honokaのバージョンアップ(3.3.7→4.0.0)に対応",
             "content": "<p><a href=\"http://honokak.osaka\">Honoka</a>のバージョンアップ(3.3.7→4.0.0)に対応しました。</p>
 <ol>
-<li>ナビゲーションバーの高さ変更</li>
-<li>ハンバーガーアニメーションが死んだ</li>
-<li>游ゴシック・游明朝を非使用に</li>
+<li>Bootstrapのキャンセラーを調整</li>
+<li>ナビゲーションバーの高さを変更</li>
+<li>ハンバーガーアニメーションを削除、≡と×のアイコンが切り替わる表示に変更</li>
+<li>游ゴシック・游明朝を不使用にしました</li>
 <li>パネルコンポーネントからカードコンポーネントに変更</li>
 </ol>"
         },
@@ -60,7 +61,7 @@
             "time": "2018/4/29",
             "thumbnail": "",
             "excerpt": "baseurl追加に伴う調整。articleのパスを変更し、画像パスも対応するように",
-            "content": "<p><img src=\"img/imgpath_test.jpg\" alt=\"コーヒーカップ\" class=\"img-responsive\"></p>
+            "content": "<p><img src=\"img/imgpath_test.jpg\" alt=\"コーヒーカップ\" class=\"img-fluid\"></p>
             <p><code>baseurl</code>追加に伴う調整。</p>
             <ul>
                 <li>articleのパスを<code>articles/</code>から<code>news/articles/</code>に変更し、画像パスも対応することを確認</li>
