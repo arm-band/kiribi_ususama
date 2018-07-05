@@ -128,6 +128,14 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/7/5 ver.3.1.0-4.0.0
+    - 各記事に下記のSNSシェアボタンを追加しました
+        - Twitter
+        - facebook
+        - Google Plus
+        - LINE
+        - Pocket
+    - ボタンの`box-shadow`を消しました
 - 2018/7/5 ver.3.0.1-4.0.0
     - Now Loadingを削除
     - `<script>`読み込みに`defer`を追記

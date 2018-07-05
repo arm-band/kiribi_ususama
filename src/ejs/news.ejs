@@ -6,7 +6,7 @@ var variables = variables;
 var commonVar = commonVar;
 var newsBlock = newsBlock;
 var os = os;
-%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %><%- include("util/_header_path", { id }) %>
+%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %><%- include("util/_header_path", { id }) %><%- include("util/_article_id") %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,11 +34,11 @@ var os = os;
             <div class="row">
 <% for(var i in newsBlock) {
     var datetime = newsBlock[i].time.replace(/\//g, "-");
-    var idTime = newsBlock[i].time.replace(/\//g, "");
-    var version = newsBlock[i].title.replace(/\./g, "_");
+    var articleIdStr = funcArticleId(newsBlock[i]);
+    var articleUrl = funcArticleUrl("", articleIdStr);
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
-                    <article class="news_article" id="<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>">
+                    <article class="news_article" id="<%= articleIdStr %>">
                         <div class="card">
 <%
 if(newsBlock[i].thumbnail.length > 0) {
@@ -48,7 +48,7 @@ if(newsBlock[i].thumbnail.length > 0) {
 }
 %>
                         	<div class="card-body">
-                                <h3 class="news_header"><a href="news/articles/<%= newsBlock[i].id %>_<%= version %>-<%= idTime %>.html"><%= newsBlock[i].title %></a></h3>
+                                <h3 class="news_header"><a href="news/articles/<%= articleUrl %>.html"><%= newsBlock[i].title %></a></h3>
                                 <div class="news_contents">
                         	        <%- newsBlock[i].content %>
                                 </div>

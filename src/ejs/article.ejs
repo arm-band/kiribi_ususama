@@ -5,7 +5,7 @@ var commonVar = commonVar;
 var newsBlock = newsBlock;
 var returnNews = name + pages + ".html";
 var os = os;
-%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %><%- include("util/_header_path", { id }) %>
+%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %><%- include("util/_header_path", { id }) %><%- include("util/_article_id") %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -25,11 +25,11 @@ var os = os;
             <div class="row">
 <%
 var datetime = newsBlock.time.replace(/\//g, "-");
-var idTime = newsBlock.time.replace(/\//g, "");
-var version = newsBlock.title.replace(/\./g, "_");
+var articleIdStr = funcArticleId(newsBlock);
+var articleUrl = funcArticleUrl(variables.commons.url.slice(0, -1) + variables.commons.baseurl, articleIdStr);
 %>
                 <div class="col-12 news_card mb-3">
-                    <article class="news_article" id="<%= newsBlock.id %>_<%= version %>-<%= idTime %>">
+                    <article class="news_article" id="<%= articleIdStr %>">
                         <div class="card">
 <%
 if(newsBlock.thumbnail.length > 0) {
@@ -41,17 +41,26 @@ if(newsBlock.thumbnail.length > 0) {
                             <div class="card-body">
                                 <h2 class="news_header"><%= newsBlock.title %></h2>
                                 <div class="news_contents">
-                        	        <%- newsBlock.content %>
+                                    <%- newsBlock.content %>
                                 </div>
-                        	</div>
-                        	<div class="card-body">
-                        		<time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock.time %></time>
-                        	</div>
+                                <div class="news_share my-3">
+                                    <div class="btn-group" role="group" aria-label="シェアボタングループ">
+                                        <button type="button" class="btn news_btn news_btnTwitter"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>" target="_blank" title="Twitter Share"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                        <button type="button" class="btn news_btn news_btnFacebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebook Share"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
+                                        <button type="button" class="btn news_btn news_btnGooglePlus"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Get Pocket"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
+                                        <button type="button" class="btn news_btn news_btnLine"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINE Share"><i class="fa fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                        <button type="button" class="btn news_btn news_btnPocket"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Get Pocket"><i class="fa fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock.time %></time>
+                            </div>
                         </div>
                     </article>
                 </div>
             </div>
-            <div class="mb-3"><a href="news/<%= returnNews %>" class="btn">記事一覧に戻る</a></div>
+            <div class="mb-3"><a href="news/<%= returnNews %>" class="btn btn-light">記事一覧に戻る</a></div>
         </section>
     </main>
     <!-- /main -->

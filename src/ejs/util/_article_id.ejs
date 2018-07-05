@@ -1,0 +1,13 @@
+<%
+funcArticleId = function (newsBlock) {
+    var idTime = newsBlock.time.replace(/\//g, "");
+    var version = newsBlock.title.replace(/\./g, "_");
+    var articleIdStr = newsBlock.id + "_" + version + "-" + idTime;
+    return articleIdStr;
+}
+funcArticleUrl = function (domain, articleIdStr) {
+    var articleIdUrl = domain + "news/articles/" + articleIdStr + ".html";
+    articleIdUrl = articleIdUrl.replace(/\//g, "%2F");
+    return articleIdUrl;
+}
+%>

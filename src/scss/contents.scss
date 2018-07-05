@@ -35,4 +35,50 @@
             padding-left: 2rem;
         }
     }
+    &_share {
+        .btn-group {
+            .news_btn {
+                a, a:link {
+                    color: darken($bg-color, 6%);
+                }
+                a:hover, a:active, a:focus {
+                    text-decoration: none;
+                    color: $bg-color;
+                }
+                .fa.fa-fw {
+                    margin-right: 0.4rem;
+                }
+                &Twitter {
+                    background-color: $bc-twitter;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-twitter, 8%);
+                    }
+                }
+                &Facebook {
+                    background-color: $bc-facebook;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-facebook, 8%);
+                    }
+                }
+                &GooglePlus {
+                    background-color: $bc-google-plus;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-google-plus, 5%);
+                    }
+                }
+                &Line {
+                    background-color: $bc-line;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-line, 4%);
+                    }
+                }
+                &Pocket {
+                    background-color: $bc-pocket;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-pocket, 5%);
+                    }
+                }
+            }
+        }
+    }
 }
