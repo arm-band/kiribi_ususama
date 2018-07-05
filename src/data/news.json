@@ -2,6 +2,17 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.0.1-4.0.0",
+            "time": "2018/7/4",
+            "thumbnail": "",
+            "excerpt": "Now Loadingを削除し、JavaScript読み込み時にdeferパラメータを付与",
+            "content": "<ul>
+<li>Now Loadingを削除</li>
+<li><code>&lt;script&gt;</code>読み込みに<code>defer</code>を付与</li>
+</ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.0.0-4.0.0",
             "time": "2018/7/4",
             "thumbnail": "",

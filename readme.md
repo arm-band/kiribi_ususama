@@ -128,6 +128,9 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/7/5 ver.3.0.1-4.0.0
+    - Now Loadingを削除
+    - `<script>`読み込みに`defer`を追記
 - 2018/7/4 ver.3.0.0-4.0.0
     - [Honoka](http://honokak.osaka/)のバージョンアップ(3.3.7→4.0.0)に対応
         1. Bootstrapのキャンセラーを調整

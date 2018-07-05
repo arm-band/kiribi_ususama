@@ -70,7 +70,6 @@ if(newsBlock[i].thumbnail.length > 0) {
 
 </div>
 
-<script src="js/lib.min.js"></script>
-<script src="js/<%= variables.param[id].js %>.js"></script>
+<%- include("partial/_js_loader", { variables, id }) %>
 </body>
 </html>

@@ -120,18 +120,11 @@ gulp.task("js.concat", () => {
 		.pipe(concat("lib.js"))
 		.pipe(gulp.dest(dir.src.js + "/concat/")); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 });
-gulp.task("js.uglify", ["js.concat"], () => { //第2引数に先に実行して欲しい js.concat を指定する
+gulp.task("js.uglify.lib", ["js.concat"], () => { //第2引数に先に実行して欲しい js.concat を指定する
 	return gulp.src(dir.src.js + "/concat/lib.js")
 		.pipe(plumber())
 		.pipe(uglify({output: {comments: "some"}}))
 		.pipe(rename(dir.dist.js + "/lib.min.js"))  // 出力するファイル名を変更
-		.pipe(gulp.dest("./"));
-});
-gulp.task("js.uglify.progress", () => {
-	return gulp.src(dir.src.js + "/progress.js")
-		.pipe(plumber())
-		.pipe(uglify({output: {comments: "some"}}))
-		.pipe(rename(dir.dist.js + "/progress.min.js"))
 		.pipe(gulp.dest("./"));
 });
 gulp.task("js.uglify.app", () => {
@@ -142,7 +135,7 @@ gulp.task("js.uglify.app", () => {
 		.pipe(gulp.dest("./"));
 });
 //上記をまとめておく
-gulp.task("js", ["js.concat", "js.uglify", "js.uglify.progress", "js.uglify.app"]);
+gulp.task("js", ["js.concat", "js.uglify.lib", "js.uglify.app"]);
 
 //ejs
 gulp.task("ejs", () => {

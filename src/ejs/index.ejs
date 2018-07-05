@@ -12,8 +12,6 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page" id="<%= id %>Page">
 
-<%- include("index/_loading") %>
-
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
 
@@ -92,8 +90,6 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
 
 </div>
 
-<script src="js/lib.min.js"></script>
-<script src="js/progress.min.js"></script>
-<script src="js/<%= variables.param[id].js %>.js"></script>
+<%- include("partial/_js_loader", { variables, id }) %>
 </body>
 </html>
