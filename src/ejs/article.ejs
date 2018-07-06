@@ -1,13 +1,7 @@
-<%- include("util/_filename_id") %><%- include("util/_header_path") %><%- include("util/_article_id") %><%- include("util/_year") %><%
+<%- include("util/_init_load") %><%- include("util/_article_id") %><%
 var name = name; //gulpfile.jsで指定されたファイル名
-var variables = variables;
-var commonVar = commonVar;
 var newsBlock = newsBlock;
-var returnNews = name + pages + ".html";
-var os = os;
-copyRightYear = funcCopyRightYear(variables);
-id = funcFileNameId(os, filename);
-headerPath = funcHeaderPath(variables, id);
+var returnNews = `${name}${pages}.html`;
 %><%- include("util/_headset_article", { variables, id, newsBlock }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,7 +13,7 @@ headerPath = funcHeaderPath(variables, id);
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
 
-<%- include("partial/_eyecatch", { variables, id }) %>
+<%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>" id="<%= id %>Main">

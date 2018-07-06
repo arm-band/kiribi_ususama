@@ -1,12 +1,14 @@
 <%
+//記事のカードに振るIDを設定
 funcArticleId = (newsBlock) => {
     var idTime = newsBlock.time.replace(/\//g, "");
     var version = newsBlock.title.replace(/\./g, "_");
-    var articleIdStr = newsBlock.id + "_" + version + "-" + idTime;
+    var articleIdStr = `${newsBlock.id}_${version}-${idTime}`;
     return articleIdStr;
 }
+//記事ページのURLを生成
 funcArticleUrl = (domain, articleIdStr) => {
-    var articleIdUrl = domain + "news/articles/" + articleIdStr + ".html";
+    var articleIdUrl = `${domain}news/articles/${articleIdStr}.html`;
     articleIdUrl = articleIdUrl.replace(/\//g, "%2F");
     return articleIdUrl;
 }

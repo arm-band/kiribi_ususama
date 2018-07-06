@@ -1,0 +1,13 @@
+<%- include("_filename_id") %>
+<%- include("_header_path") %>
+<%- include("_eyecatch_header") %>
+<%- include("_year") %>
+<%
+variables = variables;
+commonVar = commonVar;
+os = os;
+copyRightYear = funcCopyRightYear(variables);
+id = funcFileNameId(os, filename);
+headerPath = funcHeaderPath(variables, id);
+headerString = funcEyecatchHeader(variables, id);
+%>

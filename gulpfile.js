@@ -77,7 +77,7 @@ var dir = {
 };
 
 //RSS Feed
-var rssFeed = function(variables) {
+var rssFeed = (variables) => {
     var day = new Date();
     var y = day.getFullYear();
     var m = day.getMonth() + 1;
@@ -108,7 +108,7 @@ var rssFeed = function(variables) {
 
     return feed;
 }
-var feedItem = function(feed, variables, newsBlock) {
+var feedItem = (feed, variables, newsBlock) => {
     var idTime = newsBlock.time.replace(/\//g, "");
     var version = newsBlock.title.replace(/\./g, "_");
     var articleIdStr = newsBlock.id + "_" + version + "-" + idTime;
@@ -125,64 +125,65 @@ var feedItem = function(feed, variables, newsBlock) {
 
 //jsonファイル取得
 //ejs内で使用するパラメータ
-var getVariables = function() {
+var getVariables = () => {
     return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.variables, { encoding: "UTF-8" }).replace(/\r|\n|\t/g, ""));
 }
-var getNews = function() {
+//新着情報
+var getNews = () => {
     return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.news, { encoding: "UTF-8" }).replace(/\r|\n|\t/g, ""));
 }
 //ejs, js, scssにまたがって使用するパラメータ
-var getCommonVar = function() {
+var getCommonVar = () => {
     return JSON.parse(fs.readFileSync(dir.data.dir + dir.data.commonvar, { encoding: "UTF-8" }).replace(/\r|\n|\t/g, ""));
 }
 
 //scssコンパイルタスク
 gulp.task("sass", () => {
-	return gulp.src(dir.src.scss + "/**/*.scss")
-		.pipe(plumber())
+    return gulp.src(`${dir.src.scss}/**/*.scss`)
+        .pipe(plumber())
         .pipe(json2sass({
-            jsonPath: dir.data.dir + dir.data.commonvar,
-            scssPath: dir.src.scss + "/util/_var.scss"
+            jsonPath: `${dir.data.dir}${dir.data.commonvar}`,
+            scssPath: `${dir.src.scss}/util/_var.scss`
         }))
-		.pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
+        .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'iOS >= 8.1', 'Android >= 4.4'],
             cascade: false
         }))
-		.pipe(gulp.dest(dir.dist.css));
+        .pipe(gulp.dest(dir.dist.css));
 });
 //watchタスク(Sassファイル変更時に実行するタスク)
 gulp.task("sass-watch", () => {
-	gulp.watch(dir.src.scss + "/**/*.scss", ["sass"]);
+    gulp.watch(`${dir.src.scss}/**/*.scss`, ["sass"]);
 });
 
 //画像圧縮
 gulp.task("imagemin", () => {
-	gulp.src(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)")
-		.pipe(imagemin())
-		.pipe(gulp.dest(dir.dist.img));
+    gulp.src(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`)
+        .pipe(imagemin())
+        .pipe(gulp.dest(dir.dist.img));
 });
 
 //js圧縮&結合&リネーム
 gulp.task("js.concat", () => {
-	return gulp.src([dir.assets.jquery + "/jquery.min.js", dir.assets.bootstrap + "/bootstrap.bundle.min.js", dir.assets.easing + "/jquery.easing.js", dir.assets.bowser + "/bowser.js"])
-		.pipe(plumber())
-		.pipe(concat("lib.js"))
-		.pipe(gulp.dest(dir.src.js + "/concat/")); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
+    return gulp.src([`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`, `${dir.assets.bowser}/bowser.js`])
+        .pipe(plumber())
+        .pipe(concat("lib.js"))
+        .pipe(gulp.dest(`${dir.src.js}/concat/`)); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 });
 gulp.task("js.uglify.lib", ["js.concat"], () => { //第2引数に先に実行して欲しい js.concat を指定する
-	return gulp.src(dir.src.js + "/concat/lib.js")
-		.pipe(plumber())
-		.pipe(uglify({output: {comments: "some"}}))
-		.pipe(rename(dir.dist.js + "/lib.min.js"))  // 出力するファイル名を変更
-		.pipe(gulp.dest("./"));
+    return gulp.src(`${dir.src.js}/concat/lib.js`)
+        .pipe(plumber())
+        .pipe(uglify({output: {comments: "some"}}))
+        .pipe(rename(`${dir.dist.js}/lib.min.js`))  // 出力するファイル名を変更
+        .pipe(gulp.dest("./"));
 });
 gulp.task("js.uglify.app", () => {
-	return gulp.src(dir.src.js + "/index.js")
-		.pipe(plumber())
-		.pipe(uglify({output: {comments: "some"}}))
-		.pipe(rename(dir.dist.js + "/app.min.js"))
-		.pipe(gulp.dest("./"));
+    return gulp.src(`${dir.src.js}/index.js`)
+        .pipe(plumber())
+        .pipe(uglify({output: {comments: "some"}}))
+        .pipe(rename(`${dir.dist.js}/app.min.js`))
+        .pipe(gulp.dest("./"));
 });
 //上記をまとめておく
 gulp.task("js", ["js.concat", "js.uglify.lib", "js.uglify.app"]);
@@ -193,7 +194,7 @@ gulp.task("ejs", () => {
     var newsjson = getNews();
     var commonVar = getCommonVar();
     gulp.src(
-        [dir.src.ejs + "/**/*.ejs", "!" + dir.src.ejs + "/**/_*.ejs", "!" + dir.src.ejs + "/news.ejs", "!" + dir.src.ejs + "/article.ejs"] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
+        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
     )
     .pipe(plumber())
     .pipe(data(function(file) {
@@ -210,7 +211,7 @@ gulp.task("news.ejs", function() {
     var variables = getVariables();
     var newsjson = getNews();
     var commonVar = getCommonVar();
-    var tempFile = dir.src.ejs + "/" + name + ".ejs"; //テンプレート
+    var tempFile = `${dir.src.ejs}/${name}.ejs`; //テンプレート
     var pages = 1; //ページカウンタ
     var pageLength = Math.ceil(newsjson.news.length / newsjson.pagination); //ページの最大数
     var newsBlock = []; //1ページ辺りの記事のオブジェクト
@@ -225,7 +226,7 @@ gulp.task("news.ejs", function() {
                 return { "filename": file.path }
             }))
             .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
-            .pipe(rename(name + pages + ".html"))
+            .pipe(rename(`${name}${pages}.html`))
             .pipe(gulp.dest(dir.dist.news));
 
             newsBlock = []; //空にする
@@ -240,7 +241,7 @@ gulp.task("news.ejs", function() {
             return { "filename": file.path }
         }))
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
-        .pipe(rename(name + pages + ".html"))
+        .pipe(rename(`${name}${pages}.html`))
         .pipe(gulp.dest(dir.dist.news));
     }
 });
@@ -251,7 +252,7 @@ gulp.task("article.ejs", function() {
     var variables = getVariables();
     var newsjson = getNews();
     var commonVar = getCommonVar();
-    var tempFile = dir.src.ejs + "/article.ejs"; //テンプレート
+    var tempFile = `${dir.src.ejs}/article.ejs`; //テンプレート
     var pages = 1; //ページカウンタ
     var feed = rssFeed(variables); //RSS
 
@@ -265,7 +266,7 @@ gulp.task("article.ejs", function() {
             return { "filename": file.path }
         }))
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages, os }))
-        .pipe(rename(newsBlock.id + "_" + version + "-" + idTime + ".html"))
+        .pipe(rename(`${newsBlock.id}_${version}-${idTime}.html`))
         .pipe(gulp.dest(dir.dist.articles));
 
         if(variables.param["index"].newscount > i) { //件数はvariables.param["index"].newscountの件数とする
@@ -278,7 +279,7 @@ gulp.task("article.ejs", function() {
     }
 
     var xml = feed.xml({indent: true}); //RSS
-    fs.writeFile(dir.dist.html + "/rss.xml", xml, function (err) {
+    fs.writeFile(`${dir.dist.html}/rss.xml`, xml, function (err) {
         if (err) {
             throw err;
         }
@@ -288,7 +289,7 @@ gulp.task("article.ejs", function() {
 //favicon
 gulp.task("favicon", () => {
     gulp.src(
-        [dir.src.favicon + "/**/*"]
+        [`${dir.src.favicon}/**/*`]
     )
     .pipe(plumber())
     .pipe(gulp.dest(dir.dist.favicon));
@@ -296,17 +297,17 @@ gulp.task("favicon", () => {
 
 //自動リロード
 gulp.task("connect-sync", () => {
-/*	connect.server({ //php使うときはこっち
-		port: 8001,
-		base: dir.dist.html,
-		bin: "D:/xampp/php/php.exe",
-		ini: "D:/xampp/php/php.ini"
-	}, function (){
-		browserSync({
-			proxy: "localhost:8001",
+/*  connect.server({ //php使うときはこっち
+        port: 8001,
+        base: dir.dist.html,
+        bin: "D:/xampp/php/php.exe",
+        ini: "D:/xampp/php/php.ini"
+    }, function (){
+        browserSync({
+            proxy: "localhost:8001",
             open: 'external'
-		});
-	});*/
+        });
+    });*/
     browserSync({
         server: {
             baseDir: dir.dist.html
@@ -321,9 +322,9 @@ gulp.task("styleguide", () => {
         .pipe(frontnote({
             out: dir.sg.html,
             title: getVariables().commons.sitename,
-            css: [dir.sg.css + "/contents.css", dir.sg.css + "/index.css", dir.sg.canceller + "/fncanceller.css", "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
-            script: [dir.sg.js + "/lib.min.js", dir.sg.js + "/app.min.js"],
-            template: dir.sg.template + "/index.ejs",
+            css: [`${dir.sg.css}/contents.css`, `${dir.sg.css}/index.css`, `${dir.sg.canceller}/fncanceller.css`, "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            script: [`${dir.sg.js}/lib.min.js`, `${dir.sg.js}/app.min.js`],
+            template: `${dir.sg.template}/index.ejs`,
             overview: dir.sg.md,
             params: { "commonVar": getCommonVar() }
         }));
@@ -331,12 +332,12 @@ gulp.task("styleguide", () => {
 
 //gulpのデフォルトタスクで諸々を動かす
 gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "article.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
-	gulp.watch(dir.src.ejs + "/**/*.ejs", ["ejs", "news.ejs", "article.ejs"]);
+    gulp.watch(`${dir.src.ejs}/**/*.ejs`, ["ejs", "news.ejs", "article.ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
-    gulp.watch(dir.src.scss + "/**/*.scss", ["sass", "styleguide"]);
-	gulp.watch(dir.src.img + "/**/*.+(jpg|jpeg|png|gif|svg)", ["imagemin"]);
-	gulp.watch(dir.src.js + "/**/*.js", ["js"]);
-    gulp.watch(dir.data.dir + "/**/*.json", ["ejs", "news.ejs", "article.ejs", "sass", "js", "styleguide"]);
+    gulp.watch(`${dir.src.scss}/**/*.scss`, ["sass", "styleguide"]);
+    gulp.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, ["imagemin"]);
+    gulp.watch(`${dir.src.js}/**/*.js`, ["js"]);
+    gulp.watch(`${dir.data.dir}/**/*.json`, ["ejs", "news.ejs", "article.ejs", "sass", "js", "styleguide"]);
 
-    gulp.watch([dir.dist.html + "/**/*.+(html|php)", dir.dist.css + "/**/*.css", dir.dist.img + "/**/*.+(jpg|jpeg|png|gif|svg)", dir.dist.js + "/**/*.js"]).on("change", () => { browserSync.reload(); });
+    gulp.watch([`${dir.dist.html}/**/*.+(html|php)`, `${dir.dist.css}/**/*.css`, `${dir.dist.img}/**/*.+(jpg|jpeg|png|gif|svg)`, `${dir.dist.js}/**/*.js`]).on("change", () => { browserSync.reload(); });
 });

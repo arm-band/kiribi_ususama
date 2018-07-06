@@ -1,14 +1,8 @@
-<%- include("util/_filename_id") %><%- include("util/_header_path") %><%- include("util/_year") %><%- include("util/_article_id") %><%
+<%- include("util/_init_load") %><%- include("util/_article_id") %><%
 var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
-var variables = variables;
-var commonVar = commonVar;
 var newsBlock = newsBlock;
-var os = os;
-copyRightYear = funcCopyRightYear(variables);
-id = funcFileNameId(os, filename);
-headerPath = funcHeaderPath(variables, id);
 %><%- include("util/_headset", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,7 +14,7 @@ headerPath = funcHeaderPath(variables, id);
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
 
-<%- include("partial/_eyecatch", { variables, id }) %>
+<%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>">
@@ -51,7 +45,7 @@ if(newsBlock[i].thumbnail.length > 0) {
 }
 %>
                         	<div class="card-body">
-                                <h3 class="news_header"><a href="news/articles/<%= articleUrl %>.html"><%= newsBlock[i].title %></a></h3>
+                                <h3 class="news_header"><a href="<%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
                                 <div class="news_contents">
                         	        <%- newsBlock[i].content %>
                                 </div>

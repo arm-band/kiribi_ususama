@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.2.1-4.0.0",
+            "time": "2018/07/06",
+            "thumbnail": "",
+            "excerpt": "記法やファイルを整理、gulpfile.jsの整理など",
+            "content": "<p>記法やファイルを整理、<code>gulpfile.js</code>の整理などを実施しました。</p><p>新着情報一覧に表示する1ページ当たりの新着情報の件数を3カラムのカードに併せて5から6に変更しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.2.0-4.0.0",
             "time": "2018/07/06",
             "thumbnail": "",
@@ -442,5 +450,5 @@
             "content": "<p>初版を公開しました。</p>"
         }
     ],
-    "pagination": 5
+    "pagination": 6
 }

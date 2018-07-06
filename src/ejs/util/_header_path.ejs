@@ -1,5 +1,5 @@
 <%
-//headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
+//ヘッダのパスをトップページならばアンカーのみ、そうでなければトップページの該当アンカー、というように振り分ける
 funcHeaderPath = (variables, id) => {
     var headerPath = "";
     if(id !== "index") {

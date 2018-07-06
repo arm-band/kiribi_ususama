@@ -1,0 +1,13 @@
+<%
+//アイキャッチ画像部分に出力する文字列をトップページかそれ以外かで振り分ける
+funcEyecatchHeader = (variables, id) => {
+    var headerString = "";
+    if(id === "index") {
+        headerString = variables.commons.sitename;
+    }
+    else {
+        headerString = variables.param[id].title;
+    }
+    return headerString;
+}
+%>

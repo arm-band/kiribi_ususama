@@ -1,12 +1,6 @@
-<%- include("util/_filename_id") %><%- include("util/_header_path") %><%- include("util/_year") %><%
-var variables = variables;
+<%- include("util/_init_load") %><%
 var newsjson = newsjson;
-var commonVar = commonVar;
-var os = os;
 var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
-copyRightYear = funcCopyRightYear(variables);
-id = funcFileNameId(os, filename);
-headerPath = funcHeaderPath(variables, id);
 %><%- include("util/_headset", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -18,7 +12,7 @@ headerPath = funcHeaderPath(variables, id);
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
 
-<%- include("index/_eyecatch", { variables, id }) %>
+<%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>">
