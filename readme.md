@@ -23,7 +23,7 @@ Scss, ejs, gulp使用。
         - gulp-autoprefixer: 4.1.0
         - bootstrap: **4.0.0**
         - bootstrap-honoka: **4.0.0**
-        - jquery: 3.2.1
+        - jquery: 3.3.1
         - jquery.easing: 1.4.1
 
 ### Download
