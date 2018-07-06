@@ -1,12 +1,14 @@
 <%
-id = "";
-var pathLetter = "";
-if(os.platform().indexOf("Win") || os.platform().indexOf("win")) {
-    pathLetter = "\\";
+funcFileNameId = (os, filename) => {
+    var id = "";
+    var pathLetter = "";
+    if(os.platform().indexOf("Win") || os.platform().indexOf("win")) {
+        pathLetter = "\\";
+    }
+    else {
+        pathLetter = "\/";
+    }
+    id = filename.slice(filename.lastIndexOf(pathLetter) + 1).replace(/\.ejs/g, ""); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
+    return id;
 }
-else {
-    pathLetter = "\/";
-}
-
-id = filename.slice(filename.lastIndexOf(pathLetter) + 1).replace(/\.ejs/g, ""); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
 %>

@@ -1,11 +1,14 @@
-<%
+<%- include("util/_filename_id") %><%- include("util/_header_path") %><%- include("util/_article_id") %><%- include("util/_year") %><%
 var name = name; //gulpfile.jsで指定されたファイル名
 var variables = variables;
 var commonVar = commonVar;
 var newsBlock = newsBlock;
 var returnNews = name + pages + ".html";
 var os = os;
-%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset_article", { variables, id, newsBlock }) %><%- include("util/_header_path", { id }) %><%- include("util/_article_id") %>
+copyRightYear = funcCopyRightYear(variables);
+id = funcFileNameId(os, filename);
+headerPath = funcHeaderPath(variables, id);
+%><%- include("util/_headset_article", { variables, id, newsBlock }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

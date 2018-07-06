@@ -1,4 +1,4 @@
-<%
+<%- include("util/_filename_id") %><%- include("util/_header_path") %><%- include("util/_year") %><%- include("util/_article_id") %><%
 var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
@@ -6,7 +6,10 @@ var variables = variables;
 var commonVar = commonVar;
 var newsBlock = newsBlock;
 var os = os;
-%><%- include("util/_filename_id", { filename, os }) %><%- include("util/_year", { variables, id }) %><%- include("util/_headset", { variables, id }) %><%- include("util/_header_path", { id }) %><%- include("util/_article_id") %>
+copyRightYear = funcCopyRightYear(variables);
+id = funcFileNameId(os, filename);
+headerPath = funcHeaderPath(variables, id);
+%><%- include("util/_headset", { variables, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

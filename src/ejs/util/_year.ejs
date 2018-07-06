@@ -1,10 +1,13 @@
 <%
-copyRightYear = "";
-var getFullYear = new Date().getFullYear();
-if(parseInt(getFullYear) - parseInt(variables.commons.year) === 0) {
-   copyRightYear = variables.commons.year;
-}
-else {
-   copyRightYear = `${variables.commons.year}-${getFullYear}`;
+funcCopyRightYear = (variables) => {
+    var copyRightYear = "";
+    var getFullYear = new Date().getFullYear();
+    if(parseInt(getFullYear) - parseInt(variables.commons.year) === 0) {
+        copyRightYear = variables.commons.year;
+    }
+    else {
+        copyRightYear = `${variables.commons.year}-${getFullYear}`;
+    }
+    return copyRightYear;
 }
 %>
