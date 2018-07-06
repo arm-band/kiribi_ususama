@@ -45,9 +45,6 @@
                     text-decoration: none;
                     color: $bg-color;
                 }
-                .fa.fa-fw {
-                    margin-right: 0.4rem;
-                }
                 &Twitter {
                     background-color: $bc-twitter;
                     &:hover, &:active, &:focus {
@@ -76,6 +73,12 @@
                     background-color: $bc-pocket;
                     &:hover, &:active, &:focus {
                         background-color: lighten($bc-pocket, 5%);
+                    }
+                }
+                &Rss {
+                    background-color: $bc-feedly;
+                    &:hover, &:active, &:focus {
+                        background-color: lighten($bc-feedly, 5%);
                     }
                 }
             }

@@ -45,11 +45,12 @@ if(newsBlock.thumbnail.length > 0) {
                                 </div>
                                 <div class="news_share my-3">
                                     <div class="btn-group" role="group" aria-label="シェアボタングループ">
-                                        <button type="button" class="btn news_btn news_btnTwitter"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>" target="_blank" title="Twitter Share"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
-                                        <button type="button" class="btn news_btn news_btnFacebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebook Share"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
-                                        <button type="button" class="btn news_btn news_btnGooglePlus"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Get Pocket"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-                                        <button type="button" class="btn news_btn news_btnLine"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINE Share"><i class="fa fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
-                                        <button type="button" class="btn news_btn news_btnPocket"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Get Pocket"><i class="fa fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                        <button type="button" class="btn news_btn news_btnTwitter"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a></button>
+                                        <button type="button" class="btn news_btn news_btnFacebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a></button>
+                                        <button type="button" class="btn news_btn news_btnGooglePlus"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a></button>
+                                        <button type="button" class="btn news_btn news_btnLine"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fa fa-fw fa-comment" aria-hidden="true"></i></a></button>
+                                        <button type="button" class="btn news_btn news_btnPocket"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fa fa-fw fa-get-pocket" aria-hidden="true"></i></a></button>
+                                        <button type="button" class="btn news_btn news_btnRss"><a href="https://feedly.com/i/subscription/feed/<%= domain %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fa fa-fw fa-rss" aria-hidden="true"></i></a></button>
                                     </div>
                                 </div>
                             </div>

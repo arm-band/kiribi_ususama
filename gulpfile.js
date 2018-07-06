@@ -31,6 +31,8 @@ var browserSync = require("browser-sync"); //ブラウザリロード
 var frontnote = require("gulp-frontnote");
 //OS情報
 var os = require("os");
+//RSS
+var RSS = require("rss");
 
 //path difinition
 var dir = {
@@ -73,6 +75,54 @@ var dir = {
     template  : './sg/src/ejs'
   }
 };
+
+//RSS Feed
+var rssFeed = function(variables) {
+    var day = new Date();
+    var y = day.getFullYear();
+    var m = day.getMonth() + 1;
+    var d = day.getDate();
+    var hr = day.getHours();
+    var mt = day.getMinutes();
+    var sc = day.getSeconds();
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (d < 10) {
+        d = "0" + d;
+    }
+
+    var feed = new RSS({
+        title: variables.commons.sitename,
+        description: variables.param["index"].description,
+        feed_url: variables.commons.url + "rss.xml",
+        site_url: variables.commons.url,
+        image_url: variables.commons.url + "img/" + variables.param["index"].ogpimage,
+        managingEditor: variables.commons.author,
+        webMaster: variables.commons.author,
+        copyright: variables.commons.year + " " + variables.commons.author,
+        language: "ja",
+        pubDate: y + "-" + m + "-" + d + "T" + hr + ":" + mt + ":" + sc + "+09:00",
+        ttl: "60"
+    });
+
+    return feed;
+}
+var feedItem = function(feed, variables, newsBlock) {
+    var idTime = newsBlock.time.replace(/\//g, "");
+    var version = newsBlock.title.replace(/\./g, "_");
+    var articleIdStr = newsBlock.id + "_" + version + "-" + idTime;
+    feed.item({
+    title:  newsBlock.title,
+    description: newsBlock.description,
+    url: variables.commons.url.slice(0, -1) + variables.commons.baseurl + "news/articles/" + articleIdStr + ".html",
+    author: variables.commons.author,
+    date: newsBlock.time.replace(/\//g, "-")
+});
+
+    return feed;
+}
+
 //jsonファイル取得
 //ejs内で使用するパラメータ
 var getVariables = function() {
@@ -203,6 +253,7 @@ gulp.task("article.ejs", function() {
     var commonVar = getCommonVar();
     var tempFile = dir.src.ejs + "/article.ejs"; //テンプレート
     var pages = 1; //ページカウンタ
+    var feed = rssFeed(variables); //RSS
 
     for(var i = 0; i < newsjson.news.length; i++) { //新着情報の件数
         var newsBlock = newsjson.news[i];
@@ -216,10 +267,22 @@ gulp.task("article.ejs", function() {
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages, os }))
         .pipe(rename(newsBlock.id + "_" + version + "-" + idTime + ".html"))
         .pipe(gulp.dest(dir.dist.articles));
+
+        if(variables.param["index"].newscount > i) { //件数はvariables.param["index"].newscountの件数とする
+            feedItem(feed, variables, newsBlock); //RSS
+        }
+
         if(i % newsjson.pagination == (newsjson.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             pages++; //カウントアップ
         }
     }
+
+    var xml = feed.xml({indent: true}); //RSS
+    fs.writeFile(dir.dist.html + "/rss.xml", xml, function (err) {
+        if (err) {
+            throw err;
+        }
+    });
 });
 
 //favicon
@@ -231,7 +294,7 @@ gulp.task("favicon", () => {
     .pipe(gulp.dest(dir.dist.favicon));
 });
 
-//proxy経由
+//自動リロード
 gulp.task("connect-sync", () => {
 /*	connect.server({ //php使うときはこっち
 		port: 8001,
