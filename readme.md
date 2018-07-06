@@ -71,7 +71,7 @@ gulpで処理されるもの
 - アイキャッチ(高さ100vh, 背景fixed) ※画像は適宜用意
 - ページトップへ戻る
 - <del>ハンバーガーメニューのアニメーション(1～8まで)</del>
-- `src/ejs/news/news.json`による新着情報一覧の一元管理(トップページ: `index.ejs`と新着情報一覧: `news.ejs`の2箇所で使用)
+- `src/ejs/news/news.json`による新着情報一覧の一元管理(トップページ: `index.ejs`と新着情報一覧: `news.ejs`、各記事ページ: `article.ejs`の3箇所で使用)
 
 ## Futures
 
@@ -90,7 +90,7 @@ ejsの使い方をもっとしっかりしていきたい。
             - `year`: 年数。フッタのコピーライトで使います
             - `author`: 作者名。フッタのコピーライトで使います
             - `baseurl`: `base`タグの`href`属性に使います
-            - `ogpurl`: Twitterカード出力時のサイトURLを指定します
+            - `url`: Twitterカード出力時のサイトURLを指定します
             - `ogpimage`: Twitterカード出力時の画像を指定します
             - `twitteraccount`: Twitterカード出力時のTwitterアカウントを指定します(@マーク抜き)
         - `color`:
