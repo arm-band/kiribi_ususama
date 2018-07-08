@@ -15,10 +15,10 @@ $rpt-size: 44px;
 	    height: $rpt-size;
 	    line-height: $rpt-size;
 	    background-color: $main-color2;
-	    border-radius: $rpt-size / 2;
+	    border-radius: $rpt-size / 11;
 	    color: $bg-color;
 	    text-align: center;
-	    box-shadow: 3px 3px 3px rgba($color, 0.4);
+//	    box-shadow: 3px 3px 3px rgba($color, 0.4);
 	    cursor: pointer;
         @include transitionSet();
         &:hover, &:active {
