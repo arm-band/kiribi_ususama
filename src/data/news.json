@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.2.2-4.0.0",
+            "time": "2018/07/08",
+            "thumbnail": "",
+            "excerpt": "メインカラーを烏枢沙摩明王に合わせて赤系の色に変更",
+            "content": "<p>メインカラーを烏枢沙摩明王に合わせて赤系の色に変更。アクセントカラー、リンクカラーを<code>adjust-hue</code>で生成するように変更。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.2.1-4.0.0",
             "time": "2018/07/06",
             "thumbnail": "",
