@@ -21,7 +21,8 @@
     "hum": "npm run proinit:bootstrap1",
     "jah": "npm run proinit:bootstrap2",
     "svaha": "npm run proinit:bootstrap3",
-    "ususama": "npm-run-all -s kashou zanmai gueshingon om krodhana hum jah svaha"
+    "ususama": "npm-run-all -s kashou zanmai gueshingon om krodhana hum jah svaha",
+    "gulp": "gulp"
   },
   "author": "Arm Band",
   "license": "ISC",

@@ -42,7 +42,7 @@ Scss, ejs, gulp使用。
 4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
 5. `npm run ususama`(`npm run proinit`でも良い)で初期設定を行う
     - `npm run gue`ではなくなったので注意
-6. `gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
+6. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
 
