@@ -6,8 +6,8 @@
 //                                               *
 // ============================================= */
 $main-color2: lighten($main-color, 15%);
-$accent-color: darken(adjust-hue($main-color, 135deg), 19%);
-$link-color: darken(adjust-hue($main-color, 180deg), 6%);
+$accent-color: adjust-hue($main-color, 150deg);
+$link-color: adjust-hue($main-color, 210deg);
 $link-v-color: darken($link-color, 15%);
 $link-ha-color: lighten($link-color, 15%);
 

@@ -27,6 +27,14 @@
 //                                                *
 // ============================================= */
 .news {
+    .pagination {
+        .page-item.active {
+            .page-link {
+                background-color: $accent-color;
+                border-color: $accent-color;
+            }
+        }
+    }
     &_contents {
         ul {
             padding-left: 1rem;
