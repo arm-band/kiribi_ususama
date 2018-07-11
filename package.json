@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "3.2.2-4.0.0",
+  "version": "3.3.0-4.0.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -22,7 +22,8 @@
     "jah": "npm run proinit:bootstrap2",
     "svaha": "npm run proinit:bootstrap3",
     "ususama": "npm-run-all -s kashou zanmai gueshingon om krodhana hum jah svaha",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "kiribi": "node bin/console"
   },
   "author": "Arm Band",
   "license": "ISC",
@@ -52,6 +53,7 @@
     "gulp-json-to-sass": "^0.0.4",
     "brand-colors": "^2.0.1",
     "bowser": "^1.9.4",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "readline-sync": "^1.4.9"
   }
 }

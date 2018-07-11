@@ -40,9 +40,10 @@ Scss, ejs, gulp使用。
     1. `git remote rm origin <REPOSITORY_TEMPLATE_URL.git>`で現在のリモートリポジトリを削除
     2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
 4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
-5. `npm run ususama`(`npm run proinit`でも良い)で初期設定を行う
-    - `npm run gue`ではなくなったので注意
-6. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
+5. `npm run kiribi`でサイト名など、プロジェクトのパラメータ初期設定を行う
+6. `npm run ususama`(`npm run proinit`でも良い)で`npm i -D`したファイルの再配置などの初期設定を行う
+     - `npm run gue`ではなくなったので注意
+7. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
 
@@ -128,6 +129,14 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/7/11 ver.3.3.0-4.0.0
+    - CLIで初期設定できるように`bin/console.js`を追加。CLIで設定できるのは以下の項目
+        - サイト名: `variables.commons.sitename`
+        - 著者名(フッタのコピーライト表示で使用): `variables.commons.author`
+        - 発行年数(フッタのコピーライト表示で使用): `variables.commons.year`
+        - URL: `variables.commons.url`
+        - サイトのパス: `variables.commons.baseurl`
+        - メインカラー: `commonvar["main-color"]`
 - 2018/7/6 ver.3.2.2-4.0.0
     - メインカラーを烏枢沙摩明王に合わせて赤系の色に変更。アクセントカラー、リンクカラーを`adjust-hue`で生成するように変更
 - 2018/7/6 ver.3.2.1-4.0.0

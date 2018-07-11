@@ -2,6 +2,22 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.3.0-4.0.0",
+            "time": "2018/07/11",
+            "thumbnail": "",
+            "excerpt": "CLIで初期設定できるようにbin/console.jsを追加",
+            "content": "<p>CLIで初期設定できるように<code>bin/console.js</code>を追加。CLIで設定できるのは以下の項目</p>
+<ul>
+<li>サイト名: <code>variables.commons.sitename</code></li>
+<li>著者名(フッタのコピーライト表示で使用): <code>variables.commons.author</code></li>
+<li>発行年数(フッタのコピーライト表示で使用): <code>variables.commons.year</code></li>
+<li>URL: <code>variables.commons.url</code></li>
+<li>サイトのパス: <code>variables.commons.baseurl</code></li>
+<li>メインカラー: <code>commonvar[&quot;main-color&quot;]</code></li>
+</ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.2.2-4.0.0",
             "time": "2018/07/08",
             "thumbnail": "",
