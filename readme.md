@@ -129,6 +129,9 @@ ejsの使い方をもっとしっかりしていきたい。
 
 ## Release Notes
 
+- 2018/7/12 ver.3.3.1-4.0.0
+    - SNSシェアボタンをボタングループから単独のボタンに分離(レスポンシブ考慮)
+    - gulpにbuildコマンド追加
 - 2018/7/11 ver.3.3.0-4.0.0
     - CLIで初期設定できるように`bin/console.js`を追加。CLIで設定できるのは以下の項目
         - サイト名: `variables.commons.sitename`

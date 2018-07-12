@@ -1,5 +1,17 @@
 {
     "news":[
+        
+        {
+            "id": "releasenote",
+            "title": "ver.3.3.1-4.0.0",
+            "time": "2018/07/12",
+            "thumbnail": "",
+            "excerpt": "SNSシェアボタンをボタングループから単独のボタンに分離(レスポンシブ考慮)、ほか",
+            "content": "<ul>
+<li>SNSシェアボタンをボタングループから単独のボタンに分離(レスポンシブ考慮)</li>
+<li>gulpにbuildコマンド追加</li>
+</ul>"
+        },
         {
             "id": "releasenote",
             "title": "ver.3.3.0-4.0.0",
