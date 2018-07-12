@@ -341,3 +341,7 @@ gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "article.ejs", "j
 
     gulp.watch([`${dir.dist.html}/**/*.+(html|php)`, `${dir.dist.css}/**/*.css`, `${dir.dist.img}/**/*.+(jpg|jpeg|png|gif|svg)`, `${dir.dist.js}/**/*.js`]).on("change", () => { browserSync.reload(); });
 });
+
+//build
+//Build command: npm run ususama && gulp build
+gulp.task("build", ["sass", "ejs", "news.ejs", "article.ejs", "js", "imagemin", "favicon"]);
