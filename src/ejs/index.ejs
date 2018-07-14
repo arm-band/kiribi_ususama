@@ -17,14 +17,14 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
     <!-- main -->
     <main class="main <%= id %>">
 <%- include("partial/_breadcrumb", { variables, id }) %>
-        <section class="container-fluid mb-4" id="news">
-            <div class="row">
+        <section class="container-fluid" id="news">
+            <div class="row mb-4">
                 <div class="col-md-12 col-lg-5">
-                    <div class="page-header">
+                    <div class="page-header mb-3">
                         <h2>What's news?<small class="ml-3">News</small></h2>
                     </div>
                     <p>新着情報一覧(最新<%=  variables.param[id].newscount %>件)です。過去の履歴は下記ボタンより。</p>
-                    <div class="mb-3"><a href="news/news1.html" class="btn btn-light">過去の履歴</a></div>
+                    <div class="mb-4"><a href="news/news1.html" class="btn btn-light">過去の履歴</a></div>
                 </div>
                 <div class="col-md-12 col-lg-7">
                     <ul class="list-group">
@@ -49,11 +49,11 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
                 </div>
             </div>
         </section>
-        <section class="container-fluid mb-4" id="about">
-            <div class="row">
+        <section class="container-fluid" id="about">
+            <div class="row mb-4">
                 <article class="col-12">
 <%- include("about/_content", { id }) %>
-                    <h3>烏枢沙摩明王の真言<small class="ml-3">解穢真言</small></h3>
+                    <h3 class="mb-3">烏枢沙摩明王の真言<small class="ml-3">解穢真言</small></h3>
                     <p><ruby>
                         ॐ<rp>(</rp><rt>オン</rt><rp>)</rp>
                         　<rp>(</rp><rt>・</rt><rp>)</rp>

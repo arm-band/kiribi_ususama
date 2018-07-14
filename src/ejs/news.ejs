@@ -19,22 +19,22 @@ var newsBlock = newsBlock;
     <!-- main -->
     <main class="main <%= id %>">
 <%- include("partial/_breadcrumb", { variables, id }) %>
-        <section class="container-fluid mb-4">
-            <div class="row">
+        <section class="container-fluid">
+            <div class="row mb-4">
                 <div class="col-12">
-                    <div class="page-header">
+                    <div class="page-header mb-3">
                         <h2>What's news?<small class="ml-3">News</small></h2>
                     </div>
 <%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
 <% for(var i in newsBlock) {
     var datetime = newsBlock[i].time.replace(/\//g, "-");
     var articleIdStr = funcArticleId(newsBlock[i]);
     var articleUrl = funcArticleUrl("", articleIdStr);
 %>
-                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
                     <article class="news_article" id="<%= articleIdStr %>">
                         <div class="card">
 <%
