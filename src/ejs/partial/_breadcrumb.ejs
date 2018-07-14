@@ -1,6 +1,17 @@
 <nav aria-label="パンくずリスト">
     <ol class="breadcrumb">
+<%
+if(id === "index") {
+%>
+        <li class="breadcrumb-item"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</li>
+<%
+}
+else {
+%>
         <li class="breadcrumb-item"><a href="<%= variables.commons.baseurl %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= variables.param[id].title %></li>
+<%
+}
+%>
     </ol>
 </nav>
