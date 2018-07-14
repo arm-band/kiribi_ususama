@@ -1,6 +1,13 @@
 {
     "news":[
-        
+        {
+            "id": "releasenote",
+            "title": "ver.3.3.2-4.0.0",
+            "time": "2018/07/14",
+            "thumbnail": "",
+            "excerpt": "スタイルガイドのテンプレートをBootstrap4対応に修正",
+            "content": "<p>スタイルガイドのテンプレートをBootstrap4対応に修正しました。</p>"
+        },
         {
             "id": "releasenote",
             "title": "ver.3.3.1-4.0.0",

@@ -10,52 +10,103 @@
 ```
     <section class="eyecatch">
         <div class="container-fluid">
-            <h2 class="eyecatch_header">Page Name</h2>
+            <h2 class="eyecatch_header">新着情報</h2>
         </div>
     </section>
 ```
 */
 /*
 #styleguide
-記事
+記事(アイキャッチ画像なし)
 ```
+    <main class="main newsPage">
+        <section class="container-fluid mb-4">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
                     <article class="news_article" id="releasenote-hoge">
-                        <div class="panel panel-default">
-                        	<div class="panel-heading">
-                        		<h3 class="news_header">ほげ</h3>
-                        	</div>
-                        	<div class="panel-body">
+                        <div class="card">
+                        	<div class="card-body">
+                                <h3 class="news_header"><a href="./#">記事タイトル</a></h3>
                                 <div class="news_contents">
-                        	        <p>ふが。</p><ul><li>ほげほげ</li><li>ぴよぴよ</li></ul>
+                        	        <p>記事本文</p>
+                                    <ul>
+                                        <li>いろはにほへと</li>
+                                        <li>ちりぬるを</li>
+                                    </ul>
+                                    <ol>
+                                        <li>わかよたれそ</li>
+                                        <li>つねならむ</li>
+                                    </ol>
                                 </div>
                         	</div>
-                        	<div class="panel-footer">
-                        		<time class="news_createtime" datetime="99999999">9999/99/99</time>
+                        	<div class="card-body">
+                        		<time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
                         	</div>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
+    </main>
+```
+*/
+/*
+#styleguide
+記事
+```
+    <main class="main newsPage">
+        <section class="container-fluid mb-4">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
+                    <article class="news_article" id="releasenote-hoge">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="../../dist/img/eyecatch.jpg" alt="アイキャッチサンプル">
+                        	<div class="card-body">
+                                <h3 class="news_header"><a href="releasenote-hoge">記事タイトル</a></h3>
+                                <div class="news_contents">
+                        	        <p>記事本文</p>
+                                    <ul>
+                                        <li>いろはにほへと</li>
+                                        <li>ちりぬるを</li>
+                                    </ul>
+                                    <ol>
+                                        <li>わかよたれそ</li>
+                                        <li>つねならむ</li>
+                                    </ol>
+                                </div>
+                        	</div>
+                        	<div class="card-body">
+                        		<time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
+                        	</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 ```
 */
 /*
 #styleguide
 ページネーション
 ```
-            <nav>
-            	<ul class="pagination">
-            		<li>
-            			<a href="#" aria-label="前のページへ">
-            				<span aria-hidden="true">«</span>
-            			</a>
-            		</li>
-            		<li class="active"><a href="#">1</a></li>
-            		<li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-            		<li>
-            			<a href="#" aria-label="次のページへ">
-            				<span aria-hidden="true">»</span>
-            			</a>
-            		</li>
-            	</ul>
-            </nav>
+        <nav class="mt-3 mb-4" aria-label="新着情報一覧のページ送り">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a href="news/news1.html" class="page-link" aria-label="前のページへ">
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+                <li class="page-item"><a href="news/news1.html" class="page-link">1</a></li>
+                <li class="page-item active"><a href="news/news2.html" class="page-link">2</a></li>
+                <li class="page-item"><a href="news/news3.html" class="page-link">3</a></li>
+                <li class="page-item"><a href="news/news4.html" class="page-link">4</a></li>
+                <li class="page-item">
+                    <a href="news/news5.html" class="page-link" aria-label="次のページへ">
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 ```
 */

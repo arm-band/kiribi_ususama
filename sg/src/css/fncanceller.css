@@ -1,20 +1,6 @@
 @charset "utf-8";
 
-#loading {
-    position: relative;
-    z-index: 1;
-}
-#loadContent {
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    height: auto;
-    top: auto;
-    left: auto;
-    transform: none;
-    z-index: 1;
-}
-.navbar-fixed-top {
+.fixed-top {
     position: relative !important;
 }
 .main {
