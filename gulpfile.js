@@ -61,8 +61,7 @@ var dir = {
     articles  : './dist/news/articles',
     css       : './dist/css',
     js        : './dist/js',
-    img       : './dist/img',
-    favicon   : './dist/favicon'
+    img       : './dist/img'
   },
   sg: {
     html      : './sg/dist',
@@ -292,7 +291,7 @@ gulp.task("favicon", () => {
         [`${dir.src.favicon}/**/*`]
     )
     .pipe(plumber())
-    .pipe(gulp.dest(dir.dist.favicon));
+    .pipe(gulp.dest(dir.dist.html));
 });
 
 //自動リロード
