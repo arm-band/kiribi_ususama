@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "3.3.3-4.0.0",
+  "version": "3.3.3-4.1.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -28,8 +28,8 @@
   "author": "Arm Band",
   "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^4.0.0",
-    "bootstrap-honoka": "^4.0.0",
+    "bootstrap": "^4.1.0",
+    "bootstrap-honoka": "^4.1.0",
     "browser-sync": "^2.24.4",
     "copyfiles": "^2.0.0",
     "gulp": "^3.9.1",
