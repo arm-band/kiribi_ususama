@@ -41,7 +41,7 @@ Scss, ejs, gulp使用。
     2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
 4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
 5. `npm run kiribi`でサイト名など、プロジェクトのパラメータ初期設定を行う
-6. `npm run ususama`(`npm run proinit`でも良い)で`npm i -D`したファイルの再配置などの初期設定を行う
+6. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
      - `npm run gue`ではなくなったので注意
 7. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
@@ -120,6 +120,8 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/7/25 ver.3.4.0-4.1.0
+    - コマンドを変更。真言モードのみに統一
 - 2018/7/24 ver.3.3.4-4.1.0
     - ©の参照文字を不使用に
     - faviconの指定を変更
