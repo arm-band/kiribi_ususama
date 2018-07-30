@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.5.0-4.1.0",
+            "time": "2018/07/30",
+            "thumbnail": "",
+            "excerpt": "node_modules以外の生成ディレクトリやファイルを削除するコマンドを実装",
+            "content": "<p><code>node_modules</code>以外の生成ディレクトリやファイル(<code>/src/scss/assets/</code>, <code>/src/js/concat/</code>, <code>/dist/</code>, <code>/sg/dist/</code>, <code>./package-lock.json</code>)を削除するコマンドを実装。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.4.0-4.1.0",
             "time": "2018/07/25",
             "thumbnail": "",

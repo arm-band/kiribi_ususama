@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "3.4.0-4.1.0",
+  "version": "3.5.0-4.1.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "svaha": "copyfiles -f \"./node_modules/bootstrap/scss/utilities/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap/scss/utilities\"",
     "ususama": "npm-run-all -s kashou zanmai gueshingon om krodhana hum jah svaha",
     "gulp": "gulp",
-    "kiribi": "node bin/console"
+    "kiribi": "node bin/console",
+    "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./dist/ ./sg/dist/ ./package-lock.json"
   },
   "author": "Arm Band",
   "license": "ISC",
@@ -45,6 +46,7 @@
     "brand-colors": "^2.0.1",
     "bowser": "^1.9.4",
     "rss": "^1.2.2",
-    "readline-sync": "^1.4.9"
+    "readline-sync": "^1.4.9",
+    "rimraf": "^2.6.2"
   }
 }

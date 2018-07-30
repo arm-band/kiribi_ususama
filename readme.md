@@ -43,6 +43,7 @@ Scss, ejs, gulp使用。
 5. `npm run kiribi`でサイト名など、プロジェクトのパラメータ初期設定を行う
 6. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
      - `npm run gue`ではなくなったので注意
+     - このコマンドで生成したディレクトリや`npm i -D`の際に生成される`package-lock.json`は`npm run fujoketsu`(不浄潔)で削除できます
 7. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
@@ -120,6 +121,8 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/7/30 ver.3.5.0-4.1.0
+    - `node_modules`以外の生成ディレクトリ(`/src/scss/assets/`, `/src/js/concat/`, `/dist/`, `/sg/dist/`, `./package-lock.json`)を削除するコマンドを実装
 - 2018/7/25 ver.3.4.0-4.1.0
     - コマンドを変更。真言モードのみに統一
 - 2018/7/24 ver.3.3.4-4.1.0
