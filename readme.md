@@ -86,8 +86,6 @@ gulpで処理されるもの
             - `url`: Twitterカード出力時のサイトURLを指定します
             - `ogpimage`: Twitterカード出力時の画像を指定します
             - `twitteraccount`: Twitterカード出力時のTwitterアカウントを指定します(@マーク抜き)
-        - `color`:
-            - `main`: メインカラー。アドレスバーの色を指定するテーマカラーで使います
         - `param`:
             - キー名はファイル名と合わせること
                 - `title`: ページ名
@@ -121,6 +119,8 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/8/1 ver.3.5.1-4.1.0
+    - 誤字やミスを修正
 - 2018/7/30 ver.3.5.0-4.1.0
     - `node_modules`以外の生成ディレクトリ(`/src/scss/assets/`, `/src/js/concat/`, `/dist/`, `/sg/dist/`, `./package-lock.json`)を削除するコマンドを実装
 - 2018/7/25 ver.3.4.0-4.1.0

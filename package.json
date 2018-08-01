@@ -1,6 +1,6 @@
 {
   "name": "kiribi_ususama",
-  "version": "3.5.0-4.1.0",
+  "version": "3.5.1-4.1.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "ususama": "npm-run-all -s kashou zanmai gueshingon om krodhana hum jah svaha",
     "gulp": "gulp",
     "kiribi": "node bin/console",
-    "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./dist/ ./sg/dist/ ./package-lock.json"
+    "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./dist/ ./sg/dist/ ./package-lock.json"
   },
   "author": "Arm Band",
   "license": "ISC",
