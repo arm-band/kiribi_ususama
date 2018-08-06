@@ -1,9 +1,17 @@
 {
     "news":[
+                {
+            "id": "releasenote",
+            "title": "ver.3.5.1-4.1.3",
+            "time": "2018/08/06",
+            "thumbnail": "",
+            "excerpt": "Bootstrap、およびHonokaのバージョンを4.1.0から4.1.3にアップデートしました",
+            "content": "<p>Bootstrap、およびHonokaのバージョンを4.1.0から4.1.3にアップデートしました。</p>"
+        },
         {
             "id": "releasenote",
             "title": "ver.3.5.1-4.1.0",
-            "time": "2018/07/30",
+            "time": "2018/08/01",
             "thumbnail": "",
             "excerpt": "誤字やミスを修正",
             "content": "<p>誤字やミスを修正。</p>"
