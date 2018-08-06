@@ -2,6 +2,20 @@
     "news":[
                 {
             "id": "releasenote",
+            "title": "ver.3.5.2-4.1.3",
+            "time": "2018/08/06",
+            "thumbnail": "eyecatch.jpg",
+            "excerpt": "いくつかの修正",
+            "content": "<p>いくつかの修正。</p>
+<ul>
+<li><code>gulpfile.js</code>のejs周りのタスクをまとめました</li>
+<li>新着情報一覧ページのURL生成の際のスラッシュのエスケープを削除</li>
+<li>新着情報一覧ページのコンテンツを本文から抜粋に変更</li>
+<li>新着記事のサムネイル画像のパスを<code>img/</code>直下から<code>img/thumbnails/</code>の中に変更しました</li>
+</ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.5.1-4.1.3",
             "time": "2018/08/06",
             "thumbnail": "",

@@ -188,7 +188,7 @@ gulp.task("js.uglify.app", () => {
 gulp.task("js", ["js.concat", "js.uglify.lib", "js.uglify.app"]);
 
 //ejs
-gulp.task("ejs", () => {
+gulp.task("commons.ejs", () => {
     var variables = getVariables();
     var newsjson = getNews();
     var commonVar = getCommonVar();
@@ -285,6 +285,9 @@ gulp.task("article.ejs", function() {
     });
 });
 
+//上記をまとめておく
+gulp.task("ejs", ["commons.ejs", "news.ejs", "article.ejs"]);
+
 //favicon
 gulp.task("favicon", () => {
     gulp.src(
@@ -330,17 +333,17 @@ gulp.task("styleguide", () => {
 });
 
 //gulpのデフォルトタスクで諸々を動かす
-gulp.task("default", ["sass", "sass-watch", "ejs", "news.ejs", "article.ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
-    gulp.watch(`${dir.src.ejs}/**/*.ejs`, ["ejs", "news.ejs", "article.ejs"]);
+gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
+    gulp.watch(`${dir.src.ejs}/**/*.ejs`, ["ejs"]);
 //    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(`${dir.src.scss}/**/*.scss`, ["sass", "styleguide"]);
     gulp.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, ["imagemin"]);
     gulp.watch(`${dir.src.js}/**/*.js`, ["js"]);
-    gulp.watch(`${dir.data.dir}/**/*.json`, ["ejs", "news.ejs", "article.ejs", "sass", "js", "styleguide"]);
+    gulp.watch(`${dir.data.dir}/**/*.json`, ["ejs", "sass", "js", "styleguide"]);
 
     gulp.watch([`${dir.dist.html}/**/*.+(html|php)`, `${dir.dist.css}/**/*.css`, `${dir.dist.img}/**/*.+(jpg|jpeg|png|gif|svg)`, `${dir.dist.js}/**/*.js`]).on("change", () => { browserSync.reload(); });
 });
 
 //build
 //Build command: npm run ususama && gulp build
-gulp.task("build", ["sass", "ejs", "news.ejs", "article.ejs", "js", "imagemin", "favicon"]);
+gulp.task("build", ["sass", "ejs", "js", "imagemin", "favicon"]);

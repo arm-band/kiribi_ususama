@@ -9,7 +9,6 @@ funcArticleId = (newsBlock) => {
 //記事ページのURLを生成
 funcArticleUrl = (domain, articleIdStr) => {
     var articleIdUrl = `${domain}news/articles/${articleIdStr}.html`;
-    articleIdUrl = articleIdUrl.replace(/\//g, "%2F");
     return articleIdUrl;
 }
 %>

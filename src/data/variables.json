@@ -6,7 +6,8 @@
         "baseurl": "/",
         "url": "https://github.com/arm-band/kiribi_ususama/",
         "ogpimage": "blob/master/misc/img/kiribi_ususama.png",
-        "twitteraccount": "Bredtn_1et"
+        "twitteraccount": "Bredtn_1et",
+        "newsthumbnail": "img/thumbnails/"
     },
     "param": {
         "index": {
