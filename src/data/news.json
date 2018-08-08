@@ -2,6 +2,19 @@
     "news":[
                 {
             "id": "releasenote",
+            "title": "ver.3.5.3-4.1.3",
+            "time": "2018/08/08",
+            "thumbnail": "",
+            "excerpt": "いくつかの修正",
+            "content": "<p>いくつかの修正。</p>
+<ul>
+<li><code>gulpfile.js</code>の整理</li>
+<li>Bootstrapではホバー時に色が暗くなるので、追加分のscssでもホバー時に明度が低くなるように調整</li>
+</ul>
+"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.5.2-4.1.3",
             "time": "2018/08/06",
             "thumbnail": "eyecatch.jpg",

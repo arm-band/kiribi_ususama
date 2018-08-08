@@ -196,7 +196,7 @@ gulp.task("commons.ejs", () => {
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とnews.ejs(別タスクで定義)はhtmlにしない
     )
     .pipe(plumber())
-    .pipe(data(function(file) {
+    .pipe(data((file) => {
         return { "filename": file.path }
     }))
     .pipe(ejs({ variables, newsjson, commonVar, os }))
@@ -205,7 +205,7 @@ gulp.task("commons.ejs", () => {
 });
 
 //新着情報専用のejsタスク
-gulp.task("news.ejs", function() {
+gulp.task("news.ejs", () => {
     var name = "news"; //テンプレート・生成するファイル名
     var variables = getVariables();
     var newsjson = getNews();
@@ -221,7 +221,7 @@ gulp.task("news.ejs", function() {
         if(i % newsjson.pagination == (newsjson.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             gulp.src(tempFile)
             .pipe(plumber())
-            .pipe(data(function(file) {
+            .pipe(data((file) => {
                 return { "filename": file.path }
             }))
             .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
@@ -236,7 +236,7 @@ gulp.task("news.ejs", function() {
     if(newsBlock.length > 0) {
         gulp.src(tempFile)
         .pipe(plumber())
-        .pipe(data(function(file) {
+        .pipe(data((file) => {
             return { "filename": file.path }
         }))
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
@@ -246,7 +246,7 @@ gulp.task("news.ejs", function() {
 });
 
 //記事専用のejsタスク
-gulp.task("article.ejs", function() {
+gulp.task("article.ejs", () => {
     var name = "news"; //テンプレート・生成するファイル名
     var variables = getVariables();
     var newsjson = getNews();
@@ -261,7 +261,7 @@ gulp.task("article.ejs", function() {
         var version = newsBlock.title.replace(/\./g, "_");
         gulp.src(tempFile)
         .pipe(plumber())
-        .pipe(data(function(file) {
+        .pipe(data((file) => {
             return { "filename": file.path }
         }))
         .pipe(ejs({ variables, newsBlock, commonVar, name, pages, os }))
@@ -278,7 +278,7 @@ gulp.task("article.ejs", function() {
     }
 
     var xml = feed.xml({indent: true}); //RSS
-    fs.writeFile(`${dir.dist.html}/rss.xml`, xml, function (err) {
+    fs.writeFile(`${dir.dist.html}/rss.xml`, xml, (err) => {
         if (err) {
             throw err;
         }
@@ -304,7 +304,7 @@ gulp.task("connect-sync", () => {
         base: dir.dist.html,
         bin: "D:/xampp/php/php.exe",
         ini: "D:/xampp/php/php.ini"
-    }, function (){
+    }, () => {
         browserSync({
             proxy: "localhost:8001",
             open: 'external'
@@ -335,7 +335,7 @@ gulp.task("styleguide", () => {
 //gulpのデフォルトタスクで諸々を動かす
 gulp.task("default", ["sass", "sass-watch", "ejs", "js", "imagemin", "favicon", "connect-sync", "styleguide"], () => {
     gulp.watch(`${dir.src.ejs}/**/*.ejs`, ["ejs"]);
-//    gulp.watch(dir.dist.html + "/**/*.php",function () { browserSync.reload(); }); //php使うときはこっち
+//    gulp.watch(dir.dist.html + "/**/*.php", () => { browserSync.reload(); }); //php使うときはこっち
     gulp.watch(`${dir.src.scss}/**/*.scss`, ["sass", "styleguide"]);
     gulp.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, ["imagemin"]);
     gulp.watch(`${dir.src.js}/**/*.js`, ["js"]);

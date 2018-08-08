@@ -5,11 +5,12 @@
 // 変数指定                                       *
 //                                               *
 // ============================================= */
-$main-color2: lighten($main-color, 15%);
+$main-color2: darken($main-color, 8%);
+$main-color3: lighten($main-color, 8%);
 $accent-color: adjust-hue($main-color, 150deg);
 $link-color: adjust-hue($main-color, 210deg);
 $link-v-color: darken($link-color, 15%);
-$link-ha-color: lighten($link-color, 15%);
+$link-ha-color: darken($link-color, 8%);
 
 // ============================================= *
 //                                               *

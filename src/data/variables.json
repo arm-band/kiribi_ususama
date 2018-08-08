@@ -15,7 +15,7 @@
             "entitle": "Home",
             "css": "index",
             "js": "app.min",
-            "description": "gulpとEJSに対応したBootstrap Minimal Template",
+            "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
             "ogpimage": "eyecatch.jpg",
             "newscount": 5
         },
