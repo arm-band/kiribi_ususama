@@ -29,8 +29,6 @@ var connect = require("gulp-connect-php"); //proxy(phpファイル更新時リ�
 var browserSync = require("browser-sync"); //ブラウザリロード
 //styleguide
 var frontnote = require("gulp-frontnote");
-//OS情報
-var os = require("os");
 //RSS
 var RSS = require("rss");
 
@@ -199,7 +197,7 @@ gulp.task("commons.ejs", () => {
     .pipe(data((file) => {
         return { "filename": file.path }
     }))
-    .pipe(ejs({ variables, newsjson, commonVar, os }))
+    .pipe(ejs({ variables, newsjson, commonVar }))
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest(dir.dist.html));
 });
@@ -224,7 +222,7 @@ gulp.task("news.ejs", () => {
             .pipe(data((file) => {
                 return { "filename": file.path }
             }))
-            .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
+            .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength }))
             .pipe(rename(`${name}${pages}.html`))
             .pipe(gulp.dest(dir.dist.news));
 
@@ -239,7 +237,7 @@ gulp.task("news.ejs", () => {
         .pipe(data((file) => {
             return { "filename": file.path }
         }))
-        .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength, os }))
+        .pipe(ejs({ variables, newsBlock, commonVar, name, pages, pageLength }))
         .pipe(rename(`${name}${pages}.html`))
         .pipe(gulp.dest(dir.dist.news));
     }
@@ -264,7 +262,7 @@ gulp.task("article.ejs", () => {
         .pipe(data((file) => {
             return { "filename": file.path }
         }))
-        .pipe(ejs({ variables, newsBlock, commonVar, name, pages, os }))
+        .pipe(ejs({ variables, newsBlock, commonVar, name, pages }))
         .pipe(rename(`${newsBlock.id}_${version}-${idTime}.html`))
         .pipe(gulp.dest(dir.dist.articles));
 

@@ -1,0 +1,9 @@
+<%
+//ファイル名を各ページのidとして設定する
+funcFileNameProcedure = (filename) => {
+    var array = [];
+    array.push("/");
+    array.push(filename.replace(/\\/g, "/"));
+     return array;
+}
+%>

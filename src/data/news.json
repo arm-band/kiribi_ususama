@@ -2,6 +2,14 @@
     "news":[
                 {
             "id": "releasenote",
+            "title": "ver.3.5.4-4.1.3",
+            "time": "2018/08/08",
+            "thumbnail": "",
+            "excerpt": "OSによるパスの指定(/ or \\)を削除",
+            "content": "<p><code>\\</code>(バックスラッシュ)を<code>/</code>(スラッシュ)に置換する前処理を挟むことで、OSによるパスの指定(<code>/</code> or <code>\\</code>)を削除しました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.5.3-4.1.3",
             "time": "2018/08/08",
             "thumbnail": "",
