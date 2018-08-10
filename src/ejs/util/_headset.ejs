@@ -1,8 +1,6 @@
 <%
-//ドメイン
-domain = variables.commons.url.slice(0, -1) + variables.commons.baseurl;
 //headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
 metaTitle = variables.param[id].title; //グローバル変数
 metaDescription = variables.param[id].description;
-metaOgpimage = `${domain}img/${variables.param[id].ogpimage}`;
+metaOgpimage = `${variables.commons.url}img/${variables.param[id].ogpimage}`;
 %>

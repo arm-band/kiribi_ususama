@@ -1,7 +1,8 @@
-<%- include("util/_init_load") %><%- include("util/_article_id") %><%
+<%- include("util/_init_load") %><%- include("util/_article_id") %><%- include("util/_article_urlconverter") %><%
 var name = name; //gulpfile.jsで指定されたファイル名
 var newsBlock = newsBlock;
 var returnNews = `${name}${pages}.html`;
+newsBlock.content = funcURLConverter(newsBlock.content, relPath);
 %><%- include("util/_headset_article", { variables, id, newsBlock }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -23,7 +24,7 @@ var returnNews = `${name}${pages}.html`;
 <%
 var datetime = newsBlock.time.replace(/\//g, "-");
 var articleIdStr = funcArticleId(newsBlock);
-var articleUrl = funcArticleUrl(variables.commons.url.slice(0, -1) + variables.commons.baseurl, articleIdStr);
+var articleUrl = funcArticleUrl(variables.commons.url, articleIdStr);
 %>
                 <div class="col-12 news_card mb-3">
                     <article class="news_article" id="<%= articleIdStr %>">
@@ -31,7 +32,7 @@ var articleUrl = funcArticleUrl(variables.commons.url.slice(0, -1) + variables.c
 <%
 if(newsBlock.thumbnail.length > 0) {
 %>
-                            <img class="card-img-top img-fluid" src="<%- variables.commons.newsthumbnail %><%- newsBlock.thumbnail %>" alt="<%= newsBlock.title %>">
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- variables.commons.newsthumbnail %><%- newsBlock.thumbnail %>" alt="<%= newsBlock.title %>">
 <%
 }
 %>
@@ -46,7 +47,7 @@ if(newsBlock.thumbnail.length > 0) {
                                     <button type="button" class="btn news_btn news_btnGooglePlus col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
                                     <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fa fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
                                     <button type="button" class="btn news_btn news_btnPocket col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fa fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= domain %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fa fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= variables.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fa fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -56,7 +57,7 @@ if(newsBlock.thumbnail.length > 0) {
                     </article>
                 </div>
             </div>
-            <div class="mb-4"><a href="news/<%= returnNews %>" class="btn btn-light">記事一覧に戻る</a></div>
+            <div class="mb-4"><a href="<%= relPath %>news/<%= returnNews %>" class="btn btn-light">記事一覧に戻る</a></div>
         </section>
     </main>
     <!-- /main -->

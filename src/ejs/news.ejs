@@ -40,19 +40,19 @@ var newsBlock = newsBlock;
 <%
 if(newsBlock[i].thumbnail.length > 0) {
 %>
-                            <img class="card-img-top img-fluid" src="<%- variables.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- variables.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
 <%
 }
 %>
-                        	<div class="card-body">
-                                <h3 class="news_header"><a href="<%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
+                            <div class="card-body">
+                                <h3 class="news_header"><a href="<%= relPath %><%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
                                 <div class="news_contents">
-                        	        <%- newsBlock[i].excerpt %>
+                                    <%- newsBlock[i].excerpt %>
                                 </div>
-                        	</div>
-                        	<div class="card-body">
-                        		<time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
-                        	</div>
+                            </div>
+                            <div class="card-body">
+                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
+                            </div>
                         </div>
                     </article>
                 </div>

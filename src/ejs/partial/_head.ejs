@@ -7,21 +7,21 @@
     <meta name="description" content="<%= metaDescription %>">
 
     <!-- favicon, etc -->
-    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<%= relPath %>apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- theme color -->
     <meta name="theme-color" content="<%= commonVar["main-color"] %>">
 
     <!-- css -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/<%= variables.param[id].css %>.css" rel="stylesheet">
+    <link href="<%= relPath %>css/<%= variables.param[id].css %>.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet">
 
     <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="<%= variables.commons.sitename %> &raquo; フィード" href="<%= domain %>rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="<%= variables.commons.sitename %> &raquo; フィード" href="<%= relPath %>rss.xml" />
 
     <!-- twitter card -->
     <meta name="twitter:card" content="photo" />

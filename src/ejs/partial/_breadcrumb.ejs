@@ -8,7 +8,7 @@ if(id === "index") {
 }
 else {
 %>
-        <li class="breadcrumb-item"><a href="<%= variables.commons.baseurl %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= variables.param[id].title %></li>
 <%
 }

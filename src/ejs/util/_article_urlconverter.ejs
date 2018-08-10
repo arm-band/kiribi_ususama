@@ -1,0 +1,10 @@
+<%
+//記事中のimg srcパスやa hrefパスに相対パスを追加
+funcURLConverter = (content, relPath) => {
+    //replaceの条件を正規表現で行っている。通常このやり方では後方参照は対応していないので、無名関数をコールバックにすることで後方参照を使用可能にした。
+    //replaceのコールバックとして使用する無名関数の中ではRegExp.$1の他、argumentsも使用できる。RegExp.$1では最終マッチ文字列になってしまったが、arguments[0]は都度の文字列が入っているためそちらで対応
+    return content.replace(/(src=\"|href=\")(?!(http(s)?:)?\/\/)/gim, function() {
+        return `${arguments[0]}${relPath}`
+    });
+}
+%>

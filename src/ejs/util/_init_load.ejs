@@ -1,6 +1,6 @@
 <%- include("_filename_procedure") %>
+<%- include("_filename_path") %>
 <%- include("_filename_id") %>
-<%- include("_header_path") %>
 <%- include("_eyecatch_header") %>
 <%- include("_year") %>
 <%
@@ -9,6 +9,6 @@ commonVar = commonVar;
 copyRightYear = funcCopyRightYear(variables);
 fileNameArray = funcFileNameProcedure(filename);
 id = funcFileNameId(filename, fileNameArray);
-headerPath = funcHeaderPath(variables, id);
+relPath = funcFileNamePath(filename, fileNameArray, id);
 headerString = funcEyecatchHeader(variables, id);
 %>
