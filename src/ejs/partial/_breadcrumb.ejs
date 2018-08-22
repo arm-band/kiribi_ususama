@@ -3,12 +3,12 @@
 <%
 if(id === "index") {
 %>
-        <li class="breadcrumb-item"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</li>
+        <li class="breadcrumb-item"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</li>
 <%
 }
 else {
 %>
-        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= variables.param[id].title %></li>
 <%
 }

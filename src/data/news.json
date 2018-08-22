@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.7.2-4.1.3",
+            "time": "2018/08/21",
+            "thumbnail": "",
+            "excerpt": "Font Awesomeのバージョンを4.7.0から5.2.0へアップデート",
+            "content": "<p>Font Awesomeのバージョンを4.7.0から5.2.0へアップデートしました。</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.7.1-4.1.3",
             "time": "2018/08/16",
             "thumbnail": "",
