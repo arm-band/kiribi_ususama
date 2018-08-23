@@ -35,7 +35,7 @@
 #styleguide
 トップページのアイキャッチ(ヒーロー)
 ```
-<div class="indexPage" id="indexPage">
+<div class="index" id="index">
     <section class="eyecatch">
         <div class="container-fluid">
             <h2 class="eyecatch_header">Kiribi Ususama</h2>
@@ -51,10 +51,10 @@
 <header class="header" id="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <h1 class="navbar_head my-0"><a class="navbar-brand" href="./#wrapper">Kiribi Ususama</a></h1>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="Navber">
+        <div class="collapse navbar-collapse" id="navbarList">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="./#news">更新履歴</a>
@@ -72,10 +72,10 @@
 #styleguide
 パンくずリスト
 ```
-    <main class="main about">
+    <main class="main aboutmain">
         <nav aria-label="パンくずリスト">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+                <li class="breadcrumb-item"><a href="./"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
                 <li class="breadcrumb-item active" aria-current="page">概要</li>
             </ol>
         </nav>
@@ -86,7 +86,7 @@
 #styleguide
 メイン
 ```
-    <main class="main index">
+    <main class="main indexmain">
         <section class="container-fluid mb-4">
             <div class="row">
                 <article class="col-12">
@@ -108,7 +108,7 @@
 フッタ
 ```
     <footer class="footer">
-        <small class="copyRight">Copyright &#169; 2018 アルム=バンド All Right Reserved.</small>
+        <small class="copyRight">Copyright © 2018 アルム=バンド All Right Reserved.</small>
     </footer>
 ```
 */
@@ -116,6 +116,6 @@
 #styleguide
 ページトップへ戻る
 ```
-        <div class="returnPageTop"><i class="fa fa-fw fa-chevron-up" aria-hidden="true"></i></div>
+        <div class="returnPageTop"><i class="fas fa-fw fa-chevron-up" aria-hidden="true"></i></div>
 ```
 */

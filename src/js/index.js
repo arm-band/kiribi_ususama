@@ -47,8 +47,8 @@ function pageTop() {
 
 //ページ内スクロール
 function pageScroll() {
-    if($("#indexPage").length) { //トップページの場合のみ動作
-        var navbarHeight = parseInt($("#indexPage").attr("data-offset"));
+    if($("#index").length) { //トップページの場合のみ動作
+        var navbarHeight = parseInt($("#index").attr("data-offset"));
         var $navbar = $("#navbar");
         $navbar.find("a").on("click", function() {
             var speed = 1000;
@@ -66,7 +66,7 @@ function pageScroll() {
             var target = $(targetID);
             var position = target.offset().top - navbarHeight;
             $("body, html").animate({ scrollTop:position }, speed, "easeInOutCirc");
-            $navbar.find(".navbar-toggle[data-target=\"#navbarMenu\"]").click(); //移動したらハンバーガーを折りたたむ
+            $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click(); //移動したらハンバーガーを折りたたむ
             return false;
         });
     }

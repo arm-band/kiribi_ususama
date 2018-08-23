@@ -7,7 +7,7 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
 <head>
 <%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
-<body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>Page" id="<%= id %>Page">
+<body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
@@ -15,7 +15,7 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
-    <main class="main <%= id %>">
+    <main class="main <%= id %>main">
 <%- include("partial/_breadcrumb", { variables, id }) %>
         <section class="container-fluid" id="news">
             <div class="row mb-4">

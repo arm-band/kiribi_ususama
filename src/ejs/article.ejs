@@ -9,7 +9,7 @@ newsBlock.content = funcURLConverter(newsBlock.content, relPath);
 <head>
 <%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
-<body class="<%= id %>Page" id="<%= id %>Page">
+<body class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
 <%- include("partial/_header", { variables, id, commonVar }) %>
@@ -17,7 +17,7 @@ newsBlock.content = funcURLConverter(newsBlock.content, relPath);
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
-    <main class="main <%= id %>" id="<%= id %>Main">
+    <main class="main <%= id %>main" id="<%= id %>main">
 <%- include("partial/_breadcrumb_article", { variables, id, returnNews, newsBlock }) %>
         <section class="container-fluid">
             <div class="row mb-4">

@@ -2,6 +2,19 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.7.3-4.1.3",
+            "time": "2018/08/23",
+            "thumbnail": "",
+            "excerpt": "class, idを整理、スタイルガイドを最新に反映",
+            "content": "
+<ul>
+<li>class, idを整理</li>
+<li>スタイルガイドを最新に反映</li>
+</ul>
+        "
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.7.2-4.1.3",
             "time": "2018/08/21",
             "thumbnail": "",

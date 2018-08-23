@@ -19,16 +19,16 @@
 #styleguide
 記事(アイキャッチ画像なし)
 ```
-    <main class="main newsPage">
+    <main class="main newsmain">
         <section class="container-fluid mb-4">
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
                     <article class="news_article" id="releasenote-hoge">
                         <div class="card">
-                        	<div class="card-body">
+                            <div class="card-body">
                                 <h3 class="news_header"><a href="./#">記事タイトル</a></h3>
                                 <div class="news_contents">
-                        	        <p>記事本文</p>
+                                    <p>記事本文</p>
                                     <ul>
                                         <li>いろはにほへと</li>
                                         <li>ちりぬるを</li>
@@ -38,10 +38,10 @@
                                         <li>つねならむ</li>
                                     </ol>
                                 </div>
-                        	</div>
-                        	<div class="card-body">
-                        		<time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
-                        	</div>
+                            </div>
+                            <div class="card-body">
+                                <time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -54,17 +54,17 @@
 #styleguide
 記事
 ```
-    <main class="main newsPage">
+    <main class="main newsmain">
         <section class="container-fluid mb-4">
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
                     <article class="news_article" id="releasenote-hoge">
                         <div class="card">
                             <img class="card-img-top img-fluid" src="../../dist/img/eyecatch.jpg" alt="アイキャッチサンプル">
-                        	<div class="card-body">
+                            <div class="card-body">
                                 <h3 class="news_header"><a href="releasenote-hoge">記事タイトル</a></h3>
                                 <div class="news_contents">
-                        	        <p>記事本文</p>
+                                    <p>記事本文</p>
                                     <ul>
                                         <li>いろはにほへと</li>
                                         <li>ちりぬるを</li>
@@ -74,10 +74,10 @@
                                         <li>つねならむ</li>
                                     </ol>
                                 </div>
-                        	</div>
-                        	<div class="card-body">
-                        		<time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
-                        	</div>
+                            </div>
+                            <div class="card-body">
+                                <time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
+                            </div>
                         </div>
                     </article>
                 </div>

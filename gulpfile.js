@@ -330,7 +330,7 @@ gulp.task("styleguide", () => {
         .pipe(frontnote({
             out: dir.sg.html,
             title: getVariables().commons.sitename,
-            css: [`${dir.sg.css}/contents.css`, `${dir.sg.css}/index.css`, `${dir.sg.canceller}/fncanceller.css`, "https://fonts.googleapis.com/css?family=Dancing+Script", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"],
+            css: [`${dir.sg.css}/contents.css`, `${dir.sg.css}/index.css`, `${dir.sg.canceller}/fncanceller.css`, "https://fonts.googleapis.com/css?family=Dancing+Script", "https://fonts.googleapis.com/earlyaccess/sawarabimincho.css", "https://use.fontawesome.com/releases/v5.2.0/css/all.css"],
             script: [`${dir.sg.js}/lib.min.js`, `${dir.sg.js}/app.min.js`],
             template: `${dir.sg.template}/index.ejs`,
             overview: dir.sg.md,
