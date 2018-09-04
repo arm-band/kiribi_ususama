@@ -2,6 +2,14 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.7.4-4.1.3",
+            "time": "2018/09/04",
+            "thumbnail": "",
+            "excerpt": "baseタグ除去し忘れていたので除去",
+            "content": "<p><code>base</code>タグ除去し忘れていたので除去</p>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.7.3-4.1.3",
             "time": "2018/08/23",
             "thumbnail": "",
