@@ -27,24 +27,21 @@
 
 //キービジュアルの背景画像
 @mixin eyecatchBGImg($imgPath) {
+    .eyecatch {
+        background: {
+            image: url($imgPath);
+            repeat: no-repeat;
+            position: center center;
+        }
+    }
     body:not(.mobileSafari) .eyecatch {
-        background: url($imgPath) no-repeat center center fixed;
-        background-size: cover;
+        background-attachment: fixed;
     }
     body.mobileSafari .eyecatch { //index.jsでUAにより付与。mobile Safariバグ対策
-        &:before {
-            background: url($imgPath) no-repeat left top;
-            background-size: auto 100%; //画像とデバイスによっては100% autoでも
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding-bottom: 108px;
-            content: " ";
-            z-index: -1;
-        }
+        background-attachment: scroll;
+    }
+    .eyecatch {
+        background-size: cover;
     }
 }
 //キービジュアルに見出しを左右上下中央寄せ

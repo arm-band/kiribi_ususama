@@ -117,6 +117,9 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/10/13 ver.3.7.5-4.1.3
+    - `.navbar_head`の`feature-settings`に`font-`が抜けていたのを修正
+    - `.mobileSafari`の対処を`background-attachment`除去するだけに留める方針に転向
 - 2018/9/4 ver.3.7.4-4.1.3
     - `base`タグ除去し忘れていたので除去
 - 2018/8/23 ver.3.7.3-4.1.3
