@@ -1,5 +1,5 @@
 <%- include("util/_init_load") %><%
-var newsjson = newsjson;
+var newsBlock = newsBlock;
 var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 %><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
@@ -28,21 +28,17 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
                 </div>
                 <div class="col-md-12 col-lg-7">
                     <ul class="list-group">
-<% for(var i in newsjson.news) {
-    if(i <  config.param[id].newscount) {
-        var datetime = newsjson.news[i].time.replace(/\//g, "-");
-        var idTime = newsjson.news[i].time.replace(/\//g, "");
-        var version = newsjson.news[i].title.replace(/\./g, "_");
+<% for(var i in newsBlock) {
+    var datetime = String(newsBlock[i].date);
 %>
                         <li class="list-group-item">
-                            <a href="news/articles/<%= newsjson.news[i].id %>_<%= version %>-<%= idTime %>.html">
-                                <h3 class="news_header"><%= newsjson.news[i].title %></h3>
-                                <time class="news_createtime" datetime="<%= datetime %>"><%= newsjson.news[i].time %></time>
-                                <p><%- newsjson.news[i].excerpt %></p>
+                            <a href="news/articles/<%= newsBlock[i].url %>.html">
+                                <h3 class="news_header"><%= newsBlock[i].title %></h3>
+                                <time class="news_createtime" datetime="<%= datetime %>"><%= datetime %></time>
+                                <p><%- newsBlock[i].excerpt %></p>
                             </a>
                         </li>
 <%
-    }
 }
 %>
                     </ul>

@@ -29,6 +29,7 @@ param:
         js: "app.min"
         description: "更新履歴の一覧です。"
         ogpimage: "eyecatch.jpg"
+        pagination: 6
     article:
         title: "記事"
         entitle: "News"

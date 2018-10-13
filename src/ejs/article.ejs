@@ -1,9 +1,10 @@
 <%- include("util/_init_load") %><%- include("util/_article_id") %><%- include("util/_article_urlconverter") %><%
 var name = name; //gulpfile.jsで指定されたファイル名
-var newsBlock = newsBlock;
+var attributes = attributes;
+var contentBody = body;
 var returnNews = `${name}${pages}.html`;
-newsBlock.content = funcURLConverter(newsBlock.content, relPath);
-%><%- include("util/_headset_article", { config, id, newsBlock }) %>
+contentBody = funcURLConverter(contentBody, relPath);
+%><%- include("util/_headset_article", { config, id, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,28 +19,27 @@ newsBlock.content = funcURLConverter(newsBlock.content, relPath);
 
     <!-- main -->
     <main class="main <%= id %>main" id="<%= id %>main">
-<%- include("partial/_breadcrumb_article", { config, id, returnNews, newsBlock }) %>
+<%- include("partial/_breadcrumb_article", { config, id, returnNews, attributes }) %>
         <section class="container-fluid">
             <div class="row mb-4">
 <%
-var datetime = newsBlock.time.replace(/\//g, "-");
-var articleIdStr = funcArticleId(newsBlock);
-var articleUrl = funcArticleUrl(config.commons.url, articleIdStr);
+var datetime = String(attributes.date).replace(/\-/g, "/");
+var articleUrl = funcArticleUrl(config.commons.url, attributes.url);
 %>
                 <div class="col-12 news_card mb-3">
-                    <article class="news_article" id="<%= articleIdStr %>">
+                    <article class="news_article" id="<%= attributes.url %>">
                         <div class="card">
 <%
-if(newsBlock.thumbnail.length > 0) {
+if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
 %>
-                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock.thumbnail %>" alt="<%= newsBlock.title %>">
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- attributes.thumbnail %>" alt="<%= attributes.title %>">
 <%
 }
 %>
                             <div class="card-body">
-                                <h2 class="news_header"><%= newsBlock.title %></h2>
+                                <h2 class="news_header"><%= attributes.title %></h2>
                                 <div class="news_contents">
-                                    <%- newsBlock.content %>
+                                    <%- contentBody %>
                                 </div>
                                 <div class="news_share row my-4">
                                     <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
@@ -51,7 +51,7 @@ if(newsBlock.thumbnail.length > 0) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock.time %></time>
+                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= attributes.date %></time>
                             </div>
                         </div>
                     </article>

@@ -30,15 +30,14 @@ var newsBlock = newsBlock;
             </div>
             <div class="row mb-4">
 <% for(var i in newsBlock) {
-    var datetime = newsBlock[i].time.replace(/\//g, "-");
-    var articleIdStr = funcArticleId(newsBlock[i]);
-    var articleUrl = funcArticleUrl("", articleIdStr);
+    var datetime = String(newsBlock[i].date);
+    var articleUrl = funcArticleUrl("", newsBlock[i].url);
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
-                    <article class="news_article" id="<%= articleIdStr %>">
+                    <article class="news_article" id="<%= newsBlock[i].url %>">
                         <div class="card">
 <%
-if(newsBlock[i].thumbnail.length > 0) {
+if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
 %>
                             <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
 <%

@@ -118,6 +118,8 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/10/13 ver.3.9.0-4.1.3
+    - 新着情報のデータを1つのjsonファイルから記事ごとのmdファイルに変更・分離
 - 2018/10/13 ver.3.8.0-4.1.3
     - 設定ファイルをjsonからymlに変更
         - `variable.json`→`config.yml`
