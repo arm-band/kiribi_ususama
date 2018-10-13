@@ -2,6 +2,18 @@
     "news":[
         {
             "id": "releasenote",
+            "title": "ver.3.8.0-4.1.3",
+            "time": "2018/10/13",
+            "thumbnail": "",
+            "excerpt": "設定ファイルをjsonからymlに変更",
+            "content": "<p>設定ファイルをjsonからymlに変更</p>
+<ul>
+<li><code>variable.json</code>→<code>config.yml</code></li>
+<li><code>commonvar.json</code>→<code>commonvar.yml</code></li>
+</ul>"
+        },
+        {
+            "id": "releasenote",
             "title": "ver.3.7.5-4.1.3",
             "time": "2018/10/13",
             "thumbnail": "",

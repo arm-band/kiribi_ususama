@@ -1,19 +1,19 @@
-<%- include("util/_init_load") %><%- include("util/_headset", { variables, id }) %>
+<%- include("util/_init_load") %><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id, commonVar }) %>
+<%- include("partial/_header", { config, id, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>main">
-<%- include("partial/_breadcrumb", { variables, id }) %>
+<%- include("partial/_breadcrumb", { config, id }) %>
         <section class="container-fluid">
             <div class="row mb-4">
                 <article class="col-12">
@@ -24,10 +24,10 @@
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { variables, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, id, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { variables, id }) %>
+<%- include("partial/_js_loader", { config, id }) %>
 </body>
 </html>

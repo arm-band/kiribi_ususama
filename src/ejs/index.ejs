@@ -1,35 +1,35 @@
 <%- include("util/_init_load") %><%
 var newsjson = newsjson;
 var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
-%><%- include("util/_headset", { variables, id }) %>
+%><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id, commonVar }) %>
+<%- include("partial/_header", { config, id, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>main">
-<%- include("partial/_breadcrumb", { variables, id }) %>
+<%- include("partial/_breadcrumb", { config, id }) %>
         <section class="container-fluid" id="news">
             <div class="row mb-4">
                 <div class="col-md-12 col-lg-5">
                     <div class="page-header mb-3">
                         <h2>What's news?<small class="ml-3">News</small></h2>
                     </div>
-                    <p>新着情報一覧(最新<%=  variables.param[id].newscount %>件)です。過去の履歴は下記ボタンより。</p>
+                    <p>新着情報一覧(最新<%=  config.param[id].newscount %>件)です。過去の履歴は下記ボタンより。</p>
                     <div class="mb-4"><a href="news/news1.html" class="btn btn-light">過去の履歴</a></div>
                 </div>
                 <div class="col-md-12 col-lg-7">
                     <ul class="list-group">
 <% for(var i in newsjson.news) {
-    if(i <  variables.param[id].newscount) {
+    if(i <  config.param[id].newscount) {
         var datetime = newsjson.news[i].time.replace(/\//g, "-");
         var idTime = newsjson.news[i].time.replace(/\//g, "");
         var version = newsjson.news[i].title.replace(/\./g, "_");
@@ -70,10 +70,10 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { variables, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, id, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { variables, id }) %>
+<%- include("partial/_js_loader", { config, id }) %>
 </body>
 </html>

@@ -74,8 +74,8 @@ gulpで処理されるもの
 
 ## Settings
 
-- jsonファイル
-    - `variables.json`
+- yamlファイル
+    - `config.yml`
         - `commons`:
             - `sitename`: サイト名。タイトルタグやトップページのアイキャッチ、ヘッダのブランド、フッタのコピーライトなど各所に使われます
             - `year`: 年数。フッタのコピーライトで使います
@@ -93,11 +93,7 @@ gulpで処理されるもの
                 - `description`: `<meta description="">`に記述される説明
                 - `ogpimage`: Twitterカード出力時の画像を指定します
                 - `newscount`: `index.ejs`のみ存在。新着情報一覧で出力する新着情報の件数
-    - `news.json`
-        - 各項目: 新着情報の出力で使います
-        - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
-        - ※`news.ejs`1つから設定項目に応じて、1～複数ページの`news<ページ数>.html`が`/dist/news/`に生成されます
-    - `commonvar.json`
+    - `commonvar.yml`
         - 色、ナビゲーションバーの高さなど、基本的な情報をjson形式で記述
         - このjsonからscssの各所で使用している変数の元となる`/src/base/_var.scss`が生成される
         - ※既定で記述されているものはscssやejsで使用しているため、消さないこと
@@ -105,6 +101,11 @@ gulpで処理されるもの
             - `/src/ejs/partial/header.ejs`の六角形svgの指定にも使用(通常はコメントアウト)
             - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
                 - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
+- jsonファイル
+    - `news.json`
+        - 各項目: 新着情報の出力で使います
+        - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
+        - ※`news.ejs`1つから設定項目に応じて、1～複数ページの`news<ページ数>.html`が`/dist/news/`に生成されます
 
 ## Notes
 
@@ -117,6 +118,10 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/10/13 ver.3.8.0-4.1.3
+    - 設定ファイルをjsonからymlに変更
+        - `variable.json`→`config.yml`
+        - `commonvar.json`→`commonvar.yml`
 - 2018/10/13 ver.3.7.5-4.1.3
     - `.navbar_head`の`feature-settings`に`font-`が抜けていたのを修正
     - `.mobileSafari`の対処を`background-attachment`除去するだけに留める方針に転向

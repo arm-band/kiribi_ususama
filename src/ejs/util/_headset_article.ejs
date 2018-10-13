@@ -1,8 +1,8 @@
 <%
 //headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
-metaTitle = variables.param[id].title; //グローバル変数
-metaDescription = variables.param[id].description;
-metaOgpimage = `${variables.commons.url}img/${variables.param[id].ogpimage}`;
+metaTitle = config.param[id].title; //グローバル変数
+metaDescription = config.param[id].description;
+metaOgpimage = `${config.commons.url}img/${config.param[id].ogpimage}`;
 //タイトル
 if(newsBlock.title.length > 0) {
     metaTitle = newsBlock.title;
@@ -13,6 +13,6 @@ if(newsBlock.excerpt.length > 0) {
 }
 //OGP画像
 if(newsBlock.thumbnail.length > 0) {
-    metaOgpimage = `${variables.commons.url}img/${newsBlock.thumbnail}`;
+    metaOgpimage = `${config.commons.url}img/${newsBlock.thumbnail}`;
 }
 %>

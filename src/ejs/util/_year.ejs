@@ -1,13 +1,13 @@
 <%
 //コピーライトの部分に出す年数を生成
-funcCopyRightYear = (variables) => {
+funcCopyRightYear = (config) => {
     var copyRightYear = "";
     var getFullYear = new Date().getFullYear();
-    if(parseInt(getFullYear) - parseInt(variables.commons.year) === 0) {
-        copyRightYear = variables.commons.year;
+    if(parseInt(getFullYear) - parseInt(config.commons.year) === 0) {
+        copyRightYear = config.commons.year;
     }
     else {
-        copyRightYear = `${variables.commons.year}-${getFullYear}`;
+        copyRightYear = `${config.commons.year}-${getFullYear}`;
     }
     return copyRightYear;
 }

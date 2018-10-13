@@ -3,29 +3,29 @@ var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
 var newsBlock = newsBlock;
-%><%- include("util/_headset", { variables, id }) %>
+%><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id, commonVar }) %>
+<%- include("partial/_header", { config, id, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>main">
-<%- include("partial/_breadcrumb", { variables, id }) %>
+<%- include("partial/_breadcrumb", { config, id }) %>
         <section class="container-fluid">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="page-header mb-3">
                         <h2>What's news?<small class="ml-3">News</small></h2>
                     </div>
-<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
+<%- include("news/_pagination", { counter, pageLength, name, config, id }) %>
                 </div>
             </div>
             <div class="row mb-4">
@@ -40,7 +40,7 @@ var newsBlock = newsBlock;
 <%
 if(newsBlock[i].thumbnail.length > 0) {
 %>
-                            <img class="card-img-top img-fluid" src="<%= relPath %><%- variables.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
 <%
 }
 %>
@@ -58,15 +58,19 @@ if(newsBlock[i].thumbnail.length > 0) {
                 </div>
 <% } %>
             </div>
-<%- include("news/_pagination", { counter, pageLength, name, variables, id }) %>
+            <div class="row">
+                <div class="col-12">
+<%- include("news/_pagination", { counter, pageLength, name, config, id }) %>
+                </div>
+            </div>
         </section>
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { variables, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, id, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { variables, id }) %>
+<%- include("partial/_js_loader", { config, id }) %>
 </body>
 </html>

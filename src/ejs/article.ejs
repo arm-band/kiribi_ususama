@@ -3,28 +3,28 @@ var name = name; //gulpfile.jsで指定されたファイル名
 var newsBlock = newsBlock;
 var returnNews = `${name}${pages}.html`;
 newsBlock.content = funcURLConverter(newsBlock.content, relPath);
-%><%- include("util/_headset_article", { variables, id, newsBlock }) %>
+%><%- include("util/_headset_article", { config, id, newsBlock }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { variables, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { variables, id, commonVar }) %>
+<%- include("partial/_header", { config, id, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="main <%= id %>main" id="<%= id %>main">
-<%- include("partial/_breadcrumb_article", { variables, id, returnNews, newsBlock }) %>
+<%- include("partial/_breadcrumb_article", { config, id, returnNews, newsBlock }) %>
         <section class="container-fluid">
             <div class="row mb-4">
 <%
 var datetime = newsBlock.time.replace(/\//g, "-");
 var articleIdStr = funcArticleId(newsBlock);
-var articleUrl = funcArticleUrl(variables.commons.url, articleIdStr);
+var articleUrl = funcArticleUrl(config.commons.url, articleIdStr);
 %>
                 <div class="col-12 news_card mb-3">
                     <article class="news_article" id="<%= articleIdStr %>">
@@ -32,7 +32,7 @@ var articleUrl = funcArticleUrl(variables.commons.url, articleIdStr);
 <%
 if(newsBlock.thumbnail.length > 0) {
 %>
-                            <img class="card-img-top img-fluid" src="<%= relPath %><%- variables.commons.newsthumbnail %><%- newsBlock.thumbnail %>" alt="<%= newsBlock.title %>">
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock.thumbnail %>" alt="<%= newsBlock.title %>">
 <%
 }
 %>
@@ -42,12 +42,12 @@ if(newsBlock.thumbnail.length > 0) {
                                     <%- newsBlock.content %>
                                 </div>
                                 <div class="news_share row my-4">
-                                    <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                    <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
                                     <button type="button" class="btn news_btn news_btnFacebook col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
                                     <button type="button" class="btn news_btn news_btnGooglePlus col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= variables.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                    <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
                                     <button type="button" class="btn news_btn news_btnPocket col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= variables.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= config.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -62,10 +62,10 @@ if(newsBlock.thumbnail.length > 0) {
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { variables, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, id, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { variables, id }) %>
+<%- include("partial/_js_loader", { config, id }) %>
 </body>
 </html>

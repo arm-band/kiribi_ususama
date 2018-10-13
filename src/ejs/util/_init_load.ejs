@@ -4,11 +4,11 @@
 <%- include("_eyecatch_header") %>
 <%- include("_year") %>
 <%
-variables = variables;
+config = config;
 commonVar = commonVar;
-copyRightYear = funcCopyRightYear(variables);
+copyRightYear = funcCopyRightYear(config);
 fileNameArray = funcFileNameProcedure(filename);
 id = funcFileNameId(filename, fileNameArray);
 relPath = funcFileNamePath(filename, fileNameArray, id);
-headerString = funcEyecatchHeader(variables, id);
+headerString = funcEyecatchHeader(config, id);
 %>
