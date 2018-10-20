@@ -29,12 +29,13 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar„Å
                 <div class="col-md-12 col-lg-7">
                     <ul class="list-group">
 <% for(var i in newsBlock) {
-    var datetime = String(newsBlock[i].date);
+    var datetime = funcDateTimeFormat(newsBlock[i].date, "-");
+    var showDt = funcDateTimeFormat(newsBlock[i].date, "/");
 %>
                         <li class="list-group-item">
                             <a href="news/articles/<%= newsBlock[i].url %>.html">
                                 <h3 class="news_header"><%= newsBlock[i].title %></h3>
-                                <time class="news_createtime" datetime="<%= datetime %>"><%= datetime %></time>
+                                <time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                                 <p><%- newsBlock[i].excerpt %></p>
                             </a>
                         </li>

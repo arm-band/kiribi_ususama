@@ -23,7 +23,8 @@ contentBody = funcURLConverter(contentBody, relPath);
         <section class="container-fluid">
             <div class="row mb-4">
 <%
-var datetime = String(attributes.date).replace(/\-/g, "/");
+var datetime = funcDateTimeFormat(attributes.date, "-");
+var showDt = funcDateTimeFormat(attributes.date, "/");
 var articleUrl = funcArticleUrl(config.commons.url, attributes.url);
 %>
                 <div class="col-12 news_card mb-3">
@@ -51,7 +52,7 @@ if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= attributes.date %></time>
+                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= showDt %></time>
                             </div>
                         </div>
                     </article>

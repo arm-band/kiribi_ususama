@@ -50,6 +50,7 @@ var dir = {
   src: {
     ejs       : './src/ejs',
     scss      : './src/scss',
+    assets    : '/assets',
     js        : './src/js',
     img       : './src/img',
     favicon   : './src/favicon'
@@ -61,10 +62,6 @@ var dir = {
   },
   contents: {
     dir       : './src/contents'
-  },
-  data: {
-    dir       : './src/data',
-    news      : '/news.json'
   },
   dist: {
     html      : './dist',
@@ -168,7 +165,7 @@ gulp.task("yaml2sass", done => {
 });
 //scssコンパイルタスク
 gulp.task("sass", () => {
-    return gulp.src(`${dir.src.scss}/**/*.scss`)
+    return gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`])
         .pipe(plumber())
         .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(autoprefixer({
@@ -308,11 +305,7 @@ gulp.task("news.ejs", done => {
 
     //RSS
     var xml = feed.xml({indent: true});
-    fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml, (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+    fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml);
 
     done();
 });
@@ -350,12 +343,13 @@ gulp.task("connect-sync", () => {
     });
 
     watch(`${dir.src.ejs}/**/*.ejs`, gulp.series("ejs", browserSync.reload));
+    watch(`${dir.contents.dir}/**/*.md`, gulp.series("ejs", browserSync.reload));
 //    watch(dir.dist.html + "/**/*.php", gulp.series(browserSync.reload)); //php使うときはこっち
     watch(`${dir.src.favicon}/**/*`, gulp.series("favicon", browserSync.reload));
     watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], gulp.series("sass", browserSync.reload));
     watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, gulp.series("imagemin", browserSync.reload));
     watch(`${dir.src.js}/*.js`, gulp.series("js", browserSync.reload));
-    watch([`${dir.data.dir}/**/*.json`, `${dir.config.dir}/**/*.yml`], gulp.series(gulp.parallel("ejs", gulp.series("yaml2sass", "sass"), "js"), browserSync.reload));
+    watch([`${dir.config.dir}/**/*.yml`], gulp.series(gulp.parallel("ejs", gulp.series("yaml2sass", "sass"), "js"), browserSync.reload));
 });
 
 //styleguide(FrontNote)
