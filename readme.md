@@ -19,8 +19,8 @@ gulpを使用した小・中規模Webサイト制作用のボイラープレー�
         - gulp-ejs: 3.0.1
         - gulp-sass: 3.1.0
         - gulp-autoprefixer: 4.1.0
-        - bootstrap: **4.0.0**
-        - bootstrap-honoka: **4.0.0**
+        - bootstrap: **4.1.3**
+        - bootstrap-honoka: **4.1.3**
         - jquery: 3.3.1
         - jquery.easing: 1.4.1
 
@@ -38,11 +38,9 @@ gulpを使用した小・中規模Webサイト制作用のボイラープレー�
     1. `git remote rm origin <REPOSITORY_TEMPLATE_URL.git>`で現在のリモートリポジトリを削除
     2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
 4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
-5. `npm run kiribi`でサイト名など、プロジェクトのパラメータ初期設定を行う
-6. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
-     - `npm run gue`ではなくなったので注意
+5. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
      - このコマンドで生成したディレクトリや`npm i -D`の際に生成される`package-lock.json`は`npm run fujoketsu`(不浄潔)で削除できます
-7. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
+6. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
 
@@ -67,10 +65,8 @@ gulpで処理されるもの
 
 テンプレートが用意している機能
 
-- アイキャッチ(高さ100vh, 背景fixed) ※画像は適宜用意
 - ページトップへ戻る
-- <del>ハンバーガーメニューのアニメーション(1～8まで)</del>
-- `src/ejs/news/news.json`による新着情報一覧の一元管理(トップページ: `index.ejs`と新着情報一覧: `news.ejs`、各記事ページ: `article.ejs`の3箇所で使用)
+- `src/contents/*.md`による新着情報一覧の一元管理(トップページ: `index.ejs`と新着情報一覧: `news.ejs`、各記事ページ: `article.ejs`の3箇所で使用)
 
 ## Settings
 
@@ -101,11 +97,6 @@ gulpで処理されるもの
             - `/src/ejs/partial/header.ejs`の六角形svgの指定にも使用(通常はコメントアウト)
             - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
                 - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
-- jsonファイル
-    - `news.json`
-        - 各項目: 新着情報の出力で使います
-        - 末尾の`pagination`: `news<ページ数>.html`の各ページで出力する新着情報の件数
-        - ※`news.ejs`1つから設定項目に応じて、1～複数ページの`news<ページ数>.html`が`/dist/news/`に生成されます
 
 ## Notes
 
@@ -118,6 +109,9 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/11/1 ver.3.9.2-4.1.3
+    - Front-matterで`url`がなくても記事ページが生成できるように`gulpfile.js`を改修
+    - `readme.md`修正
 - 2018/10/20 ver.3.9.1-4.1.3
     - `gulpfile.js`でrss書き出しの際にエラーになるバグを修正
     - scssのコンパイル時に`assets`内のファイルも書き出していたバグを修正

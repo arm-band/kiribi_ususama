@@ -85,19 +85,7 @@ var dir = {
 
 //RSS Feed
 var rssFeed = (config) => {
-    var day = new Date();
-    var y = day.getFullYear();
-    var m = day.getMonth() + 1;
-    var d = day.getDate();
-    var hr = day.getHours();
-    var mt = day.getMinutes();
-    var sc = day.getSeconds();
-    if (m < 10) {
-        m = "0" + m;
-    }
-    if (d < 10) {
-        d = "0" + d;
-    }
+    var datetime = formatDate("", "");
 
     var feed = new RSS({
         title: config.commons.sitename,
@@ -109,7 +97,7 @@ var rssFeed = (config) => {
         webMaster: config.commons.author,
         copyright: config.commons.year + " " + config.commons.author,
         language: "ja",
-        pubDate: y + "-" + m + "-" + d + "T" + hr + ":" + mt + ":" + sc + "+09:00",
+        pubDate: datetime,
         ttl: "60"
     });
 
@@ -119,7 +107,7 @@ var feedItem = (feed, config, attributes) => {
     feed.item({
         title:  attributes.title,
         description: attributes.excerpt,
-        url: config.commons.url.slice(0, -1) + config.commons.baseurl + "news/articles/" + attributes.url + ".html",
+        url: config.commons.url.slice(0, -1) + config.commons.baseurl + "news/articles/" + articleURL(attributes) + ".html",
         author: config.commons.author,
         date: String(attributes.date)
     });
@@ -148,11 +136,51 @@ var getArticles = (directory) => {
     });
     return fileList.sort((a, b) => b.noex - a.noex);
 }
+//記事ページのURLを生成
+var articleURL = (attributes) => {
+    var urlTitle = attributes.title;
+    urlTitle = urlTitle.replace(/\./g, "_");
+    var datetime = formatDate(attributes.date, "ymd");
+    var url = `releasenote_${urlTitle}-${datetime}`;
+    return url;
+}
 //記事一覧を数字で管理すると桁数が異なるときに人間的な順番と機械的な順番が異なってしまうのを防ぐためにゼロパディング
 var zeroPadding = (num) => {
     var val = Math.abs(num); //絶対値に変換
     var length = val.toString().length; //文字列に変換して長さを取得、桁数とする
     return (Array(length).join("0") + num).slice(-length);
+}
+//日付のフォーマット
+var formatDate = (dateObj, output) => {
+    var day;
+    if(String(dateObj).length > 0) {
+        day = new Date(dateObj);
+    }
+    else {
+        day = new Date();
+    }
+    var y = day.getFullYear();
+    var m = day.getMonth() + 1;
+    var d = day.getDate();
+    var hr = day.getHours();
+    var mt = day.getMinutes();
+    var sc = day.getSeconds();
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (d < 10) {
+        d = "0" + d;
+    }
+
+    var datetime;
+    if(output === "ymd") {
+        datetime = `${y}${m}${d}`;
+    }
+    else {
+        datetime = y + "-" + m + "-" + d + "T" + hr + ":" + mt + ":" + sc + "+09:00"
+    }
+
+    return datetime;
 }
 
 //scssコンパイルタスク
@@ -262,6 +290,7 @@ gulp.task("news.ejs", done => {
         else {
             tempArticleFile = `${dir.src.ejs}/article.ejs`;
         }
+
         //記事生成
         var body = marked(content.body);
         gulp.src(tempArticleFile)
@@ -270,7 +299,7 @@ gulp.task("news.ejs", done => {
                 return { "filename": ejsFile.path }
             }))
             .pipe(ejs({ config, attributes, body, commonVar, name, pages }))
-            .pipe(rename(`${attributes.url}.html`))
+            .pipe(rename(`${articleURL(attributes)}.html`))
             .pipe(gulp.dest(dir.dist.articles));
 
         if(config.param["index"].newscount > i) { //件数はconfig.param["index"].newscountの件数とする

@@ -23,9 +23,9 @@ contentBody = funcURLConverter(contentBody, relPath);
         <section class="container-fluid">
             <div class="row mb-4">
 <%
-var datetime = funcDateTimeFormat(attributes.date, "-");
-var showDt = funcDateTimeFormat(attributes.date, "/");
-var articleUrl = funcArticleUrl(config.commons.url, attributes.url);
+var datetime = funcDateTimeFormat(attributes.date, "-", "");
+var showDt = funcDateTimeFormat(attributes.date, "/", "");
+var articleUrl = funcArticleUrl(config.commons.url, attributes);
 %>
                 <div class="col-12 news_card mb-3">
                     <article class="news_article" id="<%= attributes.url %>">

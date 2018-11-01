@@ -30,8 +30,9 @@ var newsBlock = newsBlock;
             </div>
             <div class="row mb-4">
 <% for(var i in newsBlock) {
-    var datetime = String(newsBlock[i].date);
-    var articleUrl = funcArticleUrl("", newsBlock[i].url);
+    var datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
+    var showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
+    var articleUrl = funcArticleUrl("", newsBlock[i]);
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
                     <article class="news_article" id="<%= newsBlock[i].url %>">
@@ -50,7 +51,7 @@ if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= newsBlock[i].time %></time>
+                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= showDt %></time>
                             </div>
                         </div>
                     </article>

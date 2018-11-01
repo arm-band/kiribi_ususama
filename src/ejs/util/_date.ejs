@@ -1,6 +1,6 @@
 <%
 //記事の日時を文字列として出力する
-funcDateTimeFormat = (dateStr, optStr) => {
+funcDateTimeFormat = (dateStr, optStr, output) => {
     var day = new Date(dateStr);
     var y = day.getFullYear();
     var m = day.getMonth() + 1;
@@ -24,7 +24,15 @@ funcDateTimeFormat = (dateStr, optStr) => {
     if(optStr.length === 0) {
         optStr = "-";
     }
-    var datetime = y + optStr + m + optStr + d + " " + hr + ":" + mt + ":" + sc;
+
+    var datetime;
+    if(output === "ymd") {
+        datetime = `${y}${m}${d}`;
+    }
+    else {
+        datetime = y + optStr + m + optStr + d + " " + hr + ":" + mt + ":" + sc;
+    }
+
     return datetime;
 }
 %>

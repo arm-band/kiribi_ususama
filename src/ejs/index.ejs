@@ -1,4 +1,4 @@
-<%- include("util/_init_load") %><%
+<%- include("util/_init_load") %><%- include("util/_article_id") %><%
 var newsBlock = newsBlock;
 var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 %><%- include("util/_headset", { config, id }) %>
@@ -29,11 +29,12 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
                 <div class="col-md-12 col-lg-7">
                     <ul class="list-group">
 <% for(var i in newsBlock) {
-    var datetime = funcDateTimeFormat(newsBlock[i].date, "-");
-    var showDt = funcDateTimeFormat(newsBlock[i].date, "/");
+    var datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
+    var showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
+    var articleUrl = funcArticleUrl("", newsBlock[i]);
 %>
                         <li class="list-group-item">
-                            <a href="news/articles/<%= newsBlock[i].url %>.html">
+                            <a href="<%= relPath %><%= articleUrl %>">
                                 <h3 class="news_header"><%= newsBlock[i].title %></h3>
                                 <time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                                 <p><%- newsBlock[i].excerpt %></p>
