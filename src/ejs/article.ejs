@@ -1,10 +1,10 @@
-<%- include("util/_init_load") %><%- include("util/_article_id") %><%- include("util/_article_urlconverter") %><%
+<%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><%
 var name = name; //gulpfile.jsで指定されたファイル名
 var attributes = attributes;
 var contentBody = body;
 var returnNews = `${name}${pages}.html`;
 contentBody = funcURLConverter(contentBody, relPath);
-%><%- include("util/_headset_article", { config, id, attributes }) %>
+%><%- include("util/_headset", { config, id, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,10 +18,12 @@ contentBody = funcURLConverter(contentBody, relPath);
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
-    <main class="main <%= id %>main" id="<%= id %>main">
-<%- include("partial/_breadcrumb_article", { config, id, returnNews, attributes }) %>
-        <section class="container-fluid">
-            <div class="row mb-4">
+    <main class="container-fluid main <%= id %>main">
+        <aside class="container">
+<%- include("partial/_breadcrumb", { config, id, returnNews, attributes }) %>
+        </aside>
+        <section class="container my-5">
+            <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%
 var datetime = funcDateTimeFormat(attributes.date, "-", "");
 var showDt = funcDateTimeFormat(attributes.date, "/", "");
@@ -43,12 +45,12 @@ if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
                                     <%- contentBody %>
                                 </div>
                                 <div class="news_share row my-4">
-                                    <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
-                                    <button type="button" class="btn news_btn news_btnFacebook col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnGooglePlus col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
-                                    <button type="button" class="btn news_btn news_btnPocket col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= config.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                    <button type="button" class="btn news_btn news_btnTwitter col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                    <button type="button" class="btn news_btn news_btnFacebook col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnGooglePlus col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnLine col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                    <button type="button" class="btn news_btn news_btnPocket col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-6 col-lg-4 col-xl-2 mx-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= config.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
                                 </div>
                             </div>
                             <div class="card-body">

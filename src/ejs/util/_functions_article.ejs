@@ -1,4 +1,13 @@
 <%
+//記事ページのURLを生成
+funcArticleUrl = (url, attributes) => {
+    var urlTitle = attributes.title;
+    urlTitle = urlTitle.replace(/\./g, "_");
+    var datetime = funcDateTimeFormat(attributes.date, "", "ymd");
+    var fileUrl = `releasenote_${urlTitle}-${datetime}`;
+    var articleIdUrl = `${url}news/articles/${fileUrl}.html`;
+    return articleIdUrl;
+}
 //記事中のimg srcパスやa hrefパスに相対パスを追加
 funcURLConverter = (content, relPath) => {
     //replaceの条件を正規表現で行っている。通常このやり方では後方参照は対応していないので、無名関数をコールバックにすることで後方参照を使用可能にした。

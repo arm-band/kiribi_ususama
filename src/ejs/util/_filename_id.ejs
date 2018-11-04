@@ -1,8 +1,0 @@
-<%
-//ファイル名を各ページのidとして設定する
-funcFileNameId = (filename, fnProcedure) => {
-    var id = "";
-    id = fnProcedure[1].slice(fnProcedure[1].lastIndexOf(fnProcedure[0]) + 1).replace(/\.ejs/g, ""); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
-    return id;
-}
-%>

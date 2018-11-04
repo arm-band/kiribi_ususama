@@ -15,7 +15,7 @@ param:
         description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
         ogpimage: "eyecatch.jpg"
         newscount: 3
-    features:
+    about:
         title: "特徴"
         entitle: "About Page"
         css: "contents"

@@ -1,4 +1,4 @@
-<%- include("util/_init_load") %><%- include("util/_article_id") %><%
+<%- include("util/_init_load") %><%- include("util/_functions_article") %><%
 var counter = pages; //gulpfile.jsのnews.ejsのカウンタ
 var pageLength = pageLength; //ページの最大数
 var name = name; //gulpfile.jsで指定されたファイル名
@@ -17,18 +17,16 @@ var newsBlock = newsBlock;
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
-    <main class="main <%= id %>main">
+    <main class="container-fluid main <%= id %>main">
+        <aside class="container">
 <%- include("partial/_breadcrumb", { config, id }) %>
-        <section class="container-fluid">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="page-header mb-3">
-                        <h2>What's news?<small class="ml-3">News</small></h2>
-                    </div>
-<%- include("news/_pagination", { counter, pageLength, name, config, id }) %>
-                </div>
+        </aside>
+        <section class="container my-5">
+            <div class="page-header mb-3 text-center <%= id %>_header">
+                <h2>更新履歴<small class="ml-3">News</small></h2>
             </div>
-            <div class="row mb-4">
+<%- include("partial/_pagination", { counter, pageLength, name, config, id }) %>
+            <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <% for(var i in newsBlock) {
     var datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
     var showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
@@ -58,11 +56,7 @@ if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
                 </div>
 <% } %>
             </div>
-            <div class="row">
-                <div class="col-12">
-<%- include("news/_pagination", { counter, pageLength, name, config, id }) %>
-                </div>
-            </div>
+<%- include("partial/_pagination", { counter, pageLength, name, config, id }) %>
         </section>
     </main>
     <!-- /main -->
