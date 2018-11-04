@@ -185,7 +185,7 @@ var formatDate = (dateObj, output) => {
 
 //scssコンパイルタスク
 gulp.task("yaml2sass", done => {
-    var str = "$" + fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/\r\n/g, ";\r\n$");
+    var str = "$" + fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/\n/g, ";\n$");
     str = str.replace(/\"/g, "");
     str = str + ";"; //最後だけ改行がないので;を付ける
     fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, str);
