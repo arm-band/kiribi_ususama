@@ -38,7 +38,6 @@ var marked = require("marked");
 //front-matter
 var fm = require("front-matter");
 
-
 //path difinition
 var dir = {
   assets: {
@@ -82,6 +81,12 @@ var dir = {
     template  : './sg/src/ejs'
   }
 };
+//scss compile parameters
+var scssParam = [
+    'last 2 version',
+    'iOS >= 10.0',
+    'Android >= 5.0'
+];
 
 //RSS Feed
 var rssFeed = (config) => {
@@ -197,7 +202,7 @@ gulp.task("sass", () => {
         .pipe(plumber())
         .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 2 version', 'iOS >= 8.1', 'Android >= 4.4'],
+            browsers: scssParam,
             cascade: false
         }))
         .pipe(gulp.dest(dir.dist.css));

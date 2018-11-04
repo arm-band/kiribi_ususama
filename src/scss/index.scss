@@ -33,6 +33,7 @@
             repeat: no-repeat;
             position: center center;
         }
+        background-size: cover;
         margin: {
             left: 0;
             right: 0;
@@ -41,7 +42,6 @@
             left: 0;
             right: 0;
         }
-        background-size: cover;
         &_container {
             background-color: rgba($color, 0.4);
             color: $bg-color;

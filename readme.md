@@ -28,19 +28,15 @@ gulpを使用した小・中規模Webサイト制作用のボイラープレー�
 
 このテンプレートは上記の他に以下のライブラリ・フレームワークの使用を前提としています。
 
-- Font Awesome(CDN使用) … ver5.2.0
+- Font Awesome(CDN使用): ver5.2.0
 
 ### Using
 
-1. `git clone <REPOSITORY_TEMPLATE_URL.git>`でリポジトリのクローンを作成
-2. リポジトリ名でディレクトリが作成されるので、ディレクトリ名をプロジェクト名に変更
-3. `git clone`するとリモートリポジトリがテンプレート元のパスのままなので、変更する
-    1. `git remote rm origin <REPOSITORY_TEMPLATE_URL.git>`で現在のリモートリポジトリを削除
-    2. `git remote add origin <REPOSITORY_PROJECT_URL.git>`でプロジェクトのリモートリポジトリを追加
-4. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
-5. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
+1. zipでダウンロード
+2. `npm i -D`(`npm install --save-dev`のショートカット)で必要なプラグインを揃える
+3. `npm run ususama`で`npm i -D`したファイルの再配置などの初期設定を行う
      - このコマンドで生成したディレクトリや`npm i -D`の際に生成される`package-lock.json`は`npm run fujoketsu`(不浄潔)で削除できます
-6. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
+4. `npm run gulp`で実行。browser-syncにより、既定のブラウザでページを表示します
 
 ## Functions1
 
@@ -53,8 +49,8 @@ gulpで処理されるもの
         - minifyされたものを生成
     - 自動でプレフィックスを付与
         - 基本最新2バージョン
-        - `iOS >= 8.1`
-        - `Android >= 4.4`
+        - `iOS >= 10.0`
+        - `Android >= 5.0`
 - jsの圧縮(`/src/js/*.js`→`/dist/js/*.min.js`)
     - 自動生成
         - 1つのファイルにminify
@@ -109,6 +105,11 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/11/4 ver.3.10.1-4.1.3
+    - バグ修正
+    - 特徴を追記
+    - スクロールスパイのアンカー位置調整
+    - マニュアルへのリンクを追加
 - 2018/11/4 ver.3.10.0-4.1.3
     - ejsのテンプレートを全体的に見直し、構造やファイルを整理
 - 2018/11/1 ver.3.9.2-4.1.3
