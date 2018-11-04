@@ -54,6 +54,9 @@
             padding-left: 1.6rem;
         }
     }
+    .fixed_anchor {
+        @include fixedAnchor();
+    }
 }
 
 // ============================================= *

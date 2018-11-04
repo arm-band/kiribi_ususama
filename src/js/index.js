@@ -77,7 +77,8 @@ function pageScroll(screlm) {
                 targetID = href;
             }
             var target = $(targetID);
-            var position = target.offset().top - navbarHeight;
+//            var position = target.offset().top - navbarHeight;
+            var position = target.offset().top;
             $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc");
             $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click(); //移動したらハンバーガーを折りたたむ
             return false;
@@ -88,7 +89,8 @@ function pageScroll(screlm) {
         var href = $(this).attr("href");
         var targetID = href == "#" || href == "" ? "html" : href; //リンク先が#か空だったらhtmlに
         var target = $(targetID);
-        var position = target.offset().top - navbarHeight;
+//        var position = target.offset().top - navbarHeight;
+        var position = target.offset().top;
         $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc");
         return false;
     });
