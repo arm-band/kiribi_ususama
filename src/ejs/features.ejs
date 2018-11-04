@@ -1,0 +1,174 @@
+<%- include("util/_init_load") %><%- include("util/_headset", { config, id }) %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+
+<div id="wrapper">
+<%- include("partial/_header", { config, id, commonVar }) %>
+
+<%- include("partial/_eyecatch", { headerString }) %>
+
+    <!-- main -->
+    <main class="container-fluid main <%= id %>main">
+        <aside class="container">
+<%- include("partial/_breadcrumb", { config, id }) %>
+        </aside>
+        <section class="container my-5">
+            <div class="page-header mb-3 text-center features_header">
+                <h2>主な特徴<small class="ml-3">Main Features</small></h2>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_gulp" id="features_gulp">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fab fa-fw fa-9x fa-gulp" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>gulp</h3>
+                    <p>タスクランナーにgulpを採用し、下記の工程を一括で管理します。</p>
+                    <ul>
+                        <li>サイト名やメインカラー、ヘッダの高さなど、サイト全体で使用するパラメータをYAMLファイルで管理。集中管理することでHTML<span class="mr-2">,</span>css<span class="mr-2">,</span>JavsScriptを横断して共通のパラメータを使用できます。
+                            <ul>
+                                <li>メインカラー<span class="mr-2">:</span>
+                                    <ul>
+                                        <li>HTML<span class="mr-2">:</span><a href="#features_themecolor"><code>&lt;meta name="theme-color"&gt;</code></a></li>
+                                        <li>Scss<span class="mr-2">:</span>メインカラーの指定</li>
+                                    </ul>
+                                </li>
+                                <li>ヘッダの高さ<span class="mr-2">:</span>
+                                    <ul>
+                                        <li>HTML<span class="mr-2">:</span><code>&lt;body data-offset="80"&gt;</code></li>
+                                        <li>Scss<span class="mr-2">:</span>ヘッダの高さ分アイキャッチ画像の指定を調整</li>
+                                        <li>JavaScript<span class="mr-2">:</span><code>&lt;body data-offset="80"&gt;</code>を取得し、Bootstrapのスクロールスパイやアンカー移動の距離を制御</li>
+                                    </ul></li>
+                            </ul>
+                        </li>
+                        <li><code>gulp</code><span class="mr-2">:</span>下記一式<span class="mx-2">+</span>既定のブラウザを起動、<strong>自動でプレビューを表示</strong>。以降、<strong>コードを編集する度に自動リロード</strong></li>
+                        <li><code>gulp ejs</code><span class="mr-2">:</span>ejsからHTMLへのコンパイル</li>
+                        <li><code>gulp sass</code><span class="mr-2">:</span>Scssからcssへのコンパイル<span class="mx-2">+</span>minify<span class="mx-2">+</span><a href="#features_prefix">ベンダープレフィックスの自動付与</a></li>
+                        <li><code>gulp js</code><span class="mr-2">:</span>JavsScriptのminify</li>
+                        <li><code>gulp styleguide</code><span class="mr-2">:</span><a href="#features_styleguide">スタイルガイド</a>を生成</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_honoka" id="features_honoka">
+                <div class="col-12 col-md-3 order-md-2 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-mobile-alt" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 order-md-1 mb-3">
+                    <h3>Honoka</h3>
+                    <p>cssフレームワークにBootstrapテーマの「Honoka」を採用。レスポンシブWebデザインを簡単に実現できます。また、Bootstrapと比べて日本語が読みやすくなっています。</p>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_news" id="features_news">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-list" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>News</h3>
+                    <p>新着情報をテンプレートで一括管理。<code>gulp</code>を使って、<code>src/contents/</code>以下のMarkdownファイルから、新着一覧ページ・各記事ページを自動生成します。</p>
+                    <ul>
+                        <li><code>news.ejs</code><span class="mr-2">:</span>新着情報一覧ページテンプレート。1ページ当たりの記事の表示数は<code>config.yml</code>の<code>param:news:pagination:</code>で変更できます。また、1ページ当たりの記事の表示数を越えた場合はnews1.html<span class="mr-2">,</span>news2.html<span class="mr-2">,</span>とナンバリングして必要な分だけ自動生成します。ページネーションも自動的に生成します。</li>
+                        <li><code>article.ejs</code><span class="mr-2">:</span>個別記事ページテンプレート。Markdownファイルの数だけ記事ページとして生成します。内容はMarkdownのFront-matterと実際のコンテンツ内容から生成します。</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <p class="text-center pt-4">この他にも、多数の機能があります。</p>
+            </div>
+            <div class="page-header mb-3 text-center features_header">
+                <h2>Scss</h2>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_normalize" id="features_normalize">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fab fa-fw fa-9x fa-chrome" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>Normalize</h3>
+                    <p>特定のブラウザで気になる現象をある程度抑止します。</p>
+                    <ul class="fa-ul">
+                        <li><i class="fab fa-fw fa-chrome" aria-hidden="true"></i>Chrome系<span class="mr-2">:</span><code>-webkit-padding-start</code>を抑止</li>
+                        <li><i class="fab fa-fw fa-internet-explorer" aria-hidden="true"></i>IE<span class="mr-2">:</span><code>@-ms-viewport</code>でスクロールバーの背後までページが描画されてしまうのを防ぎます</li>
+                        <li><i class="fab fa-fw fa-safari" aria-hidden="true"></i>iOS Safari<span class="mr-2">:</span><code>background-size:cover;background-attachement:fixed;</code>を指定した背景画像の一部が異常に拡大されて表示されてしまう現象に対して、<a href="https://www.npmjs.com/package/bowser">bowser</a>によるユーザーエージェント判定でiOS Safariのみ<code>background-attachement:scroll;</code>に変更して現象を回避する</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_prefix" id="features_prefix">
+                <div class="col-12 col-md-3 order-md-2 mb-3 text-center">
+                    <i class="fab fa-fw fa-9x fa-css3" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 order-md-1 mb-3">
+                    <h3>Vendor Prefix</h3>
+                    <p>Scssからcssへのコンパイル時に、自動でベンダープレフィックスを付与します。</p>
+                </div>
+            </div>
+            <div class="page-header mb-3 text-center features_header">
+                <h2>SNS<span class="mr-2">,</span>RSS</h2>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_sns" id="features_sns">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-share-alt" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>SNS</h3>
+                    <p>新着情報の記事ページには、各種SNSへのシェアボタンやブックマークレットも配置しています。</p>
+                    <ul class="fa-ul">
+                        <li><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>Twitter</li>
+                        <li><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>facebook</li>
+                        <li><i class="fas fa-fw fa-comment" aria-hidden="true"></i>LINE</li>
+                        <li><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>Pocket</li>
+                        <li><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_ogp" id="features_ogp">
+                <div class="col-12 col-md-3 order-md-2 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-image" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 order-md-1 mb-3">
+                    <h3>OGP</h3>
+                    <p><code>config.yml</code>等の情報から、OGP(Open Graph Protocol)を設定します。SNSにWebサイトのリンクをシェアした際に、画像やカード形式のレイアウトで装飾されたデザインとなるため、タイムライン上で目を惹きやすくなります。</p>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_rss" id="features_rss">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-rss" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>RSS</h3>
+                    <p>新着情報からRSSフィードを自動生成します。</p>
+                </div>
+            </div>
+            <div class="page-header mb-3 text-center features_header">
+                <h2>その他の機能<small class="ml-3">Other Functions</small></h2>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_themecolor" id="features_themecolor">
+                <div class="col-12 col-md-3 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-palette" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 mb-3">
+                    <h3>Theme Color</h3>
+                    <p>Android Chromeのアドレスバーの背景を、Webサイトのメインカラーで彩ります。</p>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_styleguide" id="features_styleguide">
+                <div class="col-12 col-md-3 order-md-2 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-pen-fancy" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 order-md-1 mb-3">
+                    <h3>Styleguide</h3>
+                    <p><a href="https://github.com/frontainer/frontnote">Frontnote</a>により、スタイルガイドを生成できます。スタイルガイドは、要素やカラーパレットなど、コーディング上のルールなどを集めたものです。スタイルガイドを生成することで、メンテナンス性やチームでのコミュニケーションの効率化を図ることができます。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+
+<%- include("partial/_footer", { config, id, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { config, id }) %>
+</body>
+</html>

@@ -10,7 +10,7 @@
 @import "../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
 @import "util/typo"; //ベンダープレフィックス等のMixinモジュール
 @import "util/module"; //ベンダープレフィックス等のMixinモジュール
-@import "util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
+//@import "util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
 @import "util/base"; //フォント指定やIE対処など
 
 // ============================================= *
@@ -33,8 +33,27 @@
 //                                               *
 // ============================================= */
 .main {
+    margin: {
+        left: 0;
+        right: 0;
+    }
+    padding: {
+        left: 0;
+        right: 0;
+    }
     background-color: $bg-color;
     color: $color;
+    div:not(.text-center) p:not(.text-center) {
+        text-indent: 1rem;
+    }
+    section {
+        ul {
+            padding-left: 1.4rem;
+        }
+        ol {
+            padding-left: 1.6rem;
+        }
+    }
 }
 
 // ============================================= *

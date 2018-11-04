@@ -12,4 +12,5 @@ fileNameArray = funcFileNameProcedure(filename);
 id = funcFileNameId(filename, fileNameArray);
 relPath = funcFileNamePath(filename, fileNameArray, id);
 headerString = funcEyecatchHeader(config, id);
+navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 %>

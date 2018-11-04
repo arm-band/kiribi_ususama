@@ -9,7 +9,7 @@ var newsBlock = newsBlock;
 <head>
 <%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
-<body class="<%= id %>" id="<%= id %>">
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
 <%- include("partial/_header", { config, id, commonVar }) %>

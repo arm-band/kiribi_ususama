@@ -2,16 +2,18 @@ $(function() {
     //iPhone・iPad背景画像バグ対処
     mobileSafariRequiem();
 
+    //スクロール対象を取得
+    var screlm = scrollElm();
     //ページトップへ戻る
-    pageTop();
+    pageTop(screlm);
 
     //ページ内スクロール
-    pageScroll();
+    pageScroll(screlm);
 
 //    $.getJSON(jsonFile, {ts: new Date().getTime()}, function(data) {
 //    }).done(function(data, status, xhr) {
 //    }).fail(function(xhr, status, error) {
-//	});
+//  });
 });
 
 //mobile Saffari対策
@@ -23,12 +25,23 @@ function mobileSafariRequiem() {
     }
 }
 
+//ユーザーエージェントからスクロールを実行する対象を判定
+function scrollElm() {
+    if("scrollingElement" in document) {
+        return document.scrollingElement;
+    }
+    if(navigator.userAgent.indexOf("WebKit") != -1) {
+        return document.body;
+    }
+    return document.documentElement;
+}
+
 //ページトップへ戻る
-function pageTop() {
+function pageTop(screlm) {
     var returnPageTop = $(".returnPageTop");
 
     var startPos = 0;
-    $(window).on("scroll", function(){
+    $(window).on("scroll", function() {
         //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
         var currentPos = $(this).scrollTop();
         if (currentPos > 400) {
@@ -39,19 +52,19 @@ function pageTop() {
     });
 
     //ページトップへスクロールして戻る
-    returnPageTop.on("click", function () {
-        $("body, html").animate({ scrollTop: 0 }, 1000, "easeInOutCirc");
+    returnPageTop.on("click", function() {
+        $(screlm).animate({ scrollTop: 0 }, 1000, "easeInOutCirc");
         return false;
     });
 }
 
 //ページ内スクロール
-function pageScroll() {
+function pageScroll(screlm) {
+    var navbarHeight = parseInt($("body").attr("data-offset"));
     if($("#index").length) { //トップページの場合のみ動作
-        var navbarHeight = parseInt($("#index").attr("data-offset"));
         var $navbar = $("#navbar");
+        var speed = 1000;
         $navbar.find("a").on("click", function() {
-            var speed = 1000;
             var href = $(this).attr("href");
             var targetID = "";
             if(/^(\.\/|\/)$|^(#)?$/.test(href)) { //hrefの値が「/」「./」「#」「」の場合
@@ -65,9 +78,18 @@ function pageScroll() {
             }
             var target = $(targetID);
             var position = target.offset().top - navbarHeight;
-            $("body, html").animate({ scrollTop:position }, speed, "easeInOutCirc");
+            $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc");
             $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click(); //移動したらハンバーガーを折りたたむ
             return false;
         });
     }
+    //一般
+    $('a[href^="#"]').on("click", function() {
+        var href = $(this).attr("href");
+        var targetID = href == "#" || href == "" ? "html" : href; //リンク先が#か空だったらhtmlに
+        var target = $(targetID);
+        var position = target.offset().top - navbarHeight;
+        $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc");
+        return false;
+    });
 }

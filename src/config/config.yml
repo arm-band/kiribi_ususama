@@ -12,15 +12,15 @@ param:
         entitle: "Home"
         css: "index"
         js: "app.min"
-        description: "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。"
+        description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
         ogpimage: "eyecatch.jpg"
-        newscount: 5
-    about:
-        title: "概要"
+        newscount: 3
+    features:
+        title: "特徴"
         entitle: "About Page"
         css: "contents"
         js: "app.min"
-        description: "このページについての説明です。"
+        description: "Kiribi Ususamaの特徴についてご説明します。"
         ogpimage: "eyecatch.jpg"
     news:
         title: "更新履歴"

@@ -1,6 +1,5 @@
 <%- include("util/_init_load") %><%- include("util/_article_id") %><%
 var newsBlock = newsBlock;
-var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 %><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -15,54 +14,124 @@ var navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVar�
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
-    <main class="main <%= id %>main">
-<%- include("partial/_breadcrumb", { config, id }) %>
-        <section class="container-fluid" id="news">
-            <div class="row mb-4">
-                <div class="col-md-12 col-lg-5">
-                    <div class="page-header mb-3">
-                        <h2>What's news?<small class="ml-3">News</small></h2>
+    <main class="container-fluid main <%= id %>main">
+        <section class="container my-5 features" id="features">
+            <div class="page-header mb-3 text-center features_header">
+                <h2>特徴<small class="ml-3">Features</small></h2>
+            </div>
+            <div class="row features_contents">
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fab fa-fw fa-5x fa-gulp" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">gulp</h3>
+                            <p class="card-text">タスクランナーにgulpを採用し、ソースのコンパイルから自動プレビューまで一括で管理します。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="<%= relPath %>features.html#features_gulp" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
                     </div>
-                    <p>新着情報一覧(最新<%=  config.param[id].newscount %>件)です。過去の履歴は下記ボタンより。</p>
-                    <div class="mb-4"><a href="news/news1.html" class="btn btn-light">過去の履歴</a></div>
                 </div>
-                <div class="col-md-12 col-lg-7">
-                    <ul class="list-group">
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fas fa-fw fa-5x fa-mobile-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">Honoka</h3>
+                            <p class="card-text">Bootstrapテーマの「Honoka」をベースとすることで、導入コストを削減。レスポンシブWebデザインを簡単に実現できます。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="<%= relPath %>features.html#features_honoka" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fas fa-fw fa-5x fa-list" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">News</h3>
+                            <p class="card-text">新着情報をテンプレートで一括管理。Markdownコンテンツから、一覧ページ・各記事ページを自動生成します。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="<%= relPath %>features.html#features_news" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="<%= relPath %>features.html" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>その他の機能について</a>
+                </div>
+            </div>
+        </section>
+        <section class="container my-5 how2use" id="how2use">
+            <div class="page-header mb-3 text-center how2use_header">
+                <h2>使い方<small class="ml-3">How to use?</small></h2>
+            </div>
+            <div class="how2use_contents">
+                <ol class="pb-3">
+                    <li><code>git clone https://github.com/arm-band/kiribi_ususama.git</code>、または<a href="https://github.com/arm-band/kiribi_ususama/releases">Kiribi UsusamaのGithubリポジトリ</a>からダウンロード</li>
+                    <li><code>npm i -D</code><small class="ml-3">(または<code>npm install --save-dev</code>)</small></li>
+                    <li><code>npm run ususama</code><small class="ml-3">(<code>npm i -D</code>したファイルの再配置などの初期設定)</small>
+                        <ul>
+                            <li><small>このコマンドで生成したディレクトリや<code>package-lock.json</code>等は<code>npm run fujoketsu</code>(不浄潔)で削除できます</small></li>
+                        </ul>
+                    </li>
+                    <li><code>npm run gulp</code></li>
+                </ol>
+            </div>
+            <div class="text-center">
+                <p>ファイルの説明や詳しい使い方は<a href="#"><i class="fas fa-fw fa-external-link-alt" aria-hidden="true"></i>マニュアル(GitBook)</a>を参照。</p>
+            </div>
+        </section>
+        <section class="container-fluid my-5 origin" id="origin">
+            <div class="container-fluid origin_container">
+                <div class="container py-5">
+                    <div class="page-header mb-3 text-center origin_header">
+                        <h2>名前の由来<small class="ml-3">Origin of name</small></h2>
+                    </div>
+                    <div class="pb-3 origin_contents">
+                        <p>Bootstrapを使っていることから。Bootstrapが電源投入、自動実行といった意味合いなので、何か物事を始めるイメージと火で火打石を連想。ただし、「Hiuchiishi」だと長いので別の単語にしたかった、かつ、これから事を始めるに当たって最初に魔除けを行う、という意味も込めて「切り火」から「Kiribi」としました。</p>
+                        <p>一方、gulpは飲み込む、ごくごくと飲むという意味なので、上記の火のイメージを踏襲しつつ、何かを飲み込む逸話を持つ神仏ということで、一切不浄を飲み込み浄化する「烏枢沙摩明王」からお名前をお借りし、「Kiribi Ususama」としました。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container my-5 releasenotes" id="releasenotes">
+            <div class="page-header mb-3 text-center releasenotes_header">
+                <h2>更新履歴<small class="ml-3">Release Notes</small></h2>
+            </div>
+            <div class="releasenotes_contents">
+                <p class="text-center">更新履歴一覧(最新<%=  config.param[id].newscount %>件)です。</p>
+                <div class="row">
 <% for(var i in newsBlock) {
     var datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
     var showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
     var articleUrl = funcArticleUrl("", newsBlock[i]);
 %>
-                        <li class="list-group-item">
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="card h-100">
                             <a href="<%= relPath %><%= articleUrl %>">
-                                <h3 class="news_header"><%= newsBlock[i].title %></h3>
-                                <time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
-                                <p><%- newsBlock[i].excerpt %></p>
+                                <h3 class="card-header p-3 bg-white border-0"><%= newsBlock[i].title %></h3>
                             </a>
-                        </li>
+                            <div class="card-body p-3">
+                                <p><%- newsBlock[i].excerpt %></p>
+                            </div>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+                            </div>
+                        </div>
+                    </div>
 <%
 }
 %>
-                    </ul>
                 </div>
             </div>
-        </section>
-        <section class="container-fluid" id="about">
-            <div class="row mb-4">
-                <article class="col-12">
-<%- include("about/_content", { id }) %>
-                    <h3 class="mb-3">烏枢沙摩明王の真言<small class="ml-3">解穢真言</small></h3>
-                    <p><ruby>
-                        ॐ<rp>(</rp><rt>オン</rt><rp>)</rp>
-                        　<rp>(</rp><rt>・</rt><rp>)</rp>
-                        क्रोधना<rp>(</rp><rt>クロダノウ</rt><rp>)</rp>
-                        　<rp>(</rp><rt>・</rt><rp>)</rp>
-                        हूं<rp>(</rp><rt>ウン</rt><rp>)</rp>
-                        ज<rp>(</rp><rt>ジャク</rt><rp>)</rp>
-                        　<rp>(</rp><rt>・</rt><rp>)</rp>
-                        स्वाहा<rp>(</rp><rt>ソワカ</rt><rp>)</rp>
-                    </ruby></p>
-                </article>
+            <div class="text-center">
+                <a href="<%= relPath %>news/news1.html" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>過去の更新履歴</a>
             </div>
         </section>
     </main>

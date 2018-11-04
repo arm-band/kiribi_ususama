@@ -203,6 +203,9 @@ gulp.task("sass", () => {
         .pipe(gulp.dest(dir.dist.css));
 });
 
+//上記をまとめておく
+gulp.task("scss", gulp.parallel("yaml2sass", "sass"));
+
 //画像圧縮
 gulp.task("imagemin", () => {
     return gulp.src(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`)
@@ -378,7 +381,7 @@ gulp.task("connect-sync", () => {
     watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], gulp.series("sass", browserSync.reload));
     watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, gulp.series("imagemin", browserSync.reload));
     watch(`${dir.src.js}/*.js`, gulp.series("js", browserSync.reload));
-    watch([`${dir.config.dir}/**/*.yml`], gulp.series(gulp.parallel("ejs", gulp.series("yaml2sass", "sass"), "js"), browserSync.reload));
+    watch([`${dir.config.dir}/**/*.yml`], gulp.series(gulp.parallel("ejs", "scss", "js"), browserSync.reload));
 });
 
 //styleguide(FrontNote)
