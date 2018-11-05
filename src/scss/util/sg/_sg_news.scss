@@ -8,9 +8,9 @@
 #styleguide
 コンテンツページのアイキャッチ(ヒーロー)
 ```
-    <section class="eyecatch">
-        <div class="container-fluid">
-            <h2 class="eyecatch_header">新着情報</h2>
+    <section class="container-fluid eyecatch">
+        <div class="container">
+            <h1 class="eyecatch_header">新着情報</h1>
         </div>
     </section>
 ```
@@ -19,11 +19,11 @@
 #styleguide
 記事(アイキャッチ画像なし)
 ```
-    <main class="main newsmain">
-        <section class="container-fluid mb-4">
-            <div class="row">
-                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
-                    <article class="news_article" id="releasenote-hoge">
+    <main class="container-fluid main newsmain">
+        <section class="container my-5">
+            <div class="row align-items-top my-4 news_contents">
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
+                    <article class="news_article">
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="news_header"><a href="./#">記事タイトル</a></h3>
@@ -39,8 +39,8 @@
                                     </ol>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2018-07-16">2018/07/16</time>
                             </div>
                         </div>
                     </article>
@@ -54,11 +54,11 @@
 #styleguide
 記事
 ```
-    <main class="main newsmain">
-        <section class="container-fluid mb-4">
-            <div class="row">
-                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-3">
-                    <article class="news_article" id="releasenote-hoge">
+    <main class="container-fluid main newsmain">
+        <section class="container my-5">
+            <div class="row align-items-top my-4 news_contents">
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
+                    <article class="news_article">
                         <div class="card">
                             <img class="card-img-top img-fluid" src="../../dist/img/eyecatch.jpg" alt="アイキャッチサンプル">
                             <div class="card-body">
@@ -75,8 +75,8 @@
                                     </ol>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="2018-07-16">2018/07/16</time>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2018-07-16">2018/07/16</time>
                             </div>
                         </div>
                     </article>

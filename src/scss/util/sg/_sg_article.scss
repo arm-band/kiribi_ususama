@@ -8,9 +8,9 @@
 #styleguide
 コンテンツページのアイキャッチ(ヒーロー)
 ```
-    <section class="eyecatch">
-        <div class="container-fluid">
-            <h2 class="eyecatch_header">新着情報</h2>
+    <section class="container-fluid eyecatch">
+        <div class="container">
+            <h1 class="eyecatch_header">新着情報</h1>
         </div>
     </section>
 ```
@@ -19,9 +19,9 @@
 #styleguide
 記事(アイキャッチ画像なし)
 ```
-    <main class="main articlemain">
-        <section class="container-fluid">
-            <div class="row mb-4">
+    <main class="container-fluid main articlemain">
+        <section class="container my-5">
+            <div class="row align-items-top my-4 article_contents">
                 <div class="col-12 news_card mb-3">
                     <article class="news_article">
                         <div class="card">
@@ -39,16 +39,16 @@
                                     </ol>
                                 </div>
                                 <div class="news_share row my-4">
-                                    <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
-                                    <button type="button" class="btn news_btn news_btnFacebook col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnGooglePlus col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
-                                    <button type="button" class="btn news_btn news_btnPocket col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                    <button type="button" class="btn news_btn news_btnTwitter col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                    <button type="button" class="btn news_btn news_btnFacebook col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnGooglePlus col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnLine col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                    <button type="button" class="btn news_btn news_btnPocket col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="2018-08-23">2018/08/23</time>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2018-07-16">2018/07/16</time>
                             </div>
                         </div>
                     </article>
@@ -63,9 +63,9 @@
 #styleguide
 記事
 ```
-    <main class="main articlemain">
-        <section class="container-fluid">
-            <div class="row mb-4">
+    <main class="container-fluid main articlemain">
+        <section class="container my-5">
+            <div class="row align-items-top my-4 article_contents">
                 <div class="col-12 news_card mb-3">
                     <article class="news_article">
                         <div class="card">
@@ -84,16 +84,16 @@
                                     </ol>
                                 </div>
                                 <div class="news_share row my-4">
-                                    <button type="button" class="btn news_btn news_btnTwitter col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
-                                    <button type="button" class="btn news_btn news_btnFacebook col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnGooglePlus col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-                                    <button type="button" class="btn news_btn news_btnLine col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
-                                    <button type="button" class="btn news_btn news_btnPocket col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-                                    <button type="button" class="btn news_btn news_btnRss col-4 col-lg-2 col-xl-1 mx-1 mb-3"><a href="#" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                    <button type="button" class="btn news_btn news_btnTwitter col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                    <button type="button" class="btn news_btn news_btnFacebook col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnGooglePlus col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnLine col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                    <button type="button" class="btn news_btn news_btnPocket col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="#" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="2018-08-23">2018/08/23</time>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2018-07-16">2018/07/16</time>
                             </div>
                         </div>
                     </article>

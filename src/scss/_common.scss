@@ -45,6 +45,12 @@
     color: $color;
     div:not(.text-center) p:not(.text-center) {
         text-indent: 1rem;
+        & .fa-fw {
+            margin: {
+                left: -1rem;
+                right: 1rem;
+            }
+        }
     }
     section {
         ul {

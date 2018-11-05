@@ -48,8 +48,8 @@ if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
                                     <%- newsBlock[i].excerpt %>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <time class="news_createtime d-block text-right" datetime="<%= datetime %>"><%= showDt %></time>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                             </div>
                         </div>
                     </article>

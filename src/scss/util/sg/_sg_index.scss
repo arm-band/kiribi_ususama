@@ -36,9 +36,10 @@
 トップページのアイキャッチ(ヒーロー)
 ```
 <div class="index" id="index">
-    <section class="eyecatch">
-        <div class="container-fluid">
-            <h2 class="eyecatch_header">Kiribi Ususama</h2>
+    <section class="container-fluid eyecatch">
+        <div class="container">
+            <h1 class="eyecatch_header">Kiribi Ususama</h1>
+            <p class="eyecatch_paragraph">gulpを使用した小・中規模Webサイト制作用のボイラープレート</p>
         </div>
     </section>
 </div>
@@ -50,19 +51,27 @@
 ```
 <header class="header" id="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <h1 class="navbar_head my-0"><a class="navbar-brand" href="./#wrapper">Kiribi Ususama</a></h1>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarList">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./#news">更新履歴</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./#about">概要</a>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand my-0 navbar_head" href="<%= relPath %>#wrapper"><%= config.commons.sitename %></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarList">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= relPath %>#features">特徴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= relPath %>#how2use">使い方</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= relPath %>#origin">由来</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= relPath %>#releasenotes">更新履歴</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
@@ -72,13 +81,15 @@
 #styleguide
 パンくずリスト
 ```
-    <main class="main aboutmain">
-        <nav aria-label="パンくずリスト">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
-                <li class="breadcrumb-item active" aria-current="page">概要</li>
-            </ol>
-        </nav>
+    <main class="container-fluid main aboutmain">
+        <aside class="container">
+            <nav aria-label="パンくずリスト">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="./"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">概要</li>
+                </ol>
+            </nav>
+        </aside>
     </main>
 ```
 */
@@ -86,18 +97,57 @@
 #styleguide
 メイン
 ```
-    <main class="main indexmain">
-        <section class="container-fluid mb-4">
-            <div class="row">
-                <article class="col-12">
-                    <div class="page-header">
-                        <h2>What's this page? <small>About page</small></h2>
+    <main class="container-fluid main indexmain">
+        <section class="container my-5 features fixed_anchor">
+            <div class="page-header mb-3 text-center features_header">
+                <h2>特徴<small class="ml-3">Features</small></h2>
+            </div>
+            <div class="row features_contents">
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fab fa-fw fa-5x fa-gulp" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">gulp</h3>
+                            <p class="card-text">タスクランナーにgulpを採用し、ソースのコンパイルから自動プレビューまで一括で管理します。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="#" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
                     </div>
-                    <p>自分用の小規模Webサイト制作用テンプレートです。<br>主にデモやテストサイト用で、scss, ejs, gulp対応。</p>
-                    <h3>名前の由来</h3>
-                    <p>Bootstrapを使っていることから。Bootstrapが電源投入、自動実行といった意味合いなので、何か物事を始めるイメージと火で火打石を連想。「Hiuchiishi」だと長いのと、これから事を始めるに当たって魔除けの意味も込めて切り火からKiribi。</p>
-                    <p>gulpを使っている方はgulpが飲み込む、ごくごくと飲むという意味(だからシェイクのロゴなのですね)なので、火の神様というか仏教の明王で、一切不浄を飲み込み浄化する烏枢沙摩明王からお名前をお借りしました。</p>
-                </article>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fas fa-fw fa-5x fa-mobile-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">Honoka</h3>
+                            <p class="card-text">Bootstrapテーマの「Honoka」をベースとすることで、導入コストを削減。レスポンシブWebデザインを簡単に実現できます。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="#" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100 border-0">
+                        <div class="card-header px-2 py-3 text-center bg-white border-0">
+                            <i class="fas fa-fw fa-5x fa-list" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-2 py-3 text-center">
+                            <h3 class="card-title">News</h3>
+                            <p class="card-text">新着情報をテンプレートで一括管理。Markdownコンテンツから、一覧ページ・各記事ページを自動生成します。</p>
+                        </div>
+                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
+                            <a href="#" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="#" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>その他の機能について</a>
+                </div>
             </div>
         </section>
     </main>
