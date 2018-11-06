@@ -1,8 +1,8 @@
 <%
 //コピーライトの部分に出す年数を生成
 funcCopyRightYear = (config) => {
-    var copyRightYear = "";
-    var getFullYear = new Date().getFullYear();
+    let copyRightYear = "";
+    const getFullYear = new Date().getFullYear();
     if(parseInt(getFullYear) - parseInt(config.commons.year) === 0) {
         copyRightYear = config.commons.year;
     }
@@ -13,13 +13,13 @@ funcCopyRightYear = (config) => {
 }
 //記事の日時を文字列として出力する
 funcDateTimeFormat = (dateStr, optStr, output) => {
-    var day = new Date(dateStr);
-    var y = day.getFullYear();
-    var m = day.getMonth() + 1;
-    var d = day.getDate();
-    var hr = day.getHours();
-    var mt = day.getMinutes();
-    var sc = day.getSeconds();
+    const day = new Date(dateStr);
+    const y = day.getFullYear();
+    let m = day.getMonth() + 1;
+    let d = day.getDate();
+    const hr = day.getHours();
+    let mt = day.getMinutes();
+    let sc = day.getSeconds();
     if (m < 10) {
         m = "0" + m;
     }
@@ -37,7 +37,7 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
         optStr = "-";
     }
 
-    var datetime;
+    let datetime;
     if(output === "ymd") {
         datetime = `${y}${m}${d}`;
     }

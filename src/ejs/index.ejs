@@ -1,6 +1,4 @@
-<%- include("util/_init_load") %><%- include("util/_functions_article") %><%
-var newsBlock = newsBlock;
-%><%- include("util/_headset", { config, id }) %>
+<%- include("util/_init_load") %><%- include("util/_functions_article") %><%- include("util/_headset", { config, id }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -107,10 +105,10 @@ var newsBlock = newsBlock;
             <div class="releasenotes_contents">
                 <p class="text-center">更新履歴一覧(最新<%=  config.param[id].newscount %>件)です。</p>
                 <div class="row">
-<% for(var i in newsBlock) {
-    var datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
-    var showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
-    var articleUrl = funcArticleUrl("", newsBlock[i]);
+<% for(let i in newsBlock) {
+    const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
+    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
+    const articleUrl = funcArticleUrl("", newsBlock[i]);
 %>
                     <div class="col-12 col-md-4 mb-3">
                         <div class="card h-100">

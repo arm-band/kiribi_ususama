@@ -2,8 +2,8 @@
             <ul class="pagination">
 <%
 //前のページへ
-if(counter !== 1) { //最初のページ以外
-    var prev = counter - 1;
+if(pages !== 1) { //最初のページ以外
+    const prev = pages - 1;
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
@@ -15,7 +15,7 @@ if(counter !== 1) { //最初のページ以外
 //ページネーション
 for(var i = 1; i <= pageLength; i++) { //ページ数分生成
     //今いるページの場合、activeクラスを付与
-    if(i === counter) {
+    if(i === pages) {
 %>
                 <li class="page-item active"><a href="<%= relPath %>news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
 <%
@@ -27,8 +27,8 @@ for(var i = 1; i <= pageLength; i++) { //ページ数分生成
     }
 }
 //次のページへ
-if(counter !== pageLength) { //最後のページ以外
-    var next = counter + 1;
+if(pages !== pageLength) { //最後のページ以外
+    const next = pages + 1;
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">

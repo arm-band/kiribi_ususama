@@ -1,11 +1,11 @@
 <%
 //記事ページのURLを生成
 funcArticleUrl = (url, attributes) => {
-    var urlTitle = attributes.title;
+    let urlTitle = attributes.title;
     urlTitle = urlTitle.replace(/\./g, "_");
-    var datetime = funcDateTimeFormat(attributes.date, "", "ymd");
-    var fileUrl = `releasenote_${urlTitle}-${datetime}`;
-    var articleIdUrl = `${url}news/articles/${fileUrl}.html`;
+    const datetime = funcDateTimeFormat(attributes.date, "", "ymd");
+    const fileUrl = `releasenote_${urlTitle}-${datetime}`;
+    const articleIdUrl = `${url}news/articles/${fileUrl}.html`;
     return articleIdUrl;
 }
 //記事中のimg srcパスやa hrefパスに相対パスを追加

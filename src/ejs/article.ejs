@@ -1,9 +1,6 @@
 <%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><%
-var name = name; //gulpfile.jsで指定されたファイル名
-var attributes = attributes;
-var contentBody = body;
 var returnNews = `${name}${pages}.html`;
-contentBody = funcURLConverter(contentBody, relPath);
+contentBody = funcURLConverter(body, relPath);
 %><%- include("util/_headset", { config, id, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -25,9 +22,9 @@ contentBody = funcURLConverter(contentBody, relPath);
         <section class="container my-5">
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%
-var datetime = funcDateTimeFormat(attributes.date, "-", "");
-var showDt = funcDateTimeFormat(attributes.date, "/", "");
-var articleUrl = funcArticleUrl(config.commons.url, attributes);
+const datetime = funcDateTimeFormat(attributes.date, "-", "");
+const showDt = funcDateTimeFormat(attributes.date, "/", "");
+const articleUrl = funcArticleUrl(config.commons.url, attributes);
 %>
                 <div class="col-12 news_card mb-3">
                     <article class="news_article" id="<%= attributes.url %>">
