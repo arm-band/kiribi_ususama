@@ -5,41 +5,41 @@
  * @copyright Copyright (c) アルム＝バンド
  */
 
-var gulp = require("gulp");
+const gulp = require("gulp");
 //全般
-var watch = require("gulp-watch");
-var plumber = require("gulp-plumber"); //待機
-var notify = require("gulp-notify"); //標準出力
+const watch = require("gulp-watch");
+const plumber = require("gulp-plumber"); //待機
+const notify = require("gulp-notify"); //標準出力
 //sass
-var sass = require("gulp-sass"); //sass
-var autoprefixer = require("gulp-autoprefixer");
+const sass = require("gulp-sass"); //sass
+const autoprefixer = require("gulp-autoprefixer");
 //img
-var imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
+const imagemin = require("gulp-imagemin"); //画像ロスレス圧縮
 //js
-var uglify = require("gulp-uglify"); //js圧縮
-var concat = require("gulp-concat"); //ファイル結合
-var rename = require("gulp-rename"); //ファイル名変更
+const uglify = require("gulp-uglify"); //js圧縮
+const concat = require("gulp-concat"); //ファイル結合
+const rename = require("gulp-rename"); //ファイル名変更
 //ejs
-var ejs = require("gulp-ejs");
-var data = require("gulp-data"); //gulp-ejs内でファイル名を参照できるようにする
+const ejs = require("gulp-ejs");
+const data = require("gulp-data"); //gulp-ejs内でファイル名を参照できるようにする
 //file operation
-var fs = require("fs");
+const fs = require("fs");
 //reload
-var connect = require("gulp-connect-php"); //proxy(phpファイル更新時リロード用)
-var browserSync = require("browser-sync"); //ブラウザリロード
+const connect = require("gulp-connect-php"); //proxy(phpファイル更新時リロード用)
+const browserSync = require("browser-sync"); //ブラウザリロード
 //styleguide
-var frontnote = require("gulp-frontnote");
+const frontnote = require("gulp-frontnote");
 //RSS
-var RSS = require("rss");
+const RSS = require("rss");
 //yaml
-var yaml = require("yaml").default;
+const yaml = require("yaml").default;
 //marked
-var marked = require("marked");
+const marked = require("marked");
 //front-matter
-var fm = require("front-matter");
+const fm = require("front-matter");
 
 //path difinition
-var dir = {
+const dir = {
   assets: {
     jquery    : './node_modules/jquery/dist',
     easing    : './node_modules/jquery.easing',
@@ -82,17 +82,17 @@ var dir = {
   }
 };
 //scss compile parameters
-var scssParam = [
+const scssParam = [
     'last 2 version',
     'iOS >= 10.0',
     'Android >= 5.0'
 ];
 
 //RSS Feed
-var rssFeed = (config) => {
-    var datetime = formatDate("", "");
+const rssFeed = (config) => {
+    const datetime = formatDate("", "");
 
-    var feed = new RSS({
+    const feed = new RSS({
         title: config.commons.sitename,
         description: config.param["index"].description,
         feed_url: config.commons.url + "rss.xml",
@@ -108,7 +108,7 @@ var rssFeed = (config) => {
 
     return feed;
 }
-var feedItem = (feed, config, attributes) => {
+const feedItem = (feed, config, attributes) => {
     feed.item({
         title:  attributes.title,
         description: attributes.excerpt,
@@ -120,18 +120,18 @@ var feedItem = (feed, config, attributes) => {
 }
 
 //yamlファイル取得
-var getConfig = () => {
-    var file = fs.readFileSync(dir.config.dir + dir.config.config, "utf8");
+const getConfig = () => {
+    const file = fs.readFileSync(dir.config.dir + dir.config.config, "utf8");
     return yaml.parse(file);
 }
-var getCommonVar = () => {
-    var file = fs.readFileSync(dir.config.dir + dir.config.commonvar, "utf8");
+const getCommonVar = () => {
+    const file = fs.readFileSync(dir.config.dir + dir.config.commonvar, "utf8");
     return yaml.parse(file);
 }
 
 //記事一覧をファイル名降順で取得
-var getArticles = (directory) => {
-    var fileList = fs.readdirSync(directory);
+const getArticles = (directory) => {
+    let fileList = fs.readdirSync(directory);
     //ファイル名(拡張子なし)でソート
     fileList = fileList.map(fn => {
         return {
@@ -142,34 +142,34 @@ var getArticles = (directory) => {
     return fileList.sort((a, b) => b.noex - a.noex);
 }
 //記事ページのURLを生成
-var articleURL = (attributes) => {
-    var urlTitle = attributes.title;
+const articleURL = (attributes) => {
+    let urlTitle = attributes.title;
     urlTitle = urlTitle.replace(/\./g, "_");
-    var datetime = formatDate(attributes.date, "ymd");
-    var url = `releasenote_${urlTitle}-${datetime}`;
+    const datetime = formatDate(attributes.date, "ymd");
+    const url = `releasenote_${urlTitle}-${datetime}`;
     return url;
 }
 //記事一覧を数字で管理すると桁数が異なるときに人間的な順番と機械的な順番が異なってしまうのを防ぐためにゼロパディング
-var zeroPadding = (num) => {
-    var val = Math.abs(num); //絶対値に変換
-    var length = val.toString().length; //文字列に変換して長さを取得、桁数とする
+const zeroPadding = (num) => {
+    const val = Math.abs(num); //絶対値に変換
+    const length = val.toString().length; //文字列に変換して長さを取得、桁数とする
     return (Array(length).join("0") + num).slice(-length);
 }
 //日付のフォーマット
-var formatDate = (dateObj, output) => {
-    var day;
+const formatDate = (dateObj, output) => {
+    let day;
     if(String(dateObj).length > 0) {
         day = new Date(dateObj);
     }
     else {
         day = new Date();
     }
-    var y = day.getFullYear();
-    var m = day.getMonth() + 1;
-    var d = day.getDate();
-    var hr = day.getHours();
-    var mt = day.getMinutes();
-    var sc = day.getSeconds();
+    const y = day.getFullYear();
+    let m = day.getMonth() + 1;
+    let d = day.getDate();
+    const hr = day.getHours();
+    const mt = day.getMinutes();
+    const sc = day.getSeconds();
     if (m < 10) {
         m = "0" + m;
     }
@@ -177,7 +177,7 @@ var formatDate = (dateObj, output) => {
         d = "0" + d;
     }
 
-    var datetime;
+    let datetime;
     if(output === "ymd") {
         datetime = `${y}${m}${d}`;
     }
@@ -190,7 +190,7 @@ var formatDate = (dateObj, output) => {
 
 //scssコンパイルタスク
 gulp.task("yaml2sass", done => {
-    var str = "$" + fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/\n/g, ";\n$");
+    let str = "$" + fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/\n/g, ";\n$");
     str = str.replace(/\"/g, "");
     str = str + ";"; //最後だけ改行がないので;を付ける
     fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, str);
@@ -244,18 +244,18 @@ gulp.task("js", gulp.parallel("js.uglify.lib", "js.uglify.app"));
 
 //ejs
 gulp.task("commons.ejs", () => {
-    var config = getConfig();
-    var commonVar = getCommonVar();
-    var fileList = getArticles(`${dir.contents.dir}/`);
-    var newsBlock = [];
-    var newsLength = config.param.index.newscount;
+    const config = getConfig();
+    const commonVar = getCommonVar();
+    const fileList = getArticles(`${dir.contents.dir}/`);
+    let newsBlock = [];
+    const newsLength = config.param.index.newscount;
     if(fileList.length <= config.param.index.newscount) {
         newsLength = fileList.length;
     }
-    for(var i = 0; i < newsLength; i++) { //新着情報の件数
-        var fileData = fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, "utf8");
-        var content = fm(fileData);
-        var attributes = content.attributes;
+    for(let i = 0; i < newsLength; i++) { //新着情報の件数
+        const fileData = fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, "utf8");
+        const content = fm(fileData);
+        const attributes = content.attributes;
         newsBlock.push(attributes); //件数分スタック
     }
     return gulp.src(
@@ -272,22 +272,22 @@ gulp.task("commons.ejs", () => {
 
 //新着情報専用のejsタスク
 gulp.task("news.ejs", done => {
-    var name = "news"; //テンプレート・生成するファイル名
-    var config = getConfig();
-    var commonVar = getCommonVar();
-    var defaultFile = `${dir.src.ejs}/article.ejs`; //記事デフォルトテンプレート
-    var tempArticleFile = defaultFile; //記事テンプレート
-    var tempNewsFile = `${dir.src.ejs}/${name}.ejs`; //新着一覧テンプレート
-    var fileList = getArticles(`${dir.contents.dir}/`);
-    var pages = 1; //ページカウンタ
-    var pageLength = Math.ceil(fileList.length / config.param.news.pagination); //ページの最大数
-    var feed = rssFeed(config); //RSS
-    var newsBlock = []; //1ページ辺りの記事のオブジェクト
+    const name = "news"; //テンプレート・生成するファイル名
+    const config = getConfig();
+    const commonVar = getCommonVar();
+    const defaultFile = `${dir.src.ejs}/article.ejs`; //記事デフォルトテンプレート
+    let tempArticleFile = defaultFile; //記事テンプレート
+    const tempNewsFile = `${dir.src.ejs}/${name}.ejs`; //新着一覧テンプレート
+    const fileList = getArticles(`${dir.contents.dir}/`);
+    let pages = 1; //ページカウンタ
+    const pageLength = Math.ceil(fileList.length / config.param.news.pagination); //ページの最大数
+    let feed = rssFeed(config); //RSS
+    let newsBlock = []; //1ページ辺りの記事のオブジェクト
 
-    for(var i = 0; i < fileList.length; i++) { //新着情報の件数
-        var fileData = fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, "utf8");
-        var content = fm(fileData);
-        var attributes = content.attributes;
+    for(let i = 0; i < fileList.length; i++) { //新着情報の件数
+        const fileData = fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, "utf8");
+        const content = fm(fileData);
+        const attributes = content.attributes;
         newsBlock.push(attributes); //件数分スタック
         /* 各記事ファイルを生成
         *************************************** */
@@ -300,7 +300,7 @@ gulp.task("news.ejs", done => {
         }
 
         //記事生成
-        var body = marked(content.body);
+        const body = marked(content.body);
         gulp.src(tempArticleFile)
             .pipe(plumber())
             .pipe(data((ejsFile) => {
@@ -341,7 +341,7 @@ gulp.task("news.ejs", done => {
     }
 
     //RSS
-    var xml = feed.xml({indent: true});
+    const xml = feed.xml({indent: true});
     fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml);
 
     done();
