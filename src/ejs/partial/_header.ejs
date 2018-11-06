@@ -34,9 +34,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<%= relPath %>#origin">由来</a>
                     </li>
+<% if(gulpConfig.news) { %>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= relPath %>#releasenotes">更新履歴</a>
                     </li>
+<% } %>
                 </ul>
             </div>
         </div>

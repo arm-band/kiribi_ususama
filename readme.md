@@ -70,6 +70,7 @@ gulpで処理されるもの
     - `config.yml`
         - `commons`:
             - `sitename`: サイト名。タイトルタグやトップページのアイキャッチ、ヘッダのブランド、フッタのコピーライトなど各所に使われます
+            - `description`: `<meta description="">`に記述される説明
             - `year`: 年数。フッタのコピーライトで使います
             - `author`: 作者名。フッタのコピーライトで使います
             - `url`: Twitterカード出力時のサイトURLを指定します
@@ -77,14 +78,8 @@ gulpで処理されるもの
             - `twitteraccount`: Twitterカード出力時のTwitterアカウントを指定します(@マーク抜き)
             - `newsthumbnail`: 新着情報のサムネイルの画像のパス
         - `param`:
-            - キー名はファイル名と合わせること
-                - `title`: ページ名
-                - `entitle`: 英語のページ名
-                - `css`: 読み込むcssファイルのファイル名。拡張子不要
-                - `js`: 読み込むjsファイルのファイル名。拡張子不要
-                - `description`: `<meta description="">`に記述される説明
-                - `ogpimage`: Twitterカード出力時の画像を指定します
-                - `newscount`: `index.ejs`のみ存在。新着情報一覧で出力する新着情報の件数
+            - `indexcount`: `index.ejs`で使用。トップページの新着情報一覧で出力する新着情報の件数
+            - `newscount`: `news.ejs`で使用。新着情報一覧ページで1ページあたりに出力する新着情報の件数
     - `commonvar.yml`
         - 色、ナビゲーションバーの高さなど、基本的な情報をjson形式で記述
         - このjsonからscssの各所で使用している変数の元となる`/src/base/_var.scss`が生成される
@@ -93,6 +88,9 @@ gulpで処理されるもの
             - `/src/ejs/partial/header.ejs`の六角形svgの指定にも使用(通常はコメントアウト)
             - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
                 - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
+    - `commonvar.yml`
+        - `usephp`: PHPを使用するか否か。デフォルトは`false`。
+        - `news`: 新着情報を出力するか否か。`true`の場合、トップページに新着情報一覧を出力するほか、新着情報一覧ページや各新着情報の記事ページを生成します。デフォルトは`true`。
 
 ## Notes
 
@@ -105,6 +103,10 @@ gulpで処理されるもの
 
 ## Release Notes
 
+- 2018/11/6 ver.3.11.0-4.1.3
+    - `gulpfile.js`、ejsの修正・調整
+    - `gulpfile.js`を大改修。`gulp`のタスクを分割して整理
+    - `config.yml`の修正・見直し
 - 2018/11/5 ver.3.10.2-4.1.3
     - 修正・調整
     - 特徴を追記
