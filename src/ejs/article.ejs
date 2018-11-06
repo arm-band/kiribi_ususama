@@ -1,23 +1,30 @@
-<%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><%
+<%
 var returnNews = `${name}${pages}.html`;
-contentBody = funcURLConverter(body, relPath);
-%><%- include("util/_headset", { config, id, attributes }) %>
+parameters = {
+    title: "記事",
+    entitle: "News",
+    css: "contents",
+    js: "app.min",
+    description: "記事です。",
+    ogpimage: "eyecatch.jpg"
+}
+%><%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><% contentBody = funcURLConverter(body, relPath); %><%- include("util/_headset", { config, parameters, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { config, id, commonVar }) %>
+<%- include("partial/_header", { config, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="container-fluid main <%= id %>main">
         <aside class="container">
-<%- include("partial/_breadcrumb", { config, id, returnNews, attributes }) %>
+<%- include("partial/_breadcrumb", { parameters, returnNews, relPath }) %>
         </aside>
         <section class="container my-5">
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
@@ -62,10 +69,10 @@ if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { config, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { config, id }) %>
+<%- include("partial/_js_loader", { parameters, relPath }) %>
 </body>
 </html>

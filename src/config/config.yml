@@ -1,39 +1,12 @@
 commons:
     sitename: "Kiribi Ususama"
+    description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
     year: 2018
     author: "アルム＝バンド"
-    url: "https://github.com/arm-band/kiribi_ususama/"
-    ogpimage: "blob/master/misc/img/kiribi_ususama.png"
+    url: "http://localhost:3000/"
+    ogpimage: "img/eyecatch.jpg"
     twitteraccount: "Bredtn_1et"
     newsthumbnail: "img/thumbnails/"
 param:
-    index:
-        title: "ホーム"
-        entitle: "Home"
-        css: "index"
-        js: "app.min"
-        description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
-        ogpimage: "eyecatch.jpg"
-        newscount: 3
-    about:
-        title: "特徴"
-        entitle: "About Page"
-        css: "contents"
-        js: "app.min"
-        description: "Kiribi Ususamaの特徴についてご説明します。"
-        ogpimage: "eyecatch.jpg"
-    news:
-        title: "更新履歴"
-        entitle: "News"
-        css: "contents"
-        js: "app.min"
-        description: "更新履歴の一覧です。"
-        ogpimage: "eyecatch.jpg"
-        pagination: 6
-    article:
-        title: "記事"
-        entitle: "News"
-        css: "contents"
-        js: "app.min"
-        description: "記事です。"
-        ogpimage: "eyecatch.jpg"
+    indexcount: 3
+    newscount: 6

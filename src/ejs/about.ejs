@@ -1,20 +1,29 @@
-<%- include("util/_init_load") %><%- include("util/_headset", { config, id }) %>
+<%
+parameters = {
+    title: "特徴",
+    entitle: "About Page",
+    css: "contents",
+    js: "app.min",
+    description: "Kiribi Ususamaの特徴についてご説明します。",
+    ogpimage: "eyecatch.jpg"
+}
+%><%- include("util/_init_load") %><%- include("util/_headset", { config, parameters }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { config, id, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 
 <div id="wrapper">
-<%- include("partial/_header", { config, id, commonVar }) %>
+<%- include("partial/_header", { config, commonVar }) %>
 
 <%- include("partial/_eyecatch", { headerString }) %>
 
     <!-- main -->
     <main class="container-fluid main <%= id %>main">
         <aside class="container">
-<%- include("partial/_breadcrumb", { config, id }) %>
+<%- include("partial/_breadcrumb", { parameters, relPath }) %>
         </aside>
         <section class="container my-5">
             <div class="page-header mb-3 text-center features_header">
@@ -211,10 +220,10 @@
     </main>
     <!-- /main -->
 
-<%- include("partial/_footer", { config, id, copyRightYear }) %>
+<%- include("partial/_footer", { config, copyRightYear }) %>
 
 </div>
 
-<%- include("partial/_js_loader", { config, id }) %>
+<%- include("partial/_js_loader", { parameters, relPath }) %>
 </body>
 </html>

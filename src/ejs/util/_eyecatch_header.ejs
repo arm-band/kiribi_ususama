@@ -1,12 +1,12 @@
 <%
 //アイキャッチ画像部分に出力する文字列をトップページかそれ以外かで振り分ける
-funcEyecatchHeader = (config, id) => {
+funcEyecatchHeader = (config, parameters, id) => {
     let headerString = "";
     if(id === "index") {
         headerString = config.commons.sitename;
     }
     else {
-        headerString = config.param[id].title;
+        headerString = parameters.title;
     }
     return headerString;
 }

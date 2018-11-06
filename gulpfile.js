@@ -94,10 +94,10 @@ const rssFeed = (config) => {
 
     const feed = new RSS({
         title: config.commons.sitename,
-        description: config.param["index"].description,
+        description: config.commons.description,
         feed_url: config.commons.url + "rss.xml",
         site_url: config.commons.url,
-        image_url: config.commons.url + "img/" + config.param["index"].ogpimage,
+        image_url: config.commons.url + config.commons.ogpimage,
         managingEditor: config.commons.author,
         webMaster: config.commons.author,
         copyright: config.commons.year + " " + config.commons.author,
@@ -112,7 +112,7 @@ const feedItem = (feed, config, attributes) => {
     feed.item({
         title:  attributes.title,
         description: attributes.excerpt,
-        url: config.commons.url.slice(0, -1) + config.commons.baseurl + "news/articles/" + articleURL(attributes) + ".html",
+        url: config.commons.url + "news/articles/" + articleURL(attributes) + ".html",
         author: config.commons.author,
         date: String(attributes.date)
     });
@@ -248,8 +248,8 @@ gulp.task("commons.ejs", () => {
     const commonVar = getCommonVar();
     const fileList = getArticles(`${dir.contents.dir}/`);
     let newsBlock = [];
-    const newsLength = config.param.index.newscount;
-    if(fileList.length <= config.param.index.newscount) {
+    const newsLength = config.param.indexcount;
+    if(fileList.length <= config.param.indexcount) {
         newsLength = fileList.length;
     }
     for(let i = 0; i < newsLength; i++) { //新着情報の件数
@@ -280,7 +280,7 @@ gulp.task("news.ejs", done => {
     const tempNewsFile = `${dir.src.ejs}/${name}.ejs`; //新着一覧テンプレート
     const fileList = getArticles(`${dir.contents.dir}/`);
     let pages = 1; //ページカウンタ
-    const pageLength = Math.ceil(fileList.length / config.param.news.pagination); //ページの最大数
+    const pageLength = Math.ceil(fileList.length / config.param.newscount); //ページの最大数
     let feed = rssFeed(config); //RSS
     let newsBlock = []; //1ページ辺りの記事のオブジェクト
 
@@ -310,11 +310,11 @@ gulp.task("news.ejs", done => {
             .pipe(rename(`${articleURL(attributes)}.html`))
             .pipe(gulp.dest(dir.dist.articles));
 
-        if(config.param["index"].newscount > i) { //件数はconfig.param["index"].newscountの件数とする
+        if(config.param.indexcount > i) { //件数はconfig.param.indexcountの件数とする
             feedItem(feed, config, attributes); //RSS
         }
 
-        if(i % config.param.news.pagination == (config.param.news.pagination - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
+        if(i % config.param.newscount == (config.param.newscount - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             gulp.src(tempNewsFile)
             .pipe(plumber())
             .pipe(data((file) => {
