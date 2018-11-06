@@ -88,7 +88,7 @@ gulpで処理されるもの
             - `/src/ejs/partial/header.ejs`の六角形svgの指定にも使用(通常はコメントアウト)
             - `navbar-height`: scssの他、`/src/ejs/index.ejs`の`body`タグに`data-offset`属性を指定するために使用
                 - `/src/js/index.js`では上記bodyタグの`data-offset`属性を読み取ってスクロールダウンのオフセット値として使用
-    - `commonvar.yml`
+    - `gulpconfig.yml`
         - `usephp`: PHPを使用するか否か。デフォルトは`false`。
         - `news`: 新着情報を出力するか否か。`true`の場合、トップページに新着情報一覧を出力するほか、新着情報一覧ページや各新着情報の記事ページを生成します。デフォルトは`true`。
 
