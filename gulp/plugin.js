@@ -19,5 +19,6 @@ module.exports = {
     frontnote: require("gulp-frontnote"),
     RSS: require("rss"),
     browserSync: require("browser-sync"),
-    connect: require("gulp-connect-php")
+    connect: require("gulp-connect-php"),
+    ftpDeploy: require("ftp-deploy")
 };
