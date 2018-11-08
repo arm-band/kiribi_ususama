@@ -1,7 +1,7 @@
 const _         = require("../plugin");
 const dir       = require("../dir");
 const functions = require("../functions");
-const gulpConfig = functions.getConfig(dir.config.gulpconfig);
+const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions;
 
 let GENERATENEWS;
 if(gulpConfig.news) {
@@ -12,7 +12,7 @@ else {
 }
 
 //自動リロード
-_.gulp.task("php-sync", () => {
+_.gulp.task("phpsync", () => {
     _.connect.server({ //php使うときはこっち
         port: 8001,
         base: dir.dist.html,

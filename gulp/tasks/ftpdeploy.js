@@ -1,19 +1,10 @@
 const _         = require("../plugin");
 const dir       = require("../dir");
 const functions = require("../functions");
-const objFtpDeploy = new ftpDeploy();
+const objFtpDeploy = new _.ftpDeploy();
 
-gulp.task("ftp", done => {
-    const ftpConfig = {
-        user: user,
-        password: "password",
-        host: "testserver.example.com",
-        port: 21,
-        localRoot: "./dist/",
-        remoteRoot: "/test/site/to/path/web/",
-        include: ["*", "**/*"],
-        deleteRemote: false
-    };
+_.gulp.task("ftp", done => {
+    const ftpConfig = functions.getConfig(dir.config.gulpconfig).ftp;
     objFtpDeploy.deploy(ftpConfig, (err) => {
         if(err) console.log(err);
         else console.log("ftp deploy finished");
