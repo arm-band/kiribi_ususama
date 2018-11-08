@@ -7,6 +7,6 @@ ftp:
     host: "test.example.com"
     port: 21
     localRoot: "./dist/"
-    remoteRoot: "/path/to/web/root/"
+    remoteRoot: "./path/to/web/root/"
     include: ["*", "**/*"]
     deleteRemote: false
