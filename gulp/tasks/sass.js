@@ -4,7 +4,7 @@ const scssParam = require("../scssParam");
 
 //scssコンパイルタスク
 _.gulp.task("yaml2sass", done => {
-    let str = "$" + _.fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/\n/g, ";\n$");
+    let str = "$" + _.fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/(\r\n|\n)/g, ";\n$");
     str = str.replace(/\"/g, "");
     str = str + ";"; //最後だけ改行がないので;を付ける
     _.fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, str);
