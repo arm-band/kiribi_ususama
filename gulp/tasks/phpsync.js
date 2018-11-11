@@ -21,7 +21,8 @@ _.gulp.task("phpsync", () => {
     }, () =>{
         _.browserSync({
             proxy: "localhost:8001",
-            open: 'external'
+            open: 'external',
+            https: true
         });
     });
 

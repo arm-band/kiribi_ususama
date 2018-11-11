@@ -17,7 +17,8 @@ _.gulp.task("browsersync", () => {
         server: {
             baseDir: dir.dist.html
         },
-        open: 'external'
+        open: 'external',
+        https: true
     });
 
     _.watch(`${dir.src.ejs}/**/*.ejs`, _.gulp.series(GENERATENEWS, _.browserSync.reload));
