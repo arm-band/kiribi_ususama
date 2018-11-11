@@ -3,6 +3,7 @@
 /src/js/concat/
 /src/scss/assets/
 /src/scss/util/_var.scss
+/gulp/subterranean/
 package-lock.json
 /.sass-cache/
 /sg/dist/

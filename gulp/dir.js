@@ -18,7 +18,8 @@ module.exports = {
         dir        : './src/config',
         config     : '/config.yml',
         commonvar  : '/commonvar.yml',
-        gulpconfig : '/gulpconfig.yml'
+        gulpconfig : '/gulpconfig.yml',
+        hachizetsu : './gulp/subterranean/hachizetsu.yml'
     },
     contents: {
         dir        : './src/contents'
