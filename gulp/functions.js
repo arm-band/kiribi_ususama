@@ -29,8 +29,8 @@ module.exports = {
         });
         return feed;
     },
-    getConfig: (ymlFile) => { //yamlファイル取得
-        const file = _.fs.readFileSync(dir.config.dir + ymlFile, "utf8");
+    getConfig: (ymlFile, path = dir.config.dir) => { //yamlファイル取得
+        const file = _.fs.readFileSync(path + ymlFile, "utf8");
         return _.yaml.parse(file);
     },
     getArticles: (directory, functions) => { //記事一覧をファイル名降順で取得
@@ -84,5 +84,15 @@ module.exports = {
             datetime = y + "-" + m + "-" + d + "T" + hr + ":" + mt + ":" + sc + "+09:00"
         }
         return datetime;
+    },
+    encrypt: (txt, key) => {
+        let ciph = _.crypto.createCipher("aes-256-cbc", key);
+        ciph.update(txt, "utf8", "hex");
+        return ciph.final("hex");
+    },
+    decrypt: (key, txt) => {
+        let deciph = _.crypto.createDecipher("aes-256-cbc", key);
+        deciph.update(txt, "hex", "utf8");
+        return deciph.final("utf8");
     }
 };

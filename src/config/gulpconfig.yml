@@ -2,11 +2,13 @@ functions:
     usephp: false
     news: true
 ftp:
-    user: "user"
-    password: "password"
-    host: "test.example.com"
+    user: user
+    password: password
+    host: test.example.com
     port: 21
-    localRoot: "./dist/"
-    remoteRoot: "./path/to/web/root/"
-    include: ["*", "**/*"]
+    localRoot: ./dist/
+    remoteRoot: ./path/to/web/root/
+    include:
+        - "*"
+        - "**/*"
     deleteRemote: false

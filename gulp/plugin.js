@@ -20,5 +20,6 @@ module.exports = {
     RSS: require("rss"),
     browserSync: require("browser-sync"),
     connect: require("gulp-connect-php"),
-    ftpDeploy: require("ftp-deploy")
+    ftpDeploy: require("ftp-deploy"),
+    crypto: require("crypto")
 };
