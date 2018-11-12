@@ -31,6 +31,8 @@ else {
 *************************************** */
 _.requireDir("./tasks", { recurse: true });
 
+_.gulp.task("init", _.gulp.series("admin.ejs", "admin.sass", "admin.js.lib", "admin.browsersync"));
+
 _.gulp.task("server", _.gulp.series(SYNCSERVER));
 _.gulp.task("build", _.gulp.parallel(_.gulp.series("yaml2sass", "sass"), GENERATENEWS, "js", "imagemin", "favicon"));
 

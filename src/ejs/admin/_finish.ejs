@@ -1,0 +1,37 @@
+<%
+parameters = {
+    title: "管理者ページ",
+    entitle: "Admin Page",
+    css: "bootstrap",
+    js: "app.min"
+}
+%><%- include("../util/_init_load") %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include("partial/_head", { config, parameters, commonVar }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+<div id="wrapper">
+<%- include("partial/_header", { config }) %>
+
+    <!-- main -->
+    <main class="main <%= id %>main">
+        <section class="container my-5">
+            <div class="page-header mb-3 text-center finish_header">
+                <h2><i class="fab fa-fw fa-flag-checkered" aria-hidden="true"></i>完了<small class="ml-3">Finished</small></h2>
+                <p>更新が完了しました！</p>
+            </div>
+            <div class="my-4 finish_contents fixed_anchor">
+                <a href="./" class="btn btn-light mt-3"><i class="fas fa-fw fa-undo" aria-hidden="true"></i>管理者ページに戻る</a>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+<%- include("partial/_footer", { config, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { parameters, relPath }) %>
+</body>
+</html>

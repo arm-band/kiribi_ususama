@@ -7,3 +7,6 @@
 package-lock.json
 /.sass-cache/
 /sg/dist/
+/admin/*.html
+/admin/css/
+/admin/js/

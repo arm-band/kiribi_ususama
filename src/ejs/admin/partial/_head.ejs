@@ -1,0 +1,54 @@
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= parameters.title %> | <%= config.commons.sitename %></title>
+
+    <meta name="robots" content="noindex,noarchive,nofollow">
+
+    <!-- theme color -->
+    <meta name="theme-color" content="<%= commonVar["main-color"] %>">
+
+    <!-- css -->
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
+    <link href="./css/<%= parameters.css %>.css" rel="stylesheet">
+    <style>
+        .main {
+            margin-top: <%= commonVar["navbar-height"] %>;
+        }
+/*        .returnPageTop {
+            display: none;
+            position: fixed;
+            bottom: 4%;
+            right: 6%;
+            z-index: 90;
+        }
+        .returnPageTop i {
+            display: block;
+            font-size: 22px;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            background-color: <%# commonVar["main-color"] %>;
+            border-radius: 4px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .returnPageTop i:hover, .returnPageTop i:active {
+            background-color: <%# commonVar["main-color"] %>;
+        }*/
+        .footer {
+            clear: both;
+            padding: 5px 5px 10px 5px;
+            background-color: <%= commonVar["main-color"] %>;
+            color: #fff;
+        }
+        .copyRight {
+            display: block;
+            margin: 0 auto;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>

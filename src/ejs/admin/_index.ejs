@@ -1,0 +1,152 @@
+<%
+parameters = {
+    title: "管理者ページ",
+    entitle: "Admin Page",
+    css: "bootstrap",
+    js: "app.min"
+}
+%><%- include("../util/_init_load") %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include("partial/_head", { config, parameters, commonVar }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+
+<div id="wrapper">
+<%- include("partial/_header", { config }) %>
+
+    <!-- main -->
+    <main class="main <%= id %>main">
+        <section class="container my-5">
+            <form action="./bin/init.js" method="post">
+                <div class="page-header mb-3 text-center init_header">
+                    <h2>初期設定<small class="ml-3">Initial Settings</small></h2>
+                </div>
+                <div class="my-4 init_contents fixed_anchor">
+                    <h3 class="mt-4 mb-3">一般設定</h3>
+                    <div class="form-group row">
+                        <label for="SiteName" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="Webサイトの名前です。"><i class="fas fa-fw fa-file-signature" aria-hidden="true"></i>サイト名<span class="badge badge-warning">必須</span></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="SiteName" id="SiteName" placeholder="<%= config.commons.sitename %>" value="<%= config.commons.sitename %>" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="description" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="Webサイトの説明・キャッチフレーズです。titleタグやmetaタグのdescriptionに使用します。"><i class="fas fa-fw fa-pen-fancy" aria-hidden="true"></i>説明</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="description" id="description" placeholder="<%= config.commons.description %>" value="<%= config.commons.description %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="author" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="フッタのコピーライト表示の著者情報として表示します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i>著者情報<span class="badge badge-warning">必須</span></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="author" id="author" placeholder="<%= config.commons.author %>" value="<%= config.commons.author %>" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="themeColor" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="Webサイトのイメージカラーです。"><i class="fas fa-fw fa-palette" aria-hidden="true"></i>テーマカラー</label>
+                        <div class="col-md-10">
+                            <input type="color" class="form-control" name="themeColor" id="themeColor" value="<%= commonVar["main-color"] %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="CRYear" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="Webサイトの発行年数です。コピーライトの表示に使います。"><i class="fas fa-fw fa-calendar" aria-hidden="true"></i>年<span class="badge badge-warning">必須</span></label>
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" size="4" name="CRYear" id="CRYear" placeholder="<%= config.commons.year %>" value="<%= config.commons.year %>" required="required">
+                        </div>
+                    </div>
+                    <h3 class="mt-4 mb-3">OGP設定</h3>
+                    <div class="form-group row">
+                        <label for="OGPTUserID" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="OGPに設定するTwitterアカウントのユーザIDを入力してください。先頭に@は不要です。"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>TwitterユーザID</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="OGPTUserID" id="OGPTUserID" placeholder="" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="OGPImage" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="OGPに設定する画像のURLを指定してください。相対パスではなく、絶対パスで指定してください。"><i class="fas fa-fw fa-image" aria-hidden="true"></i>OGP画像</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="OGPImage" id="OGPImage" placeholder="<%= config.commons.ogpimage %>" value="<%= config.commons.ogpimage %>">
+                            <small class="form-text text-muted">相対パスではなく、絶対パスで指定してください。</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="URL" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="OGPに設定するWebサイトのURLを指定してください。"><i class="fas fa-fw fa-link" aria-hidden="true"></i>URL</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="URL" id="URL" placeholder="<%= config.commons.url %>" value="<%= config.commons.url %>">
+                        </div>
+                    </div>
+                    <h3 class="mt-4 mb-3">Ususama設定</h3>
+<%
+let checkedUsephp = '';
+if(gulpConfig.functions.usephp == true) {
+    checkedUsephp = ' checked="checked"';
+}
+%>
+                    <div class="form-group row">
+                        <label for="usephp" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="XAMPPのPHPを使用するかどうかを設定します。"><i class="fab fa-fw fa-php" aria-hidden="true"></i>php使用</label>
+                        <div class="col-md-10">
+                            <label class="form-check-label" for="usephp">
+                                <input class="form-check-input usephp" type="checkbox" id="usephp" value="true"<%- checkedUsephp %>>
+                            </label>
+                        </div>
+                    </div>
+<%
+let checkedNews = '';
+if(gulpConfig.functions.news == true) {
+    checkedNews = ' checked="checked"';
+}
+%>
+                    <div class="form-group row">
+                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="新着情報の一覧と各記事ページを生成するかどうかを設定します。"><i class="fas fa-fw fa-newspaper" aria-hidden="true"></i>新着情報</label>
+                        <div class="col-md-10">
+                            <label class="form-check-label" for="news">
+                                <input class="form-check-input news" type="checkbox" id="news" value="true"<%- checkedNews %>>
+                            </label>
+                        </div>
+                    </div>
+                    <h3 class="mt-4 mb-3">FTP情報</h3>
+                    <div class="form-group row">
+                        <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i>ユーザID</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ftpUser" id="ftpUser" placeholder="<%= gulpConfig.ftp.user %>" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ftpPswd" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するパスワードを指定します。"><i class="fas fa-fw fa-key" aria-hidden="true"></i>パスワード</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" name="ftpPswd" id="ftpPswd" placeholder="<%= gulpConfig.ftp.password %>" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ftpHost" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPで接続するサーバのホスト名を入力してください。"><i class="fas fa-fw fa-server" aria-hidden="true"></i>ホスト名</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ftpHost" id="ftpHost" placeholder="<%= gulpConfig.ftp.host %>" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ftpLocal" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="アップロードするファイルがある場所を指定してください。"><i class="fas fa-fw fa-hdd" aria-hidden="true"></i>ローカルパス</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ftpLocal" id="ftpLocal" placeholder="<%= gulpConfig.ftp.localRoot %>" value="<%= gulpConfig.ftp.localRoot %>">
+                            <small class="form-text text-muted">通常は変更する必要はありません。</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ftpRemote" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="サーバ上のアップロードする場所を指定してください。"><i class="fas fa-fw fa-server" aria-hidden="true"></i>リモートパス</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ftpRemote" id="ftpRemote" placeholder="<%= gulpConfig.ftp.remoteRoot %>" value="<%= gulpConfig.ftp.remoteRoot %>">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-fw fa-paper-plane" aria-hidden="true"></i>送信する</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- /main -->
+
+<%- include("partial/_footer", { config, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { parameters, relPath }) %>
+</body>
+</html>
