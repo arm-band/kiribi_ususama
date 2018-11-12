@@ -47,3 +47,15 @@
         }
     }
 }
+//mobile SafariでHonokaの下線アニメーションを実行すると2回タップしないとリンクジャンプしないSafariのバグに当たるので、アニメーションを打ち消す
+body.mobileSafari { //index.jsでUAにより付与。mobile Safariバグ対策
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
