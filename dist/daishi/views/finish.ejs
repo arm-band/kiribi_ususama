@@ -1,0 +1,93 @@
+<%
+parameters = {
+    title: "初期設定",
+    entitle: "Initial Settings",
+    css: "index",
+    js: "app.min"
+}
+contents = {
+    title: "",
+    titleIcon: "",
+    entitle: "",
+    message: "",
+    message2: "",
+    link: "",
+    linkTitle: "",
+    linkIcon: ""
+}
+if(unpressed === "true") {
+    contents.title = "初期設定終了";
+    contents.message = "設定を終了します。このタブは閉じてしまっても構いません。";
+    contents.message2 = "バックグラウンドでgulpによりWebサイトが生成され、自動的に新しいタブが開きます。";
+}
+else if(msg.length === 0) {
+    contents.title = "完了";
+    contents.titleIcon = "fas fa-fw fa-flag-checkered";
+    contents.entitle = "Finished";
+    contents.message = "更新が完了しました！";
+    contents.link = "./finish";
+    contents.linkTitle = "Webサイトを生成する";
+    contents.linkIcon = "fab fa-fw fa-gulp";
+}
+else {
+    contents.title = "エラー";
+    contents.titleIcon = "fas fa-fw fa-times";
+    contents.entitle = "Failed";
+    contents.message = "下記のエラーが発生しました。エラー内容を修正してもう一度設定を行ってください。";
+    contents.link = "./";
+    contents.linkTitle = "前の画面に戻る";
+    contents.linkIcon = "fas fa-fw fa-undo";
+}
+%><% if(unpressed !== "true") { %><%- include("./util/_init_load") %><% } %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<% if(unpressed !== "true") { %><%- include("partial/_head", { config, parameters, commonVar }) %><% } %>
+</head>
+<% if(unpressed !== "true") { %>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+
+<div id="wrapper">
+<%- include("partial/_header", { config }) %>
+
+    <!-- main -->
+    <main class="main <%= id %>main">
+        <section class="container my-5">
+            <div class="page-header mb-3 finish_header">
+                <h2 class="text-center"><i class="<%= contents.titleIcon %>" aria-hidden="true"></i><%= contents.title %><small class="ml-3"><%= contents.entitle %></small></h2>
+                <p class="text-center"><%= contents.message %></p>
+<%     if(msg.length > 0) { //エラーがある場合 %>
+                <ul>
+<%         for(let i = 0; i < msg.length; i++) { %>
+                    <li><%= msg %></li>
+<%         } %>
+                </ul>
+<%     } %>
+            </div>
+            <div class="my-4 text-center finish_contents fixed_anchor">
+<%     if(msg.length > 0) { //エラーがある場合 %>
+                <a href="<%= contents.link %>" class="btn btn-light mt-3"><i class="<%= contents.linkIcon %>" aria-hidden="true"></i><%= contents.linkTitle %></a>
+<%     } else { %>
+                <form action="<%= contents.link %>" method="post">
+                    <input type="hidden" name="unpressed" value="true">
+                    <button type="submit" class="btn btn-primary mt-3"><i class="<%= contents.linkIcon %>" aria-hidden="true"></i><%= contents.linkTitle %></button>
+                </form>
+<%     } %>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+<%- include("partial/_footer", { config, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { parameters }) %>
+</body>
+<% } else { %>
+<body>
+    <h1><%= contents.title %></h1>
+    <p><%= contents.message %></p>
+    <p><%= contents.message2 %></p>
+</body>
+<% } %>
+</html>

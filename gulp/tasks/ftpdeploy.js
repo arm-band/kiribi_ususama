@@ -7,8 +7,8 @@ _.gulp.task("ftp", done => {
     let ftpConfig = functions.getConfig(dir.config.gulpconfig).ftp;
     const hachizetsu = functions.getConfig(dir.config.hachizetsu, "");
 
-    ftpConfig.user = functions.decrypt(String(hachizetsu.key), ftpConfig.user);
-    ftpConfig.password = functions.decrypt(String(hachizetsu.key), ftpConfig.password);
+    ftpConfig.user = functions.decrypt(String(hachizetsu.key), ftpConfig.user, functions);
+    ftpConfig.password = functions.decrypt(String(hachizetsu.key), ftpConfig.password, functions);
 
     objFtpDeploy.deploy(ftpConfig, (err) => {
         if(err) console.log(err);

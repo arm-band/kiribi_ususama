@@ -1,0 +1,8 @@
+<%- include("../../../../src/ejs/util/_date") %>
+<%
+config = config;
+commonVar = commonVar;
+copyRightYear = funcCopyRightYear(config);
+id = filename;
+navbarHeight = commonVar["navbar-height"].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
+%>

@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+// ============================================= *
+//                                               *
+// Import                                        *
+//                                               *
+// ============================================= */
+@import "../assets/bootstrap/bootstrap"; //bootstrap(3.3.7)
+@import "./util/var"; //変数
+@import "../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
+@import "../util/typo"; //ベンダープレフィックス等のMixinモジュール
+@import "../util/module"; //ベンダープレフィックス等のMixinモジュール
+//@import "../util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
+@import "../util/base"; //フォント指定やIE対処など
+
+// ============================================= *
+//                                               *
+// 全体                                           *
+//                                               *
+// ============================================= */
+
+// ============================================= *
+//                                               *
+// ヘッダ                                         *
+//                                               *
+// ============================================= */
+//@import "../util/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
+@import "../partial/header";
+
+// ============================================= *
+//                                               *
+// メインコンテンツ                                 *
+//                                               *
+// ============================================= */
+.main {
+    margin-top: $navbar-height;
+    margin: {
+        left: 0;
+        right: 0;
+    }
+    padding: {
+        left: 0;
+        right: 0;
+    }
+    background-color: $bg-color;
+    color: $color;
+    div:not(.text-center) p:not(.text-center) {
+        text-indent: 1rem;
+        & .fa-fw {
+            margin: {
+                left: -1rem;
+                right: 1rem;
+            }
+        }
+    }
+    section {
+        ul {
+            padding-left: 1.4rem;
+        }
+        ol {
+            padding-left: 1.6rem;
+        }
+    }
+    .fixed_anchor {
+        @include fixedAnchor();
+    }
+}
+
+// ============================================= *
+//                                               *
+// フッタ                                         *
+//                                               *
+// ============================================= */
+@import "../partial/footer";
+
+// ***** ページトップへ戻る ***** */
+@import "../partial/returnpagetop";

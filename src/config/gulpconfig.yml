@@ -1,9 +1,10 @@
 functions:
     usephp: false
     news: true
+    ssl: true
 ftp:
-    user: user
-    password: password
+    user:
+    password:
     host: test.example.com
     port: 21
     localRoot: ./dist/
@@ -11,4 +12,6 @@ ftp:
     include:
         - "*"
         - "**/*"
+    exclude:
+        - "daishi/**/*"
     deleteRemote: false

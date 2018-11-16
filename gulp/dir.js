@@ -19,7 +19,7 @@ module.exports = {
         config     : '/config.yml',
         commonvar  : '/commonvar.yml',
         gulpconfig : '/gulpconfig.yml',
-        hachizetsu : './gulp/subterranean/hachizetsu.yml'
+        hachizetsu : './bin/subterranean/hachizetsu.yml'
     },
     contents: {
         dir        : './src/contents'
@@ -41,5 +41,13 @@ module.exports = {
         favicon    : '../../dist/favicon',
         canceller  : '../src/css',
         template   : './sg/src/ejs'
+    },
+    admin: {
+        scss       : './src/scss/admin',
+        js         : './src/js/admin',
+        dist       : './dist/daishi',
+        views      : '/views',
+        css        : '/public/css',
+        distjs     : '/public/js'
     }
 };

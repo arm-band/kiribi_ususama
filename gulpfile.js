@@ -31,8 +31,12 @@ else {
 *************************************** */
 _.requireDir("./tasks", { recurse: true });
 
+_.gulp.task("daishi", _.gulp.series("admin.sass", "admin.js"));
+
 _.gulp.task("server", _.gulp.series(SYNCSERVER));
 _.gulp.task("build", _.gulp.parallel(_.gulp.series("yaml2sass", "sass"), GENERATENEWS, "js", "imagemin", "favicon"));
 
+//最初のタスク
+_.gulp.task("init", _.gulp.series("build", "server"));
 //gulpのデフォルトタスクで諸々を動かす
-_.gulp.task("default", _.gulp.series("build", "server"));
+_.gulp.task("default", _.gulp.series("server"));

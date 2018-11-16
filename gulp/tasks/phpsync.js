@@ -22,7 +22,7 @@ _.gulp.task("phpsync", () => {
         _.browserSync({
             proxy: "localhost:8001",
             open: 'external',
-            https: true
+            https: gulpConfig.ssl
         });
     });
 

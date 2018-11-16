@@ -85,12 +85,29 @@ module.exports = {
         }
         return datetime;
     },
-    encrypt: (txt, key) => {
+    formatString: (str) => {
+        if(typeof str !== "string") {
+            if(typeof str === undefined || typeof str === null || JSON.stringify(str) === "undefined" || JSON.stringify(str) === "null") {
+                return "";
+            }
+            return String(str);
+        }
+        return str;
+    },
+    encrypt: (txt, key, functions) => {
+        txt = functions.formatString(txt);
+        if(txt.length === 0) {
+            return txt;
+        }
         let ciph = _.crypto.createCipher("aes-256-cbc", key);
         ciph.update(txt, "utf8", "hex");
         return ciph.final("hex");
     },
-    decrypt: (key, txt) => {
+    decrypt: (key, txt, functions) => {
+        txt = functions.formatString(txt);
+        if(txt.length === 0) {
+            return txt;
+        }
         let deciph = _.crypto.createDecipher("aes-256-cbc", key);
         deciph.update(txt, "hex", "utf8");
         return deciph.final("utf8");
