@@ -4,15 +4,21 @@ const scssParam = require("../scssParam");
 
 //scssコンパイルタスク
 _.gulp.task("yaml2sass", done => {
-    let str = "$" + _.fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" }).replace(/(\r\n|\n)/g, ";\n$");
-    str = str.replace(/\"/g, "");
-    str = str + ";"; //最後だけ改行がないので;を付ける
-    _.fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, str);
+    const strOrigin = _.fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: "UTF-8" });
+    let strDist = "";
+    let strArray = strOrigin.split("\n");
+    for(let i = 0; i < strArray.length; i++) {
+        if(!(i === strArray.length - 1 && strArray[i].length === 0)) { //最後の空行以外
+            strDist += `$${strArray[i]};\n`;
+        }
+    }
+    strDist = strDist.replace(/\"/g, "");
+    _.fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, strDist);
     done();
 });
 //scssコンパイルタスク
 _.gulp.task("sass", () => {
-    return _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`])
+    return _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`, `!${dir.admin.scss}/**/*.scss`])
         .pipe(_.plumber())
         .pipe(_.sass({outputStyle: "compressed"}).on("error", _.sass.logError))
         .pipe(_.autoprefixer({
