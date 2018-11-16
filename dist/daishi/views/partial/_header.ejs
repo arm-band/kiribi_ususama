@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
             <a class="navbar-brand my-0 navbar_head" href="./#wrapper"><%= config.commons.sitename %></a>
-<!-- GETパラメータ等で分岐？ -->
+<% if(pagecat !== "init") { %>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -14,6 +14,7 @@
                     </li>
                 </ul>
             </div>
+<% } %>
         </div>
     </nav>
 </header>

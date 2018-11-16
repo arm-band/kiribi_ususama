@@ -19,6 +19,7 @@ router.get("/", (req, res, next) => {
         commonVar: commonVar,
         gulpConfig: gulpConfig,
         filename: "index",
+        pagecat: "init",
         labelList: labelList
     });
     res.end();

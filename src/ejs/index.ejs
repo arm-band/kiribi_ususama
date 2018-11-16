@@ -82,12 +82,12 @@ parameters = {
                 <ol class="pb-3">
                     <li><code>git clone https://github.com/arm-band/kiribi_ususama.git</code>、または<a href="https://github.com/arm-band/kiribi_ususama/releases" target="_blank"><i class="fas fa-fw fa-external-link-alt" aria-hidden="true"></i>Kiribi UsusamaのGithubリポジトリ</a>からダウンロード</li>
                     <li><code>npm i -D</code><small class="ml-3">(または<code>npm install --save-dev</code>)</small></li>
-                    <li><code>npm run ususama</code><small class="ml-3">(<code>npm i -D</code>したファイルの再配置などの初期設定)</small>
+                    <li><code>npm start</code><small class="ml-3">(<code>npm i -D</code>したファイルの再配置<span class="mx-2">+</span>初期設定画面生成・表示<span class="mx-2">+</span>初期設定完了後、<code>gulp init</code>実行)</small>
                         <ul>
                             <li><small>このコマンドで生成したディレクトリや<code>package-lock.json</code>等は<code>npm run fujoketsu</code>(不浄潔)で削除できます</small></li>
                         </ul>
                     </li>
-                    <li><code>npm run gulp</code></li>
+                    <li>2回目以降は<code>npm test</code>でブラウザ起動<span class="mx-2">+</span>自動リロード</li>
                 </ol>
             </div>
             <div class="text-center">

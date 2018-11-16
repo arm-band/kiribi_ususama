@@ -72,14 +72,16 @@ router.post("/", function(req, res, next) {
             commonVar: commonVar,
             msg: msg,
             unpressed: unpressed,
-            filename: "finish"
+            filename: "finish",
+            pagecat: "init"
         });
         res.end();
     }
     else {
         res.render("finish", {
             unpressed: unpressed,
-            filename: "finish"
+            filename: "finish",
+            pagecat: "init"
         });
         res.end();
         process.exit(0);

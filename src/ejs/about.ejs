@@ -52,12 +52,14 @@ parameters = {
                                     </ul></li>
                             </ul>
                         </li>
-                        <li><code>gulp</code><span class="mr-2">:</span>下記一式<span class="mx-2">+</span>既定のブラウザを起動、<strong>自動でプレビューを表示</strong>。以降、<strong>コードを編集する度に自動リロード</strong></li>
+                        <li><code>gulp</code><span class="mr-2">:</span>既定のブラウザを起動、<strong>自動でプレビューを表示</strong>。以降、<strong>コードを編集する度に自動リロード</strong></li>
+                        <li><code>gulp init</code><span class="mr-2">:</span>下記一式<span class="mx-2">+</span><code>gulp</code>の自動リロード</li>
                         <li><code>gulp ejs</code><span class="mr-2">:</span>ejsからHTMLへのコンパイル</li>
                         <li><code>gulp sass</code><span class="mr-2">:</span>Scssからcssへのコンパイル<span class="mx-2">+</span>minify<span class="mx-2">+</span><a href="#features_prefix">ベンダープレフィックスの自動付与</a></li>
                         <li><code>gulp js</code><span class="mr-2">:</span>JavaScriptのminify</li>
                         <li><code>gulp imagemin</code><span class="mr-2">:</span>画像の圧縮</li>
                         <li><code>gulp styleguide</code><span class="mr-2">:</span><a href="#features_styleguide">スタイルガイド</a>を生成</li>
+                        <li><code>gulp ftp</code><span class="mr-2">:</span><a href="#features_initsetting">予め設定しておいた</a>FTP情報を使用して、サーバへFTPアップロードを行います</li>
                     </ul>
                 </div>
             </div>
@@ -81,6 +83,21 @@ parameters = {
                         <li><code>news.ejs</code><span class="mr-2">:</span>新着情報一覧ページテンプレート。1ページ当たりの記事の表示数は<code>config.yml</code>の<code>param:news:pagination:</code>で変更できます。また、1ページ当たりの記事の表示数を越えた場合はnews1.html<span class="mr-2">,</span>news2.html<span class="mr-2">,</span>とナンバリングして必要な分だけ自動生成します。ページネーションも自動的に生成します。</li>
                         <li><code>article.ejs</code><span class="mr-2">:</span>個別記事ページテンプレート。Markdownファイルの数だけ記事ページとして生成します。内容はMarkdownのFront-matterと実際のコンテンツ内容から生成します。</li>
                     </ul>
+                </div>
+            </div>
+            <div class="row align-items-center my-4 features_contents features_initsetting fixed_anchor" id="features_initsetting">
+                <div class="col-12 col-md-3 order-md-2 mb-3 text-center">
+                    <i class="fas fa-fw fa-9x fa-clipboard-list" aria-hidden="true"></i>
+                </div>
+                <div class="col-12 col-md-9 order-md-1 mb-3">
+                    <h3>Initial Settings</h3>
+                    <p><code>npm start</code>で初回のスクリプトを実行すると、下記の行程を順次自動的に行います。</p>
+                    <ol>
+                        <li>リソースファイルの配置</li>
+                        <li><a href="https://expressjs.com/" target="_blank"><i class="fas fa-fw fa-external-link-alt" aria-hidden="true"></i>Express</a>により初期設定画面を起動、ブラウザを自動起動して初期設定画面を表示</li>
+                        <li>初期設定画面ではサイト情報や<a href="#features_ogp">OGP</a>、<a href="#features_news">新着情報生成の有無</a>、サーバアップロードのためのFTP情報の設定等を設定できます</li>
+                        <li>設定画面からボタンを押して進むと、<code>gulp init</code>によりWebサイトのコードを生成<span class="mx-2">+</span>自動でプレビューを表示、自動リロードへ</li>
+                    </ol>
                 </div>
             </div>
             <div>
