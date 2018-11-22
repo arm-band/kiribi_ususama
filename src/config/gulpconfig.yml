@@ -2,6 +2,7 @@ functions:
     usephp: false
     news: true
     ssl: true
+    democontents: true
 ftp:
     user:
     password:

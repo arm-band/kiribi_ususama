@@ -32,7 +32,8 @@ router.post("/", function(req, res, next) {
             functions: {
                 usephp: escape.escapeMinimal(req.body.usephp, functions),
                 news: escape.escapeMinimal(req.body.news, functions),
-                ssl: escape.escapeMinimal(req.body.ssl, functions)
+                ssl: escape.escapeMinimal(req.body.ssl, functions),
+                democontents: escape.escapeMinimal(req.body.democontents, functions)
             },
             ftp: {
                 ftpUser: escape.escapeMinimal(req.body.ftpUser, functions),
@@ -57,6 +58,7 @@ router.post("/", function(req, res, next) {
             gulpConfig.functions.usephp = substitute.checkbox(paramGulpConfig.functions.usephp);
             gulpConfig.functions.news = substitute.checkbox(paramGulpConfig.functions.news);
             gulpConfig.functions.ssl = substitute.checkbox(paramGulpConfig.functions.ssl);
+            gulpConfig.functions.democontents = substitute.checkbox(paramGulpConfig.functions.democontents);
             gulpConfig.ftp.user = functions.encrypt(paramGulpConfig.ftp.ftpUser, String(hachizetsu.key), functions);
             gulpConfig.ftp.password = functions.encrypt(paramGulpConfig.ftp.ftpPswd, String(hachizetsu.key), functions);
             gulpConfig.ftp.host = paramGulpConfig.ftp.ftpHost;

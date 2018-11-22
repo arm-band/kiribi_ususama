@@ -1,0 +1,73 @@
+<%
+var returnNews = `${name}${pages}.html`;
+parameters = {
+    title: "記事",
+    entitle: "News",
+    css: "contents",
+    js: "app.min",
+    description: "新着情報記事の説明",
+    ogpimage: "eyecatch.jpg"
+}
+%><%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><% contentBody = funcURLConverter(body, relPath); %><%- include("util/_headset", { config, parameters, attributes }) %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+
+<div id="wrapper">
+<%- include("partial/_header", { config, commonVar }) %>
+
+<%- include("partial/_eyecatch", { headerString }) %>
+
+    <!-- main -->
+    <main class="main <%= id %>main">
+        <aside class="container">
+<%- include("partial/_breadcrumb", { parameters, returnNews, relPath }) %>
+        </aside>
+        <section class="container my-5">
+            <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
+<%
+const datetime = funcDateTimeFormat(attributes.date, "-", "");
+const showDt = funcDateTimeFormat(attributes.date, "/", "");
+const articleUrl = funcArticleUrl(config.commons.url, attributes);
+%>
+                <div class="col-12 news_card mb-3">
+                    <article class="news_article" id="<%= attributes.url %>">
+                        <div class="card">
+<% if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) { %>
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- attributes.thumbnail %>" alt="<%= attributes.title %>">
+<% } %>
+                            <div class="card-body p-3">
+                                <h2 class="news_header"><%= attributes.title %></h2>
+                                <div class="news_contents">
+                                    <%- contentBody %>
+                                </div>
+                                <div class="news_share row my-4">
+                                    <button type="button" class="btn news_btn news_btnTwitter col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
+                                    <button type="button" class="btn news_btn news_btnFacebook col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnGooglePlus col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
+                                    <button type="button" class="btn news_btn news_btnLine col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
+                                    <button type="button" class="btn news_btn news_btnPocket col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
+                                    <button type="button" class="btn news_btn news_btnRss col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= config.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
+                                </div>
+                            </div>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- /main -->
+
+<%- include("partial/_footer", { config, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { parameters, relPath }) %>
+</body>
+</html>

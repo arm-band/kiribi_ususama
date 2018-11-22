@@ -117,6 +117,20 @@ if(gulpConfig.functions.ssl == true) {
                             </label>
                         </div>
                     </div>
+<%
+let checkedDemoContents = '';
+if(gulpConfig.functions.democontents == true) {
+    checkedDemoContents = ' checked="checked"';
+}
+%>
+                    <div class="form-group row">
+                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="デモコンテンツを使用するかどうかを設定します。「しない」の場合は、最小限のejsファイルと1つのサンプルコンテンツmdのみをデプロイします。"><i class="fas fa-fw fa-project-diagram" aria-hidden="true"></i><%= labelList.gulpConfig.functions.democontents %></label>
+                        <div class="col-md-10">
+                            <label class="form-check-label" for="democontents">
+                                <input class="form-check-input democontents" type="checkbox" name="democontents" id="democontents" value="true"<%- checkedDemoContents %> data-toggle="toggle" data-on="する" data-off="しない">
+                            </label>
+                        </div>
+                    </div>
                     <h3 class="mt-4 mb-3">FTP情報</h3>
                     <div class="form-group row">
                         <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpUser %></label>

@@ -1,0 +1,40 @@
+<%
+parameters = {
+    title: "概要",
+    entitle: "About Page",
+    css: "contents",
+    js: "app.min",
+    description: "概要ページの説明",
+    ogpimage: "eyecatch.jpg"
+}
+%><%- include("util/_init_load") %><%- include("util/_headset", { config, parameters }) %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+
+<div id="wrapper">
+<%- include("partial/_header", { config, commonVar }) %>
+
+<%- include("partial/_eyecatch", { headerString }) %>
+
+    <!-- main -->
+    <main class="main <%= id %>main">
+        <aside class="container">
+<%- include("partial/_breadcrumb", { parameters, relPath }) %>
+        </aside>
+        <section class="container">
+            <!-- contents -->
+        </section>
+    </main>
+    <!-- /main -->
+
+<%- include("partial/_footer", { config, copyRightYear }) %>
+
+</div>
+
+<%- include("partial/_js_loader", { parameters, relPath }) %>
+</body>
+</html>
