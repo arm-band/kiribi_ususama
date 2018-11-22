@@ -1,0 +1,24 @@
+<% for(let i in newsBlock) {
+    const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
+    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
+    const articleUrl = funcArticleUrl("", newsBlock[i]);
+%>
+                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
+                    <article class="news_article" id="<%= newsBlock[i].url %>">
+                        <div class="card h-100">
+<% if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) { %>
+                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
+<% } %>
+                            <div class="card-body p-3">
+                                <h3 class="news_header"><a href="<%= relPath %><%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
+                                <div class="news_contents">
+                                    <p><%- newsBlock[i].excerpt %></p>
+                                </div>
+                            </div>
+                            <div class="card-footer p-3 text-right bg-white border-0">
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+<% } %>

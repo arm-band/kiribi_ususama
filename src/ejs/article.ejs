@@ -36,14 +36,10 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes);
                 <div class="col-12 news_card mb-3">
                     <article class="news_article" id="<%= attributes.url %>">
                         <div class="card">
-<%
-if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
-%>
+<% if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) { %>
                             <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- attributes.thumbnail %>" alt="<%= attributes.title %>">
-<%
-}
-%>
-                            <div class="card-body">
+<% } %>
+                            <div class="card-body p-3">
                                 <h2 class="news_header"><%= attributes.title %></h2>
                                 <div class="news_contents">
                                     <%- contentBody %>
@@ -64,7 +60,9 @@ if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
                     </article>
                 </div>
             </div>
-            <div class="mb-4"><a href="<%= relPath %>news/<%= returnNews %>" class="btn btn-light">記事一覧に戻る</a></div>
+            <div class="text-center my-4">
+                <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+            </div>
         </section>
     </main>
     <!-- /main -->

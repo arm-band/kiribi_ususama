@@ -27,40 +27,16 @@ parameters = {
         </aside>
         <section class="container my-5">
             <div class="page-header mb-3 text-center <%= id %>_header">
-                <h2>更新履歴<small class="ml-3">News</small></h2>
+                <h2>更新履歴<small class="ml-3">Release Notes</small></h2>
             </div>
 <%- include("partial/_pagination", { pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
-<% for(let i in newsBlock) {
-    const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
-    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
-    const articleUrl = funcArticleUrl("", newsBlock[i]);
-%>
-                <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
-                    <article class="news_article" id="<%= newsBlock[i].url %>">
-                        <div class="card">
-<%
-if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
-%>
-                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">
-<%
-}
-%>
-                            <div class="card-body">
-                                <h3 class="news_header"><a href="<%= relPath %><%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
-                                <div class="news_contents">
-                                    <%- newsBlock[i].excerpt %>
-                                </div>
-                            </div>
-                            <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-<% } %>
+<%- include("partial/_newscards.ejs", { relPath, newsBlock }) %>
             </div>
 <%- include("partial/_pagination", { pages, pageLength, parameters }) %>
+            <div class="text-center my-4">
+                <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+            </div>
         </section>
     </main>
     <!-- /main -->
