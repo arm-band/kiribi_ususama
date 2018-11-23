@@ -26,7 +26,7 @@ _.gulp.task("index.ejs", () => {
     const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions;
     const fileList = functions.getArticles(`${dir.contents.dir}/`, functions);
     let newsBlock = [];
-    const newsLength = config.param.indexcount;
+    let newsLength = config.param.indexcount;
     if(fileList.length <= config.param.indexcount) {
         newsLength = fileList.length;
     }
