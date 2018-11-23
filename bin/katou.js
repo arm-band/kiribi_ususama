@@ -4,13 +4,11 @@ const fs        = require("fs");
 const dir       = require("../gulp/dir");
 const functions = require("../gulp/functions");
 const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions;
-const direc = `${dir.src.ejs}/templates/`;
+const direc = `${dir.template.dir}/`;
 
-const templateGen = () => {
-    return new Promise((resolve, reject) => {
-        if(!gulpConfig.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
-            let templateList = [];
-            const contentMD = "---\n\
+if(!gulpConfig.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
+    let templateList = [];
+    const contentMD = "---\n\
 layout: article.ejs\n\
 title: コンテンツタイトル\n\
 date: 2018-11-22T23:30:00+09:00\n\
@@ -25,39 +23,31 @@ excerpt: 記事の概要です\n\
 ### 先頭の---で区切られた部分について\n\
 \n\
 先頭の`---`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。\n";
-            console.log(direc);
-            //_template-*.ejsファイルの一覧を取得
-            fs.readdirSync(direc, (err, files) => {
-                console.log(files);
+    //全てのmdファイルを削除
+    rimraf(`${dir.contents.dir}/*.md`, ()=> {
+        //サンプル記事追加
+        fs.writeFileSync(`${dir.contents.dir}/1.md`, contentMD);
+    });
+    //オリジナルのejsファイルを削除した上でテンプレートファイルをコピー
+    const layout = "layout/";
+    rimraf(`${dir.src.ejs}/*.ejs`, ()=> {
+        //_template-*.ejsファイルの一覧を取得
+        fs.readdirSync(`${direc}${layout}`, (err, files) => {
+            if (err) throw err;
+            files.filter((file) => {
+                return fs.statSync(file).isFile() && /.*\.ejs$/.test(file);
+            });
+        }).forEach((file) => {
+            fs.copyFile(`${direc}${layout}${file}`, `${dir.src.ejs}/${file}`, (err) => {
                 if (err) throw err;
-                templateList = files.filter((file) => {
-                    var filePath = direc + file;
-                    console.log(filePath);
-                    return fs.statSync(filePath).isFile() && /_template_.*\.ejs$/.test(filePath);
-                });
             });
-            console.log(templateList);
-            //オリジナルのejsファイルを削除した上で_template-*.ejsファイルごとにファイルコピーし、元のテンプレートファイルを削除
-            rimraf(`${dir.src.ejs}/*.ejs`, ()=>{
-                console.log(templateList);
-                for(let i in templateList) {
-                    const filename = templateList[i].split("-");
-                    const distFileName = filename[filename.length - 1];
-                    let path = `${dir.src.ejs}/`;
-                    if(distFileName.indexOf("header") !== -1) {
-                        path += "partial/";
-                    }
-                    path += `${distFileName}.html`;
-                    copyfiles([templateList[i], path]);
-                };
-            });
-            //全てのmdファイルを削除
-            rimraf(`${dir.contents.dir}/*.md`, ()=>{
-                //サンプル記事追加
-                fs.writeFileSync(`${dir.contents.dir}/1.md`, contentMD);
-            });
-        }
-        resolve();
+        });
+    });
+    //オリジナルの_header.ejsファイルを削除した上でテンプレートファイルをコピー
+    const partial = "partial/";
+    rimraf(`${dir.src.ejs}/${partial}_header.ejs`, ()=> {
+        fs.copyFile(`${direc}${partial}_header.ejs`, `${dir.src.ejs}/${partial}_header.ejs`, (err) => {
+            if (err) throw err;
+        });
     });
 }
-templateGen().then(() => { rimraf(direc, ()=>{}) }); //テンプレート生成後、テンプレートディレクトリ削除

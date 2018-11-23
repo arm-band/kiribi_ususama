@@ -24,6 +24,9 @@ module.exports = {
     contents: {
         dir        : './src/contents'
     },
+    template: {
+        dir        : './bin/templates'
+    },
     dist: {
         html       : './dist',
         news       : './dist/news',

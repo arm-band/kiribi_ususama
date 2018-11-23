@@ -15,7 +15,8 @@ module.exports = {
         functions: {
             usephp: "php使用",
             news: "新着情報生成",
-            ssl: "HTTPS通信"
+            ssl: "HTTPS通信",
+            democontents: "デモコンテンツ使用"
         },
         ftp: {
             ftpUser: "ユーザID",
