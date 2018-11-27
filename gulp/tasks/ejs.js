@@ -27,7 +27,7 @@ _.gulp.task("index.ejs", () => {
     const fileList = functions.getArticles(`${dir.contents.dir}/`, functions);
     let newsBlock = [];
     let newsLength = config.param.indexcount;
-    if(fileList.length <= config.param.indexcount) {
+    if(fileList.length <= config.param.indexcount || config.param.indexcount <= 0) {
         newsLength = fileList.length;
     }
     for(let i = 0; i < newsLength; i++) { //新着情報の件数
@@ -56,7 +56,11 @@ _.gulp.task("news.ejs", done => {
     const tempNewsFile = `${dir.src.ejs}/${name}.ejs`; //新着一覧テンプレート
     const fileList = functions.getArticles(`${dir.contents.dir}/`, functions);
     let pages = 1; //ページカウンタ
-    const pageLength = Math.ceil(fileList.length / config.param.newscount); //ページの最大数
+    let newsLength = config.param.newscount;
+    if(fileList.length <= config.param.newscount || config.param.newscount <= 0) {
+        newsLength = fileList.length;
+    }
+    const pageLength = Math.ceil(fileList.length / newsLength); //ページの最大数
     let feed = functions.rssFeed(config, functions); //RSS
     let newsBlock = []; //1ページ辺りの記事のオブジェクト
 

@@ -4,8 +4,15 @@ parameters = {
     entitle: "Home",
     css: "index",
     js: "app.min",
-    description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート",
-    ogpimage: "eyecatch.jpg"
+    description: config.commons.description,
+    ogpimage: config.commons.url + parameters.ogpimage
+}
+const indexCounter = () => {
+    let cnt = `最新${String(config.param.indexcount)}`;
+    if(config.param.indexcount <= 0) {
+        cnt = "全";
+    }
+    return cnt;
 }
 %><%- include("util/_init_load") %><%- include("util/_functions_article") %><%- include("util/_headset", { config, parameters }) %>
 <!DOCTYPE html>
@@ -107,13 +114,16 @@ parameters = {
                 </div>
             </div>
         </section>
-<% if(gulpConfig.news) { %>
+<%
+if(gulpConfig.news) {
+    const counter = indexCounter();
+%>
         <section class="container my-5 releasenotes fixed_anchor" id="releasenotes">
             <div class="page-header mb-3 text-center releasenotes_header">
                 <h2>更新履歴<small class="ml-3">Release Notes</small></h2>
             </div>
             <div class="releasenotes_contents">
-                <p class="text-center">更新履歴一覧(最新<%=  config.param.indexcount %>件)です。</p>
+                <p class="text-center">更新履歴一覧(<%= counter %>件)です。</p>
                 <div class="row align-items-top my-4">
 <%- include("partial/_newscards.ejs", { relPath, newsBlock }) %>
                 </div>

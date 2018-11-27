@@ -1,4 +1,5 @@
-const _         = require("../gulp/plugin");
+const yaml    = require("yaml");
+const fs        = require("fs");
 const dir       = require("../gulp/dir");
 const randomjs  = require("./discover");
 
@@ -17,5 +18,5 @@ const kyozo = {
     bijaksara: samaya,
     key: value
 };
-const yaku = _.yaml.stringify(kyozo);
-_.fs.writeFileSync(dir.config.hachizetsu, yaku);
+const yaku = yaml.stringify(kyozo);
+fs.writeFileSync(dir.config.hachizetsu, yaku);
