@@ -1,6 +1,7 @@
 const _         = require("../plugin");
 const dir       = require("../dir");
 const functions = require("../functions");
+const parameters = [];
 
 //ejs
 _.gulp.task("commons.ejs", () => {
@@ -15,7 +16,7 @@ _.gulp.task("commons.ejs", () => {
     .pipe(_.data((file) => {
         return { "filename": file.path }
     }))
-    .pipe(_.ejs({ config, commonVar, gulpConfig }))
+    .pipe(_.ejs({ config, commonVar, gulpConfig, parameters }))
     .pipe(_.rename({ extname: ".html" }))
     .pipe(_.gulp.dest(dir.dist.html));
 });
@@ -41,7 +42,7 @@ _.gulp.task("index.ejs", () => {
     .pipe(_.data((file) => {
         return { "filename": file.path }
     }))
-    .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock }))
+    .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock, parameters }))
     .pipe(_.rename({ extname: ".html" }))
     .pipe(_.gulp.dest(dir.dist.html));
 });
@@ -87,7 +88,7 @@ _.gulp.task("news.ejs", done => {
             .pipe(_.data((ejsFile) => {
                 return { "filename": ejsFile.path }
             }))
-            .pipe(_.ejs({ config, commonVar, gulpConfig, attributes, body, name, pages }))
+            .pipe(_.ejs({ config, commonVar, gulpConfig, attributes, body, name, pages, parameters }))
             .pipe(_.rename(`${articleFileName}.html`))
             .pipe(_.gulp.dest(dir.dist.articles));
 
@@ -101,7 +102,7 @@ _.gulp.task("news.ejs", done => {
             .pipe(_.data((file) => {
                 return { "filename": file.path }
             }))
-            .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock, name, pages, pageLength }))
+            .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock, name, pages, pageLength, parameters }))
             .pipe(_.rename(`${name}${pages}.html`))
             .pipe(_.gulp.dest(dir.dist.news));
 
@@ -116,7 +117,7 @@ _.gulp.task("news.ejs", done => {
         .pipe(_.data((file) => {
             return { "filename": file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock, name, pages, pageLength }))
+        .pipe(_.ejs({ config, commonVar, gulpConfig, newsBlock, name, pages, pageLength, parameters }))
         .pipe(_.rename(`${name}${pages}.html`))
         .pipe(_.gulp.dest(dir.dist.news));
     }
@@ -140,7 +141,7 @@ _.gulp.task("newsless.ejs", () => {
     .pipe(_.data((file) => {
         return { "filename": file.path }
     }))
-    .pipe(_.ejs({ config, commonVar, gulpConfig }))
+    .pipe(_.ejs({ config, commonVar, gulpConfig, parameters }))
     .pipe(_.rename({ extname: ".html" }))
     .pipe(_.gulp.dest(dir.dist.html));
 });
