@@ -21,12 +21,10 @@ const indexCounter = () => {
 <%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
-
 <div id="wrapper">
+<div class="upper">
 <%- include("partial/_header", { config, commonVar }) %>
-
 <%- include("partial/_eyecatch", { headerString, parameters }) %>
-
     <!-- main -->
     <main class="main <%= id %>main">
         <section class="container my-5 features fixed_anchor" id="features">
@@ -135,11 +133,9 @@ if(gulpConfig.news) {
 <% } %>
     </main>
     <!-- /main -->
-
-<%- include("partial/_footer", { config, copyRightYear }) %>
-
 </div>
-
+<%- include("partial/_footer", { config, copyRightYear }) %>
+</div>
 <%- include("partial/_js_loader", { parameters, relPath }) %>
 </body>
 </html>

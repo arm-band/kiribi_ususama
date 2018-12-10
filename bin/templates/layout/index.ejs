@@ -14,12 +14,10 @@ parameters = {
 <%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-spy="scroll" data-target="#navbarMenu" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
-
 <div id="wrapper">
+<div class="upper">
 <%- include("partial/_header", { config, commonVar }) %>
-
 <%- include("partial/_eyecatch", { headerString, parameters }) %>
-
     <!-- main -->
     <main class="main <%= id %>main">
         <section class="container fixed_anchor" id="contents">
@@ -40,11 +38,9 @@ parameters = {
 <% } %>
     </main>
     <!-- /main -->
-
-<%- include("partial/_footer", { config, copyRightYear }) %>
-
 </div>
-
+<%- include("partial/_footer", { config, copyRightYear }) %>
+</div>
 <%- include("partial/_js_loader", { parameters, relPath }) %>
 </body>
 </html>
