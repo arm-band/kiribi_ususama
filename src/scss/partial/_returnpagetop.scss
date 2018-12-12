@@ -18,9 +18,8 @@ $rpt-size: 44px;
         border-radius: $rpt-size / 11;
         color: $bg-color;
         text-align: center;
-//    box-shadow: 3px 3px 3px rgba($color, 0.4);
         cursor: pointer;
-        @include transitionSet();
+        @include t();
         &:hover, &:active {
             background-color: $main-color;
         }
