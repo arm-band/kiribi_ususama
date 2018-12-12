@@ -10,3 +10,10 @@ commons:
 param:
     indexcount: 3
     newscount: 6
+    articlesns:
+        twitter: true
+        facebook: true
+        googleplus: false
+        line: true
+        pocket: true
+        feedly: true
