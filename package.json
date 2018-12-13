@@ -1,14 +1,15 @@
 {
     "name": "kiribi_ususama",
-    "version": "4.1.4-4.1.3",
+    "version": "4.2.0-4.1.3",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
         "om": "mkdirp sg/dist src/scss/assets src/scss/assets/bootstrap src/scss/assets/bootstrap/honoka src/scss/assets/bootstrap/honoka/bootstrap src/scss/assets/bootstrap/honoka/honoka src/scss/assets/bootstrap/honoka/bootstrap/scss src/scss/assets/bootstrap/honoka/bootstrap/scss/mixins src/scss/assets/bootstrap/honoka/bootstrap/scss/utilities bin/subterranean",
         "krodhana": "node ./bin/saicho",
-        "hum": "npm-run-all -s vidya raja kashou zanmai gue shingon eshaku",
+        "hum": "npm-run-all -s kongou eshaku",
         "jah": "node ./bin/katou",
         "svaha": "gulp init",
+        "kongou": "npm-run-all -p vidya raja kashou zanmai gue shingon",
         "vidya": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
         "raja": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/honoka/_honoka.scss\" \"./src/scss/assets/bootstrap/honoka\"",
         "kashou": "copyfiles -f \"./node_modules/bootstrap-honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka/honoka\"",
