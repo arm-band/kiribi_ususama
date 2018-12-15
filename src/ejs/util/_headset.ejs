@@ -28,4 +28,7 @@ if(attributes.excerpt.length > 0) {
 if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
     metaOgpimage = `${config.commons.url}${config.commons.newsthumbnail}${attributes.thumbnail}`;
 }
+else {
+    metaOgpimage = `${config.commons.url}${config.commons.ogpimage}`;
+}
 %>
