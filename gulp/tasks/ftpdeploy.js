@@ -4,7 +4,7 @@ const functions = require("../functions");
 const objFtpDeploy = new _.ftpDeploy();
 
 _.gulp.task("ftp", done => {
-    let ftpConfig = functions.getConfig(dir.config.gulpconfig).ftp;
+    let ftpConfig = functions.getConfig(dir.config.ftp, "");
     const hachizetsu = functions.getConfig(dir.config.hachizetsu, "");
 
     ftpConfig.user = functions.decrypt(String(hachizetsu.key), ftpConfig.user, functions);

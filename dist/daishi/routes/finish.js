@@ -34,17 +34,21 @@ router.post("/", function(req, res, next) {
                 news: escape.escapeMinimal(req.body.news, functions),
                 ssl: escape.escapeMinimal(req.body.ssl, functions),
                 democontents: escape.escapeMinimal(req.body.democontents, functions)
-            },
-            ftp: {
-                ftpUser: escape.escapeMinimal(req.body.ftpUser, functions),
-                ftpPswd: escape.escapeMinimal(req.body.ftpPswd, functions),
-                ftpHost: escape.escapeMinimal(req.body.ftpHost, functions),
-                ftpLocal: escape.escapeMinimal(req.body.ftpLocal, functions),
-                ftpRemote: escape.escapeMinimal(req.body.ftpRemote, functions)
             }
         };
+        const paramFtpConfig = {
+            user: functions.encrypt(escape.escapeMinimal(req.body.ftpUser, functions), String(hachizetsu.key), functions),
+            password: functions.encrypt(escape.escapeMinimal(req.body.ftpPswd, functions), String(hachizetsu.key), functions),
+            host: escape.escapeMinimal(req.body.ftpHost, functions),
+            port: gulpConfig.ftp.port,
+            localRoot: escape.escapeMinimal(req.body.ftpLocal, functions),
+            remoteRoot: escape.escapeMinimal(req.body.ftpRemote, functions),
+            include: gulpConfig.ftp.include,
+            exclude: gulpConfig.ftp.exclude,
+            deleteRemote: gulpConfig.ftp.deleteRemote
+        };
         //エラーチェック
-        let msg = check.check(paramConfig, paramCommonVar, paramGulpConfig);
+        let msg = check.check(paramConfig, paramCommonVar, paramGulpConfig, paramFtpConfig);
         if(msg.length === 0) { //エラーが無ければ書き込み
             //代入
             config.commons.sitename = paramConfig.siteName;
@@ -59,15 +63,11 @@ router.post("/", function(req, res, next) {
             gulpConfig.functions.news = substitute.checkbox(paramGulpConfig.functions.news);
             gulpConfig.functions.ssl = substitute.checkbox(paramGulpConfig.functions.ssl);
             gulpConfig.functions.democontents = substitute.checkbox(paramGulpConfig.functions.democontents);
-            gulpConfig.ftp.user = functions.encrypt(paramGulpConfig.ftp.ftpUser, String(hachizetsu.key), functions);
-            gulpConfig.ftp.password = functions.encrypt(paramGulpConfig.ftp.ftpPswd, String(hachizetsu.key), functions);
-            gulpConfig.ftp.host = paramGulpConfig.ftp.ftpHost;
-            gulpConfig.ftp.localRoot = paramGulpConfig.ftp.ftpLocal;
-            gulpConfig.ftp.remoteRoot = paramGulpConfig.ftp.ftpRemote;
             //yml変換した内容をファイル書き込み
             msg = fileOperator.write(dir.config.dir + dir.config.config, decode.decodeMinimal(_.yaml.stringify(config), functions), msg);
             msg = fileOperator.write(dir.config.dir + dir.config.commonvar, decode.decodeMinimal(_.yaml.stringify(commonVar), functions), msg);
-            msg = fileOperator.write(dir.config.dir + dir.config.gulpconfig, decode.decodeMinimal(_.yaml.stringify(gulpConfig), functions), msg);
+            msg = fileOperator.write(dir.config.dir + dir.config.gulpconfig, decode.decodeMinimal(_.yaml.stringify(gulpConfig), functions), msg)
+            msg = fileOperator.write(dir.config.ftp, decode.decodeMinimal(_.yaml.stringify(paramFtpConfig), functions), msg);
         }
         res.render("finish", {
             config: config,

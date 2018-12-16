@@ -3,7 +3,7 @@ const labelList = require("./parameters/labelList");
 const errMsg = require("./parameters/errMsg");
 
 module.exports = {
-    check: (paramConfig, paramCommonVar, paramGulpConfig) => {
+    check: (paramConfig, paramCommonVar, paramGulpConfig, paramFtpConfig) => {
         let msg = [];
         /* 一般設定
         *************************** */
@@ -67,24 +67,24 @@ module.exports = {
         /* FTP情報
         *************************** */
         //ユーザID
-        if(paramGulpConfig.ftp.ftpUser.length > 0 && !validation.alphabet(paramGulpConfig.ftp.ftpUser)) {
-            msg.push(`errMsg02: ${labelList.gulpConfig.ftp.ftpUser}に${errMsg["02"]}`);
+        if(paramFtpConfig.user.length > 0 && !validation.alphabet(paramFtpConfig.user)) {
+            msg.push(`errMsg02: ${labelList.ftpConfig.user}に${errMsg["02"]}`);
         }
         //パスワード
-        if(paramGulpConfig.ftp.ftpPswd.length > 0 && !validation.alphabet(paramGulpConfig.ftp.ftpPswd)) {
-            msg.push(`errMsg02: ${labelList.gulpConfig.ftp.ftpPswd}に${errMsg["02"]}`);
+        if(paramFtpConfig.password.length > 0 && !validation.alphabet(paramFtpConfig.password)) {
+            msg.push(`errMsg02: ${labelList.ftpConfig.password}に${errMsg["02"]}`);
         }
         //ホスト名
-        if(paramGulpConfig.ftp.ftpHost.length > 0 && !validation.alphabet(paramGulpConfig.ftp.ftpHost)) {
-            msg.push(`errMsg02: ${labelList.gulpConfig.ftp.ftpHost}に${errMsg["02"]}`);
+        if(paramFtpConfig.host.length > 0 && !validation.alphabet(paramFtpConfig.host)) {
+            msg.push(`errMsg02: ${labelList.ftpConfig.host}に${errMsg["02"]}`);
         }
         //ローカルパス
-        if(paramGulpConfig.ftp.ftpLocal.length > 0 && !validation.alphabet(paramGulpConfig.ftp.ftpLocal)) {
-            msg.push(`errMsg02: ${labelList.gulpConfig.ftp.ftpLocal}に${errMsg["02"]}`);
+        if(paramFtpConfig.localRoot.length > 0 && !validation.alphabet(paramFtpConfig.localRoot)) {
+            msg.push(`errMsg02: ${labelList.ftpConfig.localRoot}に${errMsg["02"]}`);
         }
         //リモートパス
-        if(paramGulpConfig.ftp.ftpRemote.length > 0 && !validation.alphabet(paramGulpConfig.ftp.ftpRemote)) {
-            msg.push(`errMsg02: ${labelList.gulpConfig.ftp.ftpRemote}に${errMsg["02"]}`);
+        if(paramFtpConfig.remoteRoot.length > 0 && !validation.alphabet(paramFtpConfig.remoteRoot)) {
+            msg.push(`errMsg02: ${labelList.ftpConfig.remoteRoot}に${errMsg["02"]}`);
         }
         return msg;
     }

@@ -17,13 +17,13 @@ module.exports = {
             news: "新着情報生成",
             ssl: "HTTPS通信",
             democontents: "デモコンテンツ使用"
-        },
-        ftp: {
-            ftpUser: "ユーザID",
-            ftpPswd: "パスワード",
-            ftpHost: "ホスト名",
-            ftpLocal: "ローカルパス",
-            ftpRemote: "リモートパス"
         }
+    },
+    ftpConfig: {
+        user: "ユーザID",
+        password: "パスワード",
+        host: "ホスト名",
+        localRoot: "ローカルパス",
+        remoteRoot: "リモートパス"
     }
 };

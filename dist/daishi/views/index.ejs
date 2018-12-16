@@ -133,32 +133,32 @@ if(gulpConfig.functions.democontents == true) {
                     </div>
                     <h3 class="mt-4 mb-3">FTP情報</h3>
                     <div class="form-group row">
-                        <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpUser %></label>
+                        <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i><%= labelList.ftpConfig.user %></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="ftpUser" id="ftpUser" placeholder="<%= gulpConfig.ftp.user %>" value="<%= gulpConfig.ftp.user %>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ftpPswd" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するパスワードを指定します。"><i class="fas fa-fw fa-key" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpPswd %></label>
+                        <label for="ftpPswd" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するパスワードを指定します。"><i class="fas fa-fw fa-key" aria-hidden="true"></i><%= labelList.ftpConfig.password %></label>
                         <div class="col-md-10">
                             <input type="password" class="form-control" name="ftpPswd" id="ftpPswd" value="<%= gulpConfig.ftp.password %>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ftpHost" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPで接続するサーバのホスト名を入力してください。"><i class="fas fa-fw fa-server" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpHost %></label>
+                        <label for="ftpHost" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPで接続するサーバのホスト名を入力してください。"><i class="fas fa-fw fa-server" aria-hidden="true"></i><%= labelList.ftpConfig.host %></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="ftpHost" id="ftpHost" placeholder="<%= gulpConfig.ftp.host %>" value="<%= gulpConfig.ftp.host %>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ftpLocal" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="アップロードするファイルがある場所を指定してください。"><i class="fas fa-fw fa-hdd" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpLocal %></label>
+                        <label for="ftpLocal" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="アップロードするファイルがある場所を指定してください。"><i class="fas fa-fw fa-hdd" aria-hidden="true"></i><%= labelList.ftpConfig.localRoot %></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="ftpLocal" id="ftpLocal" placeholder="<%= gulpConfig.ftp.localRoot %>" value="<%= gulpConfig.ftp.localRoot %>">
                             <small class="form-text text-muted">通常は変更する必要はありません。</small>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ftpRemote" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="サーバ上のアップロードする場所を指定してください。"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i><%= labelList.gulpConfig.ftp.ftpRemote %></label>
+                        <label for="ftpRemote" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="サーバ上のアップロードする場所を指定してください。"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i><%= labelList.ftpConfig.remoteRoot %></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="ftpRemote" id="ftpRemote" placeholder="<%= gulpConfig.ftp.remoteRoot %>" value="<%= gulpConfig.ftp.remoteRoot %>">
                         </div>

@@ -11,8 +11,8 @@ ftp:
     localRoot: ./dist/
     remoteRoot: ./path/to/web/root/
     include:
-        - "*"
-        - "**/*"
+    - "*"
+    - "**/*"
     exclude:
-        - "daishi/**/*"
+    - "daishi/**/*"
     deleteRemote: false

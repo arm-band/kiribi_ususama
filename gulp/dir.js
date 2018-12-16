@@ -19,7 +19,8 @@ module.exports = {
         config     : '/config.yml',
         commonvar  : '/commonvar.yml',
         gulpconfig : '/gulpconfig.yml',
-        hachizetsu : './bin/subterranean/hachizetsu.yml'
+        hachizetsu : './bin/subterranean/hachizetsu.yml',
+        ftp        : './bin/subterranean/ftp.yml'
     },
     contents: {
         dir        : './src/contents'
