@@ -68,13 +68,19 @@ module.exports = {
         let m = day.getMonth() + 1
         let d = day.getDate()
         const hr = day.getHours()
-        const mt = day.getMinutes()
-        const sc = day.getSeconds()
+        let mt = day.getMinutes()
+        let sc = day.getSeconds()
         if (m < 10) {
             m = '0' + m
         }
         if (d < 10) {
             d = '0' + d
+        }
+        if (mt < 10) {
+        mt = '0' + mt;
+        }
+        if (sc < 10) {
+            sc = '0' + sc;
         }
         let datetime
         if(output === 'ymd') {

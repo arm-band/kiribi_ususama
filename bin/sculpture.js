@@ -2,8 +2,12 @@ const _         = require('../gulp/plugin')
 const dir       = require('../gulp/dir')
 const functions = require('../gulp/functions')
 
-fileList = functions.getArticles(`${dir.contents.dir}/`, functions)
-const filename = fileList.length + 1
+const fileList = functions.getArticles(`${dir.contents.dir}/`, functions)
+let counter = 0
+if(fileList !== null && fileList !== undefined && fileList.length >= 0) {
+    counter = fileList.length + 1
+}
+const filename = counter
 const datetime = functions.formatDate('', '')
 
 fileList
