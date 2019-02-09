@@ -40,7 +40,6 @@ function scrollElm() {
 function pageTop(screlm) {
     var returnPageTop = $(".returnPageTop");
 
-    var startPos = 0;
     $(window).on("scroll", function() {
         //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
         var currentPos = $(this).scrollTop();

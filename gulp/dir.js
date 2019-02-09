@@ -54,4 +54,4 @@ module.exports = {
         css        : '/public/css',
         distjs     : '/public/js'
     }
-};
+}
