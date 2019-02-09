@@ -1,6 +1,6 @@
 <% for(let i in newsBlock) {
     const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
-    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "");
+    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd");
     const articleUrl = funcArticleUrl("", newsBlock[i]);
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">

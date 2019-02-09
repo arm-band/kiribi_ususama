@@ -28,7 +28,7 @@ parameters = {
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%
 const datetime = funcDateTimeFormat(attributes.date, "-", "");
-const showDt = funcDateTimeFormat(attributes.date, "/", "");
+const showDt = funcDateTimeFormat(attributes.date, "/", "ymd");
 const articleUrl = funcArticleUrl(config.commons.url, attributes);
 %>
                 <div class="col-12 news_card mb-3">

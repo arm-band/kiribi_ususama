@@ -12,6 +12,7 @@ funcCopyRightYear = (config) => {
     return copyRightYear;
 }
 //記事の日時を文字列として出力する
+//output = "ymd"を指定すると日付のみ出力へ
 funcDateTimeFormat = (dateStr, optStr, output) => {
     const day = new Date(dateStr);
     const y = day.getFullYear();
@@ -32,19 +33,16 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
     if (sc < 10) {
         sc = "0" + sc;
     }
-
-    if(optStr.length === 0) {
-        optStr = "-";
-    }
-
     let datetime;
     if(output === "ymd") {
-        datetime = `${y}${m}${d}`;
+        datetime = `${y}${optStr}${m}${optStr}${d}`;
     }
     else {
+        if(optStr.length === 0) {
+            optStr = "-";
+        }
         datetime = y + optStr + m + optStr + d + " " + hr + ":" + mt + ":" + sc;
     }
-
     return datetime;
 }
 %>
