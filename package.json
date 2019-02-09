@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "4.2.3-4.1.3",
+    "version": "4.3.0-4.1.3",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -19,7 +19,7 @@
         "katen": "node ./dist/daishi/bin/www",
         "agni": "node ./bin/agni",
         "eshaku": "npm-run-all -p katen agni",
-        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./dist/*.html ./dist/news/ ./dist/css/ ./dist/js/ ./dist/img/ ./dist/*.ico ./dist/*.png ./dist/*.xml ./sg/dist/ ./bin/subterranean/ ./package-lock.json",
+        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./dist/*.html ./dist/news/ ./dist/css/ ./dist/js/ ./dist/img/ ./dist/*.ico ./dist/*.png ./dist/*.xml ./dist/daishi/_htmlPager.html ./sg/dist/ ./bin/subterranean/ ./package-lock.json",
         "gulp": "gulp",
         "opener": "opener",
         "start": "npm-run-all -s om krodhana hum jah svaha",
