@@ -122,6 +122,8 @@ let checkedDemoContents = '';
 if(gulpConfig.functions.democontents == true) {
     checkedDemoContents = ' checked="checked"';
 }
+//初回のみ表示
+if(!gulpConfig.functions.firstlock) {
 %>
                     <div class="form-group row">
                         <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="デモコンテンツを使用するかどうかを設定します。「しない」の場合は、最小限のejsファイルと1つのサンプルコンテンツmdのみをデプロイします。"><i class="fas fa-fw fa-project-diagram" aria-hidden="true"></i><%= labelList.gulpConfig.functions.democontents %></label>
@@ -131,6 +133,7 @@ if(gulpConfig.functions.democontents == true) {
                             </label>
                         </div>
                     </div>
+<% } %>
                     <h3 class="mt-4 mb-3">FTP情報</h3>
                     <div class="form-group row">
                         <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i><%= labelList.ftpConfig.user %></label>

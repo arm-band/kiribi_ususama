@@ -3,6 +3,7 @@ functions:
     news: true
     ssl: true
     democontents: true
+    firstlock: false
 ftp:
     user:
     password:
