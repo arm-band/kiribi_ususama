@@ -1,7 +1,7 @@
-const _         = require("../../../gulp/plugin")
-const dir       = require("../../../gulp/dir")
-const functions = require("../../../gulp/functions")
-const express   = require("express")
+const _         = require('../../../gulp/plugin')
+const dir       = require('../../../gulp/dir')
+const functions = require('../../../gulp/functions')
+const express   = require('express')
 const router    = express.Router()
 const escape = require('../app/escape')
 const decode = require('../app/decode')
@@ -9,13 +9,13 @@ const check = require('../app/check')
 const substitute = require('../app/substitute')
 const fileOperator = require('../app/file')
 
-router.post("/", function(req, res, next) {
+router.post('/', function(req, res, next) {
     const unpressed = escape.escapeMinimal(req.body.unpressed, functions)
-    if(unpressed !== "true") {
+    if(unpressed !== 'true') {
         let config = functions.getConfig(dir.config.config)
         let commonVar = functions.getConfig(dir.config.commonvar)
         let gulpConfig = functions.getConfig(dir.config.gulpconfig)
-        const hachizetsu = functions.getConfig(dir.config.hachizetsu, "")
+        const hachizetsu = functions.getConfig(dir.config.hachizetsu, '')
         const paramConfig = {
             siteName: escape.escapeMinimal(req.body.siteName, functions),
             description: escape.escapeMinimal(req.body.description, functions),
@@ -58,7 +58,7 @@ router.post("/", function(req, res, next) {
             config.commons.ogpimage = paramConfig.OGPImage
             config.commons.twitteraccount = paramConfig.OGPTUserID
             config.commons.url = paramConfig.URL
-            commonVar["main-color"] = paramCommonVar.themeColor
+            commonVar['main-color'] = paramCommonVar.themeColor
             gulpConfig.functions.usephp = substitute.checkbox(paramGulpConfig.functions.usephp)
             gulpConfig.functions.news = substitute.checkbox(paramGulpConfig.functions.news)
             gulpConfig.functions.ssl = substitute.checkbox(paramGulpConfig.functions.ssl)
@@ -69,21 +69,21 @@ router.post("/", function(req, res, next) {
             msg = fileOperator.write(dir.config.dir + dir.config.gulpconfig, decode.decodeMinimal(_.yaml.stringify(gulpConfig), functions), msg)
             msg = fileOperator.write(dir.config.ftp, decode.decodeMinimal(_.yaml.stringify(paramFtpConfig), functions), msg)
         }
-        res.render("finish", {
+        res.render('finish', {
             config: config,
             commonVar: commonVar,
             msg: msg,
             unpressed: unpressed,
-            filename: "finish",
-            pagecat: "init"
+            filename: 'finish',
+            pagecat: 'init'
         })
         res.end()
     }
     else {
-        res.render("finish", {
+        res.render('finish', {
             unpressed: unpressed,
-            filename: "finish",
-            pagecat: "init"
+            filename: 'finish',
+            pagecat: 'init'
         })
         res.end()
         process.exit(0)
