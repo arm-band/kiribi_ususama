@@ -5,7 +5,7 @@ const functions = require('../gulp/functions')
 const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
 const direc = `${dir.template.dir}/`
 
-if(!gulpConfig.functions.firstlock) { //初回設定ページ表示時のみ動作
+if(!gulpConfig.firstlock) { //初回設定ページ表示時のみ動作
     if(!gulpConfig.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
         let templateList = []
         const contentMD = `---
