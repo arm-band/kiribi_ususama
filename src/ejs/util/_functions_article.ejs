@@ -1,10 +1,10 @@
 <%
 //記事ページのURLを生成
 funcArticleUrl = (url, attributes) => {
-    let urlTitle = attributes.title;
+    let urlTitle = attributes.url;
     urlTitle = urlTitle.replace(/\./g, "_");
     const datetime = funcDateTimeFormat(attributes.date, "", "ymd");
-    const fileUrl = `releasenote_${urlTitle}-${datetime}`;
+    const fileUrl = `${urlTitle}-${datetime}`;
     const articleIdUrl = `${url}news/articles/${fileUrl}.html`;
     return articleIdUrl;
 }

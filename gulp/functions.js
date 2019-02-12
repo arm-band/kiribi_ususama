@@ -45,10 +45,10 @@ module.exports = {
         return fileList.sort((a, b) => b.noex - a.noex)
     },
     articleURL: (attributes, functions) => { //記事ページのURLを生成
-        let urlTitle = attributes.title
+        let urlTitle = attributes.url
         urlTitle = urlTitle.replace(/\./g, '_')
         const datetime = functions.formatDate(attributes.date, 'ymd')
-        const url = `releasenote_${urlTitle}-${datetime}`
+        const url = `${urlTitle}-${datetime}`
         return url
     },
     zeroPadding: (num) => { //記事一覧を数字で管理すると桁数が異なるときに人間的な順番と機械的な順番が異なってしまうのを防ぐためにゼロパディング

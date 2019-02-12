@@ -14,6 +14,7 @@ fileList
 const contentMD = `---
 layout: article.ejs
 title: 新規作成
+url: releasenote
 date: ${datetime}
 thumbnail: 
 excerpt: 新規作成コンテンツです。
