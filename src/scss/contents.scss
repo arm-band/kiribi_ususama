@@ -36,6 +36,9 @@
             }
         }
     }
+    &_card {
+        margin-bottom: 1rem;
+    }
     &_contents {
         ul {
             padding-left: 1rem;
@@ -49,13 +52,13 @@
     }
     &_share {
         .news_btn {
-            a, a:link {
+            &, &:link {
                 color: darken($bg-color, 4%);
                 .fa.fa-fw {
                     margin-right: 0.1rem;
                 }
             }
-            a:hover, a:active, a:focus {
+            &:hover, &:active, &:focus {
                 text-decoration: none;
                 color: $bg-color;
             }
@@ -71,7 +74,7 @@
                     background-color: darken($bc-facebook, 12%);
                 }
             }
-            &GooglePlus {
+            &Googleplus {
                 background-color: $bc-google-plus;
                 &:hover, &:active, &:focus {
                     background-color: darken($bc-google-plus, 8%);
@@ -89,7 +92,7 @@
                     background-color: darken($bc-pocket, 12%);
                 }
             }
-            &Rss {
+            &Feedly {
                 background-color: $bc-feedly;
                 &:hover, &:active, &:focus {
                     background-color: darken($bc-feedly, 8%);

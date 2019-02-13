@@ -1,15 +1,52 @@
-                                <div class="news_share row my-4">
-<% if(config.param.articlesns.twitter) { %>
-                                    <button type="button" class="btn news_btn news_btnTwitter col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="http://twitter.com/share?url=<%= articleUrl %>&text=<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>" target="_blank" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a></button>
-<% } if(config.param.articlesns.facebook) { %>
-                                    <button type="button" class="btn news_btn news_btnFacebook col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= articleUrl %>" target="_blank" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a></button>
-<% } if(config.param.articlesns.googleplus) { %>
-                                    <button type="button" class="btn news_btn news_btnGooglePlus col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://plus.google.com/share?url=<%= articleUrl %>" target="_blank" title="Google+に投稿"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i>投稿</a></button>
-<% } if(config.param.articlesns.line) { %>
-                                    <button type="button" class="btn news_btn news_btnLine col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="http://line.me/R/msg/text/?<%= metaTitle %>%20%2d%20<%= config.commons.sitename %>%20<%= articleUrl %>" target="_blank" title="LINEトークに送る"><i class="fas fa-fw fa-comment" aria-hidden="true"></i>送る</a></button>
-<% } if(config.param.articlesns.pocket) { %>
-                                    <button type="button" class="btn news_btn news_btnPocket col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://getpocket.com/edit?url=<%= articleUrl %>" target="_blank" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a></button>
-<% } if(config.param.articlesns.feedly) { %>
-                                    <button type="button" class="btn news_btn news_btnRss col-6 col-lg-4 col-xl-1 mx-1 px-1 mb-3"><a href="https://feedly.com/i/subscription/feed/<%= config.commons.url %>rss.xml" target="_blank" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a></button>
-<% } %>
+<% const snsParam = {
+    "twitter": {
+        "url": `http://twitter.com/share?url=${articleUrl}&text=${metaTitle}%20%2d%20${config.commons.sitename}`,
+        "title": "Twitterでツイート",
+        "bText": "ツイート",
+        "fa": "twitter"
+    },
+    "facebook": {
+        "url": `https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`,
+        "title": "Facebookに投稿",
+        "bText": "投稿",
+        "fa": "facebook"
+    },
+    "googleplus": {
+        "url": `https://plus.google.com/share?url=${articleUrl}`,
+        "title": "Google+に投稿",
+        "bText": "投稿",
+        "fa": "google-plus"
+    },
+    "line": {
+        "url": `http://line.me/R/msg/text/?${metaTitle}%20%2d%20${config.commons.sitename}%20${articleUrl}`,
+        "title": "LINEトークに送る",
+        "bText": "送る",
+        "fa": "line"
+    },
+    "pocket": {
+        "url": `https://getpocket.com/edit?url=${articleUrl}`,
+        "title": "Pocketに保存",
+        "bText": "あとで",
+        "fa": "get-pocket"
+    },
+    "feedly": {
+        "url": `https://feedly.com/i/subscription/feed/${config.commons.url}rss.xml`,
+        "title": "Feedlyに登録",
+        "bText": "Feedly",
+        "fa": "rss"
+    }
+} %>
+                                <div class="news_share row my-4 w-100 mx-auto">
+<% for(let key in config.param.articlesns) {
+    if(config.param.articlesns[key]) {
+        const buttonClass = key.charAt(0).toUpperCase() + key.slice(1);
+        let faCategory = "fab";
+        if(key === "feedly") {
+            faCategory = "fas";
+        }
+%>
+                                    <a class="btn news_btn news_btn<%= buttonClass %> col-6 col-lg-4 col-xl-2 mx-1 px-1 mb-3" href="<%= snsParam[key].url %>" target="_blank" title="<%= snsParam[key].title %>"><i class="<%= faCategory %> fa-fw fa-<%= snsParam[key].fa %>" aria-hidden="true"></i><%= snsParam[key].bText %></a>
+<%
+    }
+} %>
                                 </div>
