@@ -2,6 +2,10 @@
     const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
     const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd");
     const articleUrl = funcArticleUrl("", newsBlock[i]);
+    let excerpt = ''; //ここから
+    if(newsBlock[i].excerpt !== null && newsBlock[i].excerpt !== undefined) {
+        excerpt = newsBlock[i].excerpt;
+    }
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
                     <article class="news_article" id="<%= newsBlock[i].url %>">
@@ -12,7 +16,7 @@
                             <div class="card-body p-3">
                                 <h3 class="news_header"><a href="<%= relPath %><%= articleUrl %>"><%= newsBlock[i].title %></a></h3>
                                 <div class="news_contents">
-                                    <p><%- newsBlock[i].excerpt %></p>
+                                    <p><%- excerpt %></p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">

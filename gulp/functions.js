@@ -117,5 +117,19 @@ module.exports = {
         let deciph = _.crypto.createDecipher('aes-256-cbc', key)
         deciph.update(txt, 'hex', 'utf8')
         return deciph.final('utf8')
+    },
+    firstContents(datetime) {
+        return `---
+layout: article.ejs
+title: コンテンツタイトル
+url: releasenote
+date: ${datetime}
+thumbnail: eyecatch.jpg
+excerpt: 記事の概要です。トップページと新着情報一覧で出力されます。
+---
+### サンプル見出し
+記事はMarkdown記法で記述できます。記事のファイル名は数字で作成順にしてください。
+### 先頭の---で区切られた部分について
+先頭の\`---\`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。`
     }
 }

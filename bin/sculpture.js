@@ -11,17 +11,6 @@ const filename = counter
 const datetime = functions.formatDate('', '')
 
 fileList
-const contentMD = `---
-layout: article.ejs
-title: 新規作成
-url: releasenote
-date: ${datetime}
-thumbnail: 
-excerpt: 新規作成コンテンツです。
----
-
-### 新規作成
-
-新規作成コンテンツです。`
+const contentMD = functions.firstContents(datetime)
 //記事追加
 _.fs.writeFileSync(`${dir.contents.dir}/${filename}.md`, contentMD)

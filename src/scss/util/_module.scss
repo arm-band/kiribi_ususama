@@ -19,14 +19,17 @@
             position: center center;
         }
     }
+    .eyecatch {
+        background-size: cover;
+    }
+}
+//キービジュアルのiOS Safari対策コードを出力
+@mixin eyecatchMobileSafari() {
     body:not(.mobileSafari) .eyecatch {
         background-attachment: fixed;
     }
     body.mobileSafari .eyecatch { //index.jsでUAにより付与。mobile Safariバグ対策
         background-attachment: scroll;
-    }
-    .eyecatch {
-        background-size: cover;
     }
 }
 //キービジュアルに見出しを左右上下中央寄せ
@@ -34,10 +37,6 @@
     display: flex;
     text-align: center;
     align-items: center;
-    .container-fluid {
-        box-sizing: border-box; //IEバグフィックス
-        max-width: 100%; //IEバグフィックス
-    }
 }
 //キービジュアルの見出しのタイポグラフィ
 @mixin eyecatchTypo($fontSize) {

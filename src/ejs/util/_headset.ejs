@@ -17,11 +17,11 @@ if (typeof attributes === "undefined") {
     }
 }
 //タイトル
-if(attributes.title.length > 0) {
+if(attributes.title !== null && attributes.title !== undefined && attributes.title.length > 0) {
     metaTitle = attributes.title;
 }
 //説明
-if(attributes.excerpt.length > 0) {
+if(attributes.excerpt !== null && attributes.excerpt !== undefined && attributes.excerpt.length > 0) {
     metaDescription = attributes.excerpt;
 }
 //OGP画像

@@ -9,22 +9,7 @@ const datetime = functions.formatDate('', '')
 if(!gulpConfig.firstlock) { //初回設定ページ表示時のみ動作
     if(!gulpConfig.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
         let templateList = []
-        const contentMD = `---
-layout: article.ejs
-title: コンテンツタイトル
-url: releasenote
-date: ${datetime}
-thumbnail: eyecatch.jpg
-excerpt: 記事の概要です
----
-
-### 記事タイトル
-
-記事はMarkdown記法で記述できます。記事のファイル名は数字で作成順にしてください。
-
-### 先頭の---で区切られた部分について
-
-先頭の\`---\`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。`
+        const contentMD = functions.firstContents(datetime)
         //全てのmdファイルを削除
         rimraf(`${dir.contents.dir}/*.md`, ()=> {
             //サンプル記事追加
