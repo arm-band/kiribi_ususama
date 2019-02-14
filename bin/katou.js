@@ -2,12 +2,14 @@ const rimraf    = require('rimraf')
 const fs        = require('fs')
 const dir       = require('../gulp/dir')
 const functions = require('../gulp/functions')
-const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
+const _         = require('../gulp/plugin')
+const decode = require('../dist/daishi/app/decode')
+const gulpConfig = functions.getConfig(dir.config.gulpconfig)
 const direc = `${dir.template.dir}/`
 
 const datetime = functions.formatDate('', '')
-if(!gulpConfig.firstlock) { //初回設定ページ表示時のみ動作
-    if(!gulpConfig.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
+if(!gulpConfig.functions.firstlock) { //初回設定ページ表示時のみ動作
+    if(!gulpConfig.functions.democontents) { //デモコンテンツを使用しない場合、デモコンテンツのファイルを削除
         let templateList = []
         const contentMD = functions.firstContents(datetime)
         //全てのmdファイルを削除
@@ -39,3 +41,9 @@ if(!gulpConfig.firstlock) { //初回設定ページ表示時のみ動作
         })
     }
 }
+//フラグ書き換え
+gulpConfig.functions.firstlock = true
+//ymlファイル書き込み
+_.fs.writeFileSync(`${dir.config.dir}${dir.config.gulpconfig}`, decode.decodeMinimal(_.yaml.stringify(gulpConfig), functions), (err) => {
+    if(err) console.log(err)
+})

@@ -4,7 +4,7 @@ parameters = {
     entitle: "News",
     css: "contents",
     js: "app.min",
-    description: "新着情報一覧ページの説明",
+    description: "新着情報の一覧です。",
     ogpimage: "eyecatch.jpg"
 }
 %><%- include("util/_init_load") %><%- include("util/_functions_article") %><%- include("util/_headset", { config, parameters }) %>
@@ -23,10 +23,17 @@ parameters = {
         <aside class="container">
 <%- include("partial/_breadcrumb", { parameters, relPath }) %>
         </aside>
-        <section class="container">
+        <section class="container my-5">
+            <div class="page-header mb-3 text-center <%= id %>_header">
+                <h2>新着情報<small class="ml-3">News</small></h2>
+            </div>
 <%- include("partial/_pagination", { pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%- include("partial/_newscards.ejs", { relPath, newsBlock }) %>
+            </div>
+<%- include("partial/_pagination", { pages, pageLength, parameters }) %>
+            <div class="text-center my-4">
+                <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
             </div>
         </section>
     </main>

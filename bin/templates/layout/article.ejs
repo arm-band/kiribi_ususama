@@ -5,7 +5,7 @@ parameters = {
     entitle: "News",
     css: "contents",
     js: "app.min",
-    description: "新着情報記事の説明",
+    description: attributes.excerpt,
     ogpimage: "eyecatch.jpg"
 }
 %><%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><% contentBody = funcURLConverter(body, relPath); %><%- include("util/_headset", { config, parameters, attributes }) %>
@@ -20,38 +20,30 @@ parameters = {
 <%- include("partial/_header", { config, commonVar }) %>
 <%- include("partial/_eyecatch", { headerString }) %>
     <!-- main -->
-    <main class="main <%= id %>main">
+    <main class="main <%= id %>main container-fluid">
         <aside class="container">
 <%- include("partial/_breadcrumb", { parameters, returnNews, relPath }) %>
         </aside>
-        <section class="container my-5">
-            <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
+        <div class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
 const datetime = funcDateTimeFormat(attributes.date, "-", "");
-const showDt = funcDateTimeFormat(attributes.date, "/", "");
+const showDt = funcDateTimeFormat(attributes.date, "/", "ymd");
 const articleUrl = funcArticleUrl(config.commons.url, attributes);
 %>
-                <div class="col-12 news_card mb-3">
-                    <article class="news_article" id="<%= attributes.url %>">
-                        <div class="card">
-<% if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) { %>
-                            <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- attributes.thumbnail %>" alt="<%= attributes.title %>">
-<% } %>
-                            <div class="card-body p-3">
-                                <h2 class="news_header"><%= attributes.title %></h2>
-                                <div class="news_contents">
-                                    <%- contentBody %>
-                                </div>
-<%- include("partial/_article_snsbutton", { config, articleUrl, metaTitle }) %>
-                            </div>
-                            <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
-                            </div>
-                        </div>
-                    </article>
+            <article class="news_article" id="<%= attributes.url %>">
+                <h2 class="news_header"><%= attributes.title %></h2>
+                <div class=" mb-3 news_createdatetime">
+                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                 </div>
-            </div>
-        </section>
+                <div class="mb-3 news_contents">
+                    <%- contentBody %>
+                </div>
+<%- include("partial/_article_snsbutton", { config, articleUrl, metaTitle }) %>
+            </article>
+        </div>
+        <div class="text-center my-5">
+            <a href="<%= relPath %>news/<%= returnNews %>" class="btn btn-light rounded-0"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
+        </div>
     </main>
     <!-- /main -->
 </div>
