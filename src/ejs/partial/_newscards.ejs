@@ -1,14 +1,15 @@
 <% for(let i in newsBlock) {
-    const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "");
-    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd");
-    const articleUrl = funcArticleUrl("", newsBlock[i]);
-    let excerpt = ''; //ここから
+    const datetime = funcDateTimeFormat(newsBlock[i].date, "-", "")
+    const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd")
+    const articleId = funcArticleUrl("", newsBlock[i], true)
+    const articleUrl = funcArticleUrl("", newsBlock[i])
+    let excerpt = ''
     if(newsBlock[i].excerpt !== null && newsBlock[i].excerpt !== undefined) {
-        excerpt = newsBlock[i].excerpt;
+        excerpt = newsBlock[i].excerpt
     }
 %>
                 <div class="col-md-12 col-lg-6 col-xl-4 news_card mb-4">
-                    <article class="news_article" id="<%= newsBlock[i].url %>">
+                    <article class="news_article" id="<%= articleId %>">
                         <div class="card h-100">
 <% if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) { %>
                             <img class="card-img-top img-fluid" src="<%= relPath %><%- config.commons.newsthumbnail %><%- newsBlock[i].thumbnail %>" alt="<%= newsBlock[i].title %>">

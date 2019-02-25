@@ -1,9 +1,9 @@
-<% let eyecatchStyle = "";
-let articleClass = "";
+<% let eyecatchStyle = ""
+let articleClass = ""
 if(id === "article") {
     if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
-        eyecatchStyle = ` style="background-image:url('${relPath}${config.commons.newsthumbnail}${attributes.thumbnail}');"`;
-        articleClass = " smallText";
+        eyecatchStyle = ` style="background-image:url('${relPath}${config.commons.newsthumbnail}${attributes.thumbnail}');"`
+        articleClass = " smallText"
     }
 } %>
     <section class="container-fluid eyecatch"<%- eyecatchStyle %>>

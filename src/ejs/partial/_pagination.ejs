@@ -4,7 +4,7 @@
 <%
     //前のページへ
     if(pages !== 1) { //最初のページ以外
-        const prev = pages - 1;
+        const prev = pages - 1
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
@@ -28,7 +28,7 @@
     }
     //次のページへ
     if(pages !== pageLength) { //最後のページ以外
-        const next = pages + 1;
+        const next = pages + 1
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
