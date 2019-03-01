@@ -3,7 +3,7 @@ const dir       = require('../dir')
 
 //js圧縮&結合&リネーム
 _.gulp.task('js.concat', () => {
-    return _.gulp.src([`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`, `${dir.assets.bowser}/bowser.js`])
+    return _.gulp.src([`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`, `${dir.assets.bowser}/bundled.js`])
         .pipe(_.plumber())
         .pipe(_.concat('lib.js'))
         .pipe(_.gulp.dest(`${dir.src.js}/concat/`)) //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
