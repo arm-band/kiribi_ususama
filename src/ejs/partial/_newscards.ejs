@@ -1,5 +1,5 @@
 <% for(let i in newsBlock) {
-    const datetime = funcDateTimeFormat(attributes.date, "", "tz")
+    const datetime = funcDateTimeFormat(newsBlock[i].date, "", "tz")
     const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd")
     const articleId = funcArticleUrl("", newsBlock[i], true)
     const articleUrl = funcArticleUrl("", newsBlock[i])
