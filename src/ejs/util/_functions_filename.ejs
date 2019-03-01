@@ -30,6 +30,14 @@ funcFileNamePath = (filename, fnProcedure, id) => {
     }
     return path
 }
+//ファイル名からナビゲーションバーのパスを返す
+funcNavPath = (relPath, id) => {
+    let navPath = relPath
+    if(id === 'index') {
+        navPath = ''
+    }
+    return navPath
+}
 //ファイル名を各ページのidとして設定する
 funcFileNameProcedure = (filename) => {
     let array = []

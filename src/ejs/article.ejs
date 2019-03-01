@@ -26,9 +26,9 @@ parameters = {
         </aside>
         <div class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
-const datetime = funcDateTimeFormat(attributes.date, "-", "");
-const showDt = funcDateTimeFormat(attributes.date, "/", "ymd");
-const articleUrl = funcArticleUrl(config.commons.url, attributes);
+const datetime = funcDateTimeFormat(attributes.date, "", "tz")
+const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
+const articleUrl = funcArticleUrl(config.commons.url, attributes)
 %>
             <article class="news_article" id="<%= attributes.url %>">
                 <h2 class="news_header"><%= attributes.title %></h2>

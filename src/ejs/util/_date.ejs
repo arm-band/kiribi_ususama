@@ -37,6 +37,12 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
     if(output === "ymd") {
         datetime = `${y}${optStr}${m}${optStr}${d}`
     }
+    else if(output === "tz") {
+        if(optStr.length === 0) {
+            optStr = "-"
+        }
+        datetime = `${y}${optStr}${m}${optStr}${d}T${hr}:${mt}:${sc}+09:00`
+    }
     else {
         if(optStr.length === 0) {
             optStr = "-"
