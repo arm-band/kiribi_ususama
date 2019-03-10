@@ -1,4 +1,4 @@
-const _         = require("../../../gulp/plugin")
+const _         = require("../../../../gulp/plugin")
 const errMsg = require("./parameters/errMsg")
 
 module.exports = {

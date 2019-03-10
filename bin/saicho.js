@@ -19,4 +19,4 @@ const kyozo = {
     key: value
 }
 const yaku = yaml.stringify(kyozo)
-fs.writeFileSync(dir.config.hachizetsu, yaku)
+fs.writeFileSync(`${dir.config.dir}${dir.config.hachizetsu}`, yaku)

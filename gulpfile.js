@@ -30,6 +30,7 @@ else {
 /* requireDri Execution
 *************************************** */
 _.requireDir('./tasks', { recurse: true })
+_.requireDir('./../bin/daishi/gulp', { recurse: true })
 
 _.gulp.task('daishi', _.gulp.series('admin.sass', 'admin.js'))
 

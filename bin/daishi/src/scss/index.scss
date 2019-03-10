@@ -5,13 +5,13 @@
 // Import                                        *
 //                                               *
 // ============================================= */
-@import "../assets/bootstrap/bootstrap"; //bootstrap(3.3.7)
+@import "../../../../src/scss/assets/bootstrap/bootstrap"; //bootstrap
 @import "./util/var"; //変数
-@import "../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
-@import "../util/typo"; //ベンダープレフィックス等のMixinモジュール
-@import "../util/module"; //ベンダープレフィックス等のMixinモジュール
-//@import "../util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
-@import "../util/base"; //フォント指定やIE対処など
+@import "../../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
+@import "../../../../src/scss/util/typo"; //ベンダープレフィックス等のMixinモジュール
+@import "../../../../src/scss/util/module"; //ベンダープレフィックス等のMixinモジュール
+//@import "../../../../src/scss/util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
+@import "../../../../src/scss/util/base"; //フォント指定やIE対処など
 
 // ============================================= *
 //                                               *
@@ -24,8 +24,8 @@
 // ヘッダ                                         *
 //                                               *
 // ============================================= */
-//@import "../util/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
-@import "../partial/header";
+//@import "../../../../src/scss/util/navbar"; //ヘッダナビゲーションバーの設定。ハンバーガーメニューのアニメーションもここで。
+@import "../../../../src/scss/partial/header";
 
 // ============================================= *
 //                                               *
@@ -71,7 +71,7 @@
 // フッタ                                         *
 //                                               *
 // ============================================= */
-@import "../partial/footer";
+@import "../../../../src/scss/partial/footer";
 
 // ***** ページトップへ戻る ***** */
-@import "../partial/returnpagetop";
+@import "../../../../src/scss/partial/returnpagetop";

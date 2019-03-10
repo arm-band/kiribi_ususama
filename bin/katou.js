@@ -3,7 +3,7 @@ const fs        = require('fs')
 const dir       = require('../gulp/dir')
 const functions = require('../gulp/functions')
 const _         = require('../gulp/plugin')
-const decode = require('../dist/daishi/app/decode')
+const decode = require('./daishi/dist/app/decode')
 const gulpConfig = functions.getConfig(dir.config.gulpconfig)
 const direc = `${dir.template.dir}/`
 

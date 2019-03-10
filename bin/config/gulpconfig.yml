@@ -14,6 +14,4 @@ ftp:
     include:
     - "*"
     - "**/*"
-    exclude:
-    - "daishi/**/*"
     deleteRemote: false

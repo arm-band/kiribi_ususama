@@ -1,6 +1,6 @@
-const _         = require('../../../gulp/plugin')
-const dir       = require('../../../gulp/dir')
-const functions = require('../../../gulp/functions')
+const _         = require('../../../../gulp/plugin')
+const dir       = require('../../../../gulp/dir')
+const functions = require('../../../../gulp/functions')
 const express   = require('express')
 const router    = express.Router()
 const escape = require('../app/escape')
@@ -15,7 +15,7 @@ router.post('/', function(req, res, next) {
         let config = functions.getConfig(dir.config.config)
         let commonVar = functions.getConfig(dir.config.commonvar)
         let gulpConfig = functions.getConfig(dir.config.gulpconfig)
-        const hachizetsu = functions.getConfig(dir.config.hachizetsu, '')
+        const hachizetsu = functions.getConfig(`${dir.config.dir}${dir.config.hachizetsu}`, '')
         const paramConfig = {
             siteName: escape.escapeMinimal(req.body.siteName, functions),
             description: escape.escapeMinimal(req.body.description, functions),
@@ -67,7 +67,7 @@ router.post('/', function(req, res, next) {
             msg = fileOperator.write(dir.config.dir + dir.config.config, decode.decodeMinimal(_.yaml.stringify(config), functions), msg)
             msg = fileOperator.write(dir.config.dir + dir.config.commonvar, decode.decodeMinimal(_.yaml.stringify(commonVar), functions), msg)
             msg = fileOperator.write(dir.config.dir + dir.config.gulpconfig, decode.decodeMinimal(_.yaml.stringify(gulpConfig), functions), msg)
-            msg = fileOperator.write(dir.config.ftp, decode.decodeMinimal(_.yaml.stringify(paramFtpConfig), functions), msg)
+            msg = fileOperator.write(`${dir.config.dir}${dir.config.ftp}`, decode.decodeMinimal(_.yaml.stringify(paramFtpConfig), functions), msg)
         }
         res.render('finish', {
             config: config,

@@ -39,20 +39,20 @@ const scrollElm = () => {
 
 //ページトップへ戻る
 const pageTop = (screlm) => {
-    const returnPageTop = $(".returnPageTop")
+    const $returnPageTop = $(".returnPageTop")
 
     $(window).on("scroll", () => {
         //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
         let currentPos = $(this).scrollTop()
         if (currentPos > 400) {
-            returnPageTop.fadeIn()
+            $returnPageTop.fadeIn()
         } else {
-            returnPageTop.fadeOut()
+            $returnPageTop.fadeOut()
         }
     })
 
     //ページトップへスクロールして戻る
-    returnPageTop.on("click", () => {
+    $returnPageTop.on("click", () => {
         $(screlm).animate({ scrollTop: 0 }, 1000, "easeInOutCirc")
         return false
     })
@@ -62,8 +62,8 @@ const pageTop = (screlm) => {
 const pageScroll = (screlm) => {
     const navbarHeight = parseInt($("body").attr("data-offset"))
     if($("#index").length) { //トップページの場合のみ動作
-        var $navbar = $("#navbar")
-        var speed = 1000
+        const $navbar = $("#navbar")
+        const speed = 1000
         $navbar.find("a").on("click", () => {
             let href = $(this).attr("href")
             let targetID = ""
@@ -76,9 +76,9 @@ const pageScroll = (screlm) => {
             else {
                 targetID = href
             }
-            let target = $(targetID)
-//            var position = target.offset().top - navbarHeight;
-            let position = target.offset().top
+            let $target = $(targetID)
+//            let position = $target.offset().top - navbarHeight
+            let position = $target.offset().top
             $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
             $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click() //移動したらハンバーガーを折りたたむ
             return false
@@ -88,9 +88,9 @@ const pageScroll = (screlm) => {
     $('a[href^="#"]').on("click", () => {
         let href = $(this).attr("href")
         let targetID = href == "#" || href == "" ? "html" : href //リンク先が#か空だったらhtmlに
-        let target = $(targetID)
-//        var position = target.offset().top - navbarHeight;
-        let position = target.offset().top
+        let $target = $(targetID)
+//        let position = $target.offset().top - navbarHeight
+        let position = $target.offset().top
         $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
         return false
     })

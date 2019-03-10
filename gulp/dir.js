@@ -15,12 +15,12 @@ module.exports = {
         favicon    : './src/favicon'
     },
     config: {
-        dir        : './src/config',
+        dir        : './bin/config',
         config     : '/config.yml',
         commonvar  : '/commonvar.yml',
         gulpconfig : '/gulpconfig.yml',
-        hachizetsu : './bin/subterranean/hachizetsu.yml',
-        ftp        : './bin/subterranean/ftp.yml'
+        hachizetsu : '/subterranean/hachizetsu.yml',
+        ftp        : '/subterranean/ftp.yml'
     },
     contents: {
         dir        : './src/contents'
@@ -47,11 +47,11 @@ module.exports = {
         template   : './sg/src/ejs'
     },
     admin: {
-        scss       : './src/scss/admin',
-        js         : './src/js/admin',
-        dist       : './dist/daishi',
+        dir        : './bin/daishi',
+        scss       : '/src/scss',
+        js         : '/src/js',
         views      : '/views',
-        css        : '/public/css',
-        distjs     : '/public/js'
+        css        : '/dist/public/css',
+        distjs     : '/dist/public/js'
     }
 }
