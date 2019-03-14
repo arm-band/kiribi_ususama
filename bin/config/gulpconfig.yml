@@ -12,6 +12,6 @@ ftp:
     localRoot: ./dist/
     remoteRoot: ./path/to/web/root/
     include:
-    - "*"
-    - "**/*"
+        - "*"
+        - "**/*"
     deleteRemote: false

@@ -41,7 +41,7 @@ const scrollElm = () => {
 const pageTop = (screlm) => {
     const $returnPageTop = $(".returnPageTop")
 
-    $(window).on("scroll", () => {
+    $(window).on("scroll", function() {
         //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
         let currentPos = $(this).scrollTop()
         if (currentPos > 400) {
@@ -52,7 +52,7 @@ const pageTop = (screlm) => {
     })
 
     //ページトップへスクロールして戻る
-    $returnPageTop.on("click", () => {
+    $returnPageTop.on("click", function() {
         $(screlm).animate({ scrollTop: 0 }, 1000, "easeInOutCirc")
         return false
     })
@@ -64,7 +64,7 @@ const pageScroll = (screlm) => {
     if($("#index").length) { //トップページの場合のみ動作
         const $navbar = $("#navbar")
         const speed = 1000
-        $navbar.find("a").on("click", () => {
+        $navbar.find("a").on("click", function(speed) {
             let href = $(this).attr("href")
             let targetID = ""
             if(/^(\.\/|\/)$|^(#)?$/.test(href)) { //hrefの値が「/」「./」「#」「」の場合
@@ -85,7 +85,7 @@ const pageScroll = (screlm) => {
         })
     }
     //一般
-    $('a[href^="#"]').on("click", () => {
+    $('a[href^="#"]').on("click", function(speed) {
         let href = $(this).attr("href")
         let targetID = href == "#" || href == "" ? "html" : href //リンク先が#か空だったらhtmlに
         let $target = $(targetID)
