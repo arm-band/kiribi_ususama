@@ -4,7 +4,7 @@ module.exports = {
     plumber: require('gulp-plumber'),
     notify: require('gulp-notify'),
     requireDir: require('require-dir'),
-    yaml: require('yaml').default,
+    yaml: require('yaml'),
     sass:  require('gulp-sass'),
     autoprefixer: require('gulp-autoprefixer'),
     imagemin: require('gulp-imagemin'),
