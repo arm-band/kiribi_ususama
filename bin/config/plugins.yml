@@ -7,6 +7,7 @@ sitemap_xml: true
 rss: true
 ogp: true
 analytics: true
+searchconsole: true
 pagetop: true
 articlesns: true
 themecolor: true
@@ -16,3 +17,6 @@ chrome: true
 fixedanchor_scss: false
 fixedanchor_js: true
 lightbox: true
+slick: true
+svghexagon : false
+getjson: false

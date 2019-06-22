@@ -1,7 +1,7 @@
 commons:
     sitename: "Kiribi Ususama"
     description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
-    year: 2018
+    year: 2019
     author: "アルム＝バンド"
     url: "http://localhost:3000/"
 param:
@@ -13,10 +13,11 @@ param:
         twitteraccount: "Bredtn_1et"
         newsthumbnail: "img/thumbnails/"
     analytics: ""
+    searchconsole: ""
     articlesns:
         twitter: true
         facebook: true
-        googleplus: false
+        hatena: true
         line: true
         pocket: true
         feedly: true

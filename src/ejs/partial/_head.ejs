@@ -6,6 +6,7 @@
     <meta name="description" content="<%= metaDescription %>">
 
 <% if(plugins.analytics) { %><%- include("../_plugins/analytics/analytics", { config }) %><% } %>
+<% if(plugins.searchconsole) { %><%- include("../_plugins/searchconsole/searchconsole", { config }) %><% } %>
 
     <!-- favicon, etc -->
     <link href="<%= relPath %>apple-touch-icon.png" rel="apple-touch-icon">

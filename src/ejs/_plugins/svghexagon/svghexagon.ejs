@@ -1,0 +1,15 @@
+<svg width="44" height="44" viewBox="0 0 44 44">
+    <defs>
+        <clipPath id="cp1" clipUnits="userSpaceOnUse">
+            <rect x="-11" width="44" height="44" transform="skewX(30)"/>
+        </clipPath>
+        <clipPath id="cp2" clipUnits="userSpaceOnUse">
+            <rect x="-11" width="44" height="44" transform="rotate(-30,0,0)skewY(30)"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#cp1)">
+        <g clip-path="url(#cp2)">
+            <rect x="11" width="44" height="44" transform="skewX(-30)" fill="<%= commonVar["main-color"] %>"/>
+        </g>
+    </g>
+</svg>

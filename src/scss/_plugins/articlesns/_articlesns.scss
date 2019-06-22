@@ -26,10 +26,10 @@
                     background-color: darken($bc-facebook, 12%);
                 }
             }
-            &Googleplus {
-                background-color: $bc-google-plus;
+            &Hatena {
+                background-color: $bc-hatena-bookmark;
                 &:hover, &:active, &:focus {
-                    background-color: darken($bc-google-plus, 8%);
+                    background-color: darken($bc-hatena-bookmark, 8%);
                 }
             }
             &Line {

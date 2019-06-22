@@ -4,24 +4,8 @@
         <div class="container">
             <a class="navbar-brand my-0 navbar_head" href="<%= relPath %>#wrapper"><%= config.commons.sitename %></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
-            <span class="navbar-toggler-icon"></span>
-                <!--
-                    <svg width="44" height="44" viewBox="0 0 44 44">
-                        <defs>
-                            <clipPath id="cp1" clipUnits="userSpaceOnUse">
-                                <rect x="-11" width="44" height="44" transform="skewX(30)"/>
-                            </clipPath>
-                            <clipPath id="cp2" clipUnits="userSpaceOnUse">
-                                <rect x="-11" width="44" height="44" transform="rotate(-30,0,0)skewY(30)"/>
-                            </clipPath>
-                        </defs>
-                        <g clip-path="url(#cp1)">
-                            <g clip-path="url(#cp2)">
-                                <rect x="11" width="44" height="44" transform="skewX(-30)" fill="<%#= commonVar["main-color"] %>"/>
-                            </g>
-                        </g>
-                    </svg>
-                -->
+                <span class="navbar-toggler-icon"></span>
+<% if(plugins.svghexagon) { %><%- include("../_plugins/svghexagon/svghexagon", { commonVar }) %><% } %>
             </button>
 <% const navPath = funcNavPath(relPath, id) %>
             <div class="collapse navbar-collapse" id="navbarList">

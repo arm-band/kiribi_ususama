@@ -13,11 +13,6 @@ $(() => {
 
     //ページ内スクロール
     pageScroll(screlm)
-
-//    $.getJSON(jsonFile, {ts: new Date().getTime()}, function(data) {
-//    }).done(function(data, status, xhr) {
-//    }).fail(function(xhr, status, error) {
-//  });
 })
 
 //ユーザーエージェントからスクロールを実行する対象を判定

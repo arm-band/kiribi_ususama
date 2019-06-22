@@ -11,11 +11,11 @@
         "bText": "投稿",
         "fa": "facebook"
     },
-    "googleplus": {
-        "url": `https://plus.google.com/share?url=${articleUrl}`,
-        "title": "Google+に投稿",
-        "bText": "投稿",
-        "fa": "google-plus"
+    "hatena": {
+        "url": `http://b.hatena.ne.jp/add?mode=confirm&url=${articleUrl}&title=${metaTitle}%20%2d%20${config.commons.sitename}`,
+        "title": "はてなブックマーク",
+        "bText": "ブックマークする",
+        "fa": "bookmark"
     },
     "line": {
         "url": `http://line.me/R/msg/text/?${metaTitle}%20%2d%20${config.commons.sitename}%20${articleUrl}`,
@@ -47,10 +47,10 @@ if(flag > 0) { //表示させるボタンが1つもない場合はラッパー�
         if(config.param.articlesns[key]) {
             const buttonClass = key.charAt(0).toUpperCase() + key.slice(1)
             let faCategory = "fab"
-            if(key === "feedly") {
+            if(key === "hatena" || key === "feedly") {
                 faCategory = "fas"
             } %>
-                                    <a class="btn news_btn news_btn<%= buttonClass %> col-6 col-lg-4 col-xl-2 mx-1 px-1 mb-3" href="<%= snsParam[key].url %>" target="_blank" title="<%= snsParam[key].title %>"><i class="<%= faCategory %> fa-fw fa-<%= snsParam[key].fa %>" aria-hidden="true"></i><%= snsParam[key].bText %></a>
+                                    <a class="btn news_btn news_btn<%= buttonClass %> col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="<%= snsParam[key].url %>" target="_blank" title="<%= snsParam[key].title %>"><i class="<%= faCategory %> fa-fw fa-<%= snsParam[key].fa %>" aria-hidden="true"></i><%= snsParam[key].bText %></a>
 <%      }
     } %>
                                 </div>

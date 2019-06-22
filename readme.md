@@ -4,4 +4,4 @@
 
 gulpを使用した小・中規模Webサイト制作用のボイラープレートです。
 
-詳しい情報や使い方等は[ドキュメント](https://docshed.ewigleere.net/ususama_book/)を参照。
+詳しい情報や使い方等は[デモサイト・ドキュメント](https://ususama.ewigleere.net)を参照。

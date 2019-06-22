@@ -4,7 +4,9 @@ module.exports = {
         jquery     : './node_modules/jquery/dist',
         easing     : './node_modules/jquery.easing',
         bootstrap  : './node_modules/bootstrap-honoka/dist/js',
-        bowser     : './node_modules/bowser'
+        bowser     : './node_modules/bowser',
+        lightbox   : './node_modules/lightbox2/dist',
+        slick      : './node_modules/slick-carousel/slick'
     },
     src: {
         ejs        : './src/ejs',

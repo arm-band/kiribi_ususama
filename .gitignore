@@ -2,6 +2,7 @@
 /src/js/concat/
 /src/scss/assets/
 /src/scss/util/_var.scss
+/src/img/lightbox/
 /bin/config/subterranean/
 package-lock.json
 /.sass-cache/
