@@ -9,7 +9,7 @@ parameters = {
 }
 const indexCounter = () => {
     let cnt = `最新${String(config.param.indexcount)}`;
-    if(config.param.indexcount <= 0) {
+    if(config.param.indexcount === 0) {
         cnt = "全";
     }
     return cnt;
@@ -27,90 +27,8 @@ const indexCounter = () => {
 <%- include("partial/_eyecatch", { headerString, parameters }) %>
     <!-- main -->
     <main class="main <%= id %>main">
-        <section class="container my-5 features fixed_anchor" id="features">
-            <div class="page-header mb-3 text-center features_header">
-                <h2>特徴<small class="ml-3">Features</small></h2>
-            </div>
-            <div class="row features_contents">
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card h-100 border-0">
-                        <div class="card-header px-2 py-3 text-center bg-white border-0">
-                            <i class="fab fa-fw fa-5x fa-gulp" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-2 py-3 text-center">
-                            <h3 class="card-title">gulp</h3>
-                            <p class="card-text">タスクランナーにgulpを採用し、ソースのコンパイルから自動プレビューまで一括で管理します。</p>
-                        </div>
-                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
-                            <a href="<%= relPath %>about.html#features_gulp" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card h-100 border-0">
-                        <div class="card-header px-2 py-3 text-center bg-white border-0">
-                            <i class="fas fa-fw fa-5x fa-mobile-alt" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-2 py-3 text-center">
-                            <h3 class="card-title">Honoka</h3>
-                            <p class="card-text">Bootstrapテーマの「Honoka」をベースとすることで、導入コストを削減。レスポンシブWebデザインを簡単に実現できます。</p>
-                        </div>
-                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
-                            <a href="<%= relPath %>about.html#features_honoka" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="card h-100 border-0">
-                        <div class="card-header px-2 py-3 text-center bg-white border-0">
-                            <i class="fas fa-fw fa-5x fa-list" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-2 py-3 text-center">
-                            <h3 class="card-title">News</h3>
-                            <p class="card-text">新着情報をテンプレートで一括管理。Markdownコンテンツから、一覧ページ・各記事ページを自動生成します。</p>
-                        </div>
-                        <div class="card-footer px-2 py-3 text-center bg-white border-0">
-                            <a href="<%= relPath %>about.html#features_news" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>さらに詳しく</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 text-center">
-                    <a href="<%= relPath %>about.html" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>その他の機能について</a>
-                </div>
-            </div>
-        </section>
-        <section class="container my-5 how2use fixed_anchor" id="how2use">
-            <div class="page-header mb-3 text-center how2use_header">
-                <h2>使い方<small class="ml-3">How to use?</small></h2>
-            </div>
-            <div class="how2use_contents">
-                <ol class="pb-3">
-                    <li><code>git clone https://github.com/arm-band/kiribi_ususama.git</code>、または<a href="https://github.com/arm-band/kiribi_ususama/releases" target="_blank"><i class="fas fa-fw fa-external-link-alt" aria-hidden="true"></i>Kiribi UsusamaのGithubリポジトリ</a>からダウンロード</li>
-                    <li><code>npm i -D</code><small class="ml-3">(または<code>npm install --save-dev</code>)</small></li>
-                    <li><code>npm start</code><small class="ml-3">(<code>npm i -D</code>したファイルの再配置<span class="mx-2">+</span>初期設定画面生成・表示<span class="mx-2">+</span>初期設定完了後、<code>gulp init</code>実行)</small>
-                        <ul>
-                            <li><small>このコマンドで生成したディレクトリや<code>package-lock.json</code>等は<code>npm run fujoketsu</code>(不浄潔)で削除できます</small></li>
-                        </ul>
-                    </li>
-                    <li>2回目以降は<code>npm test</code>でブラウザ起動<span class="mx-2">+</span>自動リロード</li>
-                </ol>
-            </div>
-            <div class="text-center">
-                <p>ファイルの説明や詳しい使い方は<a href="https://docshed.ewigleere.net/ususama_book/" target="_blank"><i class="fas fa-fw fa-external-link-alt" aria-hidden="true"></i>マニュアル(GitBook)</a>を参照。</p>
-            </div>
-        </section>
-        <section class="container-fluid my-5 origin fixed_anchor" id="origin">
-            <div class="container-fluid origin_container">
-                <div class="container pb-5 fixed_anchor">
-                    <div class="page-header mb-3 text-center origin_header">
-                        <h2>名前の由来<small class="ml-3">Origin of name</small></h2>
-                    </div>
-                    <div class="pb-3 origin_contents">
-                        <p>Bootstrapを使っていることから。Bootstrapが電源投入、自動実行といった意味合いなので、何か物事を始めるイメージと火で火打石を連想。ただし、「Hiuchiishi」だと長いので別の単語にしたかった、かつ、これから事を始めるに当たって最初に魔除けを行う、という意味も込めて「切り火」から「Kiribi」としました。</p>
-                        <p>一方、gulpは飲み込む、ごくごくと飲むという意味なので、上記の火のイメージを踏襲しつつ、何かを飲み込む逸話を持つ神仏ということで、一切不浄を飲み込み浄化する「烏枢沙摩明王」からお名前をお借りし、「Kiribi Ususama」としました。</p>
-                    </div>
-                </div>
-            </div>
+        <section class="container fixed_anchor" id="contents">
+            <!-- contents -->
         </section>
 <%
 if(gulpConfig.news) {

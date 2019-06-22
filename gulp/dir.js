@@ -26,7 +26,9 @@ module.exports = {
         dir        : './src/contents'
     },
     template: {
-        dir        : './bin/templates'
+        dir        : './bin/templates',
+        ejs        : '/ejs',
+        contents   : '/contents'
     },
     dist: {
         html       : './dist',

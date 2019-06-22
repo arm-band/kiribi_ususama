@@ -28,7 +28,7 @@ _.gulp.task('index.ejs', () => {
     const fileList = functions.getArticles(`${dir.contents.dir}/`, functions)
     let newsBlock = []
     let newsLength = config.param.indexcount
-    if(fileList.length <= config.param.indexcount || config.param.indexcount <= 0) {
+    if(fileList.length <= config.param.indexcount || config.param.indexcount === 0) {
         newsLength = fileList.length
     }
     for(let i = 0; i < newsLength; i++) { //新着情報の件数
@@ -92,7 +92,7 @@ _.gulp.task('news.ejs', done => {
             .pipe(_.rename(`${articleFileName}.html`))
             .pipe(_.gulp.dest(dir.dist.articles))
 
-        if(config.param.indexcount > i) { //件数はconfig.param.indexcountの件数とする
+        if(config.param.indexcount === 0 || config.param.indexcount > i) { //件数はconfig.param.indexcountの件数とする(0件の場合は全て)
             functions.feedItem(feed, config, attributes, functions) //RSS
         }
 

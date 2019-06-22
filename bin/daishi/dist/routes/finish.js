@@ -32,8 +32,7 @@ router.post('/', function(req, res, next) {
             functions: {
                 usephp: escape.escapeMinimal(req.body.usephp, functions),
                 news: escape.escapeMinimal(req.body.news, functions),
-                ssl: escape.escapeMinimal(req.body.ssl, functions),
-                democontents: escape.escapeMinimal(req.body.democontents, functions),
+                ssl: escape.escapeMinimal(req.body.ssl, functions)
             }
         }
         const paramFtpConfig = {
@@ -62,7 +61,6 @@ router.post('/', function(req, res, next) {
             gulpConfig.functions.usephp = substitute.checkbox(paramGulpConfig.functions.usephp)
             gulpConfig.functions.news = substitute.checkbox(paramGulpConfig.functions.news)
             gulpConfig.functions.ssl = substitute.checkbox(paramGulpConfig.functions.ssl)
-            gulpConfig.functions.democontents = substitute.checkbox(paramGulpConfig.functions.democontents)
             //yml変換した内容をファイル書き込み
             msg = fileOperator.write(dir.config.dir + dir.config.config, decode.decodeMinimal(_.yaml.stringify(config), functions), msg)
             msg = fileOperator.write(dir.config.dir + dir.config.commonvar, decode.decodeMinimal(_.yaml.stringify(commonVar), functions), msg)
