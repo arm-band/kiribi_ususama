@@ -25,10 +25,10 @@ module.exports = {
     contents: {
         dir        : './src/contents'
     },
-    template: {
-        dir        : './bin/templates',
-        ejs        : '/ejs',
-        contents   : '/contents'
+    plugins: {
+        ejs        : './src/ejs/_plugins',
+        scss       : './src/scss/_plugins',
+        js         : './src/js/_plugins'
     },
     dist: {
         html       : './dist',

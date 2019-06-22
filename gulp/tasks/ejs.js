@@ -10,7 +10,7 @@ _.gulp.task('commons.ejs', () => {
     const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
 
     return _.gulp.src(
-        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.src.ejs}/**/index.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とindex,news,article(別タスクで定義)はhtmlにしない
+        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/index.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
     )
     .pipe(_.plumber())
     .pipe(_.data((file) => {
@@ -135,7 +135,7 @@ _.gulp.task('newsless.ejs', () => {
     const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
 
     return _.gulp.src(
-        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とindex,news,article(別タスクで定義)はhtmlにしない
+        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
     )
     .pipe(_.plumber())
     .pipe(_.data((file) => {

@@ -131,5 +131,45 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
 記事はMarkdown記法で記述できます。記事のファイル名は数字で作成順にしてください。\n
 ### 先頭の---で区切られた部分について\n
 先頭の\`---\`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。\n`
+    },
+    htmlWalk(functions, p, fileList) {
+        let files = _.fs.readdirSync(p)
+        for(let i = 0; i < files.length; i++) {
+            let path = p
+            if(!/.*\/$/.test(p)) {
+                path += '/'
+            }
+            const fp = path + files[i]
+            if(_.fs.statSync(fp).isDirectory()) {
+                functions.htmlWalk(functions, fp, fileList) //ディレクトリなら再帰
+            } else {
+                if(/.*\.html$/.test(fp)) {
+                    const htmlStream = _.fs.readFileSync(fp, {encoding: 'utf-8'})
+                    let pageTitle = fp.replace(/^\.\/dist\//gi, '') //標準はファイル名
+                    if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
+                        pageTitle = RegExp.$1.split(' ')[0] //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
+                    }
+                    fileList.push([fp, pageTitle]) //HTMLファイルならコールバック発動
+                }
+            }
+        }
+    },
+    htmlMtimeWalk(functions, p, fileList) {
+        let files = _.fs.readdirSync(p)
+        for(let i = 0; i < files.length; i++) {
+            let path = p
+            if(!/.*\/$/.test(p)) {
+                path += '/'
+            }
+            const fp = path + files[i]
+            if(_.fs.statSync(fp).isDirectory()) {
+                functions.htmlMtimeWalk(functions, fp, fileList) //ディレクトリなら再帰
+            } else {
+                if(/.*\.html$/.test(fp)) {
+                    const mtime = _.fs.statSync(fp).mtime
+                    fileList.push([fp, mtime]) //HTMLファイルならコールバック発動
+                }
+            }
+        }
     }
 }
