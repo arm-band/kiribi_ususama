@@ -9,17 +9,17 @@
 const _         = require('./gulp/plugin')
 const dir       = require('./gulp/dir')
 const functions = require('./gulp/functions')
-const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
+const plugins = functions.getConfig(dir.config.plugins)
 
 let SYNCSERVER
-if(gulpConfig.usephp) {
+if(plugins.usephp) {
     SYNCSERVER = 'phpsync'
 }
 else {
     SYNCSERVER = 'browsersync'
 }
 let GENERATENEWS
-if(gulpConfig.news) {
+if(plugins.news) {
     GENERATENEWS = 'ejs' //新着情報を含む全てのejsタスク
 }
 else {
@@ -29,6 +29,7 @@ else {
 /* requireDri Execution
 *************************************** */
 _.requireDir('./tasks', { recurse: true })
+_.requireDir('./plugins', { recurse: true })
 _.requireDir('./../bin/daishi/gulp', { recurse: true })
 
 _.gulp.task('daishi', _.gulp.series('admin.sass', 'admin.js'))

@@ -30,19 +30,3 @@ a:hover, a:active {
     color: $link-ha-color;
     text-decoration: underline;
 }
-
-//IEでスクロールバーの背後までページが描画されてしまうのを防ぐ
-@-ms-viewport {
-    width: auto;
-    initial-scale: 1;
-}
-//Chrome系のリストのpaddding打ち消し
-ul, ol {
-    -webkit: {
-        margin: {
-            before: 0;
-            after: 0;
-        }
-        padding-start: 0;
-    }
-}

@@ -9,7 +9,7 @@ module.exports = {
             description: config.commons.description,
             feed_url: config.commons.url + 'rss.xml',
             site_url: config.commons.url,
-            image_url: config.commons.url + config.commons.ogpimage,
+            image_url: config.commons.url + config.param.ogp.ogpimage,
             managingEditor: config.commons.author,
             webMaster: config.commons.author,
             copyright: config.commons.year + ' ' + config.commons.author,

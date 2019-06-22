@@ -4,12 +4,15 @@ commons:
     year: 2018
     author: "アルム＝バンド"
     url: "http://localhost:3000/"
-    ogpimage: "img/eyecatch.jpg"
-    twitteraccount: "Bredtn_1et"
-    newsthumbnail: "img/thumbnails/"
 param:
-    indexcount: 3
-    newscount: 6
+    news:
+        indexcount: 3
+        newscount: 6
+    ogp:
+        ogpimage: "img/eyecatch.jpg"
+        twitteraccount: "Bredtn_1et"
+        newsthumbnail: "img/thumbnails/"
+    analytics: ""
     articlesns:
         twitter: true
         facebook: true

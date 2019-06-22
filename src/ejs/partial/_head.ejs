@@ -1,15 +1,16 @@
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<% if(plugins.ie) { %><%- include("../_plugins/ie/ie") %><% } %>
     <meta name="format-detection" content="telephone=no,address=no,email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= metaTitle %> | <%= config.commons.sitename %></title>
     <meta name="description" content="<%= metaDescription %>">
 
+<% if(plugins.analytics) { %><%- include("../_plugins/analytics/analytics", { config }) %><% } %>
+
     <!-- favicon, etc -->
     <link href="<%= relPath %>apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- theme color -->
-    <meta name="theme-color" content="<%= commonVar["main-color"] %>">
+<% if(plugins.themecolor) { %><%- include("../_plugins/themecolor/themecolor") %><% } %>
 
     <!-- css -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -19,15 +20,6 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet">
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="<%= config.commons.sitename %> &raquo; フィード" href="<%= relPath %>rss.xml" />
+<% if(plugins.rss) { %><%- include("../_plugins/rss/rss", { config, relPath }) %><% } %>
 
-    <!-- twitter card -->
-    <meta name="twitter:card" content="photo" />
-    <meta name="twitter:site" content="@<%= config.commons.twitteraccount %>" />
-    <meta property="og:type" content="website" />
-    <meta name="og:title" content="<%= metaTitle %>" />
-    <meta name="og:site_name" content="<%= config.commons.sitename %>" />
-    <meta name="og:description" content="<%= metaDescription %>" />
-    <meta name="og:image" content="<%= metaOgpimage %>" />
-    <meta name="og:url" content="<%= config.commons.url %>" />
+<% if(plugins.ogp) { %><%- include("../_plugins/ogp/ogp", { config, metaTitle, metaDescription, metaOgpimage }) %><% } %>

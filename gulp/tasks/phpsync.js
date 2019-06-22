@@ -1,10 +1,10 @@
 const _         = require('../plugin')
 const dir       = require('../dir')
 const functions = require('../functions')
-const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
+const plugins = functions.getConfig(dir.config.plugins)
 
 let GENERATENEWS
-if(gulpConfig.news) {
+if(plugins.news) {
     GENERATENEWS = 'ejs' //新着情報を含む全てのejsタスク
 }
 else {
@@ -22,7 +22,7 @@ _.gulp.task('phpsync', () => {
         _.browserSync({
             proxy: 'localhost:8001',
             open: 'external',
-            https: gulpConfig.ssl
+            https: plugins.ssl
         })
     })
 
@@ -32,5 +32,5 @@ _.gulp.task('phpsync', () => {
     _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series('sass', _.browserSync.reload))
     _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series('imagemin', _.browserSync.reload))
     _.watch(`${dir.src.js}/*.js`, _.gulp.series('js', _.browserSync.reload))
-    _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}/gulpconfig.yml`], _.gulp.series(_.gulp.parallel(GENERATENEWS, 'scss', 'js'), _.browserSync.reload))
+    _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(_.gulp.parallel(GENERATENEWS, 'scss', 'js'), _.browserSync.reload))
 })

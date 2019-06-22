@@ -7,14 +7,6 @@
 // ============================================= */
 @import "common";
 
-// ============================================= *
-//                                               *
-//  スタイルガイド                                 *
-//                                               *
-// ============================================= */
-@import "util/sg/sg_news";
-@import "util/sg/sg_article";
-
 // ============================================== *
 //                                                *
 //  アイキャッチ                                    *
@@ -48,56 +40,6 @@
         }
         img {
             max-width: 100%;
-        }
-    }
-    &_share {
-        .news_btn {
-            &, &:link {
-                color: darken($bg-color, 4%);
-                .fa.fa-fw {
-                    margin-right: 0.1rem;
-                }
-            }
-            &:hover, &:active, &:focus {
-                text-decoration: none;
-                color: $bg-color;
-            }
-            &Twitter {
-                background-color: $bc-twitter;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-twitter, 8%);
-                }
-            }
-            &Facebook {
-                background-color: $bc-facebook;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-facebook, 12%);
-                }
-            }
-            &Googleplus {
-                background-color: $bc-google-plus;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-google-plus, 8%);
-                }
-            }
-            &Line {
-                background-color: $bc-line;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-line, 5%);
-                }
-            }
-            &Pocket {
-                background-color: $bc-pocket;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-pocket, 12%);
-                }
-            }
-            &Feedly {
-                background-color: $bc-feedly;
-                &:hover, &:active, &:focus {
-                    background-color: darken($bc-feedly, 8%);
-                }
-            }
         }
     }
 }

@@ -3,7 +3,7 @@ const labelList = require("./parameters/labelList")
 const errMsg = require("./parameters/errMsg")
 
 module.exports = {
-    check: (paramConfig, paramCommonVar, paramGulpConfig, paramFtpConfig) => {
+    check: (paramConfig, paramCommonVar, paramPlugins, paramFtpConfig) => {
         let msg = []
         /* 一般設定
         *************************** */
@@ -53,16 +53,16 @@ module.exports = {
         /* Ususama設定
         *************************** */
         //php使用
-        if(!validation.checkbox(paramGulpConfig.functions.usephp)) {
-            msg.push(`errMsg06: ${labelList.gulpConfig.functions.usephp}の${errMsg["06"]}`)
+        if(!validation.checkbox(paramPlugins.usephp)) {
+            msg.push(`errMsg06: ${labelList.plugins.usephp}の${errMsg["06"]}`)
         }
         //新着情報生成
-        if(!validation.checkbox(paramGulpConfig.functions.news)) {
-            msg.push(`errMsg06: ${labelList.gulpConfig.functions.news}の${errMsg["06"]}`)
+        if(!validation.checkbox(paramPlugins.news)) {
+            msg.push(`errMsg06: ${labelList.plugins.news}の${errMsg["06"]}`)
         }
         //HTTPS通信
-        if(!validation.checkbox(paramGulpConfig.functions.ssl)) {
-            msg.push(`errMsg06: ${labelList.gulpConfig.functions.ssl}の${errMsg["06"]}`)
+        if(!validation.checkbox(paramPlugins.ssl)) {
+            msg.push(`errMsg06: ${labelList.plugins.ssl}の${errMsg["06"]}`)
         }
         /* FTP情報
         *************************** */

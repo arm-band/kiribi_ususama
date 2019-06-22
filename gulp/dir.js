@@ -18,7 +18,8 @@ module.exports = {
         dir        : './bin/config',
         config     : '/config.yml',
         commonvar  : '/commonvar.yml',
-        gulpconfig : '/gulpconfig.yml',
+        plugins    : '/plugins.yml',
+        ftpconfig  : '/ftpconfig.yml',
         hachizetsu : '/subterranean/hachizetsu.yml',
         ftp        : '/subterranean/ftp.yml'
     },
@@ -37,16 +38,6 @@ module.exports = {
         css        : './dist/css',
         js         : './dist/js',
         img        : './dist/img'
-    },
-    sg: {
-        html       : './sg/dist',
-        md         : './readme.md',
-        css        : '../../dist/css',
-        js         : '../../dist/js',
-        img        : '../../dist/img',
-        favicon    : '../../dist/favicon',
-        canceller  : '../src/css',
-        template   : './sg/src/ejs'
     },
     admin: {
         dir        : './bin/daishi',

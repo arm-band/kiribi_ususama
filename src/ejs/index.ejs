@@ -8,8 +8,8 @@ parameters = {
     ogpimage: config.commons.url + parameters.ogpimage
 }
 const indexCounter = () => {
-    let cnt = `最新${String(config.param.indexcount)}`;
-    if(config.param.indexcount === 0) {
+    let cnt = `最新${String(config.param.news.indexcount)}`;
+    if(config.param.news.indexcount === 0) {
         cnt = "全";
     }
     return cnt;
@@ -31,7 +31,7 @@ const indexCounter = () => {
             <!-- contents -->
         </section>
 <%
-if(gulpConfig.news) {
+if(plugins.news) {
     const counter = indexCounter()
 %>
         <section class="container my-5 releasenotes fixed_anchor" id="releasenotes">

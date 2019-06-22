@@ -1,11 +1,15 @@
 $(() => {
     //iPhone・iPad背景画像バグ対処
-    mobileSafariRequiem()
+    if(typeof mobileSafariRequiem === 'function') {
+        mobileSafariRequiem()
+    }
 
     //スクロール対象を取得
     const screlm = scrollElm()
     //ページトップへ戻る
-    pageTop(screlm)
+    if(typeof pageTop === 'function') {
+        pageTop(screlm)
+    }
 
     //ページ内スクロール
     pageScroll(screlm)
@@ -15,16 +19,6 @@ $(() => {
 //    }).fail(function(xhr, status, error) {
 //  });
 })
-
-//mobile Saffari対策
-const mobileSafariRequiem = () => {
-    const browser = bowser.getParser(window.navigator.userAgent)
-    const $body = $("body")
-    if (browser.getBrowserName() === 'Safari' && browser.getOSName() === 'iOS') {
-        //iPhoneかiPadならば
-        $body.addClass("mobileSafari")
-    }
-}
 
 //ユーザーエージェントからスクロールを実行する対象を判定
 const scrollElm = () => {
@@ -37,30 +31,12 @@ const scrollElm = () => {
     return document.documentElement
 }
 
-//ページトップへ戻る
-const pageTop = (screlm) => {
-    const $returnPageTop = $(".returnPageTop")
-
-    $(window).on("scroll", function() {
-        //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
-        let currentPos = $(this).scrollTop()
-        if (currentPos > 400) {
-            $returnPageTop.fadeIn()
-        } else {
-            $returnPageTop.fadeOut()
-        }
-    })
-
-    //ページトップへスクロールして戻る
-    $returnPageTop.on("click", function() {
-        $(screlm).animate({ scrollTop: 0 }, 1000, "easeInOutCirc")
-        return false
-    })
-}
-
 //ページ内スクロール
 const pageScroll = (screlm) => {
-    const navbarHeight = parseInt($("body").attr("data-offset"))
+    let navbarHeight = 0
+    if(typeof fixedanchor_js === 'function') {
+        navbarHeight = fixedanchor_js()
+    }
     if($("#index").length) { //トップページの場合のみ動作
         const $navbar = $("#navbar")
         const speed = 1000
@@ -77,8 +53,7 @@ const pageScroll = (screlm) => {
                 targetID = href
             }
             let $target = $(targetID)
-//            let position = $target.offset().top - navbarHeight
-            let position = $target.offset().top
+            let position = $target.offset().top - navbarHeight
             $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
             $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click() //移動したらハンバーガーを折りたたむ
             return false
@@ -89,8 +64,7 @@ const pageScroll = (screlm) => {
         let href = $(this).attr("href")
         let targetID = href == "#" || href == "" ? "html" : href //リンク先が#か空だったらhtmlに
         let $target = $(targetID)
-//        let position = $target.offset().top - navbarHeight
-        let position = $target.offset().top
+        let position = $target.offset().top - navbarHeight
         $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
         return false
     })

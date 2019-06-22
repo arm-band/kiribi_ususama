@@ -11,12 +11,10 @@ module.exports = {
     commonVar: {
         themeColor: "テーマカラー"
     },
-    gulpConfig: {
-        functions: {
-            usephp: "php使用",
-            news: "新着情報生成",
-            ssl: "HTTPS通信"
-        }
+    plugins: {
+        usephp: "php使用",
+        news: "新着情報生成",
+        ssl: "HTTPS通信"
     },
     ftpConfig: {
         user: "ユーザID",

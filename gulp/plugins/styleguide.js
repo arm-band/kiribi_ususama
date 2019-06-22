@@ -1,0 +1,44 @@
+const _         = require('../plugin')
+const dir       = require('../dir')
+const functions = require('../functions')
+const dirSg = {
+    html       : './bin/styleguide/dist',
+    md         : './readme.md',
+    css        : '../../../dist/css',
+    js         : '../../../dist/js',
+    img        : '../../../dist/img',
+    favicon    : '../../../dist/favicon',
+    canceller  : '../src/css',
+    template   : './bin/styleguide/src/ejs'
+}
+
+//styleguide(FrontNote)
+_.gulp.task('sg', () => {
+    return _.gulp.src(dir.src.scss + '/**/*.scss') // 監視対象のファイルを指定
+        .pipe(_.frontnote({
+            out: dirSg.html,
+            title: functions.getConfig(dir.config.config).commons.sitename,
+            css: [`${dirSg.css}/contents.css`, `${dirSg.css}/index.css`, `${dirSg.canceller}/fncanceller.css`, 'https://fonts.googleapis.com/css?family=Dancing+Script', 'https://fonts.googleapis.com/earlyaccess/sawarabimincho.css', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css'],
+            script: [`${dirSg.js}/lib.min.js`, `${dirSg.js}/app.min.js`],
+            template: `${dirSg.template}/index.ejs`,
+            overview: dirSg.md,
+            params: { 'commonVar': functions.getConfig(dir.config.commonvar) }
+        }))
+})
+
+_.gulp.task('sgsync', () => {
+    _.browserSync({
+        server: {
+            baseDir: dirSg.html
+        },
+        open: 'external',
+        https: plugins.ssl
+    })
+
+    _.watch(`${dirSg.template}/index.ejs`, _.gulp.series(_.browserSync.reload))
+    _.watch(`${dirSg.md}`, _.gulp.series(_.browserSync.reload))
+    _.watch([`${dirSg.css}/**/*.css`], _.gulp.series(_.browserSync.reload))
+    _.watch(`${dirSg.js}/*.js`, _.gulp.series(_.browserSync.reload))
+})
+
+_.gulp.task('styleguide', _.gulp.parallel('sg', 'sgsync'))

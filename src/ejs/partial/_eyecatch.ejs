@@ -2,7 +2,7 @@
 let articleClass = ""
 if(id === "article") {
     if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
-        eyecatchStyle = ` style="background-image:url('${relPath}${config.commons.newsthumbnail}${attributes.thumbnail}');"`
+        eyecatchStyle = ` style="background-image:url('${relPath}${config.param.ogp.newsthumbnail}${attributes.thumbnail}');"`
         articleClass = " smallText"
     }
 } %>

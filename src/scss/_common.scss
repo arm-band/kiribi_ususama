@@ -12,19 +12,13 @@
 @import "util/module"; //ベンダープレフィックス等のMixinモジュール
 //@import "util/bootcanceller"; //bootstrapでいつも気になるものをキャンセル
 @import "util/base"; //フォント指定やIE対処など
+@import "_plugins/plugins"; //プラグイン
 
 // ============================================= *
 //                                               *
 // 全体                                           *
 //                                               *
 // ============================================= */
-//iPhoneのURLバーに色を付ける
-body{
-    background-color: $main-color;
-    #wrapper {
-        background-color: $bg-color;
-    }
-}
 .upper {
     min-height: calc(100vh - (1.5rem * 2) - #{$footer-height}); //コンテンツの高さが足りなくてもフッタを最下部に表示するように //1.5rem * 2:my-4で足される上端と下端のマージンの合計
 }
@@ -69,9 +63,6 @@ body{
             padding-left: 1.6rem;
         }
     }
-    .fixed_anchor {
-        @include fixedAnchor();
-    }
 }
 
 // ============================================= *
@@ -80,6 +71,3 @@ body{
 //                                               *
 // ============================================= */
 @import "partial/footer";
-
-// ***** ページトップへ戻る ***** */
-@import "partial/returnpagetop";

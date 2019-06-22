@@ -59,13 +59,13 @@ parameters = {
                     <div class="form-group row">
                         <label for="OGPTUserID" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="OGPに設定するTwitterアカウントのユーザIDを入力してください。先頭に@は不要です。"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><%= labelList.config.OGPTUserID %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="OGPTUserID" id="OGPTUserID" placeholder="<%= config.commons.twitteraccount %>" value="<%= config.commons.twitteraccount %>">
+                            <input type="text" class="form-control" name="OGPTUserID" id="OGPTUserID" placeholder="<%= config.param.ogp.twitteraccount %>" value="<%= config.param.ogp.twitteraccount %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="OGPImage" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="OGPに設定する画像のURLを指定してください。"><i class="fas fa-fw fa-image" aria-hidden="true"></i><%= labelList.config.OGPImage %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="OGPImage" id="OGPImage" placeholder="<%= config.commons.ogpimage %>" value="<%= config.commons.ogpimage %>">
+                            <input type="text" class="form-control" name="OGPImage" id="OGPImage" placeholder="<%= config.param.ogp.ogpimage %>" value="<%= config.param.ogp.ogpimage %>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -77,12 +77,12 @@ parameters = {
                     <h3 class="mt-4 mb-3">Ususama設定</h3>
 <%
 let checkedUsephp = '';
-if(gulpConfig.functions.usephp == true) {
+if(plugins.usephp == true) {
     checkedUsephp = ' checked="checked"';
 }
 %>
                     <div class="form-group row">
-                        <label for="usephp" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="XAMPPのPHPを使用するかどうかを設定します。"><i class="fab fa-fw fa-php" aria-hidden="true"></i><%= labelList.gulpConfig.functions.usephp %></label>
+                        <label for="usephp" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="XAMPPのPHPを使用するかどうかを設定します。"><i class="fab fa-fw fa-php" aria-hidden="true"></i><%= labelList.plugins.usephp %></label>
                         <div class="col-md-10">
                             <label class="form-check-label" for="usephp">
                                 <input class="form-check-input usephp" type="checkbox" name="usephp" id="usephp" value="true"<%- checkedUsephp %> data-toggle="toggle" data-on="する" data-off="しない">
@@ -91,12 +91,12 @@ if(gulpConfig.functions.usephp == true) {
                     </div>
 <%
 let checkedNews = '';
-if(gulpConfig.functions.news == true) {
+if(plugins.news == true) {
     checkedNews = ' checked="checked"';
 }
 %>
                     <div class="form-group row">
-                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="新着情報の一覧と各記事ページを生成するかどうかを設定します。"><i class="fas fa-fw fa-newspaper" aria-hidden="true"></i><%= labelList.gulpConfig.functions.news %></label>
+                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="新着情報の一覧と各記事ページを生成するかどうかを設定します。"><i class="fas fa-fw fa-newspaper" aria-hidden="true"></i><%= labelList.plugins.news %></label>
                         <div class="col-md-10">
                             <label class="form-check-label" for="news">
                                 <input class="form-check-input news" type="checkbox" name="news" id="news" value="true"<%- checkedNews %> data-toggle="toggle" data-on="する" data-off="しない">
@@ -105,12 +105,12 @@ if(gulpConfig.functions.news == true) {
                     </div>
 <%
 let checkedSSL = '';
-if(gulpConfig.functions.ssl == true) {
+if(plugins.ssl == true) {
     checkedSSL = ' checked="checked"';
 }
 %>
                     <div class="form-group row">
-                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="browsersyncでブラウザを起動する際にSSLを使用するかどうかを設定します(別途開発環境でのSSL証明書の設定が必要です)。"><i class="fas fa-fw fa-lock" aria-hidden="true"></i><%= labelList.gulpConfig.functions.ssl %></label>
+                        <label for="news" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="browsersyncでブラウザを起動する際にSSLを使用するかどうかを設定します(別途開発環境でのSSL証明書の設定が必要です)。"><i class="fas fa-fw fa-lock" aria-hidden="true"></i><%= labelList.plugins.ssl %></label>
                         <div class="col-md-10">
                             <label class="form-check-label" for="ssl">
                                 <input class="form-check-input ssl" type="checkbox" name="ssl" id="ssl" value="true"<%- checkedSSL %> data-toggle="toggle" data-on="する" data-off="しない">
@@ -121,32 +121,32 @@ if(gulpConfig.functions.ssl == true) {
                     <div class="form-group row">
                         <label for="ftpUser" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するユーザIDを指定します。"><i class="fas fa-fw fa-user" aria-hidden="true"></i><%= labelList.ftpConfig.user %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="ftpUser" id="ftpUser" placeholder="<%= gulpConfig.ftp.user %>" value="<%= gulpConfig.ftp.user %>">
+                            <input type="text" class="form-control" name="ftpUser" id="ftpUser" placeholder="<%= ftpConfig.user %>" value="<%= ftpConfig.user %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="ftpPswd" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPに使用するパスワードを指定します。"><i class="fas fa-fw fa-key" aria-hidden="true"></i><%= labelList.ftpConfig.password %></label>
                         <div class="col-md-10">
-                            <input type="password" class="form-control" name="ftpPswd" id="ftpPswd" value="<%= gulpConfig.ftp.password %>">
+                            <input type="password" class="form-control" name="ftpPswd" id="ftpPswd" value="<%= ftpConfig.password %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="ftpHost" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="FTPで接続するサーバのホスト名を入力してください。"><i class="fas fa-fw fa-server" aria-hidden="true"></i><%= labelList.ftpConfig.host %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="ftpHost" id="ftpHost" placeholder="<%= gulpConfig.ftp.host %>" value="<%= gulpConfig.ftp.host %>">
+                            <input type="text" class="form-control" name="ftpHost" id="ftpHost" placeholder="<%= ftpConfig.host %>" value="<%= ftpConfig.host %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="ftpLocal" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="アップロードするファイルがある場所を指定してください。"><i class="fas fa-fw fa-hdd" aria-hidden="true"></i><%= labelList.ftpConfig.localRoot %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="ftpLocal" id="ftpLocal" placeholder="<%= gulpConfig.ftp.localRoot %>" value="<%= gulpConfig.ftp.localRoot %>">
+                            <input type="text" class="form-control" name="ftpLocal" id="ftpLocal" placeholder="<%= ftpConfig.localRoot %>" value="<%= ftpConfig.localRoot %>">
                             <small class="form-text text-muted">通常は変更する必要はありません。</small>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="ftpRemote" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="サーバ上のアップロードする場所を指定してください。"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i><%= labelList.ftpConfig.remoteRoot %></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="ftpRemote" id="ftpRemote" placeholder="<%= gulpConfig.ftp.remoteRoot %>" value="<%= gulpConfig.ftp.remoteRoot %>">
+                            <input type="text" class="form-control" name="ftpRemote" id="ftpRemote" placeholder="<%= ftpConfig.remoteRoot %>" value="<%= ftpConfig.remoteRoot %>">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-fw fa-paper-plane" aria-hidden="true"></i>送信する</button>

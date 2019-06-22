@@ -6,7 +6,6 @@ const parameters = []
 _.gulp.task('sitemap', () => {
     const config = functions.getConfig(dir.config.config)
     const commonVar = functions.getConfig(dir.config.commonvar)
-    const gulpConfig = functions.getConfig(dir.config.gulpconfig).functions
 
     //リスト出力先の存在確認
     try {
@@ -31,7 +30,7 @@ _.gulp.task('sitemap', () => {
     .pipe(_.data((file) => {
         return { 'filename': file.path }
     }))
-    .pipe(_.ejs({ config, commonVar, gulpConfig, parameters, htmlList }))
+    .pipe(_.ejs({ config, commonVar, parameters, htmlList }))
     .pipe(_.rename({ extname: '.html' }))
     .pipe(_.gulp.dest(dir.dist.html))
 })

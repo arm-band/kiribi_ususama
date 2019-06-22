@@ -9,15 +9,17 @@ const labelList = require('../app/parameters/labelList')
 router.get('/', (req, res, next) => {
     const config = functions.getConfig(dir.config.config)
     const commonVar = functions.getConfig(dir.config.commonvar)
-    let gulpConfig = functions.getConfig(dir.config.gulpconfig)
+    const plugins = functions.getConfig(dir.config.plugins)
+    let ftpConfig = functions.getConfig(dir.config.ftpconfig)
     const hachizetsu = functions.getConfig(`${dir.config.dir}${dir.config.hachizetsu}`, '')
     //前処理
-    gulpConfig.ftp.user = functions.decrypt(String(hachizetsu.key), gulpConfig.ftp.user, functions)
-    gulpConfig.ftp.password = functions.decrypt(String(hachizetsu.key), gulpConfig.ftp.password, functions)
+    ftpConfig.user = functions.decrypt(String(hachizetsu.key), ftpConfig.user, functions)
+    ftpConfig.password = functions.decrypt(String(hachizetsu.key), ftpConfig.password, functions)
     res.render('index', {
         config: config,
         commonVar: commonVar,
-        gulpConfig: gulpConfig,
+        plugins: plugins,
+        ftpConfig: ftpConfig,
         filename: 'index',
         pagecat: 'init',
         labelList: labelList

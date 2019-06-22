@@ -38,7 +38,7 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes)
                 <div class="mb-3 news_contents">
                     <%- contentBody %>
                 </div>
-<%- include("partial/_article_snsbutton", { config, articleUrl, metaTitle }) %>
+<% if(plugins.articlesns) { %><%- include("_plugins/articlesns/articlesns", { config, articleUrl, metaTitle }) %><% } %>
             </article>
         </div>
         <div class="text-center my-5">
