@@ -3,6 +3,8 @@
 /src/scss/assets/
 /src/scss/util/_var.scss
 /src/img/lightbox/
+/src/js/_plugins/_plugins.js
+/src/scss/_plugins/_plugins.scss
 /bin/config/subterranean/
 package-lock.json
 /.sass-cache/
