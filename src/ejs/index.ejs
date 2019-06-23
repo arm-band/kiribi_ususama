@@ -24,7 +24,8 @@ const indexCounter = () => {
 <div id="wrapper">
 <div class="upper">
 <%- include("partial/_header", { config, commonVar }) %>
-<%- include("partial/_eyecatch", { headerString, parameters }) %>
+<% if(plugins.slick) { %><%- include("_plugins/slick/slick", { relPath }) %><% }
+ else { %><%- include("partial/_eyecatch", { headerString, parameters }) %><% } %>
     <!-- main -->
     <main class="main <%= id %>main">
         <section class="container fixed_anchor" id="contents">

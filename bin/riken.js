@@ -49,10 +49,7 @@ if(isExistFile(scssPath)) {
             const val = this[key]
             const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`)
             if(val) {
-                if(isExistFile(pluginFile)) {
-                    pluginCode += `@import "${pluginsStr}/${key}/${key}";\n`
-                }
-                else if(key === keyStrSG) { //styleguide
+                if(key === keyStrSG) { //styleguide
                     pluginCode += `@import "${pluginsStr}/styleguide/sg_index";
 @import "${pluginsStr}/styleguide/sg_news";
 @import "${pluginsStr}/styleguide/sg_article";
@@ -76,7 +73,8 @@ if(isExistFile(scssPath)) {
                         })
                 }
                 else if(key === keyStrSlick) {
-                    pluginCode += `@import "../../../node_modules/slick-carousel/slick/slick.scss";
+                    pluginCode += `@import "${pluginsStr}/${key}/${key}";
+@import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/slick-carousel/slick/slick-theme.scss";
 `
                     runAll([`${keyStrSlick}:*`], { parallel: true })
@@ -86,6 +84,9 @@ if(isExistFile(scssPath)) {
                         .catch(err => {
                             console.log(`${keyStrSlick} files copy: failed!`)
                         })
+                }
+                else if(isExistFile(pluginFile)) {
+                    pluginCode += `@import "${pluginsStr}/${key}/${key}";\n`
                 }
             }
         }, plugins)

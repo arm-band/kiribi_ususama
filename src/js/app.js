@@ -13,6 +13,11 @@ $(() => {
 
     //ページ内スクロール
     pageScroll(screlm)
+
+    //slick
+    if(typeof slickCarousel === 'function') {
+        slickCarousel()
+    }
 })
 
 //ユーザーエージェントからスクロールを実行する対象を判定
