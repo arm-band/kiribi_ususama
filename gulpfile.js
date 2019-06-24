@@ -35,7 +35,7 @@ _.requireDir('./../bin/daishi/gulp', { recurse: true })
 _.gulp.task('daishi', _.gulp.series('admin.sass', 'admin.js'))
 
 _.gulp.task('server', _.gulp.series(SYNCSERVER))
-_.gulp.task('build', _.gulp.parallel(_.gulp.series('yaml2sass', 'sass'), GENERATENEWS, 'js', 'imagemin', 'favicon'))
+_.gulp.task('build', _.gulp.parallel('scss', GENERATENEWS, 'js', 'imagemin', 'favicon'))
 
 //ビルドなし
 _.gulp.task('view', _.gulp.series('server'))

@@ -18,5 +18,5 @@ fixedanchor_scss: false
 fixedanchor_js: true
 lightbox: true
 slick: true
-svghexagon : false
+svghexagon: false
 getjson: false

@@ -22,8 +22,8 @@ _.gulp.task('js.concat', () => {
         .pipe(_.concat('lib.js'))
         .pipe(_.gulp.dest(`${dir.src.js}/concat/`)) //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 })
-_.gulp.task('js.uglify', _.gulp.series(_.gulp.parallel('js.concat'), () => {
-    return _.gulp.src([`!${dir.src.js}/_plugins/**/*.js`, `${dir.src.js}/**/*.js`])
+_.gulp.task('js', _.gulp.series(_.gulp.parallel('js.concat'), () => {
+    return _.gulp.src(`${dir.src.js}/**/*.js`)
         .pipe(_.plumber())
         .pipe(_.uglify({output: {comments: 'some'}}))
         .pipe(_.rename((path) => {
@@ -33,5 +33,3 @@ _.gulp.task('js.uglify', _.gulp.series(_.gulp.parallel('js.concat'), () => {
         }))
         .pipe(_.gulp.dest('./'))
 }))
-//上記をまとめておく
-_.gulp.task('js', _.gulp.parallel('js.uglify'))

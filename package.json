@@ -27,7 +27,7 @@
         "gulp": "gulp",
         "opener": "opener",
         "start": "npm-run-all -s om krodhana hum jah svaha",
-        "test": "gulp",
+        "test": "npm-run-all -s plugin gulp",
         "deploy": "gulp ftp",
         "guide": "gulp styleguide",
         "setting": "npm run eshaku",
