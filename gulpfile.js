@@ -19,7 +19,7 @@ else {
     SYNCSERVER = 'browsersync'
 }
 let GENERATENEWS
-if(plugins.news) {
+if(plugins.news && _.fs.statSync(`${dir.contents.dir}/1.md`)) {
     GENERATENEWS = 'ejs' //新着情報を含む全てのejsタスク
 }
 else {
