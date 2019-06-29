@@ -174,7 +174,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
     },
     isExistFile(file) {
         try {
-            fs.statSync(file)
+            _.fs.statSync(file)
             return true
         } catch(err) {
             if(err.code === 'ENOENT') return false
