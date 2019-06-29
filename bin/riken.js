@@ -12,20 +12,12 @@ const keyStrLB = 'lightbox'
 const keyStrSlick = 'slick'
 
 /* functions */
-const isExistFile = (file) => {
-    try {
-        fs.statSync(file)
-        return true
-    } catch(err) {
-        if(err.code === 'ENOENT') return false
-    }
-}
 const jsFileWrite = (jsPath) => {
     let pluginCode = ''
     Object.keys(plugins).forEach(function(key) {
         const val = this[key]
         const pluginFile = path.join(path.join(pluginJsPath, key), `${key}.js`)
-        if(val && isExistFile(pluginFile)) {
+        if(val && functions.isExistFile(pluginFile)) {
             pluginCode += `${fs.readFileSync(pluginFile, 'utf8')}\n`
         }
     }, plugins)
@@ -75,7 +67,7 @@ const scssFileWrite = (scssPath) => {
                         console.log(`${keyStrSlick} files copy: failed!`)
                     })
             }
-            else if(isExistFile(pluginFile)) {
+            else if(functions.isExistFile(pluginFile)) {
                 pluginCode += `@import "${pluginsStr}/${key}/${key}";\n`
             }
         }
@@ -88,7 +80,7 @@ const scssFileWrite = (scssPath) => {
 /* JS file generate */
 const pluginJsPath = path.join(dir.src.js, pluginsStr)
 const jsPath = path.join(pluginJsPath, `${pluginsStr}.js`)
-if(isExistFile(jsPath)) {
+if(functions.isExistFile(jsPath)) {
     rimraf(jsPath, () => {
         jsFileWrite(jsPath)
     })
@@ -99,7 +91,7 @@ else {
 /* Scss file generate */
 const pluginScssPath = path.join(dir.src.scss, pluginsStr)
 const scssPath = path.join(pluginScssPath, `${pluginsStr}.scss`)
-if(isExistFile(scssPath)) {
+if(functions.isExistFile(scssPath)) {
     rimraf(scssPath, () => {
         scssFileWrite(scssPath)
     })
