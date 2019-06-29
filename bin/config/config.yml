@@ -12,8 +12,8 @@ param:
         ogpimage: "img/eyecatch.jpg"
         twitteraccount: "Bredtn_1et"
         newsthumbnail: "img/thumbnails/"
-    analytics: ""
-    searchconsole: ""
+    analytics:
+    searchconsole:
     articlesns:
         twitter: true
         facebook: true

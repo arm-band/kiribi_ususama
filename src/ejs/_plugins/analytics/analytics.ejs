@@ -1,4 +1,4 @@
-<% if(config.param.analytics !== null && config.param.analytics !== undefined && config.param.analytics > 0) { %>
+<% if(config.param.analytics !== null && config.param.analytics !== undefined && config.param.analytics.length > 0) { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%= config.param.analytics %>"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '<%= config.param.analytics %>'); </script>
 <% } %>
