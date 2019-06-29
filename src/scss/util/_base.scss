@@ -20,7 +20,6 @@ $link-ha-color: darken($link-color, 8%);
 a, a:link {
     color: $link-color;
     text-decoration: none;
-    @include t();
 }
 a:visited {
     color: $link-v-color;
