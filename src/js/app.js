@@ -18,10 +18,6 @@ $(() => {
     if(typeof slickCarousel === 'function') {
         slickCarousel()
     }
-    //facebookをリサイズする度に幅を調整
-    if(typeof facebookResize === 'function') {
-        facebookResize()
-    }
 })
 
 //ユーザーエージェントからスクロールを実行する対象を判定
