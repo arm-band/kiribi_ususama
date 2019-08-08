@@ -11,12 +11,12 @@
 }
 
 //キービジュアルの背景画像
-@mixin eyecatchBGImg($imgPath) {
+@mixin eyecatchBGImg($imgPath, $background-position) {
     .eyecatch {
         background: {
             image: url($imgPath);
             repeat: no-repeat;
-            position: center center;
+            position: $background-position;
         }
     }
     .eyecatch {

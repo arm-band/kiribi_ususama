@@ -6,9 +6,6 @@
 //                                                *
 // ============================================= */
 //キービジュアルのiOS Safari対策コードを出力
-body:not(.mobileSafari) .eyecatch {
-    background-attachment: fixed;
-}
 body.mobileSafari .eyecatch { //bowserでUAにより付与。mobile Safariバグ対策
     background-attachment: scroll;
 }

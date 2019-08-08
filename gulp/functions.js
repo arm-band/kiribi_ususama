@@ -33,6 +33,10 @@ module.exports = {
         const file = _.fs.readFileSync(path + ymlFile, 'utf8')
         return _.yaml.parse(file)
     },
+    getJson: (jsonFile, path = dir.contents.dir) => { //jsonファイル取得
+        const file = _.fs.readFileSync(path + jsonFile, 'utf8')
+        return JSON.parse(file)
+    },
     getArticles: (directory, functions) => { //記事一覧をファイル名降順で取得
         let fileList = _.fs.readdirSync(directory)
         //ファイル名(拡張子なし)でソート
@@ -144,7 +148,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
                 functions.htmlWalk(functions, fp, fileList) //ディレクトリなら再帰
             } else {
                 if(/.*\.html$/.test(fp)) {
-                    const htmlStream = _.fs.readFileSync(fp, {encoding: 'utf-8'})
+                    const htmlStream = _.fs.readFileSync(fp, 'utf8')
                     let pageTitle = fp.replace(/^\.\/dist\//gi, '') //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
                         pageTitle = RegExp.$1.split(' ')[0] //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納

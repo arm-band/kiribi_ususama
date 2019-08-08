@@ -3,7 +3,7 @@ const dir       = require('../dir')
 
 //scssコンパイルタスク
 _.gulp.task('yaml2sass', done => {
-    const strOrigin = _.fs.readFileSync(dir.config.dir + dir.config.commonvar, { encoding: 'UTF-8' })
+    const strOrigin = _.fs.readFileSync(dir.config.dir + dir.config.commonvar, 'utf8')
     let strDist = ''
     let strArray = strOrigin.split("\n")
     for(let i = 0; i < strArray.length; i++) {
@@ -11,7 +11,9 @@ _.gulp.task('yaml2sass', done => {
             strDist += `$${strArray[i]};\n`
         }
     }
-    strDist = strDist.replace(/\"/g, '')
+    strDist = strDist.replace(/\"#([\da-fA-F]{6}|[\da-fA-F]{3})\"/g, function() {
+        return arguments[0].replace(/\"/g, '')
+    })
     _.fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, strDist)
     done()
 })

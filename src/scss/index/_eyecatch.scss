@@ -1,10 +1,7 @@
 @charset "utf-8";
 
-@include eyecatchBGImg("../img/eyecatch.jpg");
+@include eyecatchBGImg("../img/eyecatch.jpg", $background-position);
 .index .eyecatch {
-    $background-position: center center;
-    $eyecacth-height: 60vh;
-
     margin-top: $navbar-height;
     height: $eyecacth-height;
     overflow: hidden;
