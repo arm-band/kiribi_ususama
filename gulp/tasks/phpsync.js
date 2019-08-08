@@ -31,6 +31,6 @@ _.gulp.task('phpsync', () => {
     _.watch(`${dir.src.favicon}/**/*`, _.gulp.series('favicon', _.browserSync.reload))
     _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series('sass', _.browserSync.reload))
     _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series('imagemin', _.browserSync.reload))
-    _.watch(`${dir.src.js}/*.js`, _.gulp.series('js', _.browserSync.reload))
+    _.watch([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`], _.gulp.series('js', _.browserSync.reload))
     _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(_.gulp.parallel(GENERATENEWS, 'scss', 'js'), _.browserSync.reload))
 })

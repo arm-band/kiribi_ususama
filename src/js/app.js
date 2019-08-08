@@ -22,10 +22,10 @@ $(() => {
 
 //ユーザーエージェントからスクロールを実行する対象を判定
 const scrollElm = () => {
-    if("scrollingElement" in document) {
+    if('scrollingElement' in document) {
         return document.scrollingElement
     }
-    if(navigator.userAgent.indexOf("WebKit") != -1) {
+    if(navigator.userAgent.indexOf('WebKit') != -1) {
         return document.body
     }
     return document.documentElement
@@ -37,14 +37,14 @@ const pageScroll = (screlm) => {
     if(typeof fixedanchor_js === 'function') {
         navbarHeight = fixedanchor_js()
     }
-    if($("#index").length) { //トップページの場合のみ動作
-        const $navbar = $("#navbar")
+    if($('#index').length) { //トップページの場合のみ動作
+        const $navbar = $('#navbar')
         const speed = 1000
-        $navbar.find("a").on("click", function(speed) {
-            let href = $(this).attr("href")
-            let targetID = ""
+        $navbar.find('a').on('click', function(speed) {
+            let href = $(this).attr('href')
+            let targetID = ''
             if(/^(\.\/|\/)$|^(#)?$/.test(href)) { //hrefの値が「/」「./」「#」「」の場合
-                targetID = "html"
+                targetID = 'html'
             }
             else if(/^(\.\/|\/)#.+/.test(href)) { //hrefの値が「/#HOGE」「./#HOGE」「#HOGE」の場合
                 targetID = href.slice(RegExp.$1.length) //正規表現の後方参照により"(\.\/|\/)"をRegExp.$1に格納、その文字列の長さを削除し、「#HOGE」だけの状態にして渡す
@@ -54,18 +54,18 @@ const pageScroll = (screlm) => {
             }
             let $target = $(targetID)
             let position = $target.offset().top - navbarHeight
-            $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
-            $navbar.find(".navbar-toggle[data-target=\"#navbarList\"]").click() //移動したらハンバーガーを折りたたむ
+            $(screlm).animate({ scrollTop:position }, speed, 'easeInOutCirc')
+            $navbar.find('.navbar-toggle[data-target="#navbarList"]').click() //移動したらハンバーガーを折りたたむ
             return false
         })
     }
     //一般
-    $('a[href^="#"]').on("click", function(speed) {
-        let href = $(this).attr("href")
-        let targetID = href == "#" || href == "" ? "html" : href //リンク先が#か空だったらhtmlに
+    $('a[href^="#"]').on('click', function(speed) {
+        let href = $(this).attr('href')
+        let targetID = href == '#' || href == '' ? 'html' : href //リンク先が#か空だったらhtmlに
         let $target = $(targetID)
         let position = $target.offset().top - navbarHeight
-        $(screlm).animate({ scrollTop:position }, speed, "easeInOutCirc")
+        $(screlm).animate({ scrollTop:position }, speed, 'easeInOutCirc')
         return false
     })
 }
