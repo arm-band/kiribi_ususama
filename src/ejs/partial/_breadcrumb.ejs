@@ -9,7 +9,7 @@ if(id === "index") {
 else if(id === "article") {
 %>
         <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
-        <li class="breadcrumb-item"><a href="<%= relPath %>news/<%= returnNews %>">更新履歴</a></li>
+        <li class="breadcrumb-item"><a href="<%= relPath %>news/<%= returnNews %>">更新履歴<%= pages %></a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= metaTitle %></li>
 <%
 }

@@ -133,6 +133,7 @@ _.gulp.task('newsless.ejs', () => {
     const config = functions.getConfig(dir.config.config)
     const commonVar = functions.getConfig(dir.config.commonvar)
     const plugins = functions.getConfig(dir.config.plugins)
+    const newsBlock = []
 
     return _.gulp.src(
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
@@ -141,7 +142,7 @@ _.gulp.task('newsless.ejs', () => {
     .pipe(_.data((file) => {
         return { 'filename': file.path }
     }))
-    .pipe(_.ejs({ config, commonVar, plugins, parameters }))
+    .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
     .pipe(_.rename({ extname: '.html' }))
     .pipe(_.gulp.dest(dir.dist.html))
 })
