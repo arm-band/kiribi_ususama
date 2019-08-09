@@ -13,6 +13,8 @@ module.exports = {
     rename: require('gulp-rename'),
     ejs: require('gulp-ejs'),
     data: require('gulp-data'),
+    replace: require('gulp-replace'),
+    htmlmin: require('gulp-htmlmin'),
     fs: require('fs'),
     marked: require('marked'),
     fm: require('front-matter'),
