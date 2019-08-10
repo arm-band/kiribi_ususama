@@ -11,3 +11,4 @@ package-lock.json
 /sg/dist/
 /dist/
 /bin/daishi/src/js/concat/
+/bin/styleguide/dist/

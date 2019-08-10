@@ -11,7 +11,12 @@ _.gulp.task('yaml2sass', done => {
             strDist += `$${strArray[i]};\n`
         }
     }
+    //カラーコード
     strDist = strDist.replace(/\"#([\da-fA-F]{6}|[\da-fA-F]{3})\"/g, function() {
+        return arguments[0].replace(/\"/g, '')
+    })
+    //数値(line-heightなど)
+    strDist = strDist.replace(/\"[\d\.]+\"/g, function() {
         return arguments[0].replace(/\"/g, '')
     })
     _.fs.writeFileSync(`${dir.src.scss}/util/_var.scss`, strDist)

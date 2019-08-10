@@ -27,18 +27,20 @@ _.gulp.task('sg', () => {
 })
 
 _.gulp.task('sgsync', () => {
+    const plugins = functions.getConfig(dir.config.plugins)
     _.browserSync({
         server: {
-            baseDir: dirSg.html
+            baseDir: './'
         },
+        startPath: dirSg.html + '/index.html',
         open: 'external',
         https: plugins.ssl
     })
 
     _.watch(`${dirSg.template}/index.ejs`, _.gulp.series(_.browserSync.reload))
     _.watch(`${dirSg.md}`, _.gulp.series(_.browserSync.reload))
-    _.watch([`${dirSg.css}/**/*.css`], _.gulp.series(_.browserSync.reload))
+    _.watch([`${dir.src.scss}/_plugins/styleguide/*.scss`], _.gulp.series('sass', 'sg', _.browserSync.reload))
     _.watch(`${dirSg.js}/*.js`, _.gulp.series(_.browserSync.reload))
 })
 
-_.gulp.task('styleguide', _.gulp.parallel('sg', 'sgsync'))
+_.gulp.task('styleguide', _.gulp.series('sg', 'sgsync'))
