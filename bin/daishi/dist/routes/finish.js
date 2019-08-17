@@ -53,8 +53,8 @@ router.post('/', function(req, res, next) {
             config.commons.description = paramConfig.description
             config.commons.year = parseInt(paramConfig.CRYear)
             config.commons.author = paramConfig.author
-            config.commons.ogpimage = paramConfig.OGPImage
-            config.commons.twitteraccount = paramConfig.OGPTUserID
+            config.param.ogp.ogpimage = paramConfig.OGPImage
+            config.param.ogp.twitteraccount = paramConfig.OGPTUserID
             config.commons.url = paramConfig.URL
             commonVar['main-color'] = paramCommonVar.themeColor
             paramPlugins.usephp = substitute.checkbox(paramPlugins.usephp)

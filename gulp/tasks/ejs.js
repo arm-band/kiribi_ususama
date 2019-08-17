@@ -30,17 +30,20 @@ _.gulp.task('index.ejs', () => {
     const config = functions.getConfig(dir.config.config)
     const commonVar = functions.getConfig(dir.config.commonvar)
     const plugins = functions.getConfig(dir.config.plugins)
-    const fileList = functions.getArticles(`${dir.contents.dir}/`, functions)
     let newsBlock = []
-    let newsLength = config.param.news.indexcount
-    if(fileList.length <= config.param.news.indexcount || config.param.news.indexcount === 0) {
-        newsLength = fileList.length
-    }
-    for(let i = 0; i < newsLength; i++) { //新着情報の件数
-        const fileData = _.fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, 'utf8')
-        const content = _.fm(fileData)
-        const attributes = content.attributes
-        newsBlock.push(attributes) //件数分スタック
+    let fileList = []
+    if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
+        fileList = functions.getArticles(`${dir.contents.dir}/`, functions)
+        let newsLength = config.param.news.indexcount
+        if(fileList.length <= config.param.news.indexcount || config.param.news.indexcount === 0) {
+            newsLength = fileList.length
+        }
+        for(let i = 0; i < newsLength; i++) { //新着情報の件数
+            const fileData = _.fs.readFileSync(`${dir.contents.dir}/${fileList[i].fn}`, 'utf8')
+            const content = _.fm(fileData)
+            const attributes = content.attributes
+            newsBlock.push(attributes) //件数分スタック
+        }
     }
     return _.gulp.src(`${dir.src.ejs}/index.ejs`)
     .pipe(_.plumber())

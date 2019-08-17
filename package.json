@@ -18,7 +18,7 @@
         "agni": "node ./bin/agni",
         "eshaku": "npm-run-all -p katen agni",
         "riken": "node ./bin/riken",
-        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./src/img/lightbox/ ./dist/ ./bin/daishi/_htmlPager.html ./bin/styleguide/dist/ ./bin/config/subterranean/ ./package-lock.json",
+        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./src/img/lightbox/ ./dist/ ./bin/styleguide/dist/ ./bin/config/subterranean/ ./package-lock.json",
         "lightbox:css": "mkdirp src/scss/assets/lightbox",
         "lightbox:img": "cpx \"./node_modules/lightbox2/dist/images/*\" \"./src/img/lightbox\"",
         "slick": "npm-run-all -p slick:*",
