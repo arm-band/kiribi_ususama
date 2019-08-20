@@ -8,7 +8,7 @@ _.gulp.task('sitemapxml', done => {
 
     //リスト出力先の存在確認
     try {
-        _.fs.statSync(dir.admin.dir)
+        _.fs.statSync(dir.dist.html)
     } catch(err) {
         console.log(err)
         return false
