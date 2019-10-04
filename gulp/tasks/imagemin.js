@@ -19,7 +19,7 @@ _.gulp.task(IMGPROC.MINIFY, () => {
     return _.gulp.src(IMGDIR.src)
         .pipe(_.imagemin([
             _.imageminPng({
-                quality: [0.80, 0.90],
+                quality: 90,
                 speed: 1
             }),
             _.imageminJpeg({

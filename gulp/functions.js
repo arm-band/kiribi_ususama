@@ -148,12 +148,28 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
                 functions.htmlWalk(functions, fp, fileList) //ディレクトリなら再帰
             } else {
                 if(/.*\.html$/.test(fp)) {
+                    //ページ名
                     const htmlStream = _.fs.readFileSync(fp, 'utf8')
                     let pageTitle = fp.replace(/^\.\/dist\//gi, '') //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
                         pageTitle = RegExp.$1.split(' ')[0] //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
                     }
-                    fileList.push([fp, pageTitle]) //HTMLファイルならコールバック発動
+                    //直近のディレクトリ名
+                    const dirArray = fp.split('/') //スラッシュで分割
+                    const dirStr = fp.slice(0, fp.lastIndexOf('/') + 1)
+                    //ディレクトリの深さ
+                    let depth = dirArray.length //スラッシュで分割された配列の要素数をカウント
+                    const dirDistNewsArray = dir.dist.news.split('/')
+                    if(dirArray.some(item => item === dirDistNewsArray[dirDistNewsArray.length - 1])) { //配列に`news`がある場合は-1する
+                        depth -= 1
+                    }
+                    fileList.push({
+                        'path': fp,
+                        'title': pageTitle,
+                        'dirStr': dirStr,
+                        'dirArray': dirArray,
+                        'depth': depth
+                    }) //HTMLファイルならコールバック発動
                 }
             }
         }

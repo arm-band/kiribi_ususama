@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "5.1.9-4.3.1",
+    "version": "5.2.0-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -70,7 +70,7 @@
         "gulp-htmlmin": "^5.0.1",
         "gulp-imagemin": "^6.1.0",
         "imagemin-mozjpeg": "^8.0.0",
-        "imagemin-pngquant": "^8.0.0",
+        "imagemin-pngquant": "^5.0.0",
         "imagemin-gifsicle": "^6.0.1",
         "imagemin-svgo": "^7.0.0",
         "gulp-notify": "^3.2.0",
@@ -88,6 +88,7 @@
         "rimraf": "^3.0.0",
         "rss": "^1.2.2",
         "yaml": "^1.7.0",
+        "lodash.sortby": "^4.7.0",
         "cookie-parser": "^1.4.4",
         "debug": "^4.1.1",
         "ejs": "^2.7.1",

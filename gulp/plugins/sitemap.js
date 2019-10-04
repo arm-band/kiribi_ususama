@@ -18,26 +18,59 @@ _.gulp.task('sitemap', () => {
     let fileList = []
     //探索
     functions.htmlWalk(functions, dir.dist.html, fileList)
+    //ソート
+    fileList = _._sortBy(fileList, ['dirStr', 'depth'])
     //一覧生成
     let htmlList = ''
     const indexHtml = 'index.html'
-    if(_.fs.statSync(`${dir.dist.html}/${indexHtml}`)){
+    const pathIndexHtml = `${dir.dist.html}/${indexHtml}`
+    let currentParam = {
+        'dirStr': dir.dist.html,
+        'depth': pathIndexHtml.split('/').length //., dist, index.html
+    }
+    if(_.fs.statSync(pathIndexHtml)){
         htmlList += `<li><a href="${indexHtml}">ホーム</a></li>\n`
     }
     for(let i = 0; i < fileList.length; i++) {
-        const filepath = fileList[i][0].replace(/^\.\/dist\//gi, './')
+        const filepath = fileList[i]['path'].replace(/^\.\/dist\//gi, './')
         if(filepath !== `./${indexHtml}`) {
-            const filename = fileList[i][1]
-            htmlList += `<li><a href="${filepath}">${filename}</a></li>\n`
+            const filename = fileList[i]['title']
+            if(fileList[i]['depth'] > currentParam.depth) { //掘る
+                htmlList = htmlList.replace(/<\/li>\n$/g, '')
+                htmlList += `\n<ul><li><a href="${filepath}">${filename}</a></li>\n`
+            }
+            else if(currentParam.depth > fileList[i]['depth']) { //戻る
+                defDepth = currentParam.depth - fileList[i]['depth']
+                let closeUl = ''
+                for(let j = 0; j < defDepth; j++) {
+                    closeUl += '</ul></li>\n'
+                }
+                htmlList += `${closeUl}<li><a href="${filepath}">${filename}</a></li>\n`
+            }
+            else { // 同じ階層
+                htmlList += `<li><a href="${filepath}">${filename}</a></li>\n`
+            }
+            //上書き
+            currentParam.dirStr = fileList[i]['dirStr']
+            currentParam.depth = fileList[i]['depth']
         }
     }
 
+    //最後
+    if(fileList[fileList.length - 1]['depth'] > pathIndexHtml.split('/').length) {
+        let closeUl = ''
+        for(let j = 0; j < fileList[fileList.length - 1]['depth'] - pathIndexHtml.split('/').length; j++) {
+            closeUl += '</ul></li>\n'
+        }
+        htmlList += `${closeUl}`
+    }
+
     return _.gulp.src(`${dir.plugins.ejs}/sitemap/sitemap.ejs`)
-    .pipe(_.plumber())
-    .pipe(_.data((file) => {
-        return { 'filename': file.path }
-    }))
-    .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList }))
-    .pipe(_.rename({ extname: '.html' }))
-    .pipe(_.gulp.dest(dir.dist.html))
+        .pipe(_.plumber())
+        .pipe(_.data((file) => {
+            return { 'filename': file.path }
+        }))
+        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList }))
+        .pipe(_.rename({ extname: '.html' }))
+        .pipe(_.gulp.dest(dir.dist.html))
 })
