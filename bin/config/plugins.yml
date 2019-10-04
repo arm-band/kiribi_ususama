@@ -19,3 +19,4 @@ fixedanchor_js: true
 lightbox: true
 slick: true
 svghexagon: false
+imagemin: true
