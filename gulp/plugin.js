@@ -25,6 +25,7 @@ module.exports = {
     frontnote: require('gulp-frontnote'),
     RSS: require('rss'),
     _sortBy: require('lodash.sortby'),
+    dotenv: require('dotenv').config(),
     browserSync: require('browser-sync'),
     connect: require('gulp-connect-php'),
     ftpDeploy: require('ftp-deploy'),

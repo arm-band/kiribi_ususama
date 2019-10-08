@@ -10,6 +10,7 @@ module.exports = {
     },
     src: {
         ejs        : './src/ejs',
+        php        : './src/php',
         scss       : './src/scss',
         assets     : '/assets',
         js         : './src/js',

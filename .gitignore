@@ -12,3 +12,4 @@ package-lock.json
 /dist/
 /bin/daishi/src/js/concat/
 /bin/styleguide/dist/
+.env
