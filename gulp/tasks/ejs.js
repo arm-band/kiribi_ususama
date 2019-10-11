@@ -72,7 +72,11 @@ _.gulp.task('news.ejs', done => {
         newsLength = fileList.length
     }
     const pageLength = Math.ceil(fileList.length / newsLength) //ページの最大数
-    let feed = functions.rssFeed(config, functions) //RSS
+    //RSS
+    let feed
+    if(plugins.rss) {
+        feed = functions.rssFeed(config, functions)
+    }
     let newsBlock = [] //1ページ辺りの記事のオブジェクト
 
     for(let i = 0; i < fileList.length; i++) { //新着情報の件数
@@ -104,8 +108,11 @@ _.gulp.task('news.ejs', done => {
             .pipe(_.htmlmin(configHtmlMin))
             .pipe(_.gulp.dest(dir.dist.articles))
 
-        if(config.param.news.indexcount === 0 || config.param.news.indexcount > i) { //件数はconfig.param.news.indexcountの件数とする(0件の場合は全て)
-            functions.feedItem(feed, config, attributes, functions) //RSS
+        //RSS
+        if(plugins.rss) {
+            if(config.param.news.indexcount === 0 || config.param.news.indexcount > i) { //件数はconfig.param.news.indexcountの件数とする(0件の場合は全て)
+                functions.feedItem(feed, config, attributes, functions)
+            }
         }
 
         if(i % config.param.news.newscount == (config.param.news.newscount - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
@@ -139,8 +146,10 @@ _.gulp.task('news.ejs', done => {
     }
 
     //RSS
-    const xml = feed.xml({indent: true})
-    _.fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml)
+    if(plugins.rss) {
+        const xml = feed.xml({indent: true})
+        _.fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml)
+    }
 
     done()
 })

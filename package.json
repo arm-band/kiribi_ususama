@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "5.3.0-4.3.1",
+    "version": "5.3.1-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
