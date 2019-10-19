@@ -1,6 +1,6 @@
-const _         = require('../plugin')
-const dir       = require('../dir')
-const functions = require('../functions')
+const _         = require('../plugin');
+const dir       = require('../dir');
+const functions = require('../functions');
 const dirSg = {
     html       : './bin/styleguide/dist',
     md         : './readme.md',
@@ -10,10 +10,10 @@ const dirSg = {
     favicon    : '../../../dist/favicon',
     canceller  : '../src/css',
     template   : './bin/styleguide/src/ejs'
-}
+};
 
 //styleguide(FrontNote)
-_.gulp.task('sg', () => {
+const sg = () => {
     return _.gulp.src(dir.src.scss + '/**/*.scss') // 監視対象のファイルを指定
         .pipe(_.frontnote({
             out: dirSg.html,
@@ -23,11 +23,11 @@ _.gulp.task('sg', () => {
             template: `${dirSg.template}/index.ejs`,
             overview: dirSg.md,
             params: { 'commonVar': functions.getConfig(dir.config.commonvar) }
-        }))
-})
+        }));
+};
 
-_.gulp.task('sgsync', () => {
-    const plugins = functions.getConfig(dir.config.plugins)
+const sgsync = () => {
+    const plugins = functions.getConfig(dir.config.plugins);
     _.browserSync({
         server: {
             baseDir: './'
@@ -35,12 +35,12 @@ _.gulp.task('sgsync', () => {
         startPath: dirSg.html + '/index.html',
         open: 'external',
         https: plugins.ssl
-    })
+    });
 
-    _.watch(`${dirSg.template}/index.ejs`, _.gulp.series(_.browserSync.reload))
-    _.watch(`${dirSg.md}`, _.gulp.series(_.browserSync.reload))
-    _.watch([`${dir.src.scss}/_plugins/styleguide/*.scss`], _.gulp.series('sass', 'sg', _.browserSync.reload))
-    _.watch(`${dirSg.js}/*.js`, _.gulp.series(_.browserSync.reload))
-})
+    _.watch(`${dirSg.template}/index.ejs`, _.gulp.series(_.browserSync.reload));
+    _.watch(`${dirSg.md}`, _.gulp.series(_.browserSync.reload));
+    _.watch([`${dir.src.scss}/_plugins/styleguide/*.scss`], _.gulp.series('sass', 'sg', _.browserSync.reload));
+    _.watch(`${dirSg.js}/*.js`, _.gulp.series(_.browserSync.reload));
+};
 
-_.gulp.task('styleguide', _.gulp.series('sg', 'sgsync'))
+module.exports = _.gulp.series(sg, sgsync);

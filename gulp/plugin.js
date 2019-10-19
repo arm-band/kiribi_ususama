@@ -30,4 +30,4 @@ module.exports = {
     connect: require('gulp-connect-php'),
     ftpDeploy: require('ftp-deploy'),
     crypto: require('crypto')
-}
+};

@@ -23,4 +23,4 @@ module.exports = {
         localRoot: "ローカルパス",
         remoteRoot: "リモートパス"
     }
-}
+};

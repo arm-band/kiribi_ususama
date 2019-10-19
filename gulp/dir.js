@@ -50,4 +50,4 @@ module.exports = {
         css        : '/dist/public/css',
         distjs     : '/dist/public/js'
     }
-}
+};

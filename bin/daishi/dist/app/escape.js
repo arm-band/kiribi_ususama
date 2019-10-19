@@ -1,15 +1,15 @@
 module.exports = {
     escapeMinimal: (str, functions) => {
-        str = functions.formatString(str)
+        str = functions.formatString(str);
         return str.replace(/[&"]/g, (match) => {
             return {
                 '&': '&amp;',
                 '"': '&quot;'
-            }[match]
-        })
+            }[match];
+        });
     },
     escapeHTML: (str, functions) => {
-        str = functions.formatString(str)
+        str = functions.formatString(str);
         return str.replace(/[&'`"<>]/g, (match) => {
             return {
                 '&': '&amp;',
@@ -18,7 +18,7 @@ module.exports = {
                 '"': '&quot;',
                 '<': '&lt;',
                 '>': '&gt;'
-            }[match]
-        })
+            }[match];
+        });
     }
-}
+};

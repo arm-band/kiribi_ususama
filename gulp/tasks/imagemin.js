@@ -1,25 +1,15 @@
-const _         = require('../plugin')
-const dir       = require('../dir')
-const functions = require('../functions')
-const plugins = functions.getConfig(dir.config.plugins)
-const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dir.dist.img }
-const IMGPROC = { MINIFY: 'imageminify', COPY: 'imagecopy' }
-
-//フラグで画像に対する処理を分岐
-let IMAGEPROC
-if(plugins.imagemin) {
-    IMAGEPROC = IMGPROC.MINIFY
-}
-else {
-    IMAGEPROC = IMGPROC.COPY
-}
+const _         = require('../plugin');
+const dir       = require('../dir');
+const functions = require('../functions');
+const plugins = functions.getConfig(dir.config.plugins);
+const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dir.dist.img };
 
 //画像圧縮
-_.gulp.task(IMGPROC.MINIFY, () => {
+const imageminify = () => {
     return _.gulp.src(IMGDIR.src)
         .pipe(_.imagemin([
             _.imageminPng({
-                quality: 90,
+                quality: [.8, .9],
                 speed: 1
             }),
             _.imageminJpeg({
@@ -28,14 +18,22 @@ _.gulp.task(IMGPROC.MINIFY, () => {
             _.imageminSvg(),
             _.imageminGif()
           ]))
-        .pipe(_.gulp.dest(IMGDIR.dist))
-})
+        .pipe(_.gulp.dest(IMGDIR.dist));
+};
 //画像コピー(ファイルコピーのみ)
-_.gulp.task(IMGPROC.COPY, () => {
+const imagecopy = () => {
     return _.gulp.src(IMGDIR.src)
-    .pipe(_.plumber())
-    .pipe(_.gulp.dest(IMGDIR.dist))
-})
+        .pipe(_.plumber())
+        .pipe(_.gulp.dest(IMGDIR.dist));
+};
+
+let imageProc = [];
+if(plugins.imagemin) {
+    imageProc.push(imageminify);
+}
+else {
+    imageProc.push(imagecopy);
+}
 
 //コールタスク
-_.gulp.task('imagemin', _.gulp.parallel(IMAGEPROC))
+module.exports = _.gulp.parallel(imageProc);

@@ -1,14 +1,14 @@
-const _         = require('../../../gulp/plugin')
-const dir       = require('../../../gulp/dir')
+const _         = require('../../../gulp/plugin');
+const dir       = require('../../../gulp/dir');
 
 //js
-_.gulp.task('admin.js.concat', () => {
+const adminSjConcat = () => {
     return _.gulp.src([`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`])
         .pipe(_.plumber())
         .pipe(_.concat('lib.js'))
-        .pipe(_.gulp.dest(`${dir.admin.dir}${dir.admin.js}/concat/`)) //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
-})
-_.gulp.task('admin.js.uglify', _.gulp.series(_.gulp.parallel('admin.js.concat'), () => {
+        .pipe(_.gulp.dest(`${dir.admin.dir}${dir.admin.js}/concat/`)); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
+};
+const adminJsUglify = () => {
     return _.gulp.src(`${dir.admin.dir}${dir.admin.js}/**/*.js`)
         .pipe(_.plumber())
         .pipe(_.uglify({output: {comments: 'some'}}))
@@ -17,7 +17,7 @@ _.gulp.task('admin.js.uglify', _.gulp.series(_.gulp.parallel('admin.js.concat'),
             path.basename += '.min'
             path.extname = '.js'
         }))
-        .pipe(_.gulp.dest('./'))
-}))
+        .pipe(_.gulp.dest('./'));
+};
 //上記をまとめておく
-_.gulp.task('admin.js', _.gulp.parallel('admin.js.uglify'))
+module.exports = _.gulp.series(adminSjConcat, adminJsUglify);

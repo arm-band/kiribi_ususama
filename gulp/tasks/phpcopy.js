@@ -1,11 +1,13 @@
-const _         = require('../plugin')
-const dir       = require('../dir')
+const _         = require('../plugin');
+const dir       = require('../dir');
 
 //phpcopy
-_.gulp.task('phpcopy', () => {
+const phpcopy = () => {
     return _.gulp.src(
         [`${dir.src.php}/**/*`, `!${dir.src.php}/.gitkeep`]
     )
     .pipe(_.plumber())
-    .pipe(_.gulp.dest(dir.dist.html))
-})
+    .pipe(_.gulp.dest(dir.dist.html));
+};
+
+module.exports = phpcopy;

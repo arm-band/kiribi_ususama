@@ -22,7 +22,7 @@ parameters = {
     <!-- main -->
     <main class="main <%= id %>main container-fluid">
         <aside class="container">
-<%- include("partial/_breadcrumb", { parameters, returnNews, relPath }) %>
+<%- include("partial/_breadcrumb", { parameters, returnNews, pages, relPath }) %>
         </aside>
         <div class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
