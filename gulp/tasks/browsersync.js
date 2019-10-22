@@ -13,6 +13,7 @@ const scss = _.gulp.series(scssTask.yaml2sass, scssTask.sass);
 const sitemap = require('../plugins/sitemap');
 const sitemapxml = require('../plugins/sitemapxml');
 const styleguide = require('../plugins/styleguide');
+const sitesearch = require('../plugins/sitesearch');
 
 let taskArray = [scss, jsBuild];
 let taskEjs = [ejs];
@@ -21,6 +22,9 @@ if(plugins.sitemap) {
 }
 if(plugins.sitemap_xml) {
     taskEjs.push(sitemapxml);
+}
+if(plugins.sitesearch) {
+    taskEjs.push(sitesearch);
 }
 
 const taskBuild = _.gulp.parallel(taskArray, _.gulp.series(taskEjs));

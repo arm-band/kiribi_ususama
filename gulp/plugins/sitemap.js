@@ -1,6 +1,7 @@
 const _         = require('../plugin');
 const dir       = require('../dir');
 const functions = require('../functions');
+const jsConfig  = require('../jsconfig');
 const parameters = [];
 
 const sitemap = () => {
@@ -72,6 +73,8 @@ const sitemap = () => {
         }))
         .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList }))
         .pipe(_.rename({ extname: '.html' }))
+        .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+        .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.gulp.dest(dir.dist.html));
 };
 

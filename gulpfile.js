@@ -22,6 +22,7 @@ const scss = _.gulp.series(scssTask.yaml2sass, scssTask.sass);
 const sitemap = require('./gulp/plugins/sitemap');
 const sitemapxml = require('./gulp/plugins/sitemapxml');
 const styleguide = require('./gulp/plugins/styleguide');
+const sitesearch = require('./gulp/plugins/sitesearch');
 const adminJs = require('./bin/daishi/gulp/js');
 const adminSass = require('./bin/daishi/gulp/sass');
 
@@ -38,6 +39,9 @@ if(plugins.sitemap) {
 }
 if(plugins.sitemap_xml) {
     taskEjs.push(sitemapxml);
+}
+if(plugins.sitesearch) {
+    taskEjs.push(sitesearch);
 }
 
 const taskBuild = _.gulp.parallel(taskArray, _.gulp.series(taskEjs));
