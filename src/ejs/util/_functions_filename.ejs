@@ -1,29 +1,29 @@
 <%
 //ファイル名を各ページのidとして設定する
 funcFileNameId = (filename, fnProcedure) => {
-    let id = "";
-    id = fnProcedure[1].slice(fnProcedure[1].lastIndexOf(fnProcedure[0]) + 1).replace(/\.ejs/g, ""); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、".ejs"の4文字を取り除く=拡張子なしのファイル名
+    let id = '';
+    id = fnProcedure[1].slice(fnProcedure[1].lastIndexOf(fnProcedure[0]) + 1).replace(/\.ejs/g, ''); //PC内の絶対パスで最後の\の位置+1(=パスなしファイル名)から末尾までの文字列を切り取り、'.ejs'の4文字を取り除く=拡張子なしのファイル名
     return id;
 };
 //ファイル名からパスの深さを測り、その値に応じた相対パスを返す
 funcFileNamePath = (filename, fnProcedure, id) => {
-    let path = "";
+    let path = '';
     let depth = 0;
     //news.ejsとarticle.ejsとsitemap.ejsだけは固定割り振りする
     //news.ejs: 1
     //article.ejs: 2
     //sitemap.ejs: 0
     switch(id) {
-        case "sitemap":
+        case 'sitemap':
             depth = 0;
             break;
-        case "sitesearch":
+        case 'sitesearch':
             depth = 0;
             break;
-        case "news":
+        case 'news':
             depth = 1;
             break;
-        case "article":
+        case 'article':
             depth = 2;
             break;
         default:
@@ -32,10 +32,10 @@ funcFileNamePath = (filename, fnProcedure, id) => {
     }
     //相対パスを生成
     if(depth > 0) {
-        path = "../".repeat(depth);
+        path = '../'.repeat(depth);
     }
     else {
-        path = "./";
+        path = './';
     }
     return path;
 };
@@ -50,8 +50,8 @@ funcNavPath = (relPath, id) => {
 //ファイル名を各ページのidとして設定する
 funcFileNameProcedure = (filename) => {
     let array = [];
-    array.push("/");
-    array.push(filename.replace(/\\/g, "/"));
+    array.push('/');
+    array.push(filename.replace(/\\/g, '/'));
     return array;
 };
 %>

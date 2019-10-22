@@ -2,8 +2,8 @@
 //記事ページのURLを生成
 funcArticleUrl = (url, attributes, archiveid = false) => {
     let urlTitle = attributes.url;
-    urlTitle = urlTitle.replace(/\./g, "_");
-    const datetime = funcDateTimeFormat(attributes.date, "", "ymd");
+    urlTitle = urlTitle.replace(/\./g, '_');
+    const datetime = funcDateTimeFormat(attributes.date, '', 'ymd');
     const fileUrl = `${urlTitle}-${datetime}`;
     if(archiveid) {
         return fileUrl;

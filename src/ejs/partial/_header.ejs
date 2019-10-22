@@ -5,7 +5,7 @@
             <a class="navbar-brand my-0 navbar_head" href="<%= relPath %>#wrapper"><%= config.commons.sitename %></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
                 <span class="navbar-toggler-icon"></span>
-<% if(plugins.svghexagon) { %><%- include("../_plugins/svghexagon/svghexagon", { commonVar }) %><% } %>
+<% if(plugins.svghexagon) { %><%- include('../_plugins/svghexagon/svghexagon', { commonVar }) %><% } %>
             </button>
 <% const navPath = funcNavPath(relPath, id) %>
             <div class="collapse navbar-collapse" id="navbarList">

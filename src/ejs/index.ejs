@@ -1,9 +1,9 @@
 <%
 parameters = {
-    title: "ホーム",
-    entitle: "Home",
-    css: "index",
-    js: "app.min",
+    title: 'ホーム',
+    entitle: 'Home',
+    css: 'index',
+    js: 'app.min',
     description: config.commons.description,
     ogpimage: config.commons.url + parameters.ogpimage
 };
@@ -14,18 +14,18 @@ const indexCounter = () => {
     }
     return cnt;
 };
-%><%- include("util/_init_load") %><%- include("util/_functions_article") %><%- include("util/_headset", { config, parameters }) %>
+%><%- include('util/_init_load') %><%- include('util/_functions_article') %><%- include('util/_headset', { config, parameters }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-spy="scroll" aria-controls="navbarList" data-target="#navbarList" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
 <div class="upper">
-<%- include("partial/_header", { config, commonVar }) %>
-<% if(plugins.slick) { %><%- include("_plugins/slick/slick", { relPath }) %><% }
- else { %><%- include("partial/_eyecatch", { headerString, parameters }) %><% } %>
+<%- include('partial/_header', { config, commonVar }) %>
+<% if(plugins.slick) { %><%- include('_plugins/slick/slick', { relPath }) %><% }
+ else { %><%- include('partial/_eyecatch', { headerString, parameters }) %><% } %>
     <!-- main -->
     <main class="main <%= id %>main">
         <section class="container fixed_anchor" id="contents">
@@ -42,7 +42,7 @@ if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.le
             <div class="releasenotes_contents">
                 <p class="text-center">更新履歴一覧(<%= counter %>件)です。</p>
                 <div class="row align-items-top my-4">
-<%- include("partial/_newscards.ejs", { relPath, newsBlock }) %>
+<%- include('partial/_newscards.ejs', { relPath, newsBlock }) %>
                 </div>
             </div>
             <div class="text-center">
@@ -53,8 +53,8 @@ if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.le
     </main>
     <!-- /main -->
 </div>
-<%- include("partial/_footer", { config, copyRightYear }) %>
+<%- include('partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include("partial/_js_loader", { parameters, relPath }) %>
+<%- include('partial/_js_loader', { parameters, relPath }) %>
 </body>
 </html>

@@ -1,27 +1,27 @@
 <%
 parameters = {
-    title: "サイト内検索",
-    entitle: "Search",
-    css: "contents",
-    js: "app.min",
-    description: "サイト内検索ページです。",
-    ogpimage: "eyecatch.jpg"
+    title: 'サイト内検索',
+    entitle: 'Search',
+    css: 'contents',
+    js: 'app.min',
+    description: 'サイト内検索ページです。',
+    ogpimage: 'eyecatch.jpg'
 };
-%><%- include("../../util/_init_load") %><%- include("../../util/_headset", { config, parameters }) %>
+%><%- include('../../util/_init_load') %><%- include('../../util/_headset', { config, parameters }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("../../partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include('../../partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
 <div class="upper">
-<%- include("../../partial/_header", { config, commonVar }) %>
-<%- include("../../partial/_eyecatch", { headerString }) %>
+<%- include('../../partial/_header', { config, commonVar }) %>
+<%- include('../../partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="main <%= id %>main" id="listSearch">
         <aside class="container">
-<%- include("../../partial/_breadcrumb", { parameters, relPath }) %>
+<%- include('../../partial/_breadcrumb', { parameters, relPath }) %>
         </aside>
         <section class="inputSearch container mb-4">
             <div class="form-group">
@@ -38,8 +38,8 @@ parameters = {
     </main>
     <!-- /main -->
 </div>
-<%- include("../../partial/_footer", { config, copyRightYear }) %>
+<%- include('../../partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include("../../partial/_js_loader", { parameters, relPath }) %>
+<%- include('../../partial/_js_loader', { parameters, relPath }) %>
 </body>
 </html>

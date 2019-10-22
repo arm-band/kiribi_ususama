@@ -8,21 +8,21 @@ parameters = {
     description: attributes.excerpt,
     ogpimage: "eyecatch.jpg"
 };
-%><%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><% contentBody = funcURLConverter(body, relPath); %><%- include("util/_headset", { config, parameters, attributes }) %>
+%><%- include('util/_init_load') %><%- include('util/_functions_article.ejs') %><% contentBody = funcURLConverter(body, relPath); %><%- include('util/_headset', { config, parameters, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include("partial/_head", { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+<%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
 <div class="upper">
-<%- include("partial/_header", { config, commonVar }) %>
-<%- include("partial/_eyecatch", { headerString }) %>
+<%- include('partial/_header', { config, commonVar }) %>
+<%- include('partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="main <%= id %>main container-fluid">
         <aside class="container">
-<%- include("partial/_breadcrumb", { parameters, returnNews, pages, relPath }) %>
+<%- include('partial/_breadcrumb', { parameters, returnNews, pages, relPath }) %>
         </aside>
         <div class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
@@ -38,7 +38,7 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes)
                 <div class="mb-3 news_contents">
                     <%- contentBody %>
                 </div>
-<% if(plugins.articlesns) { %><%- include("_plugins/articlesns/articlesns", { config, articleUrl, metaTitle }) %><% } %>
+<% if(plugins.articlesns) { %><%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle }) %><% } %>
             </article>
         </div>
         <div class="text-center my-5">
@@ -47,8 +47,8 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes)
     </main>
     <!-- /main -->
 </div>
-<%- include("partial/_footer", { config, copyRightYear }) %>
+<%- include('partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include("partial/_js_loader", { parameters, relPath }) %>
+<%- include('partial/_js_loader', { parameters, relPath }) %>
 </body>
 </html>

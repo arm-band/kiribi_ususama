@@ -1,17 +1,17 @@
     <meta charset="UTF-8">
-<% if(plugins.ie) { %><%- include("../_plugins/ie/ie") %><% } %>
+<% if(plugins.ie) { %><%- include('../_plugins/ie/ie') %><% } %>
     <meta name="format-detection" content="telephone=no,address=no,email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= metaTitle %> | <%= config.commons.sitename %></title>
     <meta name="description" content="<%= metaDescription %>">
 
-<% if(plugins.analytics) { %><%- include("../_plugins/analytics/analytics", { config }) %><% } %>
-<% if(plugins.searchconsole) { %><%- include("../_plugins/searchconsole/searchconsole", { config }) %><% } %>
+<% if(plugins.analytics) { %><%- include('../_plugins/analytics/analytics', { config }) %><% } %>
+<% if(plugins.searchconsole) { %><%- include('../_plugins/searchconsole/searchconsole', { config }) %><% } %>
 
     <!-- favicon, etc -->
     <link href="<%= relPath %>apple-touch-icon.png" rel="apple-touch-icon">
 
-<% if(plugins.themecolor) { %><%- include("../_plugins/themecolor/themecolor") %><% } %>
+<% if(plugins.themecolor) { %><%- include('../_plugins/themecolor/themecolor') %><% } %>
 
     <!-- css -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -21,6 +21,6 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet">
 
-<% if(plugins.rss) { %><%- include("../_plugins/rss/rss", { config, relPath }) %><% } %>
+<% if(plugins.rss) { %><%- include('../_plugins/rss/rss', { config, relPath }) %><% } %>
 
-<% if(plugins.ogp) { %><%- include("../_plugins/ogp/ogp", { config, metaTitle, metaDescription, metaOgpimage }) %><% } %>
+<% if(plugins.ogp) { %><%- include('../_plugins/ogp/ogp', { config, metaTitle, metaDescription, metaOgpimage }) %><% } %>
