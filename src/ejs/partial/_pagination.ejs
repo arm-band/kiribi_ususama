@@ -4,7 +4,7 @@
 <%
     //前のページへ
     if(pages !== 1) { //最初のページ以外
-        const prev = pages - 1
+        const prev = pages - 1;
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
@@ -14,7 +14,7 @@
 <%
     }
     //ページネーション
-    for(var i = 1; i <= pageLength; i++) { //ページ数分生成
+    for(let i = 1; i <= pageLength; i++) { //ページ数分生成
         //今いるページの場合、activeクラスを付与
         if(i === pages) {
 %>
@@ -28,14 +28,14 @@
     }
     //次のページへ
     if(pages !== pageLength) { //最後のページ以外
-        const next = pages + 1
+        const next = pages + 1;
 %>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>
-<% } %>
+<%   } %>
             </ul>
         </nav>
 <% } %>

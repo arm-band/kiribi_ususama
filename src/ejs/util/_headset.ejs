@@ -1,34 +1,34 @@
 <%
 //headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
 if (typeof parameters === "undefined") {
-    var parameters = {
+    parameters = {
         title: config.commons.sitename,
         description: config.commons.description
-    }
+    };
 }
-metaTitle = parameters.title //グローバル変数
-metaDescription = parameters.description
-metaOgpimage = `${config.commons.url}${parameters.ogpimage}`
+metaTitle = parameters.title; //グローバル変数
+metaDescription = parameters.description;
+metaOgpimage = `${config.commons.url}${parameters.ogpimage}`;
 if (typeof attributes === "undefined") {
-    var attributes = {
+    attributes = {
         title: "",
         excerpt: "",
         thumbnai: null
-    }
+    };
 }
 //タイトル
 if(attributes.title !== null && attributes.title !== undefined && attributes.title.length > 0) {
-    metaTitle = attributes.title
+    metaTitle = attributes.title;
 }
 //説明
 if(attributes.excerpt !== null && attributes.excerpt !== undefined && attributes.excerpt.length > 0) {
-    metaDescription = attributes.excerpt
+    metaDescription = attributes.excerpt;
 }
 //OGP画像
 if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
-    metaOgpimage = `${config.commons.url}${config.param.ogp.newsthumbnail}${attributes.thumbnail}`
+    metaOgpimage = `${config.commons.url}${config.param.ogp.newsthumbnail}${attributes.thumbnail}`;
 }
 else {
-    metaOgpimage = `${config.commons.url}${config.param.ogp.ogpimage}`
+    metaOgpimage = `${config.commons.url}${config.param.ogp.ogpimage}`;
 }
 %>

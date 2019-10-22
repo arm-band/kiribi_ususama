@@ -1,5 +1,5 @@
 <%
-const returnNews = `${name}${pages}.html`
+const returnNews = `${name}${pages}.html`;
 parameters = {
     title: "記事",
     entitle: "News",
@@ -7,7 +7,7 @@ parameters = {
     js: "app.min",
     description: attributes.excerpt,
     ogpimage: "eyecatch.jpg"
-}
+};
 %><%- include("util/_init_load") %><%- include("util/_functions_article.ejs") %><% contentBody = funcURLConverter(body, relPath); %><%- include("util/_headset", { config, parameters, attributes }) %>
 <!DOCTYPE html>
 <html lang="ja">

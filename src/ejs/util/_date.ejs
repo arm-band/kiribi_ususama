@@ -1,54 +1,54 @@
 <%
 //コピーライトの部分に出す年数を生成
 funcCopyRightYear = (config) => {
-    let copyRightYear = ""
-    const getFullYear = new Date().getFullYear()
+    let copyRightYear = "";
+    const getFullYear = new Date().getFullYear();
     if(parseInt(getFullYear) - parseInt(config.commons.year) === 0) {
-        copyRightYear = config.commons.year
+        copyRightYear = config.commons.year;
     }
     else {
-        copyRightYear = `${config.commons.year}-${getFullYear}`
+        copyRightYear = `${config.commons.year}-${getFullYear}`;
     }
-    return copyRightYear
-}
+    return copyRightYear;
+};
 //記事の日時を文字列として出力する
 //output = "ymd"を指定すると日付のみ出力へ
 funcDateTimeFormat = (dateStr, optStr, output) => {
-    const day = new Date(dateStr)
-    const y = day.getFullYear()
-    let m = day.getMonth() + 1
-    let d = day.getDate()
-    const hr = day.getHours()
-    let mt = day.getMinutes()
-    let sc = day.getSeconds()
+    const day = new Date(dateStr);
+    const y = day.getFullYear();
+    let m = day.getMonth() + 1;
+    let d = day.getDate();
+    const hr = day.getHours();
+    let mt = day.getMinutes();
+    let sc = day.getSeconds();
     if (m < 10) {
-        m = "0" + m
+        m = "0" + m;
     }
     if (d < 10) {
-        d = "0" + d
+        d = "0" + d;
     }
     if (mt < 10) {
-        mt = "0" + mt
+        mt = "0" + mt;
     }
     if (sc < 10) {
-        sc = "0" + sc
+        sc = "0" + sc;
     }
     let datetime;
     if(output === "ymd") {
-        datetime = `${y}${optStr}${m}${optStr}${d}`
+        datetime = `${y}${optStr}${m}${optStr}${d}`;
     }
     else if(output === "tz") {
         if(optStr.length === 0) {
-            optStr = "-"
+            optStr = "-";
         }
-        datetime = `${y}${optStr}${m}${optStr}${d}T${hr}:${mt}:${sc}+09:00`
+        datetime = `${y}${optStr}${m}${optStr}${d}T${hr}:${mt}:${sc}+09:00`;
     }
     else {
         if(optStr.length === 0) {
-            optStr = "-"
+            optStr = "-";
         }
-        datetime = y + optStr + m + optStr + d + " " + hr + ":" + mt + ":" + sc
+        datetime = y + optStr + m + optStr + d + " " + hr + ":" + mt + ":" + sc;
     }
-    return datetime
-}
+    return datetime;
+};
 %>

@@ -6,14 +6,14 @@ parameters = {
     js: "app.min",
     description: config.commons.description,
     ogpimage: config.commons.url + parameters.ogpimage
-}
+};
 const indexCounter = () => {
     let cnt = `最新${String(config.param.news.indexcount)}`;
     if(config.param.news.indexcount === 0) {
         cnt = "全";
     }
     return cnt;
-}
+};
 %><%- include("util/_init_load") %><%- include("util/_functions_article") %><%- include("util/_headset", { config, parameters }) %>
 <!DOCTYPE html>
 <html lang="ja">
