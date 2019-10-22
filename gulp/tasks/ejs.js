@@ -20,8 +20,9 @@ const commonsEjs = () => {
     }))
     .pipe(_.ejs({ config, commonVar, plugins, parameters }))
     .pipe(_.rename({ extname: '.html' }))
-    .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+    .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
     .pipe(_.htmlmin(jsConfig.configHtmlMin))
+    .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
     .pipe(_.gulp.dest(dir.dist.html));
 };
 //トップページ用のejsタスク
@@ -51,8 +52,9 @@ const indexEjs = () => {
         }))
         .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
         .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+        .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
+        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
         .pipe(_.gulp.dest(dir.dist.html));
 };
 //新着情報専用のejsタスク
@@ -103,8 +105,9 @@ const newsEjs = (done) => {
             }))
             .pipe(_.ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters }))
             .pipe(_.rename(`${articleFileName}.html`))
-            .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+            .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
+            .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
             .pipe(_.gulp.dest(dir.dist.articles));
 
         //RSS
@@ -122,8 +125,9 @@ const newsEjs = (done) => {
                 }))
                 .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
                 .pipe(_.rename(`${name}${pages}.html`))
-                .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+                .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
                 .pipe(_.htmlmin(jsConfig.configHtmlMin))
+                .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
                 .pipe(_.gulp.dest(dir.dist.news));
 
             newsBlock = []; //空にする
@@ -139,8 +143,9 @@ const newsEjs = (done) => {
             }))
             .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
             .pipe(_.rename(`${name}${pages}.html`))
-            .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+            .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
+            .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
             .pipe(_.gulp.dest(dir.dist.news));
     }
 
@@ -168,8 +173,9 @@ const newslessEjs = () => {
         }))
         .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
         .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+        .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
+        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
         .pipe(_.gulp.dest(dir.dist.html));
 };
 

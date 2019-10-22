@@ -51,8 +51,8 @@ const pageScroll = (screlm) => {
     }
     if($('#index').length) { //トップページの場合のみ動作
         const $navbar = $('#navbar');
-        const speed = 1000;
-        $navbar.find('.nav-item:not(.dropdown)').find('a').on('click', function(speed) { //ドロップダウンコンポーネントには反応しないように
+        $navbar.find('.nav-item:not(.dropdown)').find('a').on('click', function() { //ドロップダウンコンポーネントには反応しないように
+            const speed = 1000;
             let href = $(this).attr('href');
             let targetID = '';
             if(/^(\.\/|\/)$|^(#)?$/.test(href)) { //hrefの値が「/」「./」「#」「」の場合
@@ -72,7 +72,8 @@ const pageScroll = (screlm) => {
         });
     }
     //一般
-    $('a[href^="#"]:not(.nav-link)').on('click', function(speed) { //ナビゲーションバーは除く
+    $('a[href^="#"]:not(.nav-link)').on('click', function() { //ナビゲーションバーは除く
+        const speed = 1000;
         let href = $(this).attr('href');
         let targetID = href == '#' || href == '' ? 'html' : href; //リンク先が#か空だったらhtmlに
         let $target = $(targetID);

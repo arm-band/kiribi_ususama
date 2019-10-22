@@ -50,8 +50,8 @@
 @mixin hamburger4() {
     .icon-bar {
         &:nth-child(3) {
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 @include transitionSet();
                 content: " ";
                 background: none;
@@ -70,11 +70,11 @@
             }
             &:nth-child(3) {
                 background: none;
-                &:before {
+                &::before {
                     background-color: #888;
                     transform: rotate(135deg) translateY(-1px);
                 }
-                &:after {
+                &::after {
                     background-color: #888;
                     transform: rotate(45deg) translateY(-1px);
                 }
@@ -89,8 +89,8 @@
 @mixin hamburger5() {
     .icon-bar {
         &:nth-child(3) {
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 @include transitionSet();
                 content: " ";
                 background: none;
@@ -105,15 +105,15 @@
         .icon-bar {
             &:nth-child(2),
             &:last-child {
-                transform: translateY(0px) scale(0);
+                transform: translateY(0) scale(0);
             }
             &:nth-child(3) {
                 background: none;
-                &:before {
+                &::before {
                     background-color: #888;
                     transform: rotate(-45deg) translateY(1px);
                 }
-                &:after {
+                &::after {
                     background-color: #888;
                     transform: rotate(45deg) translateY(-1px);
                 }

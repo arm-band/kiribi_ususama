@@ -3,7 +3,7 @@ const functions    = require('../gulp/functions');
 const fs           = require('fs');
 const path         = require('path');
 const rimraf       = require('rimraf');
-const runAll = require('npm-run-all');
+const runAll       = require('npm-run-all');
 
 const plugins = functions.getConfig(dir.config.plugins);
 const pluginsStr = '_plugins';
@@ -22,7 +22,9 @@ const jsFileWrite = (jsPath) => {
         }
     }, plugins);
     fs.writeFileSync(jsPath, pluginCode, (err) => {
-        if(err) console.log(err);
+        if(err) {
+            console.log(err);
+        }
     });
 };
 const scssFileWrite = (scssPath) => {
@@ -47,10 +49,12 @@ const scssFileWrite = (scssPath) => {
                         let cssFile = `${fs.readFileSync('./node_modules/lightbox2/dist/css/lightbox.css', 'utf8')}\n`;
                         cssFile = cssFile.replace(/images/g, 'img/lightbox'); // images -> img/lightbox
                         fs.writeFileSync(`./src/scss/${scssLBPath}`, cssFile, (err) => {
-                            if(err) console.log(err);
+                            if(err) {
+                                console.log(err);
+                            }
                         });
                     })
-                    .catch(err => {
+                    .catch((err) => {
                         console.log(`${keyStrLB} files copy: failed!`);
                     });
             }
@@ -63,7 +67,7 @@ const scssFileWrite = (scssPath) => {
                     .then(() => {
                         console.log(`${keyStrSlick} files copy: done!`);
                     })
-                    .catch(err => {
+                    .catch((err) => {
                         console.log(`${keyStrSlick} files copy: failed!`);
                     });
             }
@@ -73,7 +77,9 @@ const scssFileWrite = (scssPath) => {
         }
     }, plugins);
     fs.writeFileSync(scssPath, pluginCode, (err) => {
-        if(err) console.log(err);
+        if(err) {
+            console.log(err);
+        }
     });
 }
 
@@ -94,7 +100,7 @@ const scssPath = path.join(pluginScssPath, `${pluginsStr}.scss`);
 if(functions.isExistFile(scssPath)) {
     rimraf(scssPath, () => {
         scssFileWrite(scssPath);
-    })
+    });
 }
 else {
     scssFileWrite(scssPath);

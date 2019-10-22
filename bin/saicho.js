@@ -1,4 +1,4 @@
-const yaml    = require('yaml');
+const yaml      = require('yaml');
 const fs        = require('fs');
 const dir       = require('../gulp/dir');
 const randomjs  = require('./discover');

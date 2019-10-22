@@ -26,8 +26,12 @@
         "slick:fonts": "cpx \"./node_modules/slick-carousel/slick/fonts/*\" \"./dist/css/fonts\"",
         "gulp": "gulp",
         "opener": "opener",
+        "lint:html": "htmllint ./dist/**/*.html",
+        "lint:js": "eslint ./src/js/*.js",
+        "lint:css": "stylelint src/scss/**/*.scss",
         "start": "npm-run-all -s om krodhana hum jah svaha",
-        "test": "npm-run-all -s plugin gulp",
+        "restart": "npm-run-all -s plugin gulp",
+        "test": "npm-run-all -s lint:*",
         "deploy": "gulp ftp",
         "guide": "gulp styleguide",
         "init": "npm run kongou",
@@ -92,7 +96,12 @@
         "ejs": "^2.7.1",
         "http-errors": "^1.7.3",
         "morgan": "^1.9.1",
-        "opener": "^1.5.1"
+        "opener": "^1.5.1",
+        "htmllint-cli": "^0.0.7",
+        "eslint": "^6.5.1",
+        "stylelint": "^11.1.1",
+        "stylelint-config-standard": "^19.0.0",
+        "stylelint-scss": "^3.11.1"
     },
     "engines": {
         "node": ">= 9.0.0",

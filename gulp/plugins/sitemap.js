@@ -73,8 +73,9 @@ const sitemap = () => {
         }))
         .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList }))
         .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.replace(/[\s\S]*?(<!DOCTYPE)/i, '$1'))
+        .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
+        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
         .pipe(_.gulp.dest(dir.dist.html));
 };
 

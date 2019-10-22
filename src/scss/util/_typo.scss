@@ -2,7 +2,7 @@
 
 //丸ゴシック指定
 @mixin marugo() {
-    font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO";
+    font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO", sans-serif;
 }
 
 @mixin mincho() {

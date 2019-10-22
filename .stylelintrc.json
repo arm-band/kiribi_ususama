@@ -1,0 +1,32 @@
+{
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "syntax": "scss",
+    "ignoreFiles": [
+        "src/scss/assets/**/*.scss",
+        "src/scss/_plugins/**/*.scss",
+        "src/scss/util/_var.scss"
+    ],
+    "rules": {
+        "indentation": 4,
+        "declaration-block-no-shorthand-property-overrides": true,
+        "declaration-colon-newline-after": null,
+        "at-rule-no-unknown": [
+            true, {
+                "ignoreAtRules": [
+                    "function","if","for","each","include","mixin","content"
+                ]
+            }
+        ],
+        "block-no-empty": null,
+        "declaration-empty-line-before": null,
+        "rule-empty-line-before": null,
+        "at-rule-empty-line-before": null,
+        "selector-list-comma-newline-after": null,
+        "no-missing-end-of-source-newline": null
+    }
+}

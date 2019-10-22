@@ -17,10 +17,8 @@
             image: url($imgPath);
             repeat: no-repeat;
             position: $background-position;
+            size: cover;
         }
-    }
-    .eyecatch {
-        background-size: cover;
     }
 }
 //キービジュアルに見出しを左右上下中央寄せ
@@ -35,6 +33,6 @@
     z-index: 3;
     font: {
         size: $fontSize;
-        family: "Dancing Script", cursive, "Sawarabi Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia, メイリオ, Meiryo, serif; /* googleフォント */
+        family: "Dancing Script", cursive, "Sawarabi Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGP明朝B", Georgia, メイリオ, Meiryo, serif;
     }
 }
