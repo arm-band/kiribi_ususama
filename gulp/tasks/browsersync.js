@@ -14,8 +14,16 @@ const sitemap = require('../plugins/sitemap');
 const sitemapxml = require('../plugins/sitemapxml');
 const styleguide = require('../plugins/styleguide');
 
-let taskEjs = [ejs, _.browserSync.reload];
-let taskArray = [ejs, scss, jsBuild];
+let taskArray = [scss, jsBuild];
+let taskEjs = [ejs];
+if(plugins.sitemap) {
+    taskEjs.push(sitemap);
+}
+if(plugins.sitemap_xml) {
+    taskEjs.push(sitemapxml);
+}
+
+const taskBuild = _.gulp.parallel(taskArray, _.gulp.series(taskEjs));
 
 //自動リロード
 const browsersync = () => {
@@ -43,18 +51,18 @@ const browsersync = () => {
         });
     }
 
-    _.watch(`${dir.src.ejs}/**/*.ejs`, _.gulp.series(taskEjs));
+    _.watch(`${dir.src.ejs}/**/*.ejs`, _.gulp.series(taskEjs, _.browserSync.reload));
     if(plugins.usephp) {
         _.watch(dir.src.php + '/**/*.php', _.gulp.series(phpcopy, _.browserSync.reload));
     }
     if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
-        _.watch(`${dir.contents.dir}/**/*.md`, _.gulp.series(ejs, _.browserSync.reload));
+        _.watch(`${dir.contents.dir}/**/*.md`, _.gulp.series(taskEjs, _.browserSync.reload));
     }
     _.watch(`${dir.src.favicon}/**/*`, _.gulp.series(favicon, _.browserSync.reload));
     _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series(sass, _.browserSync.reload));
     _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series(imagemin, _.browserSync.reload));
     _.watch([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`], _.gulp.series(jsBuild, _.browserSync.reload));
-    _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(_.gulp.parallel(taskArray), _.browserSync.reload));
+    _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(taskBuild, _.browserSync.reload));
 };
 
 module.exports = browsersync;

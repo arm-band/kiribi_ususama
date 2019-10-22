@@ -25,15 +25,22 @@ const styleguide = require('./gulp/plugins/styleguide');
 const adminJs = require('./bin/daishi/gulp/js');
 const adminSass = require('./bin/daishi/gulp/sass');
 
-let taskArray = [scss, jsBuild, imagemin, favicon, ejs];
+let taskArray = [scss, jsBuild, imagemin, favicon];
 const taskServer = _.gulp.series(browsersync);
 exports.server = taskServer;
 
 if(plugins.usephp) {
     taskArray.push(phpcopy);
 }
+let taskEjs = [ejs];
+if(plugins.sitemap) {
+    taskEjs.push(sitemap);
+}
+if(plugins.sitemap_xml) {
+    taskEjs.push(sitemapxml);
+}
 
-const taskBuild = _.gulp.parallel(taskArray);
+const taskBuild = _.gulp.parallel(taskArray, _.gulp.series(taskEjs));
 exports.build = taskBuild;
 
 //ビルドなし
