@@ -6,7 +6,9 @@ const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dir.d
 
 //画像圧縮
 const imageminify = () => {
-    return _.gulp.src(IMGDIR.src)
+    return _.gulp.src(IMGDIR.src, {
+            since: _.gulp.lastRun(imageminify)
+        })
         .pipe(_.imagemin([
             _.imageminPng({
                 quality: [.8, .9],

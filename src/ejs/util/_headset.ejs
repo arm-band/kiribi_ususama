@@ -1,7 +1,7 @@
 <%
 //headタグ内のmeta属性のうち、titleとdescriptionとomgimageを判別
-if (typeof parameters === "undefined") {
-    parameters = {
+if (typeof parameters === 'undefined') {
+    var parameters = {
         title: config.commons.sitename,
         description: config.commons.description
     };
@@ -9,10 +9,10 @@ if (typeof parameters === "undefined") {
 metaTitle = parameters.title; //グローバル変数
 metaDescription = parameters.description;
 metaOgpimage = `${config.commons.url}${parameters.ogpimage}`;
-if (typeof attributes === "undefined") {
-    attributes = {
-        title: "",
-        excerpt: "",
+if (typeof attributes === 'undefined') {
+    var attributes = {
+        title: '',
+        excerpt: '',
         thumbnai: null
     };
 }

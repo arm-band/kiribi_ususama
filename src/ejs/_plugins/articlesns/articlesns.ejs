@@ -37,7 +37,7 @@
     }
 }; %>
 <% let flag = 0;
-for(let key of config.param.articlesns) {
+for(let key of Object.keys(config.param.articlesns)) {
     if(config.param.articlesns[key]) {
         flag++;
     }
@@ -45,7 +45,7 @@ for(let key of config.param.articlesns) {
 if(flag > 0) { //表示させるボタンが1つもない場合はラッパーのボックスさえ表示させない
 %>
                                 <div class="news_share row my-4 w-100 mx-auto">
-<%    for(let key of config.param.articlesns) {
+<%    for(let key of Object.keys(config.param.articlesns)) {
         if(config.param.articlesns[key]) {
             const buttonClass = key.charAt(0).toUpperCase() + key.slice(1);
             let faCategory = "fab";

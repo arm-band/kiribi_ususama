@@ -1,4 +1,4 @@
-<% for(let i of newsBlock) {
+<% for(let i of Object.keys(newsBlock)) {
     const datetime = funcDateTimeFormat(newsBlock[i].date, "", "tz");
     const showDt = funcDateTimeFormat(newsBlock[i].date, "/", "ymd");
     const articleId = funcArticleUrl("", newsBlock[i], true);
