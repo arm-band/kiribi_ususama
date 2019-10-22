@@ -192,6 +192,30 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             }
         }
     },
+    htmlRemoveWalk(functions, p, fileList) {
+        let files = _.fs.readdirSync(p);
+        for(let i = 0; i < files.length; i++) {
+            let path = p;
+            if(!/.*\/$/.test(p)) {
+                path += '/';
+            }
+            const fp = path + files[i];
+            if(_.fs.statSync(fp).isDirectory()) {
+                functions.htmlRemoveWalk(functions, fp, fileList); //ディレクトリなら再帰
+            } else {
+                if(/.*\.html$/.test(fp)) {
+                    const htmlStream = _.fs.readFileSync(fp, 'utf8');
+                    let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
+                    if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
+                        pageTitle = RegExp.$1.split(' ')[0]; //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
+                    }
+                    const noHTMLText = htmlStream.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'');
+                    const noRCLFText = noHTMLText.replace(/[\s\t\r\n]+/g, '');
+                    fileList.push([fp, pageTitle, noRCLFText]); //HTMLファイルならコールバック発動
+                }
+            }
+        }
+    },
     isExistFile(file) {
         try {
             _.fs.statSync(file);

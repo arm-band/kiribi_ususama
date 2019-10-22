@@ -18,6 +18,18 @@ $(() => {
     if(typeof slickCarousel === 'function') {
         slickCarousel();
     }
+
+    //search of list.js
+    if($('#sitesearch').length) {
+        const options = {
+            valueNames: ['searchTitle', 'searchText']
+        };
+        const searchList = new List('listSearch', options);
+        //hits
+        searchList.on('searchComplete', function(a) {
+            $("#hits").text(a.matchingItems.length);
+        });
+    }
 });
 
 //ユーザーエージェントからスクロールを実行する対象を判定

@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "5.3.1-4.3.1",
+    "version": "5.4.0-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -36,6 +36,7 @@
         "new": "node ./bin/sculpture",
         "sitemap": "gulp sitemap",
         "sitexml": "gulp sitemapxml",
+        "search": "gulp sitesearch",
         "delete": "npm run fujoketsu"
     },
     "author": "Arm Band",
@@ -48,7 +49,8 @@
         "jquery": "^3.4.1",
         "jquery.easing": "^1.4.1",
         "lightbox2": "^2.11.1",
-        "slick-carousel": "^1.8.1"
+        "slick-carousel": "^1.8.1",
+        "list.js": "^1.5.0"
     },
     "devDependencies": {
         "browser-sync": "^2.26.7",
