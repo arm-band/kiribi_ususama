@@ -19,7 +19,8 @@ $eyecacth-height: 60vh;
 // 全体設定                                       *
 //                                               *
 // ============================================= */
-a, a:link {
+a,
+a:link {
     color: $link-color;
     text-decoration: none;
 }
@@ -27,7 +28,8 @@ a:visited {
     color: $link-v-color;
     text-decoration: none;
 }
-a:hover, a:active {
+a:hover,
+a:active {
     color: $link-ha-color;
     text-decoration: underline;
 }

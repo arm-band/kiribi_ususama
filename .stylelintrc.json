@@ -1,9 +1,11 @@
 {
     "plugins": [
-        "stylelint-scss"
+        "stylelint-scss",
+        "stylelint-prettier"
     ],
     "extends": [
-        "stylelint-config-standard"
+        "stylelint-config-standard",
+        "stylelint-prettier/recommended"
     ],
     "syntax": "scss",
     "ignoreFiles": [
@@ -12,9 +14,6 @@
         "src/scss/util/_var.scss"
     ],
     "rules": {
-        "indentation": 4,
-        "declaration-block-no-shorthand-property-overrides": true,
-        "declaration-colon-newline-after": null,
         "at-rule-no-unknown": [
             true, {
                 "ignoreAtRules": [
@@ -22,11 +21,38 @@
                 ]
             }
         ],
-        "block-no-empty": null,
         "declaration-empty-line-before": null,
-        "rule-empty-line-before": null,
-        "at-rule-empty-line-before": null,
-        "selector-list-comma-newline-after": null,
-        "no-missing-end-of-source-newline": null
+        "max-line-length": 300,
+        "no-missing-end-of-source-newline": true,
+        "function-parentheses-newline-inside": "never-multi-line",
+        "function-parentheses-space-inside": "never-single-line",
+        "function-comma-newline-after": "never-multi-line",
+        "function-comma-newline-before": "never-multi-line",
+        "prettier/prettier": [true, {
+            "parser": "scss",
+            "tabWidth": 4,
+            "indentation": 4,
+            "declaration-block-no-shorthand-property-overrides": true,
+            "declaration-colon-newline-after": null,
+            "printWidth": 300,
+            "at-rule-no-unknown": [
+                true, {
+                    "ignoreAtRules": [
+                        "function","if","for","each","include","mixin","content"
+                    ]
+                }
+            ],
+            "block-no-empty": null,
+            "comment-empty-line-before": null,
+            "declaration-empty-line-before": null,
+            "rule-empty-line-before": null,
+            "at-rule-empty-line-before": null,
+            "max-empty-lines": 2,
+            "no-missing-end-of-source-newline": true,
+            "function-parentheses-newline-inside": "never-multi-line",
+            "function-parentheses-space-inside": "never-single-line",
+            "function-comma-newline-after": "never-multi-line",
+            "function-comma-newline-before": "never-multi-line"
+        }]
     }
 }

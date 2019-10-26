@@ -1,13 +1,16 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jquery": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "$": false,
         "mobileSafariRequiem": false,
         "pageTop": false,
         "slickCarousel": false,
@@ -19,6 +22,38 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": "off"
+        "indent": ["error", 4],
+        "eqeqeq": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                //一行辺りの文字数
+                "printWidth": 120,
+                //折り返しをしない
+                "proseWrap": "never",
+                //インデント
+                "indent": ["error", 4],
+                //スペース数4
+                "tabWidth": 4,
+                //タブ不使用
+                "useTabs": false,
+                //行末にセミコロン付与
+                "semi": true,
+                //文に波括弧がない場合警告
+                "curly": "warn",
+                //アロー関数の引数に必ず括弧を付与する
+                "arrowParens": "always",
+                //意図に反して2つの文が接続された箇所を警告
+                "no-unexpected-multiline": "warn",
+                //不要な空白行は削除。2行開けてたらエラー
+                "no-multiple-empty-lines": [2, {"max": 1}],
+                //関数とカッコはあけない(function hoge() {/** */})
+                "func-call-spacing": [2, "never"],
+                //クォートはシングルクォート
+                "singleQuote": true,
+                //オブジェクトまたは配列の最後の要素に対してカンマをつけない
+                "comma-dangle": "never"
+            }
+        ]
     }
 }

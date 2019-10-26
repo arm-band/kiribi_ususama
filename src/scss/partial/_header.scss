@@ -29,10 +29,14 @@
     }
     &.navbar-light {
         .navbar-brand {
-            &, &:link, &:visited {
+            &,
+            &:link,
+            &:visited {
                 color: $main-color;
             }
-            &:hover, &:active, &:focus {
+            &:hover,
+            &:active,
+            &:focus {
                 color: $main-color2;
             }
         }

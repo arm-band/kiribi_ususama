@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.0.0-4.3.1",
+    "version": "6.1.0-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -27,12 +27,16 @@
         "gulp": "gulp",
         "opener": "opener",
         "lint:html": "htmllint ./dist/**/*.html",
-        "lint:js": "eslint ./src/js/*.js",
-        "lint:css": "stylelint src/scss/**/*.scss",
+        "lint:js": "eslint ./src/js/**/*.js",
+        "lint:css": "stylelint ./src/scss/**/*.scss",
         "lint:http": "node ./bin/johari",
+        "lint": "npm-run-all -s lint:*",
+        "prettier:js": "eslint --fix ./src/js/**/*.js",
+        "prettier:scss": "stylelint --fix ./src/scss/**/*.scss",
+        "prettier": "npm-run-all -s prettier:*",
         "start": "npm-run-all -s om krodhana hum jah svaha",
         "restart": "npm-run-all -s plugin gulp",
-        "test": "npm-run-all -s lint:*",
+        "test": "npm run lint",
         "deploy": "gulp ftp",
         "guide": "gulp styleguide",
         "init": "npm run kongou",
@@ -102,10 +106,16 @@
         "eslint": "^6.5.1",
         "stylelint": "^11.1.1",
         "stylelint-config-standard": "^19.0.0",
-        "stylelint-scss": "^3.11.1"
+        "stylelint-scss": "^3.11.1",
+        "prettier": "^1.18.2",
+        "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "stylelint-prettier": "^1.1.1",
+        "stylelint-config-prettier": "^6.0.0"
     },
     "engines": {
         "node": ">= 9.0.0",
         "npm": ">= 4.0.0"
-    }
+    },
+    "prettier": {}
 }
