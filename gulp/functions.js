@@ -3,7 +3,7 @@ const dir       = require('./dir');
 
 module.exports = {
     rssFeed: (config, functions) => { //RSS Feed
-        const datetime = functions.formatDate('', '')
+        const datetime = functions.formatDate('', '');
         const feed = new _.RSS({
             title: config.commons.sitename,
             description: config.commons.description,
@@ -40,13 +40,15 @@ module.exports = {
     getArticles: (directory, functions) => { //記事一覧をファイル名降順で取得
         let fileList = _.fs.readdirSync(directory);
         //ファイル名(拡張子なし)でソート
-        fileList = fileList.map(fn => {
+        fileList = fileList.map((fn) => {
             return {
                 fn: fn,
                 noex: functions.zeroPadding(parseInt(fn.split('.')[0]))
             };
         });
-        return fileList.sort((a, b) => b.noex - a.noex);
+        return fileList.sort((a, b) => {
+            b.noex - a.noex;
+        });
     },
     articleURL: (attributes, functions) => { //記事ページのURLを生成
         let urlTitle = attributes.url;
@@ -86,7 +88,7 @@ module.exports = {
         if (sc < 10) {
             sc = '0' + sc;
         }
-        let datetime
+        let datetime;
         if(output === 'ymd') {
             datetime = `${y}${m}${d}`;
         }
