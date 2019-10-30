@@ -1,12 +1,4 @@
 @charset "utf-8";
 
 //Chrome系のリストのpaddding打ち消し
-ul, ol {
-    -webkit: {
-        margin: {
-            before: 0;
-            after: 0;
-        }
-        padding-start: 0;
-    }
-}
+@import "./foundation/chrome";

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.o-main {
+    .pagination {
+        .page-item.active {
+            .page-link {
+                background-color: $accent-color;
+                border-color: $accent-color;
+            }
+        }
+    }
+}

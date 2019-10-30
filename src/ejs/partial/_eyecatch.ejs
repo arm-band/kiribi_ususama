@@ -6,11 +6,11 @@ if(id === 'article') {
         articleClass = ' smallText';
     }
 } %>
-    <section class="container-fluid eyecatch"<%- eyecatchStyle %>>
+    <section class="container-fluid l-eyecatch o-eyecatch"<%- eyecatchStyle %>>
         <div class="container">
-            <h1 class="eyecatch_header<%= articleClass %>"><%= headerString %></h1>
+            <h1 class="o-eyecatch_header<%= articleClass %>"><%= headerString %></h1>
 <% if(id === 'index') { %>
-            <p class="eyecatch_paragraph"><%= parameters.description %></p>
+            <p class="o-eyecatch_paragraph"><%= parameters.description %></p>
 <% } %>
         </div>
     </section>

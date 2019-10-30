@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+//news list
+.l-news {
+    &_card {
+        margin-bottom: 1rem;
+    }
+    &_contents {
+        ul {
+            padding-left: 1rem;
+        }
+        ol {
+            padding-left: 2rem;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+}

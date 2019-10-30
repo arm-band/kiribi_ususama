@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@import "../assets/bootstrap/bootstrap"; //bootstrap
+@import "../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
+@import "../foundation/var"; //変数(ejs等と共通)
+@import "../foundation/scss_variables"; //変数(Scssのみ)
+@import "../foundation/mixin"; //mixin
+@import "../foundation/typography"; //タイポグラフィ
+@import "../_plugins/plugins"; //プラグイン

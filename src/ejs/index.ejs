@@ -22,12 +22,12 @@ const indexCounter = () => {
 </head>
 <body data-spy="scroll" aria-controls="navbarList" data-target="#navbarList" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
-<div class="upper">
+<div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>
 <% if(plugins.slick) { %><%- include('_plugins/slick/slick', { relPath }) %><% }
  else { %><%- include('partial/_eyecatch', { headerString, parameters }) %><% } %>
     <!-- main -->
-    <main class="main <%= id %>main">
+    <main class="l-main o-main <%= id %>main">
         <section class="container fixed_anchor" id="contents">
             <!-- contents -->
         </section>

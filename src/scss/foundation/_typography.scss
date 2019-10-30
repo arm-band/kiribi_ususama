@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+//フォント・行間・文字間指定
+body {
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}

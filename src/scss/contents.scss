@@ -1,45 +1,44 @@
 @charset "utf-8";
 
-// ============================================== *
-//                                                *
-//  共通                                          *
-//                                                *
-// ============================================= */
-@import "common";
+/* ********************************************* */
+/*                                               */
+/* foundation                                    */
+/*                                               */
+/* ********************************************* */
+@import "foundation/init_load"; //foundation内ファイル読み込み(変数、ミックスイン、タイポグラフィ、プラグイン)
 
-// ============================================== *
-//                                                *
-//  アイキャッチ                                    *
-//                                                *
-// ============================================= */
-@import "partial/eyecatch";
+/* ********************************************* */
+/*                                               */
+/* layout                                        */
+/*                                               */
+/* ********************************************* */
+@import "layout/height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
+@import "layout/eyecatch";
+@import "layout/main";
+@import "layout/footer";
 
-// ============================================== *
-//                                                *
-//  news                                          *
-//                                                *
-// ============================================= */
-.news {
-    .pagination {
-        .page-item.active {
-            .page-link {
-                background-color: $accent-color;
-                border-color: $accent-color;
-            }
-        }
-    }
-    &_card {
-        margin-bottom: 1rem;
-    }
-    &_contents {
-        ul {
-            padding-left: 1rem;
-        }
-        ol {
-            padding-left: 2rem;
-        }
-        img {
-            max-width: 100%;
-        }
-    }
-}
+/* ********************************************* */
+/*                                               */
+/* object/utility                                */
+/*                                               */
+/* ********************************************* */
+@import "object/utility/link"; //aタグの色
+
+/* ********************************************* */
+/*                                               */
+/* object/component                              */
+/*                                               */
+/* ********************************************* */
+@import "object/component/header";
+@import "object/component/eyecatch";
+@import "object/component/main";
+@import "object/component/news_card";
+@import "object/component/pagination";
+@import "object/component/footer";
+
+/* ********************************************* */
+/*                                               */
+/* object/project                                */
+/*                                               */
+/* ********************************************* */
+@import "object/project/contents";

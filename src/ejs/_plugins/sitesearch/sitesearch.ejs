@@ -15,11 +15,11 @@ parameters = {
 </head>
 <body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
-<div class="upper">
+<div class="l-upper">
 <%- include('../../partial/_header', { config, commonVar }) %>
 <%- include('../../partial/_eyecatch', { headerString }) %>
     <!-- main -->
-    <main class="main <%= id %>main" id="listSearch">
+    <main class="l-main o-main <%= id %>main" id="listSearch">
         <aside class="container">
 <%- include('../../partial/_breadcrumb', { parameters, relPath }) %>
         </aside>

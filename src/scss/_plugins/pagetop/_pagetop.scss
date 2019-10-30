@@ -1,27 +1,5 @@
 @charset "utf-8";
 
-$rpt-size: 44px;
-
-.returnPageTop {
-    display: none;
-    position: fixed;
-    bottom: 4%;
-    right: 6%;
-       z-index: 90;
-       i {
-        display: block;
-        font-size: $rpt-size / 2;
-        width: $rpt-size;
-        height: $rpt-size;
-        line-height: $rpt-size;
-        background-color: $main-color3;
-        border-radius: $rpt-size / 11;
-        color: $bg-color;
-        text-align: center;
-        cursor: pointer;
-        @include t();
-        &:hover, &:active {
-            background-color: $main-color;
-        }
-    }
-}
+@import "./foundation/variables";
+@import "./layout/pagetop";
+@import "./object/component/pagetop";

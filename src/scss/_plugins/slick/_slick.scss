@@ -1,38 +1,5 @@
-.slider {
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    height: 80vh;
-    margin-top: $navbar-height;
-    li {
-        img {
-            width: 100%;
-        }
-    }
-    .slide_arrow {
-        position: absolute;
-        top: 50%;
-        z-index: 2;
-        @include t();
-        &Left {
-            left: -100%;
-        }
-        &Right {
-            right: -100%;
-        }
-        .fa-fw {
-            color: $accent-color;
-            cursor: pointer;
-        }
-    }
-    &.arrowShow {
-        .slide_arrow {
-            &Left {
-                left: 0;
-            }
-            &Right {
-                right: 0;
-            }
-        }
-    }
-}
+@charset "utf-8";
+
+//slick
+@import "./layout/slick";
+@import "./object/component/slick";

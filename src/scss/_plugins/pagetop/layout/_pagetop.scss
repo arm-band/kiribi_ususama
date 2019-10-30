@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.l-returnPageTop {
+    display: none;
+    position: fixed;
+    bottom: 4%;
+    right: 6%;
+    .fa-fw {
+        display: block;
+        width: $rpt-size;
+        height: $rpt-size;
+        line-height: $rpt-size;
+        text-align: center;
+    }
+}

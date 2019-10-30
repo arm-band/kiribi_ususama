@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+//trasition
+@mixin t() {
+    transition: all 0.3s ease;
+}
+
+//font: round gothic
+@mixin marugo() {
+    font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HGMaruGothicMPRO", sans-serif;
+}
+
+//font: serif
+@mixin mincho() {
+    font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}
+
+//eyecatch background-image
+@mixin eyecatchBGImage($imgPath, $background-position) {
+    background: {
+        image: url($imgPath);
+        position: $background-position;
+    }
+}
+
+//eyecatch text
+@mixin eyecatchText($fontSize) {
+    color: $main-color;
+    z-index: 3;
+    font-size: $fontSize;
+    @include mincho();
+}

@@ -1,9 +1,4 @@
 @charset "utf-8";
 
 //別ページからアンカー位置へ移動する際にずれるのを防止
-.main {
-    .fixed_anchor {
-        margin-top: 0 - $navbar-height;
-        padding-top: $navbar-height;
-    }
-}
+@import "./object/utility/fixedanchor_scss";

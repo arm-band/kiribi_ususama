@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body:not(.mobileSafari) .o-eyecatch {
+    background-attachment: fixed;
+}
+.o-eyecatch {
+    background: {
+        repeat: no-repeat;
+        size: cover;
+    }
+    &_header:not(.smallText) {
+        @include eyecatchText(calc(4em + 3vw));
+    }
+    &_header.smallText {
+        @include eyecatchText(3rem);
+    }
+}

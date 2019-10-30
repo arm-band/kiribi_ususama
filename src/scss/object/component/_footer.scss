@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.o-footer {
+    background-color: $main-color;
+    color: $bg-color;
+    &_copyright {
+        font-size: 13px;
+    }
+}

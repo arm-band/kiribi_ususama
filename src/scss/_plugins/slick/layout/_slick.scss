@@ -1,0 +1,31 @@
+.slider {
+    overflow: hidden;
+    position: relative;
+    height: 80vh;
+    margin-top: $navbar-height;
+    li {
+        img {
+            width: 100%;
+        }
+    }
+    .slide_arrow {
+        position: absolute;
+        top: 50%;
+        &Left {
+            left: -100%;
+        }
+        &Right {
+            right: -100%;
+        }
+    }
+    &.arrowShow {
+        .slide_arrow {
+            &Left {
+                left: 0;
+            }
+            &Right {
+                right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.slider {
+    z-index: 1;
+    .slide_arrow {
+        z-index: 2;
+        @include t();
+        .fa-fw {
+            color: $accent-color;
+            cursor: pointer;
+        }
+    }
+}

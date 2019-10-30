@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.o-navbar {
+    &_header {
+        @include mincho();
+    }
+    &.navbar-light {
+        .navbar-brand {
+            &,
+            &:link,
+            &:visited {
+                color: $main-color;
+            }
+            &:hover,
+            &:active,
+            &:focus {
+                color: $main-color2;
+            }
+        }
+        .navbar-toggler {
+            border-color: transparent;
+            background-color: transparent;
+            &[aria-expanded="true"] .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(48,48,48,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M6 6L 24 24M24 6L6 24'/%3E%3C/svg%3E");
+            }
+        }
+    }
+}

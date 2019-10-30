@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+//eyecatch
+.index .l-eyecatch {
+    height: $eyecacth-height;
+    overflow: hidden;
+}
+
+.index .o-eyecatch {
+    @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    &_header {
+        @include eyecatchText(calc(4em + 4vw));
+    }
+    &_paragraph {
+        color: $main-color;
+    }
+}
