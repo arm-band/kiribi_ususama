@@ -13,6 +13,6 @@ else {
 const filename = counter;
 const datetime = functions.formatDate('', '');
 
-const contentMD = functions.newContents(datetime);
+const contentMD = functions.newContents(datetime, functions);
 //記事追加
 _.fs.writeFileSync(`${dir.contents.dir}/${filename}.md`, contentMD);

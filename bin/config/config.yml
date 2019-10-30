@@ -6,6 +6,8 @@ commons:
     url: "https://localhost:3000/"
 param:
     news:
+        title: "新着情報"
+        baseurl: "news"
         indexcount: 3
         newscount: 6
     ogp:

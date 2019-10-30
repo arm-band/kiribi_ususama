@@ -124,11 +124,12 @@ module.exports = {
         deciph.update(txt, 'hex', 'utf8');
         return deciph.final('utf8');
     },
-    newContents(datetime) {
+    newContents(datetime, functions) {
+        const config = functions.getConfig(dir.config.config);
         return `---
 layout: article.ejs
 title: コンテンツタイトル
-url: releasenote
+url: ${config.param.news.baseurl}
 date: ${datetime}
 thumbnail: eyecatch.jpg
 excerpt: 記事の概要です。トップページと新着情報一覧で出力されます。

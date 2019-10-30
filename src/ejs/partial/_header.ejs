@@ -15,7 +15,17 @@
                     </li>
 <% if(plugins.news) { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= navPath %>#releasenotes">更新履歴</a>
+                        <a class="nav-link" href="<%= navPath %>#releasenotes"><%= config.param.news.title %></a>
+                    </li>
+<% } %>
+<% if(plugins.sitemap) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= navPath %>sitemap.html">サイトマップ</a>
+                    </li>
+<% } %>
+<% if(plugins.sitesearch) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= navPath %>sitesearch.html">サイト内検索</a>
                     </li>
 <% } %>
                 </ul>

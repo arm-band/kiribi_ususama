@@ -1,10 +1,10 @@
 <%
 parameters = {
-    title: '更新履歴' + pages,
+    title: config.param.news.title + pages,
     entitle: 'News',
     css: 'contents',
     js: 'app.min',
-    description: '更新履歴の一覧です。',
+    description: config.param.news.title + 'の一覧です。',
     ogpimage: 'eyecatch.jpg'
 };
 %><%- include('util/_init_load') %><%- include('util/_functions_article') %><%- include('util/_headset', { config, parameters }) %>
@@ -21,11 +21,11 @@ parameters = {
     <!-- main -->
     <main class="l-main o-main <%= id %>main">
         <aside class="container">
-<%- include('partial/_breadcrumb', { parameters, relPath }) %>
+<%- include('partial/_breadcrumb', { config, parameters, relPath }) %>
         </aside>
         <section class="container my-5">
             <div class="page-header mb-3 text-center <%= id %>_header">
-                <h2>更新履歴<small class="ml-3">Release Notes</small></h2>
+                <h2><%= config.param.news.title %><small class="ml-3">Release Notes</small></h2>
             </div>
 <%- include('partial/_pagination', { pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
