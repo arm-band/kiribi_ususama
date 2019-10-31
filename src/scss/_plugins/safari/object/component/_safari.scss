@@ -1,5 +1,6 @@
 @charset "utf-8";
 
-body.mobileSafari .eyecatch { //bowserでUAにより付与。mobile Safariバグ対策
+//bowserでUAにより付与。mobile Safariバグ対策
+body.mobileSafari .eyecatch {
     background-attachment: scroll;
 }

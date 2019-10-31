@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 .l-news_btn {
-    &, &:link {
+    &,
+    &:link {
         .fa.fa-fw {
             margin-right: 0.1rem;
         }

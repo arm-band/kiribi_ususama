@@ -9,7 +9,8 @@
         color: $bg-color;
         cursor: pointer;
         @include t();
-        &:hover, &:active {
+        &:hover,
+        &:active {
             background-color: $main-color;
         }
     }

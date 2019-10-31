@@ -1,8 +1,5 @@
 @charset "utf-8";
 
-body:not(.mobileSafari) .o-eyecatch {
-    background-attachment: fixed;
-}
 .o-eyecatch {
     background: {
         repeat: no-repeat;
@@ -14,4 +11,8 @@ body:not(.mobileSafari) .o-eyecatch {
     &_header.smallText {
         @include eyecatchText(3rem);
     }
+}
+
+body:not(.mobileSafari) .o-eyecatch {
+    background-attachment: fixed;
 }

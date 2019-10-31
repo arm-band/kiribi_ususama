@@ -1,7 +1,7 @@
 /node_modules/
 /src/js/concat/
 /src/scss/assets/
-/src/scss/util/_var.scss
+/src/scss/foundation/_var.scss
 /src/js/_plugins/_plugins.js
 /src/scss/_plugins/_plugins.scss
 /src/img/lightbox/

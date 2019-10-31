@@ -18,8 +18,8 @@ const scss = {
         strDist = strDist.replace(/\"#([\da-fA-F]{6}|[\da-fA-F]{3})\"/g, function() {
             return arguments[0].replace(/\"/g, '');
         })
-        //数値(line-heightなど)
-        strDist = strDist.replace(/\"[\d\.]+\"/g, function() {
+        //数値(+単位)
+        strDist = strDist.replace(/\"[\d\.]+(rem|px|em|\%)?\"/g, function() {
             return arguments[0].replace(/\"/g, '');
         })
         _.fs.writeFileSync(`${dir.src.scss}/foundation/_var.scss`, strDist);

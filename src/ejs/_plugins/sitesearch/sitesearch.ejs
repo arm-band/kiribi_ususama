@@ -19,14 +19,19 @@ parameters = {
 <%- include('../../partial/_header', { config, commonVar }) %>
 <%- include('../../partial/_eyecatch', { headerString }) %>
     <!-- main -->
-    <main class="l-main o-main <%= id %>main" id="listSearch">
+    <main class="u-main o-main m-0 p-0 <%= id %>main" id="listSearch">
         <aside class="container">
 <%- include('../../partial/_breadcrumb', { config, parameters, relPath }) %>
         </aside>
         <section class="inputSearch container mb-4">
-            <div class="form-group">
-                <label for="inputSearch">サイト内検索</label>
-                <input type="search" class="form-control search" id="inputSearch" placeholder="検索">
+            <div class="page-header mb-3 text-center <%= id %>_header">
+                <h2>サイト内検索<small class="ml-3">Search</small></h2>
+            </div>
+            <div class="<%= id %>_contents">
+                <div class="form-group">
+                    <label for="inputSearch">サイト内検索</label>
+                    <input type="search" class="form-control search" id="inputSearch" placeholder="検索">
+                </div>
             </div>
         </section>
         <section class="container mb-5">
@@ -35,6 +40,9 @@ parameters = {
                 <%- htmlList %>
             </ul>
         </section>
+        <div class="text-center my-4">
+            <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+        </div>
     </main>
     <!-- /main -->
 </div>

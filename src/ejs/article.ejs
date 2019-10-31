@@ -20,17 +20,17 @@ parameters = {
 <%- include('partial/_header', { config, commonVar }) %>
 <%- include('partial/_eyecatch', { headerString }) %>
     <!-- main -->
-    <main class="l-main o-main <%= id %>main container-fluid">
+    <main class="u-main o-main m-0 p-0 <%= id %>main container-fluid">
         <aside class="container">
 <%- include('partial/_breadcrumb', { config, parameters, returnNews, pages, relPath }) %>
         </aside>
-        <div class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
+        <article class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
 const datetime = funcDateTimeFormat(attributes.date, "", "tz")
 const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
 const articleUrl = funcArticleUrl(config.commons.url, attributes)
 %>
-            <article class="news_article" id="<%= attributes.url %>">
+            <div class="news_article" id="<%= attributes.url %>">
                 <h2 class="news_header"><%= attributes.title %></h2>
                 <div class=" mb-3 news_createdatetime">
                     <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
@@ -39,8 +39,8 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes)
                     <%- contentBody %>
                 </div>
 <% if(plugins.articlesns) { %><%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle }) %><% } %>
-            </article>
-        </div>
+            </div>
+        </article>
         <div class="text-center my-5">
             <a href="<%= relPath %>news/<%= returnNews %>" class="btn btn-light rounded-0"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
         </div>

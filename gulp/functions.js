@@ -46,9 +46,7 @@ module.exports = {
                 noex: functions.zeroPadding(parseInt(fn.split('.')[0]))
             };
         });
-        return fileList.sort((a, b) => {
-            b.noex - a.noex;
-        });
+        return fileList.sort((a, b) => b.noex - a.noex );
     },
     articleURL: (attributes, functions) => { //記事ページのURLを生成
         let urlTitle = attributes.url;

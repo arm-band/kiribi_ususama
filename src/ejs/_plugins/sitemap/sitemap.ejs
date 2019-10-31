@@ -19,14 +19,19 @@ parameters = {
 <%- include('../../partial/_header', { config, commonVar }) %>
 <%- include('../../partial/_eyecatch', { headerString }) %>
     <!-- main -->
-    <main class="l-main o-main <%= id %>main">
+    <main class="u-main o-main m-0 p-0 <%= id %>main">
         <aside class="container">
 <%- include('../../partial/_breadcrumb', { config, parameters, relPath }) %>
         </aside>
-        <section class="container">
-            <ul>
-                <%- htmlList %>
-            </ul>
+        <section class="container my-5">
+            <div class="page-header mb-3 text-center <%= id %>_header">
+                <h2>サイトマップ<small class="ml-3">Sitemap</small></h2>
+            </div>
+            <div class="<%= id %>_contents">
+                <ul>
+                    <%- htmlList %>
+                </ul>
+            </div>
             <div class="text-center my-4">
                 <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
             </div>
