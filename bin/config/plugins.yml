@@ -21,3 +21,4 @@ slick: true
 svghexagon: false
 imagemin: true
 sitesearch: false
+wordpress: true

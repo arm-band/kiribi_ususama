@@ -9,6 +9,7 @@
 const _         = require('./gulp/plugin');
 const dir       = require('./gulp/dir');
 const functions = require('./gulp/functions');
+const config = functions.getConfig(dir.config.config);
 const plugins = functions.getConfig(dir.config.plugins);
 const browsersync = require('./gulp/tasks/browsersync');
 const ejs = require('./gulp/tasks/ejs');
@@ -23,6 +24,7 @@ const sitemap = require('./gulp/plugins/sitemap');
 const sitemapxml = require('./gulp/plugins/sitemapxml');
 const styleguide = require('./gulp/plugins/styleguide');
 const sitesearch = require('./gulp/plugins/sitesearch');
+const wpEjs = require('./gulp/plugins/wpejs');
 const adminJs = require('./bin/daishi/gulp/js');
 const adminSass = require('./bin/daishi/gulp/sass');
 
@@ -34,6 +36,9 @@ if(plugins.usephp) {
     taskArray.push(phpcopy);
 }
 let taskEjs = [ejs];
+if(plugins.wordpress && (config.param.news.wpapi !== undefined && config.param.news.wpapi !== null && config.param.news.wpapi.length > 0)) {
+    taskEjs = [wpEjs];
+}
 if(plugins.sitemap) {
     taskEjs.push(sitemap);
 }
@@ -49,8 +54,7 @@ exports.yaml2sass = _.gulp.series(scssTask.yaml2sass);
 exports.sass = _.gulp.series(scssTask.sass);
 exports.scss = scss;
 //ejs
-exports.ejs = _.gulp.parallel(ejs);
-exports.taskejs = _.gulp.series(taskEjs);
+exports.ejs = _.gulp.series(taskEjs);
 //js
 exports.js = _.gulp.parallel(jsBuild);
 //image

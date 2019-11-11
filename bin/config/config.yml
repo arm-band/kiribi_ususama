@@ -10,6 +10,7 @@ param:
         baseurl: "news"
         indexcount: 3
         newscount: 6
+        wpapi: "https://wp495.ewigleere.net/qed495/wp-json/wp/v2/posts"
     ogp:
         ogpimage: "img/eyecatch.jpg"
         twitteraccount: "Bredtn_1et"
