@@ -39,11 +39,11 @@ let taskEjs = [ejs];
 if(plugins.wordpress && (config.param.news.wpapi !== undefined && config.param.news.wpapi !== null && config.param.news.wpapi.length > 0)) {
     taskEjs = [wpEjs];
 }
-if(plugins.sitemap) {
-    taskEjs.push(sitemap);
-}
 if(plugins.sitemap_xml) {
     taskEjs.push(sitemapxml);
+}
+if(plugins.sitemap) {
+    taskEjs.push(sitemap);
 }
 if(plugins.sitesearch) {
     taskEjs.push(sitesearch);

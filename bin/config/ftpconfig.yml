@@ -7,4 +7,5 @@ remoteRoot: ./path/to/web/root/
 include:
     - "*"
     - "**/*"
+exclude: null
 deleteRemote: false

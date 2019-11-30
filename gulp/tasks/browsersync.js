@@ -1,8 +1,10 @@
 const _         = require('../plugin');
 const dir       = require('../dir');
 const functions = require('../functions');
+const config = functions.getConfig(dir.config.config);
 const plugins = functions.getConfig(dir.config.plugins);
 const ejs = require('./ejs');
+const wpEjs = require('../plugins/wpejs');
 const favicon = require('./favicon');
 const imagemin = require('./imagemin');
 const jsBuild = require('./js');
@@ -17,11 +19,14 @@ const sitesearch = require('../plugins/sitesearch');
 
 let taskArray = [scss, jsBuild];
 let taskEjs = [ejs];
-if(plugins.sitemap) {
-    taskEjs.push(sitemap);
+if(plugins.wordpress && (config.param.news.wpapi !== undefined && config.param.news.wpapi !== null && config.param.news.wpapi.length > 0)) {
+    taskEjs = [wpEjs];
 }
 if(plugins.sitemap_xml) {
     taskEjs.push(sitemapxml);
+}
+if(plugins.sitemap) {
+    taskEjs.push(sitemap);
 }
 if(plugins.sitesearch) {
     taskEjs.push(sitesearch);

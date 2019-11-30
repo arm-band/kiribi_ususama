@@ -1,7 +1,7 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.3.1-4.3.1",
-    "description": "gulpを使用した小・中規模Webサイト制作用のボイラープレートです。",
+    "version": "6.4.0-4.3.1",
+    "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
         "om": "mkdirp dist bin/styleguide/dist src/contents src/scss/assets bin/config/subterranean",
@@ -46,7 +46,11 @@
         "sitemap": "gulp sitemap",
         "sitexml": "gulp sitemapxml",
         "search": "gulp sitesearch",
-        "delete": "npm run fujoketsu"
+        "delete": "npm run fujoketsu",
+        "kurodano": "npm run riken",
+        "unjaku": "gulp build",
+        "sowaka": "node ./bin/tankai",
+        "build": "npm-run-all -s om kurodano unjaku sowaka"
     },
     "author": "Arm Band",
     "license": "ISC",
