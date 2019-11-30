@@ -1,6 +1,6 @@
 commons:
     sitename: "Kiribi Ususama"
-    description: "gulpを使用した小・中規模Webサイト制作用のボイラープレート"
+    description: "gulpを使用した小・中規模Webサイト制作用のフレームワークです。"
     year: 2019
     author: "アルム＝バンド"
     url: "https://localhost:3000/"
