@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.o-address {
+    &_tel {
+        &::before {
+            content: "tel:";
+            text-transform: uppercase;
+            margin-right: ($spacer * .25);
+        }
+    }
+    &_postalcode {
+        &::before {
+            content: "〒";
+        }
+    }
+}

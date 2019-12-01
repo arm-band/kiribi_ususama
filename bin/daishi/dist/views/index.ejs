@@ -44,6 +44,24 @@ parameters = {
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="address" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="連絡先情報として扱う住所です。"><i class="fas fa-fw fa-map-marked-alt" aria-hidden="true"></i><%= labelList.config.address %></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="address" id="address" placeholder="<%= config.commons.address %>" value="<%= config.commons.address %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="postalcode" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="連絡先情報として扱う郵便番号です。"><i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i><%= labelList.config.postalcode %></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="postalcode" id="postalcode" placeholder="<%= config.commons.postalcode %>" value="<%= config.commons.postalcode %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tel" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="連絡先情報として扱う電話番号です。"><i class="fas fa-fw fa-phone" aria-hidden="true"></i><%= labelList.config.tel %></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="tel" id="tel" placeholder="<%= config.commons.tel %>" value="<%= config.commons.tel %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="themeColor" class="col-md-2 col-form-label" data-toggle="tooltip" title="" data-original-title="Webサイトのイメージカラーです。"><i class="fas fa-fw fa-palette" aria-hidden="true"></i><%= labelList.commonVar.themeColor %></label>
                         <div class="col-md-10">
                             <input type="color" class="form-control" name="themeColor" id="themeColor" value="<%= commonVar["main-color"] %>">

@@ -25,6 +25,18 @@ module.exports = {
         else if(!validation.text(paramConfig.author)) {
             msg.push(`errMsg01: ${labelList.config.author}が${errMsg["01"]}`);
         }
+        //住所
+        if(paramConfig.address.length > 0 && !validation.text(paramConfig.address)) {
+            msg.push(`errMsg01: ${labelList.config.address}が${errMsg["01"]}`);
+        }
+        //郵便番号
+        if(paramConfig.postalcode.length > 0 && !validation.numcode(paramConfig.postalcode)) {
+            msg.push(`errMsg07: ${labelList.config.postalcode}に${errMsg["07"]}`);
+        }
+        //電話番号
+        if(paramConfig.tel.length > 0 && !validation.numcode(paramConfig.tel)) {
+            msg.push(`errMsg07: ${labelList.config.tel}に${errMsg["07"]}`);
+        }
         //テーマカラー
         if(paramCommonVar.themeColor.length > 0 && !validation.color(paramCommonVar.themeColor)) {
             msg.push(`errMsg05: ${labelList.commonVar.themeColor}の${errMsg["05"]}`);

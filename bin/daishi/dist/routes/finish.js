@@ -21,6 +21,9 @@ router.post('/', function(req, res, next) {
             siteName: escape.escapeMinimal(req.body.siteName, functions),
             description: escape.escapeMinimal(req.body.description, functions),
             author: escape.escapeMinimal(req.body.author, functions),
+            address: escape.escapeMinimal(req.body.address, functions),
+            postalcode: escape.escapeMinimal(req.body.postalcode, functions),
+            tel: escape.escapeMinimal(req.body.tel, functions),
             CRYear: escape.escapeMinimal(req.body.CRYear, functions),
             OGPTUserID: escape.escapeMinimal(req.body.OGPTUserID, functions),
             OGPImage: escape.escapeMinimal(req.body.OGPImage, functions),
@@ -53,6 +56,9 @@ router.post('/', function(req, res, next) {
             config.commons.description = paramConfig.description;
             config.commons.year = parseInt(paramConfig.CRYear);
             config.commons.author = paramConfig.author;
+            config.commons.address = paramConfig.address;
+            config.commons.postalcode = paramConfig.postalcode;
+            config.commons.tel = paramConfig.tel;
             config.param.ogp.ogpimage = paramConfig.OGPImage;
             config.param.ogp.twitteraccount = paramConfig.OGPTUserID;
             config.commons.url = paramConfig.URL;

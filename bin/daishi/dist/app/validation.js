@@ -11,6 +11,9 @@ module.exports = {
     year: (str) => {
         return str.match(/^20[\d]{2}$/); //20XX
     },
+    numcode: (str) => {
+        return str.match(/^[\d\-]+$/);
+    },
     url: (str) => {
         return str.match(/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/);
     },
