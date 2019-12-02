@@ -9,6 +9,7 @@ if (typeof parameters === 'undefined') {
 metaTitle = parameters.title; //グローバル変数
 metaDescription = parameters.description;
 metaOgpimage = `${config.commons.url}${parameters.ogpimage}`;
+eyecatchImage = `${relPath}${parameters.ogpimage}`;
 if (typeof attributes === 'undefined') {
     var attributes = {
         title: '',
@@ -27,8 +28,10 @@ if(attributes.excerpt !== null && attributes.excerpt !== undefined && attributes
 //OGP画像
 if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
     metaOgpimage = `${config.commons.url}${config.param.ogp.newsthumbnail}${attributes.thumbnail}`;
+    eyecatchImage = `${relPath}${config.param.ogp.newsthumbnail}${attributes.thumbnail}`;
 }
 else {
-    metaOgpimage = `${config.commons.url}${config.param.ogp.ogpimage}`;
+    metaOgpimage = `${config.commons.url}${parameters.ogpimage}`;
+    eyecatchImage = `${relPath}${parameters.ogpimage}`;
 }
 %>

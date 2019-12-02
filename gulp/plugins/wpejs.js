@@ -81,7 +81,7 @@ const indexEjs = async (done) => {
                     const attributes = {
                         'layout': 'article.ejs',
                         'title': resJSON[i].title.rendered,
-                        'url': resJSON[i].id + dateStr,
+                        'url': 'wp-' + resJSON[i].id + dateStr,
                         'date': resJSON[i].date_gmt + '+09:00',
                         'thumbnail': imgFilePath,
                         'excerpt': resJSON[i].excerpt.rendered
@@ -183,7 +183,7 @@ const newsEjs = async (done) => {
                         attributes = {
                             'layout': 'article.ejs',
                             'title': resJSON[j].title.rendered,
-                            'url': resJSON[j].id + dateStr,
+                            'url': 'wp-' + resJSON[j].id + dateStr,
                             'date': resJSON[j].date_gmt + '+09:00',
                             'thumbnail': imgFilePath,
                             'excerpt': resJSON[j].excerpt.rendered

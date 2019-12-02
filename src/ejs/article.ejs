@@ -8,7 +8,7 @@ parameters = {
     description: attributes.excerpt,
     ogpimage: "eyecatch.jpg"
 };
-%><%- include('util/_init_load') %><%- include('util/_functions_article.ejs') %><% contentBody = funcURLConverter(body, relPath); %><%- include('util/_headset', { config, parameters, attributes }) %>
+%><%- include('util/_init_load') %><%- include('util/_functions_article.ejs') %><% contentBody = funcURLConverter(body, relPath); %><%- include('util/_headset', { config, parameters, attributes, relPath }) %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

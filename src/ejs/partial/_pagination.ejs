@@ -11,21 +11,39 @@
                         <span aria-hidden="true">«</span>
                     </a>
                 </li>
-<%
-    }
+<%    }
     //ページネーション
+    let prevEllipsis = false;
+    let nextEllipsis = false;
     for(let i = 1; i <= pageLength; i++) { //ページ数分生成
-        //今いるページの場合、activeクラスを付与
-        if(i === pages) {
-%>
-                <li class="page-item active"><a href="<%= relPath %>news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
-<%
-        } else {
-%>
-                <li class="page-item"><a href="<%= relPath %>news/<%= name + i %>.html" class="page-link"><%= i %></a></li>
-<%
+        let paginationLink = `<a href="${relPath}news/${name}${i}.html" class="page-link">${i}</a>`;
+        if(8 <= pageLength) {
+            if(i !== 1 && i !== pageLength && i < pages - 2) {
+                if(prevEllipsis) {
+                    paginationLink = '';
+                }
+                else {
+                    paginationLink = '<span class="page-link">…</span>';
+                    prevEllipsis = true;
+                }
+            }
+            if(i !== 1 && i !== pageLength && pages + 2 < i) {
+                if(nextEllipsis) {
+                    paginationLink = '';
+                }
+                else {
+                    paginationLink = '<span class="page-link">…</span>';
+                    nextEllipsis = true;
+                }
+            }
         }
-    }
+        //今いるページの場合、activeクラスを付与
+        let paginationActive = '';
+        if(i === pages) {
+            paginationActive = ' active';
+        } %>
+                <li class="page-item<%= paginationActive %>"><%- paginationLink %></li>
+<%    }
     //次のページへ
     if(pages !== pageLength) { //最後のページ以外
         const next = pages + 1;

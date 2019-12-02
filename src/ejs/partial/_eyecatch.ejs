@@ -1,12 +1,8 @@
-<% let eyecatchStyle = '';
-let articleClass = '';
-if(id === 'article') {
-    if(attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
-        eyecatchStyle = ` style="background-image:url('${relPath}${config.param.ogp.newsthumbnail}${attributes.thumbnail}');"`;
-        articleClass = ' smallText';
-    }
+<% let articleClass = '';
+if(id === 'article' && attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
+    articleClass = ' smallText';
 } %>
-    <section class="container-fluid l-eyecatch o-eyecatch mt-navbar"<%- eyecatchStyle %>>
+    <section class="container-fluid l-eyecatch o-eyecatch mt-navbar">
         <div class="container">
             <h1 class="o-eyecatch_header<%= articleClass %>"><%= headerString %></h1>
 <% if(id === 'index') { %>

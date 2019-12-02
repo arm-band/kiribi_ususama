@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.5.0-4.3.1",
+    "version": "6.5.1-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -50,7 +50,7 @@
         "kurodano": "npm run riken",
         "unjaku": "gulp build",
         "sowaka": "node ./bin/tankai",
-        "build": "npm-run-all -s om kurodano unjaku sowaka"
+        "build": "npm-run-all -s om kurodano unjaku"
     },
     "author": "Arm Band",
     "license": "ISC",
