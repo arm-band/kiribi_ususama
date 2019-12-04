@@ -26,7 +26,7 @@ const scss = {
         done();
     },
     sass: () => {
-        return _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`, `!${dir.admin.scss}/**/*.scss`])
+        return _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`])
             .pipe(_.plumber())
             .pipe(_.sass({outputStyle: 'compressed'}).on('error', _.sass.logError))
             .pipe(_.autoprefixer({ cascade: false }))

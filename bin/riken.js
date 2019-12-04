@@ -34,10 +34,10 @@ const scssFileWrite = (scssPath) => {
         const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`);
         if(val) {
             if(key === keyStrSG) { //styleguide
-                pluginCode += `@import "${pluginsStr}/styleguide/sg_index";
-@import "${pluginsStr}/styleguide/sg_news";
-@import "${pluginsStr}/styleguide/sg_article";
-`;
+                const fileList = fs.readdirSync(path.join(path.join(dir.src.scss, pluginsStr), 'styleguide'));
+                for(let i = 0; i < fileList.length; i++) {
+                    pluginCode += `@import "${pluginsStr}/styleguide/${fileList[i]}";\n`;
+                }
             }
             else if(key === keyStrLB) {
                 const scssLBPath = 'assets/lightbox/lightbox.scss';
