@@ -5,7 +5,7 @@
         &::before {
             content: "tel:";
             text-transform: uppercase;
-            margin-right: ($spacer * .25);
+            margin-right: ($spacer * 0.25);
         }
     }
     &_postalcode {
