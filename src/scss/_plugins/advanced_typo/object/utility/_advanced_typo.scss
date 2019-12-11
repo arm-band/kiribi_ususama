@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+/* ************************************ */
+/* margin & padding                     */
+/*                                      */
+/* u-m-1:  8px                          */
+/* u-m-2:  16px                         */
+/* u-m-3:  24px                         */
+/* u-m-4:  40px                         */
+/* u-m-5:  64px                         */
+/* u-m-6:  104px                        */
+/* ************************************ */
+$spacing-unit: 1rem / 2;
+$spacing-loopmax: 6;
+$fibonacci-firstterm: 0;
+$fibonacci-secondterm: 1;
+@for $i from 1 through $spacing-loopmax {
+    $sequence-term: $fibonacci-firstterm + $fibonacci-secondterm;
+
+    .u-m-#{$i} {
+        margin: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-mt-#{$i} {
+        margin-top: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-mr-#{$i} {
+        margin-right: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-mb-#{$i} {
+        margin-bottom: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-ml-#{$i} {
+        margin-left: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-mx-#{$i} {
+        margin: {
+            left: #{$spacing-unit * $sequence-term} !important;
+            right: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+    .u-my-#{$i} {
+        margin: {
+            top: #{$spacing-unit * $sequence-term} !important;
+            bottom: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+
+    .u-p-#{$i} {
+        padding: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pt-#{$i} {
+        padding-top: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pr-#{$i} {
+        padding-right: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pb-#{$i} {
+        padding-bottom: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pl-#{$i} {
+        padding-left: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-px-#{$i} {
+        padding: {
+            left: #{$spacing-unit * $sequence-term} !important;
+            right: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+    .u-py-#{$i} {
+        padding: {
+            top: #{$spacing-unit * $sequence-term} !important;
+            bottom: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+
+    $fibonacci-firstterm: $fibonacci-secondterm;
+    $fibonacci-secondterm: $sequence-term;
+}

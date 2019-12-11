@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* ************************************ */
+/* font-size                            */
+/*                                      */
+/* fs-1:  12.8px                        */
+/* fs-2:  14.222px                      */
+/* fs-3:  16px                          */
+/* fs-4:  18.286px                      */
+/* fs-5:  21.333px                      */
+/* fs-6:  25.6px                        */
+/* fs-7:  32px                          */
+/* fs-8:  42.667px                      */
+/* fs-9:  64px                          */
+/* fs-10: 128px                         */
+/* ************************************ */
+$fontsize-unit: 1rem;
+$fontsize-magnification: 8;
+$fontsize-loopmax: 10;
+@for $i from 1 through $fontsize-loopmax {
+    .fs-#{$fontsize-loopmax + 1 - $i} {
+        font-size: $fontsize-unit * $fontsize-magnification / $i;
+    }
+}
+
+/* ************************************ */
+/* line-height                          */
+/*                                      */
+/* lh-1:  16px                          */
+/* lh-2:  20px                          */
+/* lh-3:  24px                          */
+/* lh-4:  28px                          */
+/* lh-5:  32px                          */
+/* ************************************ */
+$lineheight-magnification: 4;
+$lineheight-unit: 1rem / $lineheight-magnification;
+$lineheight-loopmax: 5;
+@for $i from $lineheight-magnification through $lineheight-magnification + $lineheight-loopmax {
+    .lh-#{$i + 1 - $lineheight-magnification} {
+        line-height: $lineheight-unit * $i;
+    }
+}

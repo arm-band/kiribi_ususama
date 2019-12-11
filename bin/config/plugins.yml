@@ -22,3 +22,4 @@ svghexagon: false
 imagemin: true
 sitesearch: false
 wordpress: false
+advanced_typo: false
