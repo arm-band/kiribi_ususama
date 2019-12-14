@@ -25,7 +25,7 @@ parameters = {
         </aside>
         <section class="container my-5">
             <div class="page-header mb-3 text-center <%= id %>_header">
-                <h2><%= config.param.news.title %><small class="ml-3">Release Notes</small></h2>
+                <h2><%= config.param.news.title %></h2>
             </div>
 <%- include('partial/_pagination', { pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">

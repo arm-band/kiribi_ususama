@@ -15,7 +15,7 @@
                     </li>
 <% if(plugins.news) { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= navPath %>#releasenotes"><%= config.param.news.title %></a>
+                        <a class="nav-link" href="<%= navPath %>#<%= config.param.news.baseurl %>"><%= config.param.news.title %></a>
                     </li>
 <% } %>
 <% if(plugins.sitemap) { %>
