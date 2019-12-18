@@ -2,6 +2,10 @@
 
 @import "../assets/bootstrap/bootstrap"; //bootstrap
 @import "../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; //以下4つFontAwesome
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/brands";
 @import "../foundation/var"; //変数(ejs等と共通)
 @import "../foundation/scss_variables"; //変数(Scssのみ)
 @import "../foundation/mixin"; //mixin
