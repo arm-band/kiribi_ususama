@@ -14,6 +14,7 @@ const plugins = functions.getConfig(dir.config.plugins);
 const browsersync = require('./gulp/tasks/browsersync');
 const ejs = require('./gulp/tasks/ejs');
 const favicon = require('./gulp/tasks/favicon');
+const envfile = require('./gulp/tasks/envfile');
 const ftp = require('./gulp/tasks/ftpdeploy');
 const imagemin = require('./gulp/tasks/imagemin');
 const jsBuild = require('./gulp/tasks/js');
@@ -28,7 +29,7 @@ const wpEjs = require('./gulp/plugins/wpejs');
 const adminJs = require('./bin/daishi/gulp/js');
 const adminSass = require('./bin/daishi/gulp/sass');
 
-let taskArray = [scss, jsBuild, imagemin, favicon];
+let taskArray = [scss, jsBuild, imagemin, favicon, envfile];
 const taskServer = _.gulp.series(browsersync);
 exports.server = taskServer;
 
@@ -61,6 +62,8 @@ exports.js = _.gulp.parallel(jsBuild);
 exports.imagemin = _.gulp.parallel(imagemin);
 //favicon
 exports.favicon = _.gulp.parallel(favicon);
+//envfile
+exports.envfile = _.gulp.parallel(envfile);
 //php
 exports.phpcopy = _.gulp.parallel(phpcopy);
 //ftp

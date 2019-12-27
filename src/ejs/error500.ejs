@@ -1,0 +1,42 @@
+<%
+parameters = {
+    title: 'Internal Server Error',
+    entitle: '500 Internal Server Error',
+    css: 'contents',
+    js: 'app.min',
+    description: 'ページ内の処理でエラーが発生しました。',
+    ogpimage: 'eyecatch.jpg'
+};
+%><%- include('util/_init_load') %><%- include('util/_headset', { config, parameters, relPath }) %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+</head>
+<body data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+<div id="wrapper">
+<div class="l-upper">
+<%- include('partial/_header', { config, commonVar }) %>
+<%- include('partial/_eyecatch', { headerString }) %>
+    <!-- main -->
+    <main class="u-main o-main m-0 p-0 <%= id %>main">
+        <aside class="container">
+<%- include('partial/_breadcrumb', { config, parameters, relPath }) %>
+        </aside>
+        <section class="my-5 container">
+            <div class="page-header mb-3 text-center <%= id %>_header">
+                <h2><%= parameters.title %></h2>
+            </div>
+            <p class="text-center mb-4"><%= parameters.description %></p>
+        </section>
+        <div class="text-center my-4">
+            <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+        </div>
+    </main>
+    <!-- /main -->
+</div>
+<%- include('partial/_footer', { config, copyRightYear }) %>
+</div>
+<%- include('partial/_js_loader', { parameters, relPath }) %>
+</body>
+</html>

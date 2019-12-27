@@ -16,7 +16,8 @@ module.exports = {
         assets     : '/assets',
         js         : './src/js',
         img        : './src/img',
-        favicon    : './src/favicon'
+        favicon    : './src/favicon',
+        envfile    : './src/envfile'
     },
     config: {
         dir        : './bin/config',
