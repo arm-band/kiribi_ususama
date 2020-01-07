@@ -21,18 +21,11 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
     const hr = day.getHours();
     let mt = day.getMinutes();
     let sc = day.getSeconds();
-    if (m < 10) {
-        m = '0' + m;
-    }
-    if (d < 10) {
-        d = '0' + d;
-    }
-    if (mt < 10) {
-        mt = '0' + mt;
-    }
-    if (sc < 10) {
-        sc = '0' + sc;
-    }
+    m  = m.toString().padStart(2, 0);
+    d  = d.toString().padStart(2, 0);
+    mt = mt.toString().padStart(2, 0);
+    sc = sc.toString().padStart(2, 0);
+
     let datetime;
     if(output === 'ymd') {
         datetime = `${y}${optStr}${m}${optStr}${d}`;
