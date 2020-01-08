@@ -18,7 +18,7 @@ const sitemap = () => {
     }
     let fileList = [];
     //探索
-    functions.htmlWalk(functions, dir.dist.html, fileList);
+    functions.htmlWalk(functions, dir.dist.html, fileList, config);
     //ソート
     fileList = _._sortBy(fileList, ['dirStr', 'depth']);
     //一覧生成

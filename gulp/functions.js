@@ -137,7 +137,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
 ### 先頭の---で区切られた部分について\n
 先頭の\`---\`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。\n`;
     },
-    htmlWalk(functions, p, fileList) {
+    htmlWalk(functions, p, fileList, config) {
         let files = _.fs.readdirSync(p);
         for(let i = 0; i < files.length; i++) {
             let path = p;
@@ -146,14 +146,14 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             }
             const fp = path + files[i];
             if(_.fs.statSync(fp).isDirectory()) {
-                functions.htmlWalk(functions, fp, fileList); //ディレクトリなら再帰
+                functions.htmlWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp)) {
+                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX(数字3桁).html」というファイル名でなければ
                     //ページ名
                     const htmlStream = _.fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
-                        pageTitle = RegExp.$1.split(' ')[0]; //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
+                        pageTitle = RegExp.$1.split(config.commons.titleseparator)[0].trim(); //後方参照でtitleタグの中の文字列を参照し、config.ymlのセパレータ文字で分離、最後に両端のスペースをトリム。標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
                     }
                     //直近のディレクトリ名
                     const dirArray = fp.split('/'); //スラッシュで分割
@@ -170,7 +170,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
                         'dirStr': dirStr,
                         'dirArray': dirArray,
                         'depth': depth
-                    }); //HTMLファイルならコールバック発動
+                    }); //htmlファイルならコールバック発動
                 }
             }
         }
@@ -186,14 +186,14 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             if(_.fs.statSync(fp).isDirectory()) {
                 functions.htmlMtimeWalk(functions, fp, fileList); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp)) {
+                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX(数字3桁).html」というファイル名でなければ
                     const mtime = _.fs.statSync(fp).mtime;
                     fileList.push([fp, mtime]); //HTMLファイルならコールバック発動
                 }
             }
         }
     },
-    htmlRemoveWalk(functions, p, fileList) {
+    htmlRemoveWalk(functions, p, fileList, config) {
         let files = _.fs.readdirSync(p);
         for(let i = 0; i < files.length; i++) {
             let path = p;
@@ -202,13 +202,13 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             }
             const fp = path + files[i];
             if(_.fs.statSync(fp).isDirectory()) {
-                functions.htmlRemoveWalk(functions, fp, fileList); //ディレクトリなら再帰
+                functions.htmlRemoveWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp)) {
+                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop()) && !/sitesearch\.html$/.test(fp)) { //htmlファイルで、「errorXXX(数字3桁).html」や「sitesearch.html」というファイル名でなければ
                     const htmlStream = _.fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
-                        pageTitle = RegExp.$1.split(' ')[0]; //後方参照でtitleタグの中の文字列を参照し、半角スペースで分離、標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
+                        pageTitle = RegExp.$1.split(config.commons.titleseparator)[0].trim(); //後方参照でtitleタグの中の文字列を参照し、config.ymlのセパレータ文字で分離、最後に両端のスペースをトリム。標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
                     }
                     const noHTMLText = htmlStream.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'');
                     const noRCLFText = noHTMLText.replace(/[\s\t\r\n]+/g, '');

@@ -18,7 +18,7 @@ const sitesearch = () => {
     }
     let fileList = [];
     //探索
-    functions.htmlRemoveWalk(functions, dir.dist.html, fileList);
+    functions.htmlRemoveWalk(functions, dir.dist.html, fileList, config);
     //一覧生成
     let htmlList = '';
     for(let i = 0; i < fileList.length; i++) {

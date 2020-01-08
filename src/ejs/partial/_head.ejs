@@ -2,17 +2,13 @@
 <% if(plugins.ie) { %><%- include('../_plugins/ie/ie') %><% } %>
     <meta name="format-detection" content="telephone=no,address=no,email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= metaTitle %> | <%= config.commons.sitename %></title>
+    <title><%= metaTitle %> <%= config.commons.titleseparator %> <%= config.commons.sitename %></title>
     <meta name="description" content="<%= metaDescription %>">
-
 <% if(plugins.analytics) { %><%- include('../_plugins/analytics/analytics', { config }) %><% } %>
 <% if(plugins.searchconsole) { %><%- include('../_plugins/searchconsole/searchconsole', { config }) %><% } %>
-
     <!-- favicon, etc -->
     <link href="<%= relPath %>apple-touch-icon.png" rel="apple-touch-icon">
-
 <% if(plugins.themecolor) { %><%- include('../_plugins/themecolor/themecolor') %><% } %>
-
     <!-- css -->
     <link href="<%= relPath %>css/<%= parameters.css %>.css" rel="stylesheet">
 <% if(id === 'article') { %>
@@ -22,6 +18,5 @@ body:not(.index).article .o-eyecatch {
 }
     </style>
 <% } %>
-<% if(plugins.rss) { %><%- include('../_plugins/rss/rss', { config, relPath }) %><% } %>
-
+<% if(plugins.rss && plugins.news) { %><%- include('../_plugins/rss/rss', { config, relPath }) %><% } %>
 <% if(plugins.ogp) { %><%- include('../_plugins/ogp/ogp', { config, metaTitle, metaDescription, metaOgpimage }) %><% } %>
