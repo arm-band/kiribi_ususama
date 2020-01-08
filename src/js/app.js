@@ -37,7 +37,7 @@ const pageScroll = (screlm) => {
                     targetID = href;
                 }
                 let $target = $(targetID);
-                let position = $target.offset().top - navbarHeight;
+                let position = Math.ceil($target.offset().top) - navbarHeight;
                 $(screlm).animate({ scrollTop: position }, speed, 'easeInOutCirc');
                 $navbar.find('.navbar-toggle[data-target="#navbarList"]').click(); //移動したらハンバーガーを折りたたむ
                 return false;
