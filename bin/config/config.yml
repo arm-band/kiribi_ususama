@@ -17,7 +17,7 @@ param:
         wpapi: ""
     ogp:
         ogpimage: "img/eyecatch.jpg"
-        twitteraccount: "Bredtn_1et"
+        twitteraccount: ""
         newsthumbnail: "img/thumbnails/"
     analytics:
     searchconsole:

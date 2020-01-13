@@ -5,12 +5,12 @@ parameters = {
     css: 'index',
     js: 'app.min',
     description: config.commons.description,
-    ogpimage: config.commons.url + parameters.ogpimage
+    ogpimage: config.param.ogp.ogpimage
 };
 const indexCounter = () => {
     let cnt = `最新${String(config.param.news.indexcount)}`;
     if(config.param.news.indexcount === 0) {
-        cnt = "全";
+        cnt = '全';
     }
     return cnt;
 };

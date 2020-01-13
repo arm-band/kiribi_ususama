@@ -1,12 +1,12 @@
 <%
 const returnNews = `${name}${pages}.html`;
 parameters = {
-    title: "記事",
-    entitle: "News",
-    css: "contents",
-    js: "app.min",
+    title: '記事',
+    entitle: 'News',
+    css: 'contents',
+    js: 'app.min',
     description: attributes.excerpt,
-    ogpimage: "eyecatch.jpg"
+    ogpimage: 'img/eyecatch.jpg'
 };
 %><%- include('util/_init_load') %><%- include('util/_functions_article.ejs') %><% contentBody = funcURLConverter(body, relPath); %><%- include('util/_headset', { config, parameters, attributes, relPath }) %>
 <!DOCTYPE html>
