@@ -13,6 +13,7 @@ module.exports = {
     imageminGif: require('imagemin-gifsicle'),
     imageminSvg: require('imagemin-svgo'),
     uglify: require('gulp-uglify-es').default,
+    sourcemaps: require('gulp-sourcemaps'),
     concat: require('gulp-concat'),
     rename: require('gulp-rename'),
     ejs: require('gulp-ejs'),
