@@ -6,9 +6,6 @@ const plugins = functions.getConfig(dir.config.plugins);
 //js圧縮&結合&リネーム
 const jsConcat = () => {
     let libSrcArray = [`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`, `${dir.assets.listjs}/list.min.js`];
-    if(plugins.safari) {
-        libSrcArray.push(`${dir.assets.bowser}/bundled.js`);
-    }
     if(plugins.lightbox) {
         libSrcArray.push(`${dir.assets.lightbox}/js/lightbox.min.js`);
     }

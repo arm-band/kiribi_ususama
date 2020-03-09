@@ -12,7 +12,6 @@ pagetop: true
 articlesns: true
 themecolor: true
 safari: true
-ie: false
 chrome: true
 fixedanchor_scss: false
 fixedanchor_js: true

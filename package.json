@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.7.3-4.3.1",
+    "version": "6.8.0-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -62,7 +62,6 @@
         "bootstrap": "^4.4.1",
         "bootstrap-honoka": "^4.3.1",
         "@fortawesome/fontawesome-free": "^5.12.1",
-        "bowser": "^2.9.0",
         "jquery": "^3.4.1",
         "jquery.easing": "^1.4.1",
         "lightbox2": "^2.11.1",
