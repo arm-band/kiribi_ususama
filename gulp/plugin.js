@@ -3,7 +3,6 @@ module.exports = {
     watch: require('gulp-watch'),
     plumber: require('gulp-plumber'),
     notify: require('gulp-notify'),
-    requireDir: require('require-dir'),
     yaml: require('yaml'),
     sass:  require('gulp-sass'),
     autoprefixer: require('gulp-autoprefixer'),

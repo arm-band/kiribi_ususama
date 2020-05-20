@@ -22,7 +22,7 @@ const pageScroll = (screlm) => {
         $navbar
             .find('.nav-item:not(.dropdown)')
             .find('a')
-            .on('click', function() {
+            .on('click', function () {
                 const speed = 1000;
                 let href = $(this).attr('href');
                 let targetID = '';
@@ -45,7 +45,7 @@ const pageScroll = (screlm) => {
     }
     //一般
     //ナビゲーションバーは除く
-    $('a[href^="#"]:not(.nav-link)').on('click', function() {
+    $('a[href^="#"]:not(.nav-link)').on('click', function () {
         const speed = 1000;
         let href = $(this).attr('href');
         let targetID = href === '#' || href === '' ? 'html' : href; //リンク先が#か空だったらhtmlに
@@ -75,11 +75,11 @@ $(() => {
     //search of list.js
     if ($('#sitesearch').length) {
         const options = {
-            valueNames: ['searchTitle', 'searchText']
+            valueNames: ['searchTitle', 'searchText'],
         };
         const searchList = new List('listSearch', options);
         //hits
-        searchList.on('searchComplete', function(a) {
+        searchList.on('searchComplete', function (a) {
             $('#hits').text(a.matchingItems.length);
         });
     }
