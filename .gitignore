@@ -1,6 +1,10 @@
 /node_modules/
 /src/js/concat/
-/src/scss/assets/
+/src/scss/assets/bootstrap/bootstrap.scss
+/src/scss/assets/bootstrap/honoka/honoka/
+/src/scss/assets/bootstrap/honoka/bootstrap/
+!/src/scss/assets/bootstrap/honoka/_honoka.scss
+/src/scss/assets/lightbox/
 /src/scss/foundation/_var.scss
 /src/js/_plugins/_plugins.js
 /src/scss/_plugins/_plugins.scss
