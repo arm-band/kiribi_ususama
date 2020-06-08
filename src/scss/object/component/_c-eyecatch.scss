@@ -1,6 +1,10 @@
 @charset "utf-8";
 
-.o-eyecatch {
+.c-eyecatch {
+    height: 40vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
     background: {
         repeat: no-repeat;
         size: cover;
@@ -13,6 +17,6 @@
     }
 }
 
-body:not(.mobileSafari) .o-eyecatch {
+body:not(.mobileSafari) .c-eyecatch {
     background-attachment: fixed;
 }

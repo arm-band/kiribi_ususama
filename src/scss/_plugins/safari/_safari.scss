@@ -1,9 +1,8 @@
 @charset "utf-8";
 
-// ============================================= *
-//                                                *
-//  アイキャッチ                                   *
-//                                                *
-// ============================================= */
 //キービジュアルのiOS Safari対策コードを出力
-@import "./object/component/safari";
+@supports ( -webkit-overflow-scrolling: touch ) {
+    .eyecatch {
+        background-attachment: scroll;
+    }
+}

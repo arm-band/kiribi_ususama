@@ -1,5 +1,66 @@
 @charset "utf-8";
 
 //SNSシェアボタンを付与
-@import "./layout/articlesns";
-@import "./object/component/articlesns";
+.c-btn_news {
+    &,
+    &:link {
+        color: darken($bg-color, 4%);
+        .fa.fa-fw {
+            margin-right: 0.1rem;
+        }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: $bg-color;
+    }
+    &Twitter {
+        background-color: $bc-twitter;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-twitter, 8%);
+        }
+    }
+    &Facebook {
+        background-color: $bc-facebook;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-facebook, 12%);
+        }
+    }
+    &Hatena {
+        background-color: $bc-hatena-bookmark;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-hatena-bookmark, 8%);
+        }
+    }
+    &Line {
+        background-color: $bc-line;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-line, 5%);
+        }
+    }
+    &Pocket {
+        background-color: $bc-pocket;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-pocket, 12%);
+        }
+    }
+    &Feedly {
+        background-color: $bc-feedly;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($bc-feedly, 8%);
+        }
+    }
+}

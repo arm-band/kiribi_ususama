@@ -1,4 +1,9 @@
 @charset "utf-8";
 
 //iPhoneのURLバーに色を付ける
-@import "./object/component/themecolor";
+body {
+    background-color: $main-color;
+    #wrapper {
+        background-color: $bg-color;
+    }
+}

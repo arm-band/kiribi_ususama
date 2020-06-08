@@ -1,9 +1,13 @@
 @charset "utf-8";
 
-.o-footer {
+.l-footer {
+    clear: both;
     background-color: $main-color;
     color: $bg-color;
     &_copyright {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
         font-size: 13px;
     }
 }

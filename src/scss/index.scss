@@ -12,34 +12,32 @@
 ** layout                                        **
 **                                               **
 ** ********************************************* */
-@import "layout/height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
-@import "layout/eyecatch";
-@import "layout/footer";
+@import "layout/l-height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
+@import "layout/l-header";
+@import "layout/l-main";
+@import "layout/l-footer";
 
 /* ********************************************* **
 **                                               **
 ** object/utility                                **
 **                                               **
 ** ********************************************* */
-@import "object/utility/link"; //aタグの色
-@import "object/utility/mg";
-@import "object/utility/news_cards";
+@import "object/utility/u-link"; //aタグの色
+@import "object/utility/u-mg";
 
 /* ********************************************* **
 **                                               **
 ** object/component                              **
 **                                               **
 ** ********************************************* */
-@import "object/component/header";
-@import "object/component/eyecatch";
-@import "object/component/main";
-@import "object/component/pagination";
-@import "object/component/footer";
-@import "object/component/address";
+@import "object/component/c-address";
+@import "object/component/c-eyecatch";
+@import "object/component/c-newscards";
+@import "object/component/c-pagination";
 
 /* ********************************************* **
 **                                               **
 ** object/project                                **
 **                                               **
 ** ********************************************* */
-@import "object/project/index";
+@import "object/project/p-index";

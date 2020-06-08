@@ -1,3 +1,10 @@
 @charset "utf-8";
 
-@import "./layout/svghexagon";
+.navbar-toggler {
+    position: relative;
+    &-icon {
+        position: absolute;
+        top: 0.5rem;
+        left: 1.2rem;
+    }
+}

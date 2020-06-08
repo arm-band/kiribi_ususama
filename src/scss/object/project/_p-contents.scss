@@ -1,5 +1,5 @@
 @charset "utf-8";
 
-body:not(.index) .o-eyecatch {
+body:not(.index) .c-eyecatch {
     @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
 }

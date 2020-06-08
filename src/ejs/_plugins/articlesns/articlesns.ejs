@@ -52,7 +52,7 @@ if(flag > 0) { //表示させるボタンが1つもない場合はラッパー�
             if(key === 'hatena' || key === 'feedly') {
                 faCategory = 'fas';
             } %>
-                                    <a class="btn l-news_btn o-news_btn l-news_btn<%= buttonClass %> o-news_btn<%= buttonClass %> col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="<%= snsParam[key].url %>" target="_blank" rel="noopener" title="<%= snsParam[key].title %>"><i class="<%= faCategory %> fa-fw fa-<%= snsParam[key].fa %>" aria-hidden="true"></i><%= snsParam[key].bText %></a>
+                                    <a class="btn c-btn_news c-btn_news<%= buttonClass %> col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="<%= snsParam[key].url %>" target="_blank" rel="noopener" title="<%= snsParam[key].title %>"><i class="<%= faCategory %> fa-fw fa-<%= snsParam[key].fa %>" aria-hidden="true"></i><%= snsParam[key].bText %></a>
 <%      }
     } %>
                                 </div>

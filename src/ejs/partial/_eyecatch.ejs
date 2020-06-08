@@ -2,11 +2,11 @@
 if(id === 'article' && attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
     articleClass = ' smallText';
 } %>
-    <section class="container-fluid l-eyecatch o-eyecatch mt-navbar">
+    <section class="container-fluid c-eyecatch mt-navbar">
         <div class="container">
-            <h1 class="o-eyecatch_header<%= articleClass %>"><%= headerString %></h1>
+            <h1 class="c-eyecatch_header<%= articleClass %>"><%= headerString %></h1>
 <% if(id === 'index') { %>
-            <p class="o-eyecatch_paragraph"><%= parameters.description %></p>
+            <p class="c-eyecatch_paragraph"><%= parameters.description %></p>
 <% } %>
         </div>
     </section>

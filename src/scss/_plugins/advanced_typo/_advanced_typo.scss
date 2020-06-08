@@ -1,5 +1,127 @@
 @charset "utf-8";
 
 //タイポグラフィ(font-size, line-height, margin, padding)関連の設定
-@import "./foundation/advanced_typo";
-@import "./object/utility/advanced_typo";
+/* ************************************ */
+/* font-size                            */
+/*                                      */
+/* fs-1:  12.8px                        */
+/* fs-2:  14.222px                      */
+/* fs-3:  16px                          */
+/* fs-4:  18.286px                      */
+/* fs-5:  21.333px                      */
+/* fs-6:  25.6px                        */
+/* fs-7:  32px                          */
+/* fs-8:  42.667px                      */
+/* fs-9:  64px                          */
+/* fs-10: 128px                         */
+/* ************************************ */
+$fontsize-unit: 1rem;
+$fontsize-magnification: 8;
+$fontsize-loopmax: 10;
+@for $i from 1 through $fontsize-loopmax {
+    .fs-#{$fontsize-loopmax + 1 - $i} {
+        font-size: $fontsize-unit * $fontsize-magnification / $i;
+    }
+}
+
+/* ************************************ */
+/* line-height                          */
+/*                                      */
+/* lh-1:  16px                          */
+/* lh-2:  20px                          */
+/* lh-3:  24px                          */
+/* lh-4:  28px                          */
+/* lh-5:  32px                          */
+/* ************************************ */
+$lineheight-magnification: 4;
+$lineheight-unit: 1rem / $lineheight-magnification;
+$lineheight-loopmax: 5;
+@for $i from $lineheight-magnification through $lineheight-magnification + $lineheight-loopmax {
+    .lh-#{$i + 1 - $lineheight-magnification} {
+        line-height: $lineheight-unit * $i;
+    }
+}
+
+/* ************************************ */
+/* margin & padding                     */
+/*                                      */
+/* u-m-1:  8px                          */
+/* u-m-2:  16px                         */
+/* u-m-3:  24px                         */
+/* u-m-4:  40px                         */
+/* u-m-5:  64px                         */
+/* u-m-6:  104px                        */
+/* ************************************ */
+$spacing-unit: 1rem / 2;
+$spacing-loopmax: 6;
+$fibonacci-firstterm: 0;
+$fibonacci-secondterm: 1;
+@for $i from 1 through $spacing-loopmax {
+    $sequence-term: $fibonacci-firstterm + $fibonacci-secondterm;
+
+    .u-m-#{$i} {
+        margin: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-mt-#{$i} {
+        margin-top: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-mr-#{$i} {
+        margin-right: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-mb-#{$i} {
+        margin-bottom: #{$spacing-unit * $sequence-term} !important;
+    }
+    .u-ml-#{$i} {
+        margin-left: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-mx-#{$i} {
+        margin: {
+            left: #{$spacing-unit * $sequence-term} !important;
+            right: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+    .u-my-#{$i} {
+        margin: {
+            top: #{$spacing-unit * $sequence-term} !important;
+            bottom: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+
+    .u-p-#{$i} {
+        padding: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pt-#{$i} {
+        padding-top: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pr-#{$i} {
+        padding-right: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pb-#{$i} {
+        padding-bottom: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-pl-#{$i} {
+        padding-left: #{$spacing-unit * $sequence-term} !important;
+    }
+
+    .u-px-#{$i} {
+        padding: {
+            left: #{$spacing-unit * $sequence-term} !important;
+            right: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+    .u-py-#{$i} {
+        padding: {
+            top: #{$spacing-unit * $sequence-term} !important;
+            bottom: #{$spacing-unit * $sequence-term} !important;
+        }
+    }
+
+    $fibonacci-firstterm: $fibonacci-secondterm;
+    $fibonacci-secondterm: $sequence-term;
+}
