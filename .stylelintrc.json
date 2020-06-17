@@ -17,7 +17,7 @@
         "at-rule-no-unknown": [
             true, {
                 "ignoreAtRules": [
-                    "function","if","for","each","include","mixin","content"
+                    "function","if","else if","else","for","each","include","mixin","content"
                 ]
             }
         ],
@@ -38,7 +38,7 @@
             "at-rule-no-unknown": [
                 true, {
                     "ignoreAtRules": [
-                        "function","if","for","each","include","mixin","content"
+                        "function","if","else if","else","for","each","include","mixin","content"
                     ]
                 }
             ],

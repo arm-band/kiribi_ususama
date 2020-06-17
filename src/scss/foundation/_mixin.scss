@@ -5,7 +5,7 @@
     transition: all 0.3s ease;
 }
 @mixin tColors() {
-    transition: color,background-color 0.3s ease;
+    transition: color, background-color 0.3s ease;
 }
 
 //font: round gothic
@@ -43,11 +43,9 @@
     font-family: "Font Awesome 5 Free", sans-serif;
     @if $type == "regular" or $type == "brands" {
         font-weight: 400;
-    }
-    @else if $type == "light" {
+    } @else if $type == "light" {
         font-weight: 300;
-    }
-    @else {
+    } @else {
         font-weight: 900;
     }
     content: $icon;
