@@ -1,11 +1,8 @@
-@charset "utf-8";
-
 .c-address {
     &_tel {
         &::before {
-            content: "tel:";
+            @include pseudoColon("tel");
             text-transform: uppercase;
-            margin-right: ($spacer * 0.25);
         }
     }
     &_postalcode {

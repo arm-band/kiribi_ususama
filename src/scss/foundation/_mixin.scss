@@ -4,6 +4,9 @@
 @mixin t() {
     transition: all 0.3s ease;
 }
+@mixin tColors() {
+    transition: color,background-color 0.3s ease;
+}
 
 //font: round gothic
 @mixin marugo() {
@@ -29,4 +32,24 @@
     z-index: 3;
     font-size: $fontSize;
     @include mincho();
+}
+//疑似要素に「文字列:」を付与する(電話番号等)
+@mixin pseudoColon($text: "") {
+    content: $text + ":";
+    margin-right: ($spacer * 0.25);
+}
+//疑似要素にFont Awesomeを付与する
+@mixin iconFA($icon: "", $type: "solid") {
+    font-family: "Font Awesome 5 Free", sans-serif;
+    @if $type == "regular" or $type == "brands" {
+        font-weight: 400;
+    }
+    @else if $type == "light" {
+        font-weight: 300;
+    }
+    @else {
+        font-weight: 900;
+    }
+    content: $icon;
+    margin-right: ($spacer * 0.25);
 }
