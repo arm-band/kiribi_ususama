@@ -33,11 +33,13 @@
     font-size: $fontSize;
     @include mincho();
 }
+
 //疑似要素に「文字列:」を付与する(電話番号等)
 @mixin pseudoColon($text: "") {
     content: $text + ":";
     margin-right: ($spacer * 0.25);
 }
+
 //疑似要素にFont Awesomeを付与する
 @mixin iconFA($icon: "", $type: "solid") {
     font-family: "Font Awesome 5 Free", sans-serif;

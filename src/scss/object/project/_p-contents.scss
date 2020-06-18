@@ -1,5 +1,16 @@
 @charset "utf-8";
 
 body:not(.index) .c-eyecatch {
-    @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    @include media-breakpoint-down(sm) {
+        @include eyecatchBGImage("../img/eyecatch_sp.jpg", $background-position);
+    }
+    @include media-breakpoint-only(md) {
+        @include eyecatchBGImage("../img/eyecatch_tb2.jpg", $background-position);
+    }
+    @include media-breakpoint-only(lg) {
+        @include eyecatchBGImage("../img/eyecatch_tb.jpg", $background-position);
+    }
+    @include media-breakpoint-up(xl) {
+        @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    }
 }

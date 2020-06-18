@@ -15,6 +15,20 @@
     &_header.smallText {
         @include eyecatchText(3rem);
     }
+    &.c-eyecatchMaxHeight {
+        @include media-breakpoint-down(sm) {
+            max-height: 800px;
+        }
+        @include media-breakpoint-only(md) {
+            max-height: 800px;
+        }
+        @include media-breakpoint-only(lg) {
+            max-height: 800px;
+        }
+        @include media-breakpoint-up(xl) {
+            max-height: 1080px;
+        }
+    }
 }
 
 body:not(.mobileSafari) .c-eyecatch {

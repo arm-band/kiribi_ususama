@@ -4,7 +4,18 @@
 .index .c-eyecatch {
     height: $eyecatch-height;
     overflow: hidden;
-    @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    @include media-breakpoint-down(sm) {
+        @include eyecatchBGImage("../img/eyecatch_sp.jpg", $background-position);
+    }
+    @include media-breakpoint-only(md) {
+        @include eyecatchBGImage("../img/eyecatch_tb2.jpg", $background-position);
+    }
+    @include media-breakpoint-only(lg) {
+        @include eyecatchBGImage("../img/eyecatch_tb.jpg", $background-position);
+    }
+    @include media-breakpoint-up(xl) {
+        @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    }
     &_header {
         @include eyecatchText(calc(4em + 4vw));
     }
