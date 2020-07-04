@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.11.3-4.3.1",
+    "version": "6.11.4-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -11,7 +11,7 @@
         "svaha": "gulp",
         "kongou": "npm-run-all -p kakaishu kashou zanmai gue shingon reiyoumon",
         "kashou": "cpx \"./node_modules/bootstrap-honoka/scss/*.scss\" \"./src/scss/assets/bootstrap\"",
-        "zanmai": "cpx \"./node_modules/bootstrap-honoka/scss/honoka/_honoka.scss\" \"./src/scss/assets/bootstrap/honoka\"",
+        "zanmai": "node ./bin/zanmai",
         "gue": "cpx \"./node_modules/bootstrap-honoka/scss/honoka/*.scss\" \"./src/scss/assets/bootstrap/honoka/honoka\"",
         "shingon": "cpx \"./node_modules/bootstrap/scss/**/*.scss\" \"./src/scss/assets/bootstrap/honoka/bootstrap/scss\"",
         "reiyoumon": "cpx \"./node_modules/@fortawesome/fontawesome-free/webfonts/**/*\" \"./dist/webfonts/\"",
