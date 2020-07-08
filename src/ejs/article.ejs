@@ -8,7 +8,13 @@ parameters = {
     description: attributes.excerpt,
     ogpimage: 'img/eyecatch.jpg'
 };
-%><%- include('util/_init_load') %><%- include('util/_functions_article.ejs') %><% contentBody = funcURLConverter(body, relPath); %><%- include('util/_headset', { config, parameters, attributes, relPath }) %>
+-%>
+<%- include('util/_init_load') -%>
+<%- include('util/_functions_article.ejs') -%>
+<%
+contentBody = funcURLConverter(body, relPath);
+-%>
+<%- include('util/_headset', { config, parameters, attributes, relPath }) -%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,7 +35,7 @@ parameters = {
 const datetime = funcDateTimeFormat(attributes.date, "", "tz")
 const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
 const articleUrl = funcArticleUrl(config.commons.url, attributes)
-%>
+-%>
             <div class="news_article" id="<%= attributes.url %>">
                 <h2 class="news_header"><%= attributes.title %></h2>
                 <div class=" mb-3 news_createdatetime">
@@ -38,7 +44,13 @@ const articleUrl = funcArticleUrl(config.commons.url, attributes)
                 <div class="mb-3 news_contents">
                     <%- contentBody %>
                 </div>
-<% if(plugins.articlesns) { %><%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle }) %><% } %>
+<%
+if(plugins.articlesns) {
+-%>
+    <%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle }) %>
+<%
+}
+-%>
             </div>
         </article>
         <div class="text-center my-5">

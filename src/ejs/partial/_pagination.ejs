@@ -1,17 +1,20 @@
-<% if(pageLength > 1) { %>
+<%
+if(pageLength > 1) {
+-%>
         <nav class="mt-3 mb-4" aria-label="新着情報一覧のページ送り">
             <ul class="pagination">
 <%
     //前のページへ
     if(pages !== 1) { //最初のページ以外
         const prev = pages - 1;
-%>
+-%>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
                         <span aria-hidden="true">«</span>
                     </a>
                 </li>
-<%    }
+<%
+    }
     //ページネーション
     let prevEllipsis = false;
     let nextEllipsis = false;
@@ -41,19 +44,25 @@
         let paginationActive = '';
         if(i === pages) {
             paginationActive = ' active';
-        } %>
+        }
+-%>
                 <li class="page-item<%= paginationActive %>"><%- paginationLink %></li>
-<%    }
+<%
+    }
     //次のページへ
     if(pages !== pageLength) { //最後のページ以外
         const next = pages + 1;
-%>
+-%>
                 <li class="page-item">
                     <a href="<%= relPath %>news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>
-<%   } %>
+<%
+    }
+-%>
             </ul>
         </nav>
-<% } %>
+<%
+}
+-%>

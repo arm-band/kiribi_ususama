@@ -1,12 +1,18 @@
-<% let articleClass = '';
+<%
+let articleClass = '';
 if(id === 'article' && attributes.thumbnail !== null && attributes.thumbnail !== undefined) {
     articleClass = ' smallText';
-} %>
+}
+-%>
     <section class="container-fluid c-eyecatch c-eyecatchMaxHeight mt-navbar">
         <div class="container">
             <h1 class="c-eyecatch_header<%= articleClass %>"><%= headerString %></h1>
-<% if(id === 'index') { %>
+<%
+if(id === 'index') {
+-%>
             <p class="c-eyecatch_paragraph"><%= parameters.description %></p>
-<% } %>
+<%
+}
+-%>
         </div>
     </section>

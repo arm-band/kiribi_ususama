@@ -14,7 +14,10 @@ const indexCounter = () => {
     }
     return cnt;
 };
-%><%- include('util/_init_load') %><%- include('util/_functions_article') %><%- include('util/_headset', { config, parameters, relPath }) %>
+-%>
+<%- include('util/_init_load') -%>
+<%- include('util/_functions_article') -%>
+<%- include('util/_headset', { config, parameters, relPath }) -%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,8 +27,18 @@ const indexCounter = () => {
 <div id="wrapper">
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>
-<% if(plugins.slick) { %><%- include('_plugins/slick/slick', { relPath }) %><% }
- else { %><%- include('partial/_eyecatch', { headerString, parameters }) %><% } %>
+<%
+if(plugins.slick) {
+-%>
+    <%- include('_plugins/slick/slick', { relPath }) %>
+<%
+}
+else {
+-%>
+    <%- include('partial/_eyecatch', { headerString, parameters }) -%>
+<%
+}
+-%>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main">
         <section class="container fixed_anchor" id="contents">
@@ -34,7 +47,7 @@ const indexCounter = () => {
 <%
 if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.length > 0) {
     const counter = indexCounter();
-%>
+-%>
         <section class="container my-5 <%= config.param.news.baseurl %> fixed_anchor" id="<%= config.param.news.baseurl %>">
             <div class="page-header mb-3 text-center <%= config.param.news.baseurl %>_header">
                 <h2><%= config.param.news.title %></h2>
@@ -49,7 +62,9 @@ if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.le
                 <a href="<%= relPath %>news/news1.html" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>過去の<%= config.param.news.title %></a>
             </div>
         </section>
-<% } %>
+<%
+}
+-%>
     </main>
     <!-- /main -->
 </div>

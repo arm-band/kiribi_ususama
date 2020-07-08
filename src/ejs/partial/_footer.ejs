@@ -1,4 +1,10 @@
-<% if(plugins.pagetop) { %><%- include('../_plugins/pagetop/pagetop') %><% } %>
+<%
+if(plugins.pagetop) {
+-%>
+<%- include('../_plugins/pagetop/pagetop') %>
+<%
+}
+-%>
     <!-- footer -->
     <footer class="l-footer">
         <small class="pt-1 pb-2 l-footer_copyright">© <%= copyRightYear %> <%= config.commons.author %>.</small>

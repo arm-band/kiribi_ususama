@@ -20,7 +20,6 @@ const commonsEjs = () => {
     }))
     .pipe(_.ejs({ config, commonVar, plugins, parameters }))
     .pipe(_.rename({ extname: '.html' }))
-    .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
     .pipe(_.htmlmin(jsConfig.configHtmlMin))
     .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
     .pipe(_.gulp.dest(dir.dist.html));
@@ -52,7 +51,6 @@ const indexEjs = () => {
         }))
         .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
         .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
         .pipe(_.gulp.dest(dir.dist.html));
@@ -105,7 +103,6 @@ const newsEjs = (done) => {
             }))
             .pipe(_.ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters }))
             .pipe(_.rename(`${articleFileName}.html`))
-            .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
             .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
             .pipe(_.gulp.dest(dir.dist.articles));
@@ -125,7 +122,6 @@ const newsEjs = (done) => {
                 }))
                 .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
                 .pipe(_.rename(`${name}${pages}.html`))
-                .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
                 .pipe(_.htmlmin(jsConfig.configHtmlMin))
                 .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
                 .pipe(_.gulp.dest(dir.dist.news));
@@ -143,7 +139,6 @@ const newsEjs = (done) => {
             }))
             .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
             .pipe(_.rename(`${name}${pages}.html`))
-            .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
             .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
             .pipe(_.gulp.dest(dir.dist.news));
@@ -173,7 +168,6 @@ const newslessEjs = () => {
         }))
         .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
         .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.replace(jsConfig.htmlInitDel, '$1'))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
         .pipe(_.gulp.dest(dir.dist.html));

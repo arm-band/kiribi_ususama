@@ -7,7 +7,10 @@ parameters = {
     description: config.param.news.title + 'の一覧(' + pages + 'ページ目)です。',
     ogpimage: 'img/eyecatch.jpg'
 };
-%><%- include('util/_init_load') %><%- include('util/_functions_article') %><%- include('util/_headset', { config, parameters, relPath }) %>
+-%>
+<%- include('util/_init_load') -%>
+<%- include('util/_functions_article') -%>
+<%- include('util/_headset', { config, parameters, relPath }) -%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
