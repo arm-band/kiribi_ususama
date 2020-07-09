@@ -104,6 +104,8 @@ const pageScroll = (screlm) => {
     //ナビゲーションバーは除く
     $('a[href^="#"]:not(.nav-link)').on('click', function () {
         const speed = 1000;
+        const classFixedAnchor = 'fixed_anchor';
+        const dataFixedAnchor = 'data-fixedanchor';
         let href = $(this).attr('href');
         let targetID = href === '#' || href === '' ? 'html' : href; //リンク先が#か空だったらhtmlに
         let $target = $(targetID);
