@@ -18,8 +18,10 @@ const pageScroll = (screlm) => {
     //ナビゲーションバー
     const $navbar = $('#navbar');
     //ブランド名とドロップダウンコンポーネント以外のナビゲーションリスト
-    $navbar.find('.navbar-brand, .nav-item:not(.dropdown) a').on('click', function (e) {
+    $navbar.find('.navbar-brand, .nav-item:not(.dropdown) a, .dropdown-item').on('click', function (e) {
         const speed = 1000;
+        const classFixedAnchor = 'fixed_anchor';
+        const dataFixedAnchor = 'data-fixedanchor';
         let href = $(this).attr('href');
         let linkPath = '';
         let currentPath = '';
@@ -80,7 +82,11 @@ const pageScroll = (screlm) => {
                 targetID = 'html';
             }
             let $target = $(targetID);
-            let position = Math.ceil($target.offset().top) - navbarHeight;
+            let position = Math.ceil($target.offset().top);
+            //$targetがクラス`fixed_anchor`を持っていない場合は差し引きを調整する
+            if (!$target.hasClass(classFixedAnchor) || $('body').attr(dataFixedAnchor) === 'false') {
+                position = position - navbarHeight;
+            }
             $(screlm).animate({ scrollTop: position }, speed, 'easeInOutCirc');
             const navBarListID = 'navbarList';
             if ($(e.currentTarget).closest('#' + navBarListID).length > 0) {
@@ -101,7 +107,11 @@ const pageScroll = (screlm) => {
         let href = $(this).attr('href');
         let targetID = href === '#' || href === '' ? 'html' : href; //リンク先が#か空だったらhtmlに
         let $target = $(targetID);
-        let position = $target.offset().top - navbarHeight;
+        let position = Math.ceil($target.offset().top);
+        //$targetがクラス`fixed_anchor`を持っていない場合は差し引きを調整する
+        if (!$target.hasClass(classFixedAnchor) || $('body').attr(dataFixedAnchor) === 'false') {
+            position = position - navbarHeight;
+        }
         $(screlm).animate({ scrollTop: position }, speed, 'easeInOutCirc');
         return false;
     });

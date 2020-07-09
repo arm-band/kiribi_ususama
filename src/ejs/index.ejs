@@ -23,7 +23,7 @@ const indexCounter = () => {
 <head>
 <%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
-<body data-spy="scroll" aria-controls="navbarList" data-target="#navbarList" data-offset="<%= navbarHeight %>" class="<%= id %>" id="<%= id %>">
+<body data-spy="scroll" aria-controls="navbarList" data-target="#navbarList" data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
 <div id="wrapper">
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>

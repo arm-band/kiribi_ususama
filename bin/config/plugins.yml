@@ -13,7 +13,7 @@ articlesns: true
 themecolor: true
 safari: true
 chrome: true
-fixedanchor_scss: false
+fixedanchor_scss: true
 fixedanchor_js: true
 lightbox: true
 slick: true
