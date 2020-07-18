@@ -1,0 +1,99 @@
+<%
+parameters = {
+    title: 'ブラウザ変更のお願い',
+    entitle: 'IE not supported',
+    css: 'contents',
+    js: 'app.min',
+    description: 'ご利用のブラウザは推奨環境ではありません。Webサイトの動作が保証できません。',
+    ogpimage: 'img/eyecatch.jpg'
+};
+-%>
+<%- include('util/_init_load') -%>
+<%- include('util/_headset', { config, parameters, relPath }) -%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: -apple-system,"BlinkMacSystemFont","Helvetica Neue",Helvetica,"Arial","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            line-height: 1.6;
+            letter-spacing: .15rem;
+        }
+        .navbar {
+            padding: 1.2rem 1.5rem;
+        }
+        th {
+            white-space: nowrap;
+        }
+        .l-footer_copyright {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
+<div id="wrapper">
+<div class="l-upper">
+<!-- header -->
+<header class="header" id="navbar">
+    <nav class="navbar navbar-light bg-white">
+        <div class="container">
+            <h1 class="navbar-brand my-0 o-navbar_header"><%= config.commons.sitename %></h1>
+        </div>
+    </nav>
+</header>
+<!-- /header -->
+    <!-- main -->
+    <main class="m-0 p-0 <%= id %>main">
+        <section class="py-5 container">
+            <div class="page-header mb-3 <%= id %>_header">
+                <h2><%= parameters.title %></h2>
+            </div>
+            <p class="mb-2"><%= parameters.description %></p>
+            <p class="mb-5">お手数ですが以下のブラウザへの移行をご検討くださいますようお願い申し上げます。</p>
+            <h3 class="mt-4 mb-3">推奨ブラウザ一覧</h3>
+            <table class="table table-striped table-responsive mb-5">
+                <tbody>
+                    <tr>
+                        <th><a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">🔗Microsoft Edge</a></th>
+                        <td>Microsoft開発の最新の無料ブラウザです。Google Chromeベースで構築されています。</td>
+                    </tr>
+                    <tr>
+                        <th><a href="https://www.google.com/chrome/" target="_blank" rel="noopener">🔗Google Chrome</a></th>
+                        <td>高速で安全な無料ブラウザです。最新のWeb技術に対応しています。</td>
+                    </tr>
+                    <tr>
+                        <th><a href="https://www.mozilla.org/ja/firefox/" target="_blank" rel="noopener">🔗Firefox</a></th>
+                        <td>個人のプライバシーに配慮した無料ブラウザです。グローバルな非営利法人によって作成されています。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="mt-4 mb-3">新しいブラウザに移行するメリット</h3>
+            <table class="table table-striped table-responsive">
+                <tbody>
+                    <tr>
+                        <th>✔正常な表示</th>
+                        <td>様々なWebサイトを正常に表示できるようになります。美しいデザインで、ご自身の操作に反応するアニメーションを実感することで、より良いWebの体験が可能となります。</td>
+                    </tr>
+                    <tr>
+                        <th>🔧カスタマイズ性の向上</th>
+                        <td>各ブラウザの拡張機能をインストールすることで、今まではできなかった作業の効率化を図ることができます。</td>
+                    </tr>
+                    <tr>
+                        <th>🛡セキュリティの向上</th>
+                        <td>頻繁に実施されるアップデートにより、セキュリティが向上します。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <!-- /main -->
+</div>
+<%- include('partial/_footer', { config, copyRightYear }) %>
+</div>
+</body>
+</html>

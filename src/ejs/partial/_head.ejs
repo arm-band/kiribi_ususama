@@ -36,8 +36,14 @@ if(plugins.themecolor) {
 <%
 }
 -%>
+<%
+if(id !== 'error-ie') {
+-%>
     <!-- css -->
     <link href="<%= relPath %>css/<%= parameters.css %>.css" rel="stylesheet">
+<%
+}
+-%>
 <%
 if(id === 'article') {
 -%>

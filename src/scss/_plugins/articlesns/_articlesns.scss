@@ -1,9 +1,37 @@
 @charset "utf-8";
 
+$sns-array: (
+    Twitter: (
+        color: $bc-twitter,
+        darkness: 8%
+    ),
+    Facebook: (
+        color: $bc-facebook,
+        darkness: 12%
+    ),
+    Hatena: (
+        color: $bc-hatena-bookmark,
+        darkness: 8%
+    ),
+    Line: (
+        color: $bc-line,
+        darkness: 5%
+    ),
+    Pocket: (
+        color: $bc-pocket,
+        darkness: 12%
+    ),
+    Feedly: (
+        color: $bc-feedly,
+        darkness: 8%
+    )
+);
+
 //SNSシェアボタンを付与
 .c-btn_news {
     &,
-    &:link {
+    &:link,
+    &:visited {
         color: darken($bg-color, 4%);
         .fa.fa-fw {
             margin-right: 0.1rem;
@@ -15,52 +43,14 @@
         text-decoration: none;
         color: $bg-color;
     }
-    &Twitter {
-        background-color: $bc-twitter;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-twitter, 8%);
-        }
-    }
-    &Facebook {
-        background-color: $bc-facebook;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-facebook, 12%);
-        }
-    }
-    &Hatena {
-        background-color: $bc-hatena-bookmark;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-hatena-bookmark, 8%);
-        }
-    }
-    &Line {
-        background-color: $bc-line;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-line, 5%);
-        }
-    }
-    &Pocket {
-        background-color: $bc-pocket;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-pocket, 12%);
-        }
-    }
-    &Feedly {
-        background-color: $bc-feedly;
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($bc-feedly, 8%);
+    @each $key, $val in $sns-array {
+        &#{$key} {
+            background-color: map-get($val, color);
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: darken(map-get($val, color), map-get($val, darkness));
+            }
         }
     }
 }

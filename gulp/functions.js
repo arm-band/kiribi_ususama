@@ -148,7 +148,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             if(_.fs.statSync(fp).isDirectory()) {
                 functions.htmlWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX(数字3桁).html」というファイル名でなければ
+                if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX.html」というファイル名でなければ
                     //ページ名
                     const htmlStream = _.fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
@@ -186,7 +186,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             if(_.fs.statSync(fp).isDirectory()) {
                 functions.htmlMtimeWalk(functions, fp, fileList); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX(数字3桁).html」というファイル名でなければ
+                if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX.html」というファイル名でなければ
                     const mtime = _.fs.statSync(fp).mtime;
                     fileList.push([fp, mtime]); //HTMLファイルならコールバック発動
                 }
@@ -204,7 +204,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
             if(_.fs.statSync(fp).isDirectory()) {
                 functions.htmlRemoveWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
-                if(/.*\.html$/.test(fp) && !/^error[\d]{3}\.html$/.test(fp.split('/').pop()) && !/sitesearch\.html$/.test(fp)) { //htmlファイルで、「errorXXX(数字3桁).html」や「sitesearch.html」というファイル名でなければ
+                if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop()) && !/sitesearch\.html$/.test(fp)) { //htmlファイルで、「errorXXX.html」や「sitesearch.html」というファイル名でなければ
                     const htmlStream = _.fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
