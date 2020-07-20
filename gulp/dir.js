@@ -12,11 +12,12 @@ module.exports = {
         ejs        : './src/ejs',
         php        : './src/php',
         scss       : './src/scss',
-        assets     : '/assets',
+        scssassets : '/assets',
         js         : './src/js',
         img        : './src/img',
         favicon    : './src/favicon',
-        envfile    : './src/envfile'
+        envfile    : './src/envfile',
+        assets     : './src/assets'
     },
     config: {
         dir        : './bin/config',
@@ -41,7 +42,8 @@ module.exports = {
         articles   : './dist/news/articles',
         css        : './dist/css',
         js         : './dist/js',
-        img        : './dist/img'
+        img        : './dist/img',
+        assets     : './dist/assets'
     },
     admin: {
         dir        : './bin/daishi',

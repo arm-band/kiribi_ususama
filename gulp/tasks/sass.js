@@ -26,7 +26,7 @@ const scss = {
         done();
     },
     sass: () => {
-        let objGulp = _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.assets}/**/*.scss`]);
+        let objGulp = _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.scssassets}/**/*.scss`]);
         if(process.env.DEV_MODE === 'true') {
             objGulp = objGulp.pipe(_.sourcemaps.init())
         }

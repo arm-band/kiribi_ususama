@@ -13,6 +13,7 @@ const phpcopy = require('./phpcopy');
 const scssTask = require('./sass');
 const sass = scssTask.sass;
 const scss = _.gulp.series(scssTask.yaml2sass, scssTask.sass);
+const assetsCopy = require('./assetscopy');
 const sitemap = require('../plugins/sitemap');
 const sitemapxml = require('../plugins/sitemapxml');
 const styleguide = require('../plugins/styleguide');
@@ -73,6 +74,7 @@ const browsersync = () => {
     _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series(sass, _.browserSync.reload));
     _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series(imagemin, _.browserSync.reload));
     _.watch([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`], _.gulp.series(jsBuild, _.browserSync.reload));
+    _.watch([`${dir.src.assets}/**/*.pdf`, `${dir.src.assets}/**/*.docx`, `${dir.src.assets}/**/*.xlsx`, `${dir.src.assets}/**/*.pptx`], _.gulp.series(assetsCopy, _.browserSync.reload));
     _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(taskBuild, _.browserSync.reload));
 };
 

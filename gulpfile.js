@@ -21,6 +21,7 @@ const jsBuild = require('./gulp/tasks/js');
 const phpcopy = require('./gulp/tasks/phpcopy');
 const scssTask = require('./gulp/tasks/sass');
 const scss = _.gulp.series(scssTask.yaml2sass, scssTask.sass);
+const assetsCopy = require('./gulp/tasks/assetscopy');
 const sitemap = require('./gulp/plugins/sitemap');
 const sitemapxml = require('./gulp/plugins/sitemapxml');
 const styleguide = require('./gulp/plugins/styleguide');
@@ -66,6 +67,8 @@ exports.favicon = _.gulp.parallel(favicon);
 exports.envfile = _.gulp.parallel(envfile);
 //php
 exports.phpcopy = _.gulp.parallel(phpcopy);
+//assets files
+exports.assetscopy = _.gulp.parallel(assetsCopy);
 //ftp
 exports.ftp = _.gulp.parallel(ftp);
 //plugins
