@@ -69,12 +69,12 @@ const browsersync = () => {
     if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
         _.watch(`${dir.contents.dir}/**/*.md`, _.gulp.series(taskEjs, _.browserSync.reload));
     }
-    _.watch(`${dir.src.favicon}/**/*`, _.gulp.series(favicon, _.browserSync.reload));
+    _.watch(`${dir.src.favicon}/**/*.+(png|ico|icon)`, _.gulp.series(favicon, _.browserSync.reload));
     _.watch(`${dir.src.envfile}/**/*`, _.gulp.series(envfile, _.browserSync.reload));
     _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series(sass, _.browserSync.reload));
     _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series(imagemin, _.browserSync.reload));
     _.watch([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`], _.gulp.series(jsBuild, _.browserSync.reload));
-    _.watch([`${dir.src.assets}/**/*.pdf`, `${dir.src.assets}/**/*.docx`, `${dir.src.assets}/**/*.xlsx`, `${dir.src.assets}/**/*.pptx`], _.gulp.series(assetsCopy, _.browserSync.reload));
+    _.watch(`${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`, _.gulp.series(assetsCopy, _.browserSync.reload));
     _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(taskBuild, _.browserSync.reload));
 };
 

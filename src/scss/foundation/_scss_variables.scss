@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-$main-color2: darken($main-color, 8%);
-$main-color3: lighten($main-color, 8%);
+$main-color_d: darken($main-color, 8%);
+$main-color_l: lighten($main-color, 8%);
 $accent-color: adjust-hue($main-color, 150deg);
 $link-color: adjust-hue($main-color, 210deg);
 $link-v-color: darken($link-color, 15%);

@@ -30,7 +30,7 @@ const wpEjs = require('./gulp/plugins/wpejs');
 const adminJs = require('./bin/daishi/gulp/js');
 const adminSass = require('./bin/daishi/gulp/sass');
 
-let taskArray = [scss, jsBuild, imagemin, favicon, envfile];
+let taskArray = [scss, jsBuild, imagemin, favicon, envfile, assetsCopy];
 const taskServer = _.gulp.series(browsersync);
 exports.server = taskServer;
 

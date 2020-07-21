@@ -3,9 +3,7 @@ const dir       = require('../dir');
 
 //assets files
 const assetscopy = () => {
-    return _.gulp.src(
-        [`${dir.src.assets}/**/*.pdf`, `${dir.src.assets}/**/*.docx`, `${dir.src.assets}/**/*.xlsx`, `${dir.src.assets}/**/*.pptx`]
-    )
+    return _.gulp.src(`${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`)
     .pipe(_.plumber())
     .pipe(_.gulp.dest(dir.dist.assets));
 };

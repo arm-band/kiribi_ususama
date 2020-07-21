@@ -3,9 +3,7 @@ const dir       = require('../dir');
 
 //favicon
 const favicon = () => {
-    return _.gulp.src(
-        [`${dir.src.favicon}/**/*.png`, `${dir.src.favicon}/**/*.ico`, `${dir.src.favicon}/**/*.icon`]
-    )
+    return _.gulp.src(`${dir.src.favicon}/**/*.+(png|ico|icon)`)
     .pipe(_.plumber())
     .pipe(_.gulp.dest(dir.dist.html));
 };
