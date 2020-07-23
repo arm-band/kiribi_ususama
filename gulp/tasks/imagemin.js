@@ -9,6 +9,12 @@ const imageminify = () => {
     return _.gulp.src(IMGDIR.src, {
             since: _.gulp.lastRun(imageminify)
         })
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'imageminify'
+            })
+        }))
         .pipe(_.imagemin([
             _.imageminPng({
                 quality: [.8, .9],
@@ -25,7 +31,12 @@ const imageminify = () => {
 //画像コピー(ファイルコピーのみ)
 const imagecopy = () => {
     return _.gulp.src(IMGDIR.src)
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'imagecopy'
+            })
+        }))
         .pipe(_.gulp.dest(IMGDIR.dist));
 };
 

@@ -16,7 +16,12 @@ const commonsEjs = () => {
     return _.gulp.src(
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/index.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
     )
-    .pipe(_.plumber())
+    .pipe(_.plumber({
+        errorHandler: _.notify.onError({
+            message: 'Error: <%= error.message %>',
+            title: 'wpejs commonsEjs'
+        })
+    }))
     .pipe(_.data((file) => {
         return { 'filename': file.path }
     }))
@@ -88,7 +93,12 @@ const indexEjs = async (done) => {
                     newsBlock.push(attributes); //件数分スタック
                 }
                 _.gulp.src(`${dir.src.ejs}/index.ejs`)
-                    .pipe(_.plumber())
+                    .pipe(_.plumber({
+                        errorHandler: _.notify.onError({
+                            message: 'Error: <%= error.message %>',
+                            title: 'wpejs indexEjs'
+                        })
+                    }))
                     .pipe(_.data((file) => {
                         return { 'filename': file.path }
                     }))
@@ -201,7 +211,12 @@ const newsEjs = async (done) => {
                         const articleFileName = functions.articleURL(attributes, functions);
                         const body = resJSON[j].content.rendered;
                         _.gulp.src(tempArticleFile)
-                            .pipe(_.plumber())
+                            .pipe(_.plumber({
+                                errorHandler: _.notify.onError({
+                                    message: 'Error: <%= error.message %>',
+                                    title: 'wpejs newsEjs: article page'
+                                })
+                            }))
                             .pipe(_.data((ejsFile) => {
                                 return { 'filename': ejsFile.path }
                             }))
@@ -219,7 +234,12 @@ const newsEjs = async (done) => {
                         }
 
                         _.gulp.src(tempNewsFile)
-                            .pipe(_.plumber())
+                            .pipe(_.plumber({
+                                errorHandler: _.notify.onError({
+                                    message: 'Error: <%= error.message %>',
+                                    title: 'wpejs newsEjs: news page'
+                                })
+                            }))
                             .pipe(_.data((file) => {
                                 return { 'filename': file.path }
                             }))
@@ -261,7 +281,12 @@ const newslessEjs = () => {
     return _.gulp.src(
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
         )
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'wpejs newslessEjs'
+            })
+        }))
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))

@@ -6,7 +6,12 @@ const envfile = () => {
     return _.gulp.src(
         [`${dir.src.envfile}/**/*`]
     )
-    .pipe(_.plumber())
+    .pipe(_.plumber({
+        errorHandler: _.notify.onError({
+            message: 'Error: <%= error.message %>',
+            title: 'envfile'
+        })
+    }))
     .pipe(_.rename({
         basename: ''
     }))

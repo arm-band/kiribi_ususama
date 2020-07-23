@@ -28,7 +28,12 @@ const sitesearch = () => {
     }
 
     return _.gulp.src(`${dir.plugins.ejs}/sitesearch/sitesearch.ejs`)
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'sitesearch'
+            })
+        }))
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))

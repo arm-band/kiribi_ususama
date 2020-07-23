@@ -18,13 +18,23 @@ const jsConcat = () => {
     libSrcArray.push(`${dir.src.js}/_plugins/_plugins.js`);
 
     return _.gulp.src(libSrcArray)
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'jsConcat'
+            })
+        }))
         .pipe(_.concat('lib.js'))
         .pipe(_.gulp.dest(`${dir.src.js}/concat/`)); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 };
 const jsLibBuild = () => {
     return _.gulp.src([`${dir.src.js}/concat/**/*.js`])
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'jsLibBuild'
+            })
+        }))
         .pipe(_.uglify({
             output: {
                 comments: 'all'
@@ -41,7 +51,12 @@ const jsBuild = () => {
     if(process.env.DEV_MODE === 'true') {
         objGulp = objGulp.pipe(_.sourcemaps.init())
     }
-    objGulp = objGulp.pipe(_.plumber())
+    objGulp = objGulp.pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'jsBuild'
+            })
+        }))
         .pipe(_.uglify({
             output: {
                 comments: 'some'

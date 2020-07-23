@@ -67,7 +67,12 @@ const sitemap = () => {
     }
 
     return _.gulp.src(`${dir.plugins.ejs}/sitemap/sitemap.ejs`)
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'sitemap'
+            })
+        }))
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))

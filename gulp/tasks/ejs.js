@@ -14,7 +14,12 @@ const commonsEjs = () => {
     return _.gulp.src(
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/index.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
     )
-    .pipe(_.plumber())
+    .pipe(_.plumber({
+        errorHandler: _.notify.onError({
+            message: 'Error: <%= error.message %>',
+            title: 'commonsEjs'
+        })
+    }))
     .pipe(_.data((file) => {
         return { 'filename': file.path }
     }))
@@ -45,7 +50,12 @@ const indexEjs = () => {
         }
     }
     return _.gulp.src(`${dir.src.ejs}/index.ejs`)
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'indexEjs'
+            })
+        }))
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
@@ -97,7 +107,12 @@ const newsEjs = (done) => {
         const articleFileName = functions.articleURL(attributes, functions);
         const body = _.marked(content.body);
         _.gulp.src(tempArticleFile)
-            .pipe(_.plumber())
+            .pipe(_.plumber({
+                errorHandler: _.notify.onError({
+                    message: 'Error: <%= error.message %>',
+                    title: 'newsEjs: article page'
+                })
+            }))
             .pipe(_.data((ejsFile) => {
                 return { 'filename': ejsFile.path }
             }))
@@ -116,7 +131,12 @@ const newsEjs = (done) => {
 
         if(i % config.param.news.newscount == (config.param.news.newscount - 1)) { //記事件数を1ページ当たりの件数で割った剰余が(1ページ当たりの件数-1)の場合はhtmlを生成
             _.gulp.src(tempNewsFile)
-                .pipe(_.plumber())
+                .pipe(_.plumber({
+                    errorHandler: _.notify.onError({
+                        message: 'Error: <%= error.message %>',
+                        title: 'newsEjs: news page'
+                    })
+                }))
                 .pipe(_.data((file) => {
                     return { 'filename': file.path }
                 }))
@@ -133,7 +153,12 @@ const newsEjs = (done) => {
 
     if(newsBlock.length > 0) {
         _.gulp.src(tempNewsFile)
-            .pipe(_.plumber())
+            .pipe(_.plumber({
+                errorHandler: _.notify.onError({
+                    message: 'Error: <%= error.message %>',
+                    title: 'newsEjs: last page'
+                })
+            }))
             .pipe(_.data((file) => {
                 return { 'filename': file.path }
             }))
@@ -162,7 +187,12 @@ const newslessEjs = () => {
     return _.gulp.src(
         [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
         )
-        .pipe(_.plumber())
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'newslessEjs'
+            })
+        }))
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))

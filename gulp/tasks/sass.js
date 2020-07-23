@@ -31,7 +31,12 @@ const scss = {
             objGulp = objGulp.pipe(_.sourcemaps.init())
         }
         objGulp = objGulp
-            .pipe(_.plumber())
+            .pipe(_.plumber({
+                errorHandler: _.notify.onError({
+                    message: 'Error: <%= error.message %>',
+                    title: 'sass'
+                })
+            }))
             .pipe(_.sass({
                 outputStyle: 'compressed'
             }).on('error', _.sass.logError))

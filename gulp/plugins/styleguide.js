@@ -17,6 +17,12 @@ const dirSg = {
 //styleguide(FrontNote)
 const sg = () => {
     return _.gulp.src(dir.src.scss + '/**/*.scss') // 監視対象のファイルを指定
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'styleguide'
+            })
+        }))
         .pipe(_.frontnote({
             out: dirSg.html,
             title: functions.getConfig(dir.config.config).commons.sitename,
