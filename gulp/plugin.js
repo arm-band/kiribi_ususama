@@ -1,6 +1,5 @@
 module.exports = {
     gulp:  require('gulp'),
-    watch: require('gulp-watch'),
     plumber: require('gulp-plumber'),
     notify: require('gulp-notify'),
     yaml: require('yaml'),
