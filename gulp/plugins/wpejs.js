@@ -14,22 +14,30 @@ const commonsEjs = () => {
     const plugins = functions.getConfig(dir.config.plugins);
 
     return _.gulp.src(
-        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/index.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
-    )
-    .pipe(_.plumber({
-        errorHandler: _.notify.onError({
-            message: 'Error: <%= error.message %>',
-            title: 'wpejs commonsEjs'
+        `${dir.src.ejs}/**/*.ejs`,
+        {
+            ignore: [
+                `${dir.src.ejs}/**/_*.ejs`,
+                `${dir.plugins.ejs}/**`,
+                `${dir.src.ejs}/index.ejs`,
+                `${dir.src.ejs}/news.ejs`,
+                `${dir.src.ejs}/article.ejs`
+            ] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
         })
-    }))
-    .pipe(_.data((file) => {
-        return { 'filename': file.path }
-    }))
-    .pipe(_.ejs({ config, commonVar, plugins, parameters }))
-    .pipe(_.rename({ extname: '.html' }))
-    .pipe(_.htmlmin(jsConfig.configHtmlMin))
-    .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-    .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(_.plumber({
+            errorHandler: _.notify.onError({
+                message: 'Error: <%= error.message %>',
+                title: 'wpejs commonsEjs'
+            })
+        }))
+        .pipe(_.data((file) => {
+            return { 'filename': file.path }
+        }))
+        .pipe(_.ejs({ config, commonVar, plugins, parameters }))
+        .pipe(_.rename({ extname: '.html' }))
+        .pipe(_.htmlmin(jsConfig.configHtmlMin))
+        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
+        .pipe(_.gulp.dest(dir.dist.html));
 };
 //トップページ用のejsタスク
 const indexEjs = async (done) => {
@@ -279,8 +287,15 @@ const newslessEjs = () => {
     const newsBlock = [];
 
     return _.gulp.src(
-        [`${dir.src.ejs}/**/*.ejs`, `!${dir.src.ejs}/**/_*.ejs`, `!${dir.plugins.ejs}/**/*.ejs`, `!${dir.src.ejs}/news.ejs`, `!${dir.src.ejs}/article.ejs`] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
-        )
+        `${dir.src.ejs}/**/*.ejs`,
+        {
+            ignore: [
+                `${dir.src.ejs}/**/_*.ejs`,
+                `${dir.plugins.ejs}/**`,
+                `${dir.src.ejs}/news.ejs`,
+                `${dir.src.ejs}/article.ejs`
+            ] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
+        })
         .pipe(_.plumber({
             errorHandler: _.notify.onError({
                 message: 'Error: <%= error.message %>',

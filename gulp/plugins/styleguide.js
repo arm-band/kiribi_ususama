@@ -45,10 +45,33 @@ const sgsync = () => {
         https: plugins.ssl
     });
 
-    _.watch(`${dirSg.template}/index.ejs`, _.gulp.series(_.browserSync.reload));
-    _.watch(`${dirSg.md}`, _.gulp.series(_.browserSync.reload));
-    _.watch([`${dir.src.scss}/_plugins/styleguide/*.scss`], _.gulp.series(sass, sg, _.browserSync.reload));
-    _.watch(`${dirSg.js}/*.js`, _.gulp.series(_.browserSync.reload));
+    const sReload = _.gulp.series(_.browserSync.reload);
+    _.gulp.watch(
+        `${dirSg.template}/index.ejs`
+    )
+        .on('add',    sReload)
+        .on('change', sReload)
+        .on('unlink', sReload);
+    _.gulp.watch(
+        `${dirSg.md}`
+    )
+        .on('add',    sReload)
+        .on('change', sReload)
+        .on('unlink', sReload);
+    const sSg = _.gulp.series(sass, sg, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.scss}/_plugins/styleguide/*.scss`,
+
+    )
+        .on('add',    sSg)
+        .on('change', sSg)
+        .on('unlink', sSg);
+    _.gulp.watch(
+        `${dirSg.js}/*.js`
+    )
+        .on('add',    sReload)
+        .on('change', sReload)
+        .on('unlink', sReload);
 };
 
 module.exports = _.gulp.series(sg, sgsync);

@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.14.0-4.3.1",
+    "version": "6.15.0-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -70,7 +70,7 @@
         "list.js": "^1.5.0"
     },
     "devDependencies": {
-        "browser-sync": "^2.26.10",
+        "browser-sync": "^2.26.12",
         "cpx": "^1.5.0",
         "express": "^4.17.1",
         "front-matter": "^4.0.2",
@@ -95,7 +95,6 @@
         "gulp-replace": "^1.0.0",
         "gulp-sourcemaps": "^2.6.5",
         "gulp-uglify-es": "^2.0.0",
-        "gulp-watch": "^5.0.1",
         "marked": "^1.1.1",
         "mkdirp": "^1.0.4",
         "npm-run-all": "^4.1.5",
@@ -111,7 +110,7 @@
         "morgan": "^1.10.0",
         "opener": "^1.5.1",
         "htmllint-cli": "^0.0.7",
-        "eslint": "^7.4.0",
+        "eslint": "^7.5.0",
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",

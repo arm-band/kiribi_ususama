@@ -10,16 +10,14 @@ const envfile = require('./envfile');
 const imagemin = require('./imagemin');
 const jsBuild = require('./js');
 const phpcopy = require('./phpcopy');
-const scssTask = require('./sass');
-const sass = scssTask.sass;
-const scss = _.gulp.series(scssTask.yaml2sass, scssTask.sass);
+const { yaml2sass, sass } = require('./sass');
 const assetsCopy = require('./assetscopy');
 const sitemap = require('../plugins/sitemap');
 const sitemapxml = require('../plugins/sitemapxml');
 const styleguide = require('../plugins/styleguide');
 const sitesearch = require('../plugins/sitesearch');
 
-let taskArray = [scss, jsBuild];
+let taskArray = [yaml2sass];
 let taskEjs = [ejs];
 if(plugins.wordpress && (config.param.news.wpapi !== undefined && config.param.news.wpapi !== null && config.param.news.wpapi.length > 0)) {
     taskEjs = [wpEjs];
@@ -62,20 +60,96 @@ const browsersync = () => {
         });
     }
 
-    _.watch(`${dir.src.ejs}/**/*.ejs`, _.gulp.series(taskEjs, _.browserSync.reload));
+    const sEjs = _.gulp.series(taskEjs, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.ejs}/**/*.ejs`
+    )
+        .on('add',    sEjs)
+        .on('change', sEjs)
+        .on('unlink', sEjs);
+    const sPhp = _.gulp.series(phpcopy, _.browserSync.reload);
     if(plugins.usephp) {
-        _.watch(dir.src.php + '/**/*.php', _.gulp.series(phpcopy, _.browserSync.reload));
+        _.gulp.watch(
+            dir.src.php + '/**/*.php'
+        )
+            .on('add',    sPhp)
+            .on('change', sPhp)
+            .on('unlink', sPhp);
     }
     if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
-        _.watch(`${dir.contents.dir}/**/*.md`, _.gulp.series(taskEjs, _.browserSync.reload));
+        _.gulp.watch(
+            `${dir.contents.dir}/**/*.md`
+        )
+            .on('add',    sEjs)
+            .on('change', sEjs)
+            .on('unlink', sEjs);
     }
-    _.watch(`${dir.src.favicon}/**/*.+(png|ico|icon)`, _.gulp.series(favicon, _.browserSync.reload));
-    _.watch(`${dir.src.envfile}/**/*`, _.gulp.series(envfile, _.browserSync.reload));
-    _.watch([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}/util/_var.scss`], _.gulp.series(sass, _.browserSync.reload));
-    _.watch(`${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, _.gulp.series(imagemin, _.browserSync.reload));
-    _.watch([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`], _.gulp.series(jsBuild, _.browserSync.reload));
-    _.watch(`${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`, _.gulp.series(assetsCopy, _.browserSync.reload));
-    _.watch([`${dir.config.dir}/**/*.yml`, `!${dir.config.dir}${dir.config.plugins}`], _.gulp.series(taskBuild, _.browserSync.reload));
+    const sFavicon = _.gulp.series(favicon, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.favicon}/**/*.+(png|ico|icon)`
+    )
+        .on('add',    sFavicon)
+        .on('change', sFavicon)
+        .on('unlink', sFavicon);
+    const sEnvfile = _.gulp.series(envfile, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.envfile}/**/*`
+    )
+        .on('add',    sEnvfile)
+        .on('change', sEnvfile)
+        .on('unlink', sEnvfile);
+    const sSass = _.gulp.series(sass, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.scss}/**/*.scss`,
+        {
+            ignored: [
+                `${dir.src.scss}/util/_var.scss`,
+                `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
+                `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
+                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
+                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
+            ]
+        }
+    )
+        .on('add',    sSass)
+        .on('change', sSass)
+        .on('unlink', sSass);
+    const sImagemin = _.gulp.series(imagemin, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`
+    )
+        .on('add',    sImagemin)
+        .on('change', sImagemin)
+        .on('unlink', sImagemin);
+    const sJs = _.gulp.series(jsBuild, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.js}/**/*.js`,
+        {
+            ignored: [
+                `${dir.src.js}/concat/**`,
+                `${dir.src.js}/_plugins/**`
+            ]
+        }
+    )
+        .on('add',    sJs)
+        .on('change', sJs)
+        .on('unlink', sJs);
+    const sAssetscopy = _.gulp.series(assetsCopy, _.browserSync.reload);
+    _.gulp.watch(
+        `${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`
+    )
+        .on('add',    sAssetscopy)
+        .on('change', sAssetscopy)
+        .on('unlink', sAssetscopy);
+    const sBuild = _.gulp.series(taskBuild, _.browserSync.reload);
+    _.gulp.watch(
+        [
+            `${dir.config.dir}/config.yml`,
+            `${dir.config.dir}/commonvar.yml`
+        ]
+    )
+        .on('add',    sBuild)
+        .on('change', sBuild);
 };
 
 module.exports = browsersync;

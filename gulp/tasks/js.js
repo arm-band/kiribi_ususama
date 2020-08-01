@@ -5,7 +5,11 @@ const plugins = functions.getConfig(dir.config.plugins);
 
 //js圧縮&結合&リネーム
 const jsConcat = () => {
-    let libSrcArray = [`${dir.assets.jquery}/jquery.min.js`, `${dir.assets.bootstrap}/bootstrap.bundle.min.js`, `${dir.assets.easing}/jquery.easing.js`];
+    let libSrcArray = [
+        `${dir.assets.jquery}/jquery.min.js`,
+        `${dir.assets.bootstrap}/bootstrap.bundle.min.js`,
+        `${dir.assets.easing}/jquery.easing.js`
+    ];
     if(plugins.lightbox) {
         libSrcArray.push(`${dir.assets.lightbox}/js/lightbox.min.js`);
     }
@@ -28,7 +32,7 @@ const jsConcat = () => {
         .pipe(_.gulp.dest(`${dir.src.js}/concat/`)); //srcとdistを別ディレクトリにしないと、自動でタスクが走る度にconcatしたものも雪だるま式に追加されていく
 };
 const jsLibBuild = () => {
-    return _.gulp.src([`${dir.src.js}/concat/**/*.js`])
+    return _.gulp.src(`${dir.src.js}/concat/**/*.js`)
         .pipe(_.plumber({
             errorHandler: _.notify.onError({
                 message: 'Error: <%= error.message %>',
@@ -47,7 +51,14 @@ const jsLibBuild = () => {
         .pipe(_.gulp.dest(dir.dist.js));
 };
 const jsBuild = () => {
-    let objGulp = _.gulp.src([`${dir.src.js}/**/*.js`, `!${dir.src.js}/concat/**/*.js`, `!${dir.src.js}/_plugins/**/*.js`]);
+    let objGulp = _.gulp.src(
+        `${dir.src.js}/**/*.js`,
+        {
+            ignore: [
+                `${dir.src.js}/concat/**`,
+                `${dir.src.js}/_plugins/**`
+            ]
+        });
     if(process.env.DEV_MODE === 'true') {
         objGulp = objGulp.pipe(_.sourcemaps.init())
     }

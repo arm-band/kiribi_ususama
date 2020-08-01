@@ -26,7 +26,16 @@ const scss = {
         done();
     },
     sass: () => {
-        let objGulp = _.gulp.src([`${dir.src.scss}/**/*.scss`, `!${dir.src.scss}${dir.src.scssassets}/**/*.scss`]);
+        let objGulp = _.gulp.src(
+            `${dir.src.scss}/**/*.scss`,
+            {
+                ignore: [
+                    `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
+                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
+                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
+                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
+                ]
+            });
         if(process.env.DEV_MODE === 'true') {
             objGulp = objGulp.pipe(_.sourcemaps.init())
         }
