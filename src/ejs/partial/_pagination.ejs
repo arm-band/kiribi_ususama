@@ -9,7 +9,7 @@ if(pageLength > 1) {
         const prev = pages - 1;
 -%>
                 <li class="page-item">
-                    <a href="<%= relPath %>news/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
+                    <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= name + prev %>.html" class="page-link" aria-label="前のページへ">
                         <span aria-hidden="true">«</span>
                     </a>
                 </li>
@@ -19,7 +19,7 @@ if(pageLength > 1) {
     let prevEllipsis = false;
     let nextEllipsis = false;
     for(let i = 1; i <= pageLength; i++) { //ページ数分生成
-        let paginationLink = `<a href="${relPath}news/${name}${i}.html" class="page-link">${i}</a>`;
+        let paginationLink = `<a href="${relPath}${config.param.news.baseurl}/${name}${i}.html" class="page-link">${i}</a>`;
         if(8 <= pageLength) {
             if(i !== 1 && i !== pageLength && i < pages - 2) {
                 if(prevEllipsis) {
@@ -54,7 +54,7 @@ if(pageLength > 1) {
         const next = pages + 1;
 -%>
                 <li class="page-item">
-                    <a href="<%= relPath %>news/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
+                    <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= name + next %>.html" class="page-link" aria-label="次のページへ">
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>

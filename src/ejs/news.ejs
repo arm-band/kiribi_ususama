@@ -30,11 +30,11 @@ parameters = {
             <div class="page-header mb-3 text-center <%= id %>_header">
                 <h2><%= config.param.news.title %></h2>
             </div>
-<%- include('partial/_pagination', { pages, pageLength, parameters }) %>
+<%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%- include('partial/_newscards.ejs', { relPath, newsBlock }) %>
             </div>
-<%- include('partial/_pagination', { pages, pageLength, parameters }) %>
+<%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
             <div class="text-center my-4">
                 <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
             </div>

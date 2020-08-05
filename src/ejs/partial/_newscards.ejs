@@ -2,8 +2,8 @@
 for(let i of Object.keys(newsBlock)) {
     const datetime = funcDateTimeFormat(newsBlock[i].date, '', 'tz');
     const showDt = funcDateTimeFormat(newsBlock[i].date, '/', 'ymd');
-    const articleId = funcArticleUrl('', newsBlock[i], true);
-    const articleUrl = funcArticleUrl('', newsBlock[i]);
+    const articleId = funcArticleUrl('', config.param.news.baseurl, newsBlock[i], true);
+    const articleUrl = funcArticleUrl('', config.param.news.baseurl, newsBlock[i]);
     let excerpt = '';
     if(newsBlock[i].excerpt !== null && newsBlock[i].excerpt !== undefined) {
         excerpt = newsBlock[i].excerpt;

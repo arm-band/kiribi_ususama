@@ -23,7 +23,7 @@ module.exports = {
         feed.item({
             title:  attributes.title,
             description: attributes.excerpt,
-            url: config.commons.url + 'news/articles/' + functions.articleURL(attributes, functions) + '.html',
+            url: config.commons.url + config.param.news.baseurl + '/articles/' + functions.articleURL(attributes, functions) + '.html',
             author: config.commons.author,
             date: String(attributes.date)
         });

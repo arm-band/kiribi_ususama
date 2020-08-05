@@ -36,15 +36,15 @@ const taskBuild = _.gulp.parallel(taskArray, _.gulp.series(taskEjs));
 
 //自動リロード
 const browsersync = () => {
-    if(plugins.usephp && process.env.PHP_BIN && process.env.PHP_INI && process.env.PHP_PROXY) { //php使うときはこっち
+    if(plugins.usephp && process.env.PHP_BIN && process.env.PHP_INI && process.env.PROXY_HOST && process.env.PROXY_PORT) { //php使うときはこっち
         _.connect.server({
-            port: 8001,
+            port: process.env.PROXY_PORT,
             base: dir.dist.html,
             bin: process.env.PHP_BIN,
             ini: process.env.PHP_INI
         }, () =>{
             _.browserSync({
-                proxy: process.env.PHP_PROXY,
+                proxy: `${process.env.PROXY_HOST}:${process.env.PROXY_PORT}`,
                 open: 'external',
                 https: plugins.ssl
             });

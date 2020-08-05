@@ -1,6 +1,6 @@
 <%
 //記事ページのURLを生成
-funcArticleUrl = (url, attributes, archiveid = false) => {
+funcArticleUrl = (url, baseurl, attributes, archiveid = false) => {
     let urlTitle = attributes.url;
     urlTitle = urlTitle.replace(/\./g, '_');
     const datetime = funcDateTimeFormat(attributes.date, '', 'ymd');
@@ -8,7 +8,7 @@ funcArticleUrl = (url, attributes, archiveid = false) => {
     if(archiveid) {
         return fileUrl;
     }
-    const articleIdUrl = `${url}news/articles/${fileUrl}.html`;
+    const articleIdUrl = `${url}${baseurl}/articles/${fileUrl}.html`;
     return articleIdUrl;
 };
 //記事中のimg srcパスやa hrefパスに相対パスを追加
