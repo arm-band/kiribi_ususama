@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.15.1-4.3.1",
+    "version": "6.15.2-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -20,7 +20,7 @@
         "agni": "node ./bin/agni",
         "eshaku": "npm-run-all -p katen agni",
         "riken": "node ./bin/riken",
-        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./src/img/lightbox/ ./dist/ ./bin/styleguide/dist/ ./bin/config/subterranean/ ./package-lock.json",
+        "fujoketsu": "rimraf ./src/scss/assets/ ./src/js/concat/ ./src/scss/util/_var.scss ./src/img/lightbox/ ./dist/ ./bin/styleguide/dist/ ./bin/config/subterranean/",
         "lightbox:css": "mkdirp src/scss/assets/lightbox",
         "lightbox:img": "cpx \"./node_modules/lightbox2/dist/images/*\" \"./src/img/lightbox\"",
         "slick:gif": "cpx \"./node_modules/slick-carousel/slick/ajax-loader.gif\" \"./dist/css\"",
@@ -62,6 +62,7 @@
         "brand-colors": "^2.1.1",
         "bootstrap": "^4.5.0",
         "bootstrap-honoka": "^4.3.1",
+        "bowser": "^2.10.0",
         "@fortawesome/fontawesome-free": "^5.14.0",
         "jquery": "^3.5.1",
         "jquery.easing": "^1.4.1",

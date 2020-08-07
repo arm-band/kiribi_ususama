@@ -120,6 +120,11 @@ const pageScroll = (screlm) => {
 };
 
 $(() => {
+    //iPhone・iPad背景画像バグ対処
+    if (typeof mobileSafariRequiem === 'function') {
+        mobileSafariRequiem();
+    }
+
     //スクロール対象を取得
     const screlm = scrollElm();
     //ページトップへ戻る

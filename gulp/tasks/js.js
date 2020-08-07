@@ -19,6 +19,9 @@ const jsConcat = () => {
     if(plugins.sitesearch) {
         libSrcArray.push(`${dir.assets.listjs}/list.min.js`);
     }
+    if(plugins.safari) {
+        libSrcArray.push(`${dir.assets.bowser}/bundled.js`);
+    }
     libSrcArray.push(`${dir.src.js}/_plugins/_plugins.js`);
 
     return _.gulp.src(libSrcArray)
