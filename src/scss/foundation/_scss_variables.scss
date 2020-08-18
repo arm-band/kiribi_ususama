@@ -1,5 +1,18 @@
 @charset "utf-8";
 
+/*
+#overview
+カラーパレット
+*/
+
+/*
+#colors
+カラーパレット。commonVar.jsonの"color"の名前の付くキーから自動生成する。下記の色指定は生成のための疑似コード。
+```
+@color #333
+```
+*/
+
 $main-color_d: darken($main-color, 8%);
 $main-color_l: lighten($main-color, 8%);
 $accent-color: adjust-hue($main-color, 150deg);

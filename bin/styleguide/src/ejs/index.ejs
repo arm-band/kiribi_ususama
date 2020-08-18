@@ -37,54 +37,52 @@
         <section class="fn-content">
             <h2 class="fn-heading2">
                 <% if (current.overview) { %>
-                <%-current.overview.title%>
+                    <%-current.overview.title%>
                 <% } else { %>
-                <%-current.fileName%>
+                    <%-current.fileName%>
                 <% } %>
                 <small class="fn-sub-heading"><%-current.file%></small>
             </h2>
             <% if (current.overview) { %>
             <p class="fn-comment"><%-current.overview.comment%></p>
             <% } %>
-            <% if (current.fileName.indexOf("index") !== -1) { //パラメータが渡されると常にカラーパレット出力してしまうのを抑止("index"と名前の付くもののみ) %>
             <% if(params.commonVar) { //current.colorからカスタマイズ %>
-            <% for(var i in params.commonVar) { %>
-            <% if(i.indexOf("color") !== -1) { //キー名に"color"を含む場合 %>
-            <div class="fn-color-pallet">
-                <h3 class="fn-heading3">$<%- i %></h3>
-                <p class="fn-comment"><%- params.commonVar[i] %></p>
-                <div class="fn-color-panel" style="background-color:<%- params.commonVar[i] %>"></div>
-            </div>
-            <% } %>
-            <% } %>
-            <% } //current.colorからカスタマイズ・ここまで %>
-            <% } //パラメータが渡されると常にカラーパレット出力してしまうのを抑止 %>
-            <% if(current.sections) { %>
-            <% current.sections.forEach(function(section) { %>
-            <article class="fn-article">
-                <h3 class="fn-heading3"><%- section.title %></h3>
-                <% if(section.attributes) { %>
-                <ul class="fn-attribute">
-                    <% section.attributes.forEach(function(attribute) {%>
-                    <% if(attribute.toLowerCase() === 'deprecated' || attribute === '非推奨') {%>
-                    <li class="fn-attribute-item fn-attribute-deprecated"><%=attribute%></li>
-                    <% } else if(attribute.toLowerCase() === 'todo') { %>
-                    <li class="fn-attribute-item fn-attribute-todo"><%=attribute%></li>
-                    <% } else { %>
-                    <li class="fn-attribute-item"><%=attribute%></li>
+                <% for(var i in params.commonVar) { %>
+                    <% if(i.indexOf("color") !== -1) { //キー名に"color"を含む場合 %>
+                    <div class="fn-color-pallet">
+                        <h3 class="fn-heading3">$<%- i %></h3>
+                        <p class="fn-comment"><%- params.commonVar[i] %></p>
+                        <div class="fn-color-panel" style="background-color:<%- params.commonVar[i] %>"></div>
+                    </div>
                     <% } %>
-                    <% }); %>
-                </ul>
                 <% } %>
-                <p class="fn-comment"><%- section.comment %></p>
-                <% if(section.code) { %>
-                <div class="fn-preview">
-                    <%- section.code %>
-                </div>
-                <pre class="fn-pre"><i class="fn-icon fn-hand-o-down"> 選択</i><code class="fn-code" data-language="html"><%= section.code %></code></pre>
-                <% } %>
-            </article>
-            <% }) %>
+            <% } //current.colorからカスタマイズ・ここまで %>
+            <% if(current.sections) { %>
+                <% current.sections.forEach(function(section) { %>
+                    <article class="fn-article">
+                        <h3 class="fn-heading3"><%- section.title %></h3>
+                        <% if(section.attributes) { %>
+                        <ul class="fn-attribute">
+                            <% section.attributes.forEach(function(attribute) {%>
+                                <% if(attribute.toLowerCase() === 'deprecated' || attribute === '非推奨') {%>
+                                <li class="fn-attribute-item fn-attribute-deprecated"><%=attribute%></li>
+                                <% } else if(attribute.toLowerCase() === 'todo') { %>
+                                <li class="fn-attribute-item fn-attribute-todo"><%=attribute%></li>
+                                <% } else { %>
+                                <li class="fn-attribute-item"><%=attribute%></li>
+                                <% } %>
+                            <% }); %>
+                        </ul>
+                        <% } %>
+                        <p class="fn-comment"><%- section.comment %></p>
+                        <% if(section.code) { %>
+                        <div class="fn-preview">
+                            <%- section.code %>
+                        </div>
+                        <pre class="fn-pre"><i class="fn-icon fn-hand-o-down"> 選択</i><code class="fn-code" data-language="html"><%= section.code %></code></pre>
+                        <% } %>
+                    </article>
+                <% }) %>
             <% } %>
             <div class="fn-pagetop">
                 <a href="" class="fn-icon fn-chevron-up"></a>

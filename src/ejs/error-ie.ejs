@@ -36,13 +36,14 @@ parameters = {
     </style>
 </head>
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
+<%- include('partial/_body_loader', { plugins }) %>
 <div id="wrapper">
 <div class="l-upper">
 <!-- header -->
 <header class="header" id="navbar">
     <nav class="navbar navbar-light bg-white">
         <div class="container">
-            <h1 class="navbar-brand my-0 o-navbar_header"><%= config.commons.sitename %></h1>
+            <h1 class="navbar-brand my-0"><%= config.commons.sitename %></h1>
         </div>
     </nav>
 </header>

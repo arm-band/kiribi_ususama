@@ -7,7 +7,6 @@ const runAll       = require('npm-run-all');
 
 const plugins = functions.getConfig(dir.config.plugins);
 const pluginsStr = '_plugins';
-const keyStrSG = 'styleguide';
 const keyStrLB = 'lightbox';
 const keyStrSlick = 'slick';
 
@@ -33,13 +32,7 @@ const scssFileWrite = (scssPath) => {
         const val = this[key];
         const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`);
         if(val) {
-            if(key === keyStrSG) { //styleguide
-                const fileList = fs.readdirSync(path.join(path.join(dir.src.scss, pluginsStr), 'styleguide'));
-                for(let i = 0; i < fileList.length; i++) {
-                    pluginCode += `@import "${pluginsStr}/styleguide/${fileList[i]}";\n`;
-                }
-            }
-            else if(key === keyStrLB) {
+            if(key === keyStrLB) {
                 const scssLBPath = 'assets/lightbox/lightbox.scss';
                 pluginCode += `@import "../${scssLBPath}";
 `;

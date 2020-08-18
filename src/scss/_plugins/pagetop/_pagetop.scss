@@ -1,5 +1,19 @@
 @charset "utf-8";
 
+/*
+#overview
+ページトップへ戻る
+*/
+
+/*
+#styleguide
+ページトップへ戻る
+```
+<div class="returnPageTop c-returnPageTop"><i class="fas fa-fw fa-chevron-up" aria-hidden="true"></i></div>
+```
+*/
+
+
 $rpt-size: 44px;
 .c-returnPageTop {
     display: none;

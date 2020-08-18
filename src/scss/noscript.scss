@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+//noscript
+.c-noscript {
+    z-index: 99999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &Container {
+        padding: 1rem;
+        background-color: #fffde3;
+        border: 1px solid #adadad;
+        p {
+            margin-bottom: 0;
+        }
+    }
+}

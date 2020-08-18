@@ -1,5 +1,38 @@
 @charset "utf-8";
 
+/*
+#overview
+アイキャッチ(ヒーロー)
+*/
+
+/*
+#styleguide
+トップページ
+```
+<div class="index" id="index">
+    <section class="container-fluid c-eyecatch c-eyecatchMaxHeight">
+        <div class="container">
+            <h1 class="c-eyecatch_header">トップページ</h1>
+        </div>
+    </section>
+</div>
+```
+*/
+
+/*
+#styleguide
+下層ページ
+```
+<div class="about" id="about">
+    <section class="container-fluid c-eyecatch c-eyecatchMaxHeight">
+        <div class="container">
+            <h1 class="c-eyecatch_header">下層ページ</h1>
+        </div>
+    </section>
+</div>
+```
+*/
+
 .c-eyecatch {
     height: 40vh;
     display: flex;

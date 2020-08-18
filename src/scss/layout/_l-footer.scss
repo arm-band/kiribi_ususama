@@ -1,5 +1,20 @@
 @charset "utf-8";
 
+/*
+#overview
+フッタ
+*/
+
+/*
+#styleguide
+フッタ
+```
+    <footer class="l-footer">
+        <small class="pt-1 pb-2 l-footer_copyright">© 2019-2020 アルム＝バンド</small>
+    </footer>
+```
+*/
+
 .l-footer {
     clear: both;
     background-color: $main-color;

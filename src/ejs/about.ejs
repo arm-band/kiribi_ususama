@@ -16,6 +16,7 @@ parameters = {
 <%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
+<%- include('partial/_body_loader', { plugins }) %>
 <div id="wrapper">
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>

@@ -45,6 +45,15 @@ if(id !== 'error-ie') {
 }
 -%>
 <%
+if(plugins.noscript) {
+-%>
+    <noscript>
+        <link rel="stylesheet" href="<%= relPath %>css/noscript.css">
+    </noscript>
+<%
+}
+-%>
+<%
 if(id === 'article') {
 -%>
     <style>

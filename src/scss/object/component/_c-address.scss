@@ -1,5 +1,27 @@
 @charset "utf-8";
 
+/*
+#overview
+住所
+*/
+
+/*
+#styleguide
+郵便番号マーク、電話番号前の「TEL:」の自動付与
+```
+        <div class="list-group mb-3">
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">アルム＝バンド</h5>
+                    <small>※住所・郵便番号・電話番号はいずれもダミーです</small>
+                </div>
+                <p class="mb-1"><span class="c-address c-address_postalcode mr-1">001-0000</span> <span class="address">北海道札幌市北区丸山町字辛亥五ノ村30-90</span></p>
+                <small><a href="tel:000-000-0000"><span class="c-address c-address_tel mr-1">000-000-0000</span></a></small>
+            </div>
+        </div>
+```
+*/
+
 .c-address {
     &_tel {
         &::before {
