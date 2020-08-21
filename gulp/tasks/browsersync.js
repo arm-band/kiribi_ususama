@@ -99,16 +99,20 @@ const browsersync = () => {
         .on('change', sEnvfile)
         .on('unlink', sEnvfile);
     const sSass = _.gulp.series(sass, _.browserSync.reload);
+    let ignoreListArray = [
+        `${dir.src.scss}/util/_var.scss`,
+        `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
+        `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
+        `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
+        `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
+    ];
+    if(!plugins.noscript) {
+        ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
+    }
     _.gulp.watch(
         `${dir.src.scss}/**/*.scss`,
         {
-            ignored: [
-                `${dir.src.scss}/util/_var.scss`,
-                `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-            ]
+            ignored: ignoreListArray
         }
     )
         .on('add',    sSass)

@@ -1,5 +1,7 @@
 const _         = require('../plugin');
 const dir       = require('../dir');
+const functions = require('../functions');
+const plugins = functions.getConfig(dir.config.plugins);
 
 //scssコンパイルタスク
 const scss = {
@@ -26,15 +28,20 @@ const scss = {
         done();
     },
     sass: () => {
+        let ignoreListArray = [
+            `${dir.src.scss}/util/_var.scss`,
+            `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
+            `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
+            `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
+            `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
+        ];
+        if(!plugins.noscript) {
+            ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
+        }
         let objGulp = _.gulp.src(
             `${dir.src.scss}/**/*.scss`,
             {
-                ignore: [
-                    `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
-                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-                    `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-                ]
+                ignore: ignoreListArray
             });
         if(process.env.DEV_MODE === 'true') {
             objGulp = objGulp.pipe(_.sourcemaps.init())
