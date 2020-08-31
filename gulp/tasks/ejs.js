@@ -113,7 +113,9 @@ const newsEjs = (done) => {
 
         //記事生成
         const articleFileName = functions.articleURL(attributes, functions);
-        const body = _.marked(content.body);
+        const body = _.marked(content.body, {
+            headerIds: false
+        });
         _.gulp.src(tempArticleFile)
             .pipe(_.plumber({
                 errorHandler: _.notify.onError({

@@ -37,12 +37,12 @@ const datetime = funcDateTimeFormat(attributes.date, "", "tz")
 const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
 const articleUrl = funcArticleUrl(config.commons.url, config.param.news.baseurl, attributes)
 -%>
-            <div class="news_article" id="<%= attributes.url %>">
-                <h2 class="news_header"><%= attributes.title %></h2>
-                <div class=" mb-3 news_createdatetime">
-                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+            <div class="c-article_article" id="<%= attributes.url %>">
+                <h2 class="c-article_header"><%= attributes.title %></h2>
+                <div class=" mb-3 c-article_createdatetime">
+                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                 </div>
-                <div class="mb-3 news_contents">
+                <div class="mb-3 c-article_contents">
                     <%- contentBody %>
                 </div>
 <%

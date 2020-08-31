@@ -10,48 +10,48 @@
 記事(アイキャッチ画像なし)
 ```
         <section class="container my-5">
-            <div class="row align-items-top my-4 news_contents" id="news_contents">
+            <div class="row align-items-top my-4 c-newscard_contents" id="c-newscard_contents">
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200816">
+                    <article class="c-newscard_article" id="news-20200816">
                         <div class="card h-100">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200815">
+                    <article class="c-newscard_article" id="news-20200815">
                         <div class="card h-100">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-15T20:07:16+09:00">2020/08/15</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-15T20:07:16+09:00">2020/08/15</time>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200815">
+                    <article class="c-newscard_article" id="news-20200815">
                         <div class="card h-100">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-15T13:08:17+09:00">2020/08/15</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-15T13:08:17+09:00">2020/08/15</time>
                             </div>
                         </div>
                     </article>
@@ -66,51 +66,51 @@
 記事(アイキャッチ画像あり)
 ```
         <section class="container my-5">
-            <div class="row align-items-top my-4 news_contents" id="news_contents">
+            <div class="row align-items-top my-4 c-newscard_contents" id="c-newscard_contents">
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200816">
+                    <article class="c-newscard_article" id="news-20200816">
                         <div class="card h-100">
                             <img class="card-img-top img-fluid" src="./img/thumbnails/eyecatch.jpg" alt="コンテンツタイトル">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200815">
+                    <article class="c-newscard_article" id="news-20200815">
                         <div class="card h-100">
                             <img class="card-img-top img-fluid" src="./img/thumbnails/eyecatch.jpg" alt="コンテンツタイトル">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-15T20:07:16+09:00">2020/08/15</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-15T20:07:16+09:00">2020/08/15</time>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="news_article" id="news-20200815">
+                    <article class="c-newscard_article" id="news-20200815">
                         <div class="card h-100">
                             <img class="card-img-top img-fluid" src="./img/thumbnails/eyecatch.jpg" alt="コンテンツタイトル">
                             <div class="card-body p-3">
-                                <h3 class="news_header"><a href="#">コンテンツタイトル</a></h3>
-                                <div class="news_contents">
+                                <h3 class="c-newscard_header"><a href="#">コンテンツタイトル</a></h3>
+                                <div class="c-newscard_contents">
                                     <p>記事の概要です。トップページと新着情報一覧で出力されます。</p>
                                 </div>
                             </div>
                             <div class="card-footer p-3 text-right bg-white border-0">
-                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-15T13:08:17+09:00">2020/08/15</time>
+                                <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="2020-08-15T13:08:17+09:00">2020/08/15</time>
                             </div>
                         </div>
                     </article>
@@ -120,40 +120,9 @@
 ```
 */
 
-/*
-#styleguide
-記事
-```
-        <article class="my-5 container article_contents" id="article_contents">
-            <div class="news_article" id="news">
-                <h2 class="news_header">コンテンツタイトル</h2>
-                <div class="mb-3 news_createdatetime">
-                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="news_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
-                </div>
-                <div class="mb-3 news_contents">
-                    <h3 id="サンプル見出し">サンプル見出し</h3>
-<p>記事はMarkdown記法で記述できます。記事のファイル名は数字で作成順にしてください。</p>
-<h3 id="先頭の---で区切られた部分について">先頭の---で区切られた部分について</h3>
-<p>先頭の<code>---</code>で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。</p>
-                </div>
-                                    <div class="news_share row my-4 w-100 mx-auto">
-                                    <a class="btn c-btn_news c-btn_newsTwitter col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a>
-                                    <a class="btn c-btn_news c-btn_newsFacebook col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a>
-                                    <a class="btn c-btn_news c-btn_newsHatena col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="はてなブックマーク"><i class="fas fa-fw fa-bookmark" aria-hidden="true"></i>ブックマークする</a>
-                                    <a class="btn c-btn_news c-btn_newsLine col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="LINEトークに送る"><i class="fab fa-fw fa-line" aria-hidden="true"></i>送る</a>
-                                    <a class="btn c-btn_news c-btn_newsPocket col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a>
-                                    <a class="btn c-btn_news c-btn_newsFeedly col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a>
-                                </div>
-            </div>
-        </article>
-```
-*/
-
 //news list
-.c-news {
-    &card {
-        margin-bottom: 1rem;
-    }
+.c-newscard {
+    margin-bottom: 1rem;
     &_contents {
         ul {
             padding-left: 1rem;
