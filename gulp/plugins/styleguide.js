@@ -92,7 +92,7 @@ else {
 
 const sgsync = () => {
     const plugins = functions.getConfig(dir.config.plugins);
-    _.browserSync({
+    _.browserSync.init({
         server: {
             baseDir: './'
         },

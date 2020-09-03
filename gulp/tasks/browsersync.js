@@ -43,7 +43,7 @@ const browsersync = () => {
             bin: process.env.PHP_BIN,
             ini: process.env.PHP_INI
         }, () =>{
-            _.browserSync({
+            _.browserSync.init({
                 proxy: `${process.env.PROXY_HOST}:${process.env.PROXY_PORT}`,
                 open: 'external',
                 https: plugins.ssl
@@ -51,7 +51,7 @@ const browsersync = () => {
         });
     }
     else {
-        _.browserSync({
+        _.browserSync.init({
             server: {
                 baseDir: dir.dist.html
             },

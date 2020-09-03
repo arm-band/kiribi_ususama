@@ -26,7 +26,7 @@ module.exports = {
     _sortBy: require('lodash.sortby'),
     dotenv: require('dotenv').config(),
     axios: require('axios'),
-    browserSync: require('browser-sync'),
+    browserSync: require('browser-sync').create(),
     connect: require('gulp-connect-php'),
     ftpDeploy: require('ftp-deploy'),
     crypto: require('crypto')
