@@ -1,31 +1,31 @@
 <%
 const snsParam = {
     'twitter': {
-        'url': `https://twitter.com/share?url=${articleUrl}&text=${metaTitle}%20%2d%20${config.commons.sitename}`,
+        'url': `https://twitter.com/share?url=${encodeURIComponent(`${articleUrl}?utm_source=twitter&utm_medium=social&utm_campaign=${attributes.url}`)}&text=${metaTitle}%20%2d%20${config.commons.sitename}`,
         'title': 'Twitterでツイート',
         'bText': 'ツイート',
         'fa': 'twitter'
     },
     'facebook': {
-        'url': `https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`,
+        'url': `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${articleUrl}?utm_source=facebook&utm_medium=social&utm_campaign=${attributes.url}`)}`,
         'title': 'Facebookに投稿',
         'bText': '投稿',
         'fa': 'facebook'
     },
     'hatena': {
-        'url': `https://b.hatena.ne.jp/add?mode=confirm&url=${articleUrl}&title=${metaTitle}%20%2d%20${config.commons.sitename}`,
+        'url': `https://b.hatena.ne.jp/add?mode=confirm&url=${encodeURIComponent(`${articleUrl}?utm_source=hatena&utm_medium=social&utm_campaign=${attributes.url}`)}&title=${metaTitle}%20%2d%20${config.commons.sitename}`,
         'title': 'はてなブックマーク',
         'bText': 'ブックマークする',
         'fa': 'bookmark'
     },
     'line': {
-        'url': `https://line.me/R/msg/text/?${metaTitle}%20%2d%20${config.commons.sitename}%20${articleUrl}`,
+        'url': `https://line.me/R/msg/text/?${metaTitle}%20%2d%20${config.commons.sitename}%20${encodeURIComponent(`${articleUrl}?utm_source=line&utm_medium=social&utm_campaign=${attributes.url}`)}`,
         'title': 'LINEトークに送る',
         'bText': '送る',
         'fa': 'line'
     },
     'pocket': {
-        'url': `https://getpocket.com/edit?url=${articleUrl}`,
+        'url': `https://getpocket.com/edit?url=${encodeURIComponent(`${articleUrl}?utm_source=pocket&utm_medium=social&utm_campaign=${attributes.url}`)}`,
         'title': 'Pocketに保存',
         'bText': 'あとで',
         'fa': 'get-pocket'
@@ -36,7 +36,8 @@ const snsParam = {
         'bText': 'Feedly',
         'fa': 'rss'
     }
-}; -%>
+};
+-%>
 <%
 let flag = 0;
 for(let key of Object.keys(config.param.articlesns)) {
