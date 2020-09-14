@@ -31,7 +31,7 @@ contentBody = funcURLConverter(body, relPath);
         <aside class="container">
 <%- include('partial/_breadcrumb', { config, parameters, returnNews, pages, relPath }) %>
         </aside>
-        <article class="my-5 container <%= id %>_contents" id="<%= id %>_contents">
+        <article class="py-5 container <%= id %>_contents" id="<%= id %>_contents">
 <%
 const datetime = funcDateTimeFormat(attributes.date, "", "tz")
 const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
@@ -54,7 +54,7 @@ if(plugins.articlesns) {
 -%>
             </div>
         </article>
-        <div class="text-center my-5">
+        <div class="text-center pb-5">
             <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>" class="btn btn-light rounded-0"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
         </div>
     </main>

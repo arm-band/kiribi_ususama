@@ -42,14 +42,14 @@ else {
 -%>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main">
-        <section class="container fixed_anchor" id="contents">
+        <section class="py-5 container fixed_anchor" id="contents">
             <!-- contents -->
         </section>
 <%
 if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.length > 0) {
     const counter = indexCounter();
 -%>
-        <section class="container my-5 <%= config.param.news.baseurl %> fixed_anchor" id="<%= config.param.news.baseurl %>">
+        <section class="container pb-5 <%= config.param.news.baseurl %> fixed_anchor" id="<%= config.param.news.baseurl %>">
             <div class="page-header mb-3 text-center <%= config.param.news.baseurl %>_header">
                 <h2><%= config.param.news.title %></h2>
             </div>
