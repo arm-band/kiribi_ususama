@@ -62,7 +62,7 @@ const jsBuild = () => {
                 `${dir.src.js}/_plugins/**`
             ]
         });
-    if(process.env.DEV_MODE === 'true') {
+    if(process.env.DEV_MODE === 'dev') {
         objGulp = objGulp.pipe(_.sourcemaps.init())
     }
     objGulp = objGulp.pipe(_.plumber({
@@ -80,7 +80,7 @@ const jsBuild = () => {
             path.basename += '.min'
             path.extname = '.js'
         }));
-    if(process.env.DEV_MODE === 'true') {
+    if(process.env.DEV_MODE === 'dev') {
         objGulp = objGulp.pipe(_.sourcemaps.write())
     }
     objGulp = objGulp.pipe(_.gulp.dest(dir.dist.js));

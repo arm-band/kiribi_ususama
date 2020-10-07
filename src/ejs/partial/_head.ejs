@@ -4,11 +4,19 @@
     <title><%= metaTitle %> <%= config.commons.titleseparator %> <%= config.commons.sitename %></title>
     <meta name="description" content="<%= metaDescription %>">
 <%
+if(DEV_MODE !== 'prod' || id.indexOf('error') >= 0) {
+-%>
+    <meta name="robots" content="noindex, nofollow">
+<%
+}
+-%>
+<%
 if(
     plugins.analytics
     && config.param.analytics !== null
     && config.param.analytics !== undefined
     && config.param.analytics.length > 0
+    && DEV_MODE === 'prod'
 ) {
 -%>
 <%- include('../_plugins/analytics/analytics', { config }) %>
@@ -21,6 +29,7 @@ if(
     && config.param.searchconsole !== null
     && config.param.searchconsole !== undefined
     && config.param.searchconsole.length > 0
+    && DEV_MODE === 'prod'
 ) {
 -%>
 <%- include('../_plugins/searchconsole/searchconsole', { config }) %>

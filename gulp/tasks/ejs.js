@@ -10,6 +10,7 @@ const commonsEjs = () => {
     const config = functions.getConfig(dir.config.config);
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
+    const DEV_MODE = process.env.DEV_MODE;
 
     return _.gulp.src(
         `${dir.src.ejs}/**/*.ejs`,
@@ -31,7 +32,7 @@ const commonsEjs = () => {
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, plugins, parameters }))
+        .pipe(_.ejs({ config, commonVar, plugins, parameters, DEV_MODE }))
         .pipe(_.rename({ extname: '.html' }))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
@@ -42,6 +43,7 @@ const indexEjs = () => {
     const config = functions.getConfig(dir.config.config);
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
+    const DEV_MODE = process.env.DEV_MODE;
     let newsBlock = [];
     let fileList = [];
     if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
@@ -67,7 +69,7 @@ const indexEjs = () => {
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
+        .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters, DEV_MODE }))
         .pipe(_.rename({ extname: '.html' }))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
@@ -79,6 +81,7 @@ const newsEjs = (done) => {
     const config = functions.getConfig(dir.config.config);
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
+    const DEV_MODE = process.env.DEV_MODE;
     const defaultFile = `${dir.src.ejs}/article.ejs`; //記事デフォルトテンプレート
     let tempArticleFile = defaultFile; //記事テンプレート
     const tempNewsFile = `${dir.src.ejs}/${name}.ejs`; //新着一覧テンプレート
@@ -126,7 +129,7 @@ const newsEjs = (done) => {
             .pipe(_.data((ejsFile) => {
                 return { 'filename': ejsFile.path }
             }))
-            .pipe(_.ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters }))
+            .pipe(_.ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters, DEV_MODE }))
             .pipe(_.rename(`${articleFileName}.html`))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
             .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
@@ -150,7 +153,7 @@ const newsEjs = (done) => {
                 .pipe(_.data((file) => {
                     return { 'filename': file.path }
                 }))
-                .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
+                .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters, DEV_MODE }))
                 .pipe(_.rename(`${name}${pages}.html`))
                 .pipe(_.htmlmin(jsConfig.configHtmlMin))
                 .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
@@ -172,7 +175,7 @@ const newsEjs = (done) => {
             .pipe(_.data((file) => {
                 return { 'filename': file.path }
             }))
-            .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
+            .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters, DEV_MODE }))
             .pipe(_.rename(`${name}${pages}.html`))
             .pipe(_.htmlmin(jsConfig.configHtmlMin))
             .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
@@ -192,6 +195,7 @@ const newslessEjs = () => {
     const config = functions.getConfig(dir.config.config);
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
+    const DEV_MODE = process.env.DEV_MODE;
     const newsBlock = [];
 
     return _.gulp.src(
@@ -213,7 +217,7 @@ const newslessEjs = () => {
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
+        .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters, DEV_MODE }))
         .pipe(_.rename({ extname: '.html' }))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))

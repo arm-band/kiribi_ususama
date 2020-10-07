@@ -90,8 +90,35 @@ const pageScroll = (screlm) => {
             $(screlm).animate({ scrollTop: position }, speed, 'easeInOutCirc');
             const navBarListID = 'navbarList';
             if ($(e.currentTarget).closest('#' + navBarListID).length > 0) {
+                let breakpoint = 0;
+                if (/(^|\s)navbar-expand-(\S*)/g.test($navbar.children('.navbar').prop('class'))) {
+                    switch (RegExp.$2) {
+                        case 'sm':
+                            breakpoint = 576;
+                            break;
+                        case 'md':
+                            breakpoint = 768;
+                            break;
+                        case 'lg':
+                            breakpoint = 992;
+                            break;
+                        case 'xl':
+                            breakpoint = 1200;
+                            break;
+                        default:
+                            breakpoint = 0;
+                            break;
+                    }
+                }
                 //ナビゲーションバー
-                $navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').click(); //移動したらハンバーガーを折りたたむ
+                if ($(window).outerWidth() < breakpoint && !$navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').hasClass('collapsed')) {
+                    //現在の表示がハンバーガーメニューの場合
+                    $navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').trigger('click'); //移動したらハンバーガーを折りたたむ
+                }
+                else if ($(e.currentTarget).hasClass('dropdown-item') && $(e.currentTarget).closest('.dropdown').hasClass('show')) {
+                    //現在の表示がハンバーガーメニューではなく、ドロップダウン内のメニューをクリックした場合
+                    $(e.currentTarget).closest('.dropdown').trigger('click'); //移動したらドロップダウンを折りたたむ
+                }
             }
             return false;
         } else {

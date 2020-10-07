@@ -8,6 +8,7 @@ const sitemap = () => {
     const config = functions.getConfig(dir.config.config);
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
+    const DEV_MODE = process.env.DEV_MODE;
 
     //リスト出力先の存在確認
     try {
@@ -76,7 +77,7 @@ const sitemap = () => {
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList }))
+        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList, DEV_MODE }))
         .pipe(_.rename({ extname: '.html' }))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))

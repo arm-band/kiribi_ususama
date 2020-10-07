@@ -3,7 +3,7 @@ commons:
     description: "gulpを使用した小・中規模Webサイト制作用のフレームワークです。"
     year: 2019
     author: "アルム＝バンド"
-    url: "https://localhost:3000/"
+    url: "https://example.com/"
     titleseparator: "|"
     address: "北海道札幌市北区丸山町字辛亥五ノ村30-90"
     postalcode: "001-0000"

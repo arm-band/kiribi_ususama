@@ -43,7 +43,7 @@ const scss = {
             {
                 ignore: ignoreListArray
             });
-        if(process.env.DEV_MODE === 'true') {
+        if(process.env.DEV_MODE === 'dev') {
             objGulp = objGulp.pipe(_.sourcemaps.init())
         }
         objGulp = objGulp
@@ -59,7 +59,7 @@ const scss = {
             .pipe(_.autoprefixer({
                 cascade: false
             }))
-        if(process.env.DEV_MODE === 'true') {
+        if(process.env.DEV_MODE === 'dev') {
             objGulp = objGulp.pipe(_.sourcemaps.write())
         }
         objGulp = objGulp.pipe(_.gulp.dest(dir.dist.css));
