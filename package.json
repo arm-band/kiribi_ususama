@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "6.17.1-4.3.1",
+    "version": "6.17.2-4.3.1",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {

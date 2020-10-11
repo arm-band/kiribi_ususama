@@ -8,7 +8,7 @@ let ftpConfig = {
     'port': 21,
     'localRoot': './dist/',
     'remoteRoot': '',
-    'include': ["*", "**/*"],
+    'include': ["*", "**/*", ".*"],
     'exclude': null,
     'deleteRemote': true
 };
