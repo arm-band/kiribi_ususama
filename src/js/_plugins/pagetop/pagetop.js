@@ -1,8 +1,8 @@
 //ページトップへ戻る
 const pageTop = (screlm) => {
-    const $returnPageTop = $(".returnPageTop");
+    const $returnPageTop = $('.returnPageTop');
 
-    $(window).on("scroll", function() {
+    $(window).on('scroll', function () {
         //スクロール距離が400pxより大きければページトップへ戻るボタンを表示
         let currentPos = $(this).scrollTop();
         if (currentPos > 400) {
@@ -13,8 +13,8 @@ const pageTop = (screlm) => {
     });
 
     //ページトップへスクロールして戻る
-    $returnPageTop.on("click", function() {
-        $(screlm).animate({ scrollTop: 0 }, 1000, "easeInOutCirc");
+    $returnPageTop.on('click', function () {
+        $(screlm).animate({ scrollTop: 0 }, 1000, 'easeInOutCirc');
         return false;
     });
 };

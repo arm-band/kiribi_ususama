@@ -168,14 +168,7 @@ $(() => {
     }
 
     //search of list.js
-    if ($('#sitesearch').length) {
-        const options = {
-            valueNames: ['searchTitle', 'searchText'],
-        };
-        const searchList = new List('listSearch', options);
-        //hits
-        searchList.on('searchComplete', function (a) {
-            $('#hits').text(a.matchingItems.length);
-        });
+    if (typeof siteSearch === 'function') {
+        siteSearch();
     }
 });

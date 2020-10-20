@@ -10,7 +10,7 @@ for(let i of Object.keys(newsBlock)) {
     }
 -%>
                 <div class="col-md-12 col-lg-6 col-xl-4 mb-4 c-newscard">
-                    <article class="c-newscard_article" id="<%= articleId %>">
+                    <section class="c-newscard_article" id="<%= articleId %>">
                         <div class="card h-100">
 <%
 if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
@@ -29,7 +29,7 @@ if(newsBlock[i].thumbnail !== null && newsBlock[i].thumbnail !== undefined) {
                                 <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-newscard_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                             </div>
                         </div>
-                    </article>
+                    </section>
                 </div>
 <%
 }
