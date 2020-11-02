@@ -1,6 +1,13 @@
     <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no,address=no,email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%
+if(id.indexOf('error') >= 0) {
+-%>
+    <base href="<%= config.commons.rootpath %>">
+<%
+}
+-%>
     <title><%= metaTitle %> <%= config.commons.titleseparator %> <%= config.commons.sitename %></title>
     <meta name="description" content="<%= metaDescription %>">
 <%
@@ -49,7 +56,7 @@ if(plugins.themecolor) {
 if(id !== 'error-ie') {
 -%>
     <!-- css -->
-    <link href="<%= relPath %>css/<%= parameters.css %>.css" rel="stylesheet">
+    <link href="<%= relPath %>css/<%= parameters.css %>.css<%= cacheCanceller %>" rel="stylesheet">
 <%
 }
 -%>
@@ -57,7 +64,7 @@ if(id !== 'error-ie') {
 if(plugins.noscript) {
 -%>
     <noscript>
-        <link rel="stylesheet" href="<%= relPath %>css/noscript.css">
+        <link rel="stylesheet" href="<%= relPath %>css/noscript.css<%= cacheCanceller %>">
     </noscript>
 <%
 }

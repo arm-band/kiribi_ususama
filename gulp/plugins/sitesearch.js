@@ -2,6 +2,7 @@ const _         = require('../plugin');
 const dir       = require('../dir');
 const functions = require('../functions');
 const jsConfig  = require('../jsconfig');
+const nowDate = functions.formatDate('', 'nodelimiter');
 const parameters = [];
 
 const sitesearch = () => {
@@ -38,7 +39,7 @@ const sitesearch = () => {
         .pipe(_.data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList, DEV_MODE }))
+        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList, nowDate, DEV_MODE }))
         .pipe(_.rename({ extname: '.html' }))
         .pipe(_.htmlmin(jsConfig.configHtmlMin))
         .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))

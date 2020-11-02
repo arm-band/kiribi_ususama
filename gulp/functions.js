@@ -87,11 +87,14 @@ module.exports = {
             sc = '0' + sc;
         }
         let datetime;
-        if(output === 'ymd') {
+        if (output === 'ymd') {
             datetime = `${y}${m}${d}`;
         }
+        else if (output === 'nodelimiter') {
+            datetime = `${y}${m}${d}${hr}${mt}${sc}`;
+        }
         else {
-            datetime = y + '-' + m + '-' + d + 'T' + hr + ':' + mt + ':' + sc + '+09:00';
+            datetime = `${y}-${m}-${d}T${hr}:${mt}:${sc}+09:00`;
         }
         return datetime;
     },

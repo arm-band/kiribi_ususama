@@ -51,6 +51,11 @@ const pageScroll = (screlm) => {
                         currentPath = `${currentDirectory}/${currentPath}`;
                         recursivePath = recursivePath.slice(0, recursivePath.lastIndexOf(currentDirectory));
                     }
+                } else if (/^(\.\/)?(.*\/)$/.test(href)) {
+                    //サブディレクトリ(下層ディレクトリ)への参照(`./contact/`, `contact/`など)
+                    linkPath = RegExp.$2; //hrefの値を、最後の`/`までの文字列とする
+                    const fullPath = location.pathname.slice(location.pathname.indexOf('/') + 1);
+                    currentPath = fullPath;
                 } else {
                     //現在ディレクトリへの参照(`./ususama.html`または`ususama.html`または`./kiribi/ususama.html`、 `./../`など先祖ディレクトリへの参照と混合することは考慮していない)
                     linkPath = href.slice(href.indexOf('/') + 1); //hrefの値を、最後の`/`以降(現在のディレクトリ以降)の文字列とする
@@ -111,11 +116,16 @@ const pageScroll = (screlm) => {
                     }
                 }
                 //ナビゲーションバー
-                if ($(window).outerWidth() < breakpoint && !$navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').hasClass('collapsed')) {
+                if (
+                    $(window).outerWidth() < breakpoint &&
+                    !$navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').hasClass('collapsed')
+                ) {
                     //現在の表示がハンバーガーメニューの場合
                     $navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').trigger('click'); //移動したらハンバーガーを折りたたむ
-                }
-                else if ($(e.currentTarget).hasClass('dropdown-item') && $(e.currentTarget).closest('.dropdown').hasClass('show')) {
+                } else if (
+                    $(e.currentTarget).hasClass('dropdown-item') &&
+                    $(e.currentTarget).closest('.dropdown').hasClass('show')
+                ) {
                     //現在の表示がハンバーガーメニューではなく、ドロップダウン内のメニューをクリックした場合
                     $(e.currentTarget).closest('.dropdown').trigger('click'); //移動したらドロップダウンを折りたたむ
                 }

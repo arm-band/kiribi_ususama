@@ -4,6 +4,7 @@ commons:
     year: 2019
     author: "アルム＝バンド"
     url: "https://example.com/"
+    rootpath: "/"
     titleseparator: "|"
     address: "北海道札幌市北区丸山町字辛亥五ノ村30-90"
     postalcode: "001-0000"

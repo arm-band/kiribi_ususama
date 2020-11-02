@@ -3,7 +3,7 @@
 funcCopyRightYear = (config) => {
     let copyRightYear = '';
     const getFullYear = new Date().getFullYear();
-    if(parseInt(getFullYear) - parseInt(config.commons.year) === 0) {
+    if (parseInt(getFullYear) - parseInt(config.commons.year) === 0) {
         copyRightYear = config.commons.year;
     }
     else {
@@ -27,10 +27,10 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
     sc = sc.toString().padStart(2, 0);
 
     let datetime;
-    if(output === 'ymd') {
+    if (output === 'ymd') {
         datetime = `${y}${optStr}${m}${optStr}${d}`;
     }
-    else if(output === 'tz') {
+    else if (output === 'tz') {
         if(optStr.length === 0) {
             optStr = '-';
         }
@@ -40,7 +40,7 @@ funcDateTimeFormat = (dateStr, optStr, output) => {
         if(optStr.length === 0) {
             optStr = '-';
         }
-        datetime = y + optStr + m + optStr + d + ' ' + hr + ':' + mt + ':' + sc;
+        datetime = `${y}${optStr}${m}${optStr}${d} ${hr}:${mt}:${sc}`;
     }
     return datetime;
 };
