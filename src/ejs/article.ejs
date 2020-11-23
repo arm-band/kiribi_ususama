@@ -23,6 +23,13 @@ contentBody = funcURLConverter(body, relPath);
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
 <%- include('partial/_body_loader', { plugins }) %>
 <div id="wrapper">
+<%
+if(plugins.noscript) {
+-%>
+<%- include('_plugins/noscript/noscript') %>
+<%
+}
+-%>
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>
 <%- include('partial/_eyecatch', { headerString }) %>
@@ -48,7 +55,7 @@ const articleUrl = funcArticleUrl(config.commons.url, config.param.news.baseurl,
 <%
 if(plugins.articlesns) {
 -%>
-    <%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle }) %>
+    <%- include('_plugins/articlesns/articlesns', { config, articleUrl, metaTitle, attributes }) %>
 <%
 }
 -%>

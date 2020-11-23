@@ -35,21 +35,23 @@
 ```
 */
 
+@use "../global" as g;
+
 .l-navbar {
     &_header {
-        @include mincho();
+        @include g.mincho();
     }
     &.navbar-light {
         .navbar-brand {
             &,
             &:link,
             &:visited {
-                color: $main-color;
+                color: g.$us-main-color;
             }
             &:hover,
             &:active,
             &:focus {
-                color: $main-color_d;
+                color: g.$us-main-color_d;
             }
         }
         .navbar-toggler {

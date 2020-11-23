@@ -1,30 +1,35 @@
 @charset "utf-8";
 
+@use "sass:color";
+@use "sass:map";
+@use "../../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest" as bc; //ソーシャルメディアなどのブランドカラー
+@use "../../global" as g;
+
 $sns-array: (
-    Twitter: (
-        color: $bc-twitter,
-        darkness: 8%
+    twitter: (
+        color: bc.$bc-twitter,
+        darkness: -8%,
     ),
-    Facebook: (
-        color: $bc-facebook,
-        darkness: 12%
+    facebook: (
+        color: bc.$bc-facebook,
+        darkness: -12%,
     ),
-    Hatena: (
-        color: $bc-hatena-bookmark,
-        darkness: 8%
+    hatena: (
+        color: bc.$bc-hatena-bookmark,
+        darkness: -8%,
     ),
-    Line: (
-        color: $bc-line,
-        darkness: 5%
+    line: (
+        color: bc.$bc-line,
+        darkness: -5%,
     ),
-    Pocket: (
-        color: $bc-pocket,
-        darkness: 12%
+    pocket: (
+        color: bc.$bc-pocket,
+        darkness: -12%,
     ),
-    Feedly: (
-        color: $bc-feedly,
-        darkness: 8%
-    )
+    feedly: (
+        color: bc.$bc-feedly,
+        darkness: -8%,
+    ),
 );
 
 //SNSシェアボタンを付与
@@ -32,7 +37,7 @@ $sns-array: (
     &,
     &:link,
     &:visited {
-        color: darken($bg-color, 4%);
+        color: color.scale(g.$us-bg-color, $lightness: -4%);
         .fa.fa-fw {
             margin-right: 0.1rem;
         }
@@ -41,15 +46,15 @@ $sns-array: (
     &:active,
     &:focus {
         text-decoration: none;
-        color: $bg-color;
+        color: g.$us-bg-color;
     }
     @each $key, $val in $sns-array {
         &#{$key} {
-            background-color: map-get($val, color);
+            background-color: map.get($val, color);
             &:hover,
             &:active,
             &:focus {
-                background-color: darken(map-get($val, color), map-get($val, darkness));
+                background-color: color.scale(map.get($val, color), $lightness: map.get($val, darkness));
             }
         }
     }

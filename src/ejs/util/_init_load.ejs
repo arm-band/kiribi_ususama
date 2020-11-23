@@ -16,7 +16,7 @@ if(id !== 'article') {
     attributes = null;
 }
 headerString = funcEyecatchHeader(config, parameters, id, attributes);
-navbarHeight = commonVar['navbar-height'].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
+navbarHeight = commonVar['us-navbar-height'].replace(/\px/g, ''); //commonVarの中のナビゲーションバーの高さの値からpxを取り除き、数字だけにする(bodyタグのdata-offsetに使用)
 flagFixedAnchor = 'false';
 if(plugins.fixedanchor_scss) {
     flagFixedAnchor = 'true';

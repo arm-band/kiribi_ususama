@@ -1,7 +1,9 @@
 @charset "utf-8";
 
+@use "../../global" as g;
+
 //別ページからアンカー位置へ移動する際にずれるのを防止
 .fixed_anchor {
-    margin-top: 0 - $navbar-height;
-    padding-top: $navbar-height;
+    margin-top: 0 - g.$us-navbar-height;
+    padding-top: g.$us-navbar-height;
 }

@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@use "../assets/bootstrap/bootstrap" as b; //bootstrap
+
 //trasition
 @mixin t() {
     transition: all 0.3s ease;
@@ -19,29 +21,45 @@
 }
 
 //eyecatch background-image
-@mixin eyecatchBGImage($imgPath, $background-position) {
+@mixin eyecatchBGImage($imgPath, $us-background-position) {
     background: {
         image: url($imgPath);
-        position: $background-position;
+        position: $us-background-position;
+    }
+}
+
+//eyecatch max-height
+@mixin eyecatchMaxHeight() {
+    @include b.media-breakpoint-down(sm) {
+        max-height: 800px;
+    }
+    @include b.media-breakpoint-only(md) {
+        max-height: 800px;
+    }
+    @include b.media-breakpoint-only(lg) {
+        max-height: 800px;
+    }
+    @include b.media-breakpoint-up(xl) {
+        max-height: 1080px;
     }
 }
 
 //eyecatch text
-@mixin eyecatchText($fontSize) {
-    color: $main-color;
+@mixin eyecatchText($fontSize, $us-main-color) {
+    color: $us-main-color;
     z-index: 3;
     font-size: $fontSize;
     @include mincho();
 }
 
 //疑似要素に「文字列:」を付与する(電話番号等)
-@mixin pseudoColon($text: "") {
+@mixin pseudoColon($text: "", $spacer) {
     content: $text + ":";
     margin-right: ($spacer * 0.25);
 }
 
 //疑似要素にFont Awesomeを付与する
-@mixin iconFA($icon: "", $type: "solid") {
+@mixin iconFA($icon: "", $type: "solid", $spacer) {
     font-family: "Font Awesome 5 Free", sans-serif;
     @if $type == "regular" or $type == "brands" {
         font-weight: 400;

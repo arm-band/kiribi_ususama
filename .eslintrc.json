@@ -15,14 +15,15 @@
         "pageTop": false,
         "slickCarousel": false,
         "fixedanchor_js": false,
-        "List": false
+        "List": false,
+        "siteSearch": false
     },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "eqeqeq": "error",
         "prettier/prettier": [
             "error",
@@ -32,7 +33,7 @@
                 //折り返しをしない
                 "proseWrap": "never",
                 //インデント
-                "indent": ["error", 4],
+                "indent": ["error", 4, { "SwitchCase": 1 }],
                 //スペース数4
                 "tabWidth": 4,
                 //タブ不使用

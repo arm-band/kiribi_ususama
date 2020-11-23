@@ -20,17 +20,19 @@
 ```
 */
 
+@use "../../global" as g;
+
 body:not(.index) .c-eyecatch {
-    @include media-breakpoint-down(sm) {
-        @include eyecatchBGImage("../img/eyecatch_sp.jpg", $background-position);
+    @include g.media-breakpoint-down(sm) {
+        @include g.eyecatchBGImage("../img/eyecatch_sp.jpg", g.$us-background-position);
     }
-    @include media-breakpoint-only(md) {
-        @include eyecatchBGImage("../img/eyecatch_tb2.jpg", $background-position);
+    @include g.media-breakpoint-only(md) {
+        @include g.eyecatchBGImage("../img/eyecatch_tb2.jpg", g.$us-background-position);
     }
-    @include media-breakpoint-only(lg) {
-        @include eyecatchBGImage("../img/eyecatch_tb.jpg", $background-position);
+    @include g.media-breakpoint-only(lg) {
+        @include g.eyecatchBGImage("../img/eyecatch_tb.jpg", g.$us-background-position);
     }
-    @include media-breakpoint-up(xl) {
-        @include eyecatchBGImage("../img/eyecatch.jpg", $background-position);
+    @include g.media-breakpoint-up(xl) {
+        @include g.eyecatchBGImage("../img/eyecatch.jpg", g.$us-background-position);
     }
 }

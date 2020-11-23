@@ -101,7 +101,6 @@ const browsersync = () => {
     const sSass = _.gulp.series(sass, _.browserSync.reload);
     let ignoreListArray = [
         `${dir.src.scss}/util/_var.scss`,
-        `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*
+#overview
+カラーパレット
+*/
+
+/*
+#colors
+カラーパレット。commonVar.jsonの"color"の名前の付くキーから自動生成する。下記の色指定は生成のための疑似コード。
+```
+@color #333
+```
+*/
+
+@use "sass:color";
+@use "var" as g;
+
+$us-main-color_d: color.scale(g.$us-main-color, $lightness: -8%);
+$us-main-color_l: color.scale(g.$us-main-color, $lightness: 8%);
+$us-accent-color: color.adjust(g.$us-main-color, $hue: 150deg);
+$us-link-color: color.adjust(g.$us-main-color, $hue: 210deg);
+$us-link-v-color: color.scale($us-link-color, $lightness: -15%);
+$us-link-ha-color: color.scale($us-link-color, $lightness: -8%);
+$us-background-position: center center;
+$us-eyecatch-height: 60vh;
+$us-line-height: 1.6;
+$us-letter-spacing: 0.15rem;

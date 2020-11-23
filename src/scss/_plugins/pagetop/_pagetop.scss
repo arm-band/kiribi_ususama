@@ -13,6 +13,7 @@
 ```
 */
 
+@use "../../global" as g;
 
 $rpt-size: 44px;
 .c-returnPageTop {
@@ -23,11 +24,11 @@ $rpt-size: 44px;
     z-index: 90;
     .fa-fw {
         font-size: $rpt-size / 2;
-        background-color: $main-color_l;
+        background-color: g.$us-main-color_l;
         border-radius: $rpt-size / 11;
-        color: $bg-color;
+        color: g.$us-bg-color;
         cursor: pointer;
-        @include t();
+        @include g.t();
         display: block;
         width: $rpt-size;
         height: $rpt-size;
@@ -35,7 +36,7 @@ $rpt-size: 44px;
         text-align: center;
         &:hover,
         &:active {
-            background-color: $main-color;
+            background-color: g.$us-main-color;
         }
     }
 }

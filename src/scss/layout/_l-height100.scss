@@ -1,6 +1,8 @@
 @charset "utf-8";
 
+@use "../global" as g;
+
 .l-upper {
     //コンテンツの高さが足りなくてもフッタを最下部に表示するように //1.5rem * 2:my-4で足される上端と下端のマージンの合計
-    min-height: calc(100vh - #{$footer-height});
+    min-height: calc(100vh - #{g.$us-footer-height});
 }

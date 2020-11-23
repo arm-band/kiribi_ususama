@@ -1,9 +1,11 @@
 @charset "utf-8";
 
+@use "../../global" as g;
+
 //iPhoneのURLバーに色を付ける
 body {
-    background-color: $main-color;
+    background-color: g.$us-main-color;
     #wrapper {
-        background-color: $bg-color;
+        background-color: g.$us-bg-color;
     }
 }

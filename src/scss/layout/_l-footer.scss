@@ -15,10 +15,12 @@
 ```
 */
 
+@use "../global" as g;
+
 .l-footer {
     clear: both;
-    background-color: $main-color;
-    color: $bg-color;
+    background-color: g.$us-main-color;
+    color: g.$us-bg-color;
     &_copyright {
         display: block;
         margin: 0 auto;

@@ -1,12 +1,15 @@
 @charset "utf-8";
 
+@use "../../global" as g;
+
 //slick
 .slider {
     overflow: hidden;
     position: relative;
     height: 80vh;
-    margin-top: $navbar-height;
+    margin-top: g.$us-navbar-height;
     z-index: 1;
+    @include g.eyecatchMaxHeight();
     li {
         img {
             width: 100%;
@@ -16,9 +19,9 @@
         position: absolute;
         top: 50%;
         z-index: 2;
-        @include t();
+        @include g.t();
         .fa-fw {
-            color: $accent-color;
+            color: g.$us-accent-color;
             cursor: pointer;
         }
         &Left {

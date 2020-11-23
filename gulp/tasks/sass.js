@@ -2,6 +2,8 @@ const _         = require('../plugin');
 const dir       = require('../dir');
 const functions = require('../functions');
 const plugins = functions.getConfig(dir.config.plugins);
+_.sass.compiler = require('sass');
+const Fiber = require('fibers');
 
 //scssコンパイルタスク
 const scss = {
@@ -24,13 +26,12 @@ const scss = {
         strDist = strDist.replace(/\"[\d\.]+(rem|px|em|\%)?\"/g, function() {
             return arguments[0].replace(/\"/g, '');
         });
-        _.fs.writeFileSync(`${dir.src.scss}/foundation/_var.scss`, strDist);
+        _.fs.writeFileSync(`${dir.src.scss}/global/_var.scss`, strDist);
         done();
     },
     sass: () => {
         let ignoreListArray = [
             `${dir.src.scss}/util/_var.scss`,
-            `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
             `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
             `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
             `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
@@ -38,15 +39,15 @@ const scss = {
         if(!plugins.noscript) {
             ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
         }
-        let objGulp = _.gulp.src(
-            `${dir.src.scss}/**/*.scss`,
-            {
-                ignore: ignoreListArray
-            });
-        if(process.env.DEV_MODE === 'dev') {
-            objGulp = objGulp.pipe(_.sourcemaps.init())
+        let paramSrc = {
+            ignore: ignoreListArray
+        };
+        let paramDist = {};
+        if (process.env.DEV_MODE === 'dev') {
+            paramSrc.sourcemaps = true;
+            paramDist.sourcemaps = true;
         }
-        objGulp = objGulp
+        return _.gulp.src(`${dir.src.scss}/**/*.scss`, paramSrc)
             .pipe(_.plumber({
                 errorHandler: _.notify.onError({
                     message: 'Error: <%= error.message %>',
@@ -54,16 +55,13 @@ const scss = {
                 })
             }))
             .pipe(_.sass({
+                fiber: Fiber,
                 outputStyle: 'compressed'
             }).on('error', _.sass.logError))
             .pipe(_.autoprefixer({
                 cascade: false
             }))
-        if(process.env.DEV_MODE === 'dev') {
-            objGulp = objGulp.pipe(_.sourcemaps.write())
-        }
-        objGulp = objGulp.pipe(_.gulp.dest(dir.dist.css));
-        return objGulp;
+            .pipe(_.gulp.dest(dir.dist.css, paramDist));
     }
 };
 

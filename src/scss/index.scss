@@ -5,39 +5,39 @@
 ** foundation                                    **
 **                                               **
 ** ********************************************* */
-@import "foundation/init_load"; //foundation内ファイル読み込み(変数、ミックスイン、タイポグラフィ、プラグイン)
+@use "foundation"; //foundation内ファイル読み込み(変数、ミックスイン、タイポグラフィ、プラグイン)
 
 /* ********************************************* **
 **                                               **
 ** layout                                        **
 **                                               **
 ** ********************************************* */
-@import "layout/l-height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
-@import "layout/l-header";
-@import "layout/l-main";
-@import "layout/l-footer";
+@use "layout/l-height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
+@use "layout/l-header";
+@use "layout/l-main";
+@use "layout/l-footer";
 
 /* ********************************************* **
 **                                               **
 ** object/utility                                **
 **                                               **
 ** ********************************************* */
-@import "object/utility/u-link"; //aタグの色
-@import "object/utility/u-mg";
+@use "object/utility/u-link"; //aタグの色
+@use "object/utility/u-mg";
 
 /* ********************************************* **
 **                                               **
 ** object/component                              **
 **                                               **
 ** ********************************************* */
-@import "object/component/c-address";
-@import "object/component/c-eyecatch";
-@import "object/component/c-newscards";
-@import "object/component/c-pagination";
+@use "object/component/c-address";
+@use "object/component/c-eyecatch";
+@use "object/component/c-newscards";
+@use "object/component/c-pagination";
 
 /* ********************************************* **
 **                                               **
 ** object/project                                **
 **                                               **
 ** ********************************************* */
-@import "object/project/p-index";
+@use "object/project/p-index";

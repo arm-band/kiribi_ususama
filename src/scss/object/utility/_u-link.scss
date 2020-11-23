@@ -1,16 +1,18 @@
 @charset "utf-8";
 
+@use "../../global" as g;
+
 a,
 a:link {
-    color: $link-color;
+    color: g.$us-link-color;
     text-decoration: none;
 }
 a:visited {
-    color: $link-v-color;
+    color: g.$us-link-v-color;
     text-decoration: none;
 }
 a:hover,
 a:active {
-    color: $link-ha-color;
+    color: g.$us-link-ha-color;
     text-decoration: underline;
 }

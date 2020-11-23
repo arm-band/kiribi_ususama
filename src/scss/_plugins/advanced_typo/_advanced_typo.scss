@@ -1,20 +1,21 @@
 @charset "utf-8";
 
 //タイポグラフィ(font-size, line-height, margin, padding)関連の設定
-/* ************************************ */
-/* font-size                            */
-/*                                      */
-/* fs-1:  12.8px                        */
-/* fs-2:  14.222px                      */
-/* fs-3:  16px                          */
-/* fs-4:  18.286px                      */
-/* fs-5:  21.333px                      */
-/* fs-6:  25.6px                        */
-/* fs-7:  32px                          */
-/* fs-8:  42.667px                      */
-/* fs-9:  64px                          */
-/* fs-10: 128px                         */
-/* ************************************ */
+
+/* ************************************ *
+ * font-size                            *
+ *                                      *
+ * fs-1:  12.8px                        *
+ * fs-2:  14.222px                      *
+ * fs-3:  16px                          *
+ * fs-4:  18.286px                      *
+ * fs-5:  21.333px                      *
+ * fs-6:  25.6px                        *
+ * fs-7:  32px                          *
+ * fs-8:  42.667px                      *
+ * fs-9:  64px                          *
+ * fs-10: 128px                         *
+ * ************************************ */
 $fontsize-unit: 1rem;
 $fontsize-magnification: 8;
 $fontsize-loopmax: 10;
@@ -24,15 +25,15 @@ $fontsize-loopmax: 10;
     }
 }
 
-/* ************************************ */
-/* line-height                          */
-/*                                      */
-/* lh-1:  16px                          */
-/* lh-2:  20px                          */
-/* lh-3:  24px                          */
-/* lh-4:  28px                          */
-/* lh-5:  32px                          */
-/* ************************************ */
+/* ************************************ *
+ * line-height                          *
+ *                                      *
+ * lh-1:  16px                          *
+ * lh-2:  20px                          *
+ * lh-3:  24px                          *
+ * lh-4:  28px                          *
+ * lh-5:  32px                          *
+ * ************************************ */
 $lineheight-magnification: 4;
 $lineheight-unit: 1rem / $lineheight-magnification;
 $lineheight-loopmax: 5;
@@ -42,16 +43,16 @@ $lineheight-loopmax: 5;
     }
 }
 
-/* ************************************ */
-/* margin & padding                     */
-/*                                      */
-/* u-m-1:  8px                          */
-/* u-m-2:  16px                         */
-/* u-m-3:  24px                         */
-/* u-m-4:  40px                         */
-/* u-m-5:  64px                         */
-/* u-m-6:  104px                        */
-/* ************************************ */
+/* ************************************ *
+ * margin & padding                     *
+ *                                      *
+ * u-m-1:  8px                          *
+ * u-m-2:  16px                         *
+ * u-m-3:  24px                         *
+ * u-m-4:  40px                         *
+ * u-m-5:  64px                         *
+ * u-m-6:  104px                        *
+ * ************************************ */
 $spacing-unit: 1rem / 2;
 $spacing-loopmax: 6;
 $fibonacci-firstterm: 0;

@@ -4,13 +4,10 @@
 /src/scss/assets/bootstrap/honoka/honoka/
 /src/scss/assets/bootstrap/honoka/bootstrap/
 !/src/scss/assets/bootstrap/honoka/_honoka.scss
-/src/scss/assets/lightbox/
-/src/scss/foundation/_var.scss
+/src/scss/global/_var.scss
 /src/js/_plugins/_plugins.js
 /src/scss/_plugins/_plugins.scss
-/src/img/lightbox/
 /bin/config/subterranean/
-/.sass-cache/
 /sg/dist/
 /dist/
 /bin/daishi/src/js/concat/

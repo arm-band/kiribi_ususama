@@ -22,10 +22,12 @@
 ```
 */
 
+@use "../../global" as g;
+
 .c-address {
     &_tel {
         &::before {
-            @include pseudoColon("tel");
+            @include g.pseudoColon("tel", g.$spacer);
             text-transform: uppercase;
         }
     }

@@ -33,7 +33,7 @@ parameters = {
             </div>
 <%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
             <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
-<%- include('partial/_newscards.ejs', { relPath, newsBlock }) %>
+<%- include('partial/_newscards', { relPath, newsBlock }) %>
             </div>
 <%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
             <div class="text-center my-4">

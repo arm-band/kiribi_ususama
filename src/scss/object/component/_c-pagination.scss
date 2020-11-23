@@ -30,11 +30,13 @@
 ```
 */
 
+@use "../../global" as g;
+
 .pagination {
     .page-item.active {
         .page-link {
-            background-color: $accent-color;
-            border-color: $accent-color;
+            background-color: g.$us-accent-color;
+            border-color: g.$us-accent-color;
         }
     }
 }

@@ -7,17 +7,17 @@ const plugins = functions.getConfig(dir.config.plugins);
 const jsConcat = () => {
     let libSrcArray = [
         `${dir.assets.jquery}/jquery.min.js`,
-        `${dir.assets.bootstrap}/bootstrap.bundle.min.js`,
+        `${dir.assets.bootstrap}/bootstrap.bundle.js`,
         `${dir.assets.easing}/jquery.easing.js`
     ];
     if(plugins.lightbox) {
-        libSrcArray.push(`${dir.assets.lightbox}/js/lightbox.min.js`);
+        libSrcArray.push(`${dir.assets.lightbox}/js/lightbox.js`);
     }
     if(plugins.slick) {
         libSrcArray.push(`${dir.assets.slick}/slick.js`);
     }
     if(plugins.sitesearch) {
-        libSrcArray.push(`${dir.assets.listjs}/list.min.js`);
+        libSrcArray.push(`${dir.assets.listjs}/list.js`);
     }
     if(plugins.safari) {
         libSrcArray.push(`${dir.assets.bowser}/bundled.js`);
@@ -54,18 +54,19 @@ const jsLibBuild = () => {
         .pipe(_.gulp.dest(dir.dist.js));
 };
 const jsBuild = () => {
-    let objGulp = _.gulp.src(
-        `${dir.src.js}/**/*.js`,
-        {
-            ignore: [
-                `${dir.src.js}/concat/**`,
-                `${dir.src.js}/_plugins/**`
-            ]
-        });
-    if(process.env.DEV_MODE === 'dev') {
-        objGulp = objGulp.pipe(_.sourcemaps.init())
+    let paramSrc = {
+        ignore: [
+            `${dir.src.js}/concat/**`,
+            `${dir.src.js}/_plugins/**`
+        ]
+    };
+    let paramDist = {};
+    if (process.env.DEV_MODE === 'dev') {
+        paramSrc.sourcemaps = true;
+        paramDist.sourcemaps = true;
     }
-    objGulp = objGulp.pipe(_.plumber({
+    return _.gulp.src(`${dir.src.js}/**/*.js`, paramSrc)
+        .pipe(_.plumber({
             errorHandler: _.notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'jsBuild'
@@ -79,12 +80,8 @@ const jsBuild = () => {
         .pipe(_.rename((path) => {
             path.basename += '.min'
             path.extname = '.js'
-        }));
-    if(process.env.DEV_MODE === 'dev') {
-        objGulp = objGulp.pipe(_.sourcemaps.write())
-    }
-    objGulp = objGulp.pipe(_.gulp.dest(dir.dist.js));
-    return objGulp;
+        }))
+        .pipe(_.gulp.dest(dir.dist.js, paramDist));
 };
 
 module.exports = _.gulp.series(jsConcat, jsLibBuild, jsBuild);

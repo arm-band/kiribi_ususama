@@ -22,7 +22,6 @@ const sg = () => {
         `${dir.src.scss}/**/*.scss`,
         {
             ignore: [
-                `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
@@ -120,7 +119,6 @@ const sgsync = () => {
         {
             ignored: [
                 `${dir.src.scss}/util/_var.scss`,
-                `${dir.src.scss}${dir.src.scssassets}/lightbox/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`

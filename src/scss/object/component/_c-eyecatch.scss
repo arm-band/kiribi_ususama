@@ -33,6 +33,8 @@
 ```
 */
 
+@use "../../global" as g;
+
 .c-eyecatch {
     height: 40vh;
     display: flex;
@@ -43,22 +45,22 @@
         size: cover;
     }
     &_header:not(.smallText) {
-        @include eyecatchText(calc(4em + 3vw));
+        @include g.eyecatchText(calc(4em + 3vw), g.$us-main-color);
     }
     &_header.smallText {
-        @include eyecatchText(3rem);
+        @include g.eyecatchText(3rem, g.$us-main-color);
     }
     &.c-eyecatchMaxHeight {
-        @include media-breakpoint-down(sm) {
+        @include g.media-breakpoint-down(sm) {
             max-height: 800px;
         }
-        @include media-breakpoint-only(md) {
+        @include g.media-breakpoint-only(md) {
             max-height: 800px;
         }
-        @include media-breakpoint-only(lg) {
+        @include g.media-breakpoint-only(lg) {
             max-height: 800px;
         }
-        @include media-breakpoint-up(xl) {
+        @include g.media-breakpoint-up(xl) {
             max-height: 1080px;
         }
     }

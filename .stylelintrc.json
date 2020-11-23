@@ -10,14 +10,13 @@
     "syntax": "scss",
     "ignoreFiles": [
         "src/scss/assets/**/*.scss",
-        "src/scss/_plugins/**/*.scss",
-        "src/scss/foundation/_var.scss"
+        "src/scss/global/_var.scss"
     ],
     "rules": {
         "at-rule-no-unknown": [
             true, {
                 "ignoreAtRules": [
-                    "function","if","else if","else","for","each","include","mixin","content"
+                    "function","if","else if","else","for","each","include","mixin","content","use","forward"
                 ]
             }
         ],
@@ -38,7 +37,7 @@
             "at-rule-no-unknown": [
                 true, {
                     "ignoreAtRules": [
-                        "function","if","else if","else","for","each","include","mixin","content"
+                        "function","if","else if","else","for","each","include","mixin","content","use","forward"
                     ]
                 }
             ],

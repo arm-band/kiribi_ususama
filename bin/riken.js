@@ -33,28 +33,20 @@ const scssFileWrite = (scssPath) => {
         const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`);
         if(val) {
             if(key === keyStrLB) {
-                const scssLBPath = 'assets/lightbox/lightbox.scss';
-                pluginCode += `@import "../${scssLBPath}";
+                pluginCode += `@use "./node_modules/lightbox2/dist/css/lightbox.css";
 `;
                 runAll([`${keyStrLB}:*`], { parallel: true })
                     .then(() => {
                         console.log(`${keyStrLB} files copy: done!`);
-                        let cssFile = `${fs.readFileSync('./node_modules/lightbox2/dist/css/lightbox.css', 'utf8')}\n`;
-                        cssFile = cssFile.replace(/images/g, 'img/lightbox'); // images -> img/lightbox
-                        fs.writeFileSync(`./src/scss/${scssLBPath}`, cssFile, (err) => {
-                            if(err) {
-                                console.log(err);
-                            }
-                        });
                     })
                     .catch((err) => {
                         console.log(`${keyStrLB} files copy: failed!`);
                     });
             }
             else if(key === keyStrSlick) {
-                pluginCode += `@import "${pluginsStr}/${key}/${key}";
-@import "../../../node_modules/slick-carousel/slick/slick.scss";
-@import "../../../node_modules/slick-carousel/slick/slick-theme.scss";
+                pluginCode += `@use "${pluginsStr}/us-${key}/us-${key}";
+@use "../../../node_modules/slick-carousel/slick/slick.scss";
+@use "../../../node_modules/slick-carousel/slick/slick-theme.scss";
 `;
                 runAll([`${keyStrSlick}:*`], { parallel: true })
                     .then(() => {
@@ -65,7 +57,7 @@ const scssFileWrite = (scssPath) => {
                     });
             }
             else if(functions.isExistFile(pluginFile)) {
-                pluginCode += `@import "${pluginsStr}/${key}/${key}";\n`;
+                pluginCode += `@use "${pluginsStr}/${key}/${key}";\n`;
             }
         }
     }, plugins);

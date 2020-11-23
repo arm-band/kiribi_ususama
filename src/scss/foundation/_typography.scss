@@ -1,7 +1,9 @@
 @charset "utf-8";
 
+@use "../global" as g;
+
 //フォント・行間・文字間指定
 body {
-    line-height: $line-height;
-    letter-spacing: $letter-spacing;
+    line-height: g.$us-line-height;
+    letter-spacing: g.$us-letter-spacing;
 }

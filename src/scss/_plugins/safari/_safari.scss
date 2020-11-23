@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-//キービジュアルのiOS Safari対策コードを出力
 //bowserでUAにより付与。mobile Safariバグ対策
 body.mobileSafari .c-eyecatch {
     background-attachment: scroll;
