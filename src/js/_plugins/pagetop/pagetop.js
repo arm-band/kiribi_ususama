@@ -1,5 +1,7 @@
+import $ from 'jquery';
+
 //ページトップへ戻る
-const pageTop = (screlm) => {
+export default (screlm) => {
     const $returnPageTop = $('.returnPageTop');
 
     $(window).on('scroll', function () {

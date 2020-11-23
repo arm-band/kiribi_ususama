@@ -1,3 +1,8 @@
+import $ from 'jquery';
+import 'bootstrap-honoka/dist/js/bootstrap.bundle';
+import 'jquery.easing/jquery.easing';
+import plugins from './_plugins/_plugins';
+
 //ユーザーエージェントからスクロールを実行する対象を判定
 const scrollElm = () => {
     if ('scrollingElement' in document) {
@@ -12,8 +17,8 @@ const scrollElm = () => {
 //ページ内スクロール
 const pageScroll = (screlm) => {
     let navbarHeight = 0;
-    if (typeof fixedanchor_js === 'function') {
-        navbarHeight = fixedanchor_js();
+    if (typeof plugins.fixedanchorjs === 'function') {
+        navbarHeight = plugins.fixedanchor_js();
     }
     //ナビゲーションバー
     const $navbar = $('#navbar');
@@ -158,27 +163,27 @@ const pageScroll = (screlm) => {
 
 $(() => {
     //iPhone・iPad背景画像バグ対処
-    if (typeof mobileSafariRequiem === 'function') {
-        mobileSafariRequiem();
+    if (typeof plugins.safari === 'function') {
+        plugins.safari();
     }
 
     //スクロール対象を取得
     const screlm = scrollElm();
     //ページトップへ戻る
-    if (typeof pageTop === 'function') {
-        pageTop(screlm);
+    if (typeof plugins.pagetop === 'function') {
+        plugins.pagetop(screlm);
     }
 
     //ページ内スクロール
     pageScroll(screlm);
 
     //slick
-    if (typeof slickCarousel === 'function') {
-        slickCarousel();
+    if (typeof plugins.slick === 'function') {
+        plugins.slick();
     }
 
     //search of list.js
-    if (typeof siteSearch === 'function') {
-        siteSearch();
+    if (typeof plugins.sitesearch === 'function') {
+        plugins.sitesearch();
     }
 });

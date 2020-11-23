@@ -1,5 +1,8 @@
+import $ from 'jquery';
+import 'slick-carousel/slick/slick.js';
+
 //slick
-const slickCarousel = () => {
+export default () => {
     const $slider = $('.slider');
     $slider.slick({
         autoplay: true,

@@ -1,5 +1,8 @@
+import $ from 'jquery';
+import List from 'list.js';
+
 //サイト内検索
-const siteSearch = () => {
+export default () => {
     if ($('#sitesearch').length) {
         const options = {
             valueNames: ['searchTitle', 'searchText'],

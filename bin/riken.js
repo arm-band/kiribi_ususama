@@ -9,18 +9,37 @@ const plugins = functions.getConfig(dir.config.plugins);
 const pluginsStr = '_plugins';
 const keyStrLB = 'lightbox';
 const keyStrSlick = 'slick';
+const pluginJsPath = path.join(dir.src.js, pluginsStr);
+const jsPath = path.join(pluginJsPath, `${pluginsStr}.js`);
 
 /* functions */
 const jsFileWrite = (jsPath) => {
     let pluginCode = '';
+    let sxportCode = '';
     Object.keys(plugins).forEach(function(key) {
         const val = this[key];
-        const pluginFile = path.join(path.join(pluginJsPath, key), `${key}.js`);
-        if(val && functions.isExistFile(pluginFile)) {
-            pluginCode += `${fs.readFileSync(pluginFile, 'utf8')}\n`;
+        const pluginFile = `./${key}/${key}.js`;
+        if(val) {
+            if(functions.isExistFile(path.join(path.join(pluginJsPath, key), `${key}.js`))) {
+                pluginCode += `import ${key} from '${pluginFile}';
+`;
+                sxportCode += `    ${key}: ${key},
+`;
+            }
+            else if(key === keyStrLB) {
+                pluginCode += `import lightbox from 'lightbox2/dist/js/lightbox.min.js';
+`;
+                sxportCode += `    ${key}: ${key},
+`;
+            }
         }
     }, plugins);
-    fs.writeFileSync(jsPath, pluginCode, (err) => {
+    const pluginsData = `${pluginCode}
+export default {
+${sxportCode}
+};
+`;
+    fs.writeFileSync(jsPath, pluginsData, (err) => {
         if(err) {
             console.log(err);
         }
@@ -69,8 +88,6 @@ const scssFileWrite = (scssPath) => {
 }
 
 /* JS file generate */
-const pluginJsPath = path.join(dir.src.js, pluginsStr);
-const jsPath = path.join(pluginJsPath, `${pluginsStr}.js`);
 if(functions.isExistFile(jsPath)) {
     rimraf(jsPath, () => {
         jsFileWrite(jsPath);
