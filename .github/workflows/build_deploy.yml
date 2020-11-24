@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and deploy
+    - name: yarn install, build, and deploy
       run: |
-        npm i -D
-        npm run build
-        npm run tankai ${{ SECRETS.ftp_user }} ${{ SECRETS.ftp_password }} ${{ SECRETS.ftp_host }} ${{ SECRETS.ftp_remoteroot }}
+        yarn
+        yarn run build
+        yarn run tankai ${{ SECRETS.ftp_user }} ${{ SECRETS.ftp_password }} ${{ SECRETS.ftp_host }} ${{ SECRETS.ftp_remoteroot }}
