@@ -163,8 +163,8 @@ const pageScroll = (screlm) => {
 
 $(() => {
     //iPhone・iPad背景画像バグ対処
-    if (typeof plugins.safari === 'function') {
-        plugins.safari();
+    if (typeof plugins.ios === 'function') {
+        plugins.ios();
     }
 
     //スクロール対象を取得

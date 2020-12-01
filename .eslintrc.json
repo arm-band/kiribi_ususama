@@ -11,12 +11,7 @@
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "mobileSafariRequiem": false,
-        "pageTop": false,
-        "slickCarousel": false,
-        "fixedanchor_js": false,
-        "List": false,
-        "siteSearch": false
+        "List": false
     },
     "parserOptions": {
         "ecmaVersion": 2018,

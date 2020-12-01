@@ -11,7 +11,7 @@ searchconsole: true
 pagetop: true
 articlesns: true
 themecolor: true
-safari: true
+ios: true
 chrome: true
 fixedanchor_scss: true
 fixedanchor_js: true
