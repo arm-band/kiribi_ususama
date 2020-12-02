@@ -100,7 +100,7 @@ const browsersync = () => {
         .on('unlink', sEnvfile);
     const sSass = _.gulp.series(sass, _.browserSync.reload);
     let ignoreListArray = [
-        `${dir.src.scss}/util/_var.scss`,
+        `${dir.src.scss}/global/_var.scss`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
         `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`

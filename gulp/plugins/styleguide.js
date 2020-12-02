@@ -118,7 +118,7 @@ const sgsync = () => {
         `${dir.src.scss}/**/*.scss`,
         {
             ignored: [
-                `${dir.src.scss}/util/_var.scss`,
+                `${dir.src.scss}/global/_var.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
