@@ -38,15 +38,16 @@ const scss = {
         if(!plugins.noscript) {
             ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
         }
-        let paramSrc = {
-            ignore: ignoreListArray
-        };
-        let paramDist = {};
-        if (process.env.DEV_MODE === 'dev') {
-            paramSrc.sourcemaps = true;
-            paramDist.sourcemaps = true;
+        let objGulp = _.gulp.src(
+            `${dir.src.scss}/**/*.scss`,
+            {
+                ignore: ignoreListArray
+            }
+        );
+        if(process.env.DEV_MODE === 'dev') {
+            objGulp = objGulp.pipe(_.sourcemaps.init());
         }
-        return _.gulp.src(`${dir.src.scss}/**/*.scss`, paramSrc)
+        objGulp = objGulp
             .pipe(_.plumber({
                 errorHandler: _.notify.onError({
                     message: 'Error: <%= error.message %>',
@@ -59,8 +60,12 @@ const scss = {
             }).on('error', _.sass.logError))
             .pipe(_.autoprefixer({
                 cascade: false
-            }))
-            .pipe(_.gulp.dest(dir.dist.css, paramDist));
+            }));
+            if(process.env.DEV_MODE === 'dev') {
+                objGulp = objGulp.pipe(_.sourcemaps.write())
+            }
+            objGulp = objGulp.pipe(_.gulp.dest(dir.dist.css));
+            return objGulp;
     }
 };
 

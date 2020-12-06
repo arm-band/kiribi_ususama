@@ -5,6 +5,7 @@ module.exports = {
     yaml: require('yaml'),
     sass:  require('gulp-sass'),
     autoprefixer: require('gulp-autoprefixer'),
+    sourcemaps: require('gulp-sourcemaps'),
     imagemin: require('gulp-imagemin'),
     imageminJpeg: require('imagemin-mozjpeg'),
     imageminPng: require('imagemin-pngquant'),
