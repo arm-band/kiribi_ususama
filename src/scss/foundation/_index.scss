@@ -2,3 +2,8 @@
 
 @use "typography"; //タイポグラフィ
 @use "../_plugins/plugins"; //プラグイン
+
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; //以下4つFontAwesome
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/brands";

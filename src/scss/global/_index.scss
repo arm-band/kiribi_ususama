@@ -3,9 +3,3 @@
 @forward "var"; //変数(ejs等と共通)
 @forward "scss_variables"; //変数(Scssのみ)
 @forward "mixin"; //mixin
-@forward "../assets/bootstrap/bootstrap"; //bootstrap
-@forward "../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest"; //ソーシャルメディアなどのブランドカラー
-@use "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; //以下4つFontAwesome
-@use "../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
-@use "../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
-@use "../../../node_modules/@fortawesome/fontawesome-free/scss/brands";

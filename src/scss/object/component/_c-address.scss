@@ -23,11 +23,12 @@
 */
 
 @use "../../global" as g;
+@use "../../global/framework" as fr;
 
 .c-address {
     &_tel {
         &::before {
-            @include g.pseudoColon("tel", g.$spacer);
+            @include g.pseudoColon("tel", fr.$spacer);
             text-transform: uppercase;
         }
     }

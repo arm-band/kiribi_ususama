@@ -9,7 +9,6 @@
     height: 80vh;
     margin-top: g.$us-navbar-height;
     z-index: 1;
-    @include g.eyecatchMaxHeight();
     li {
         img {
             width: 100%;

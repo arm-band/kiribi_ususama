@@ -1,7 +1,5 @@
 @charset "utf-8";
 
-@use "../assets/bootstrap/bootstrap" as b; //bootstrap
-
 //trasition
 @mixin t() {
     transition: all 0.3s ease;
@@ -25,22 +23,6 @@
     background: {
         image: url($imgPath);
         position: $us-background-position;
-    }
-}
-
-//eyecatch max-height
-@mixin eyecatchMaxHeight() {
-    @include b.media-breakpoint-down(sm) {
-        max-height: 800px;
-    }
-    @include b.media-breakpoint-only(md) {
-        max-height: 800px;
-    }
-    @include b.media-breakpoint-only(lg) {
-        max-height: 800px;
-    }
-    @include b.media-breakpoint-up(xl) {
-        max-height: 1080px;
     }
 }
 

@@ -28,21 +28,22 @@
 */
 
 @use "../../global" as g;
+@use "../../global/framework" as fr;
 
 //eyecatch
 .index .c-eyecatch {
     height: g.$us-eyecatch-height;
     overflow: hidden;
-    @include g.media-breakpoint-down(sm) {
+    @include fr.media-breakpoint-down(sm) {
         @include g.eyecatchBGImage("../img/eyecatch_sp.jpg", g.$us-background-position);
     }
-    @include g.media-breakpoint-only(md) {
+    @include fr.media-breakpoint-only(md) {
         @include g.eyecatchBGImage("../img/eyecatch_tb2.jpg", g.$us-background-position);
     }
-    @include g.media-breakpoint-only(lg) {
+    @include fr.media-breakpoint-only(lg) {
         @include g.eyecatchBGImage("../img/eyecatch_tb.jpg", g.$us-background-position);
     }
-    @include g.media-breakpoint-up(xl) {
+    @include fr.media-breakpoint-up(xl) {
         @include g.eyecatchBGImage("../img/eyecatch.jpg", g.$us-background-position);
     }
     &_header {

@@ -34,6 +34,7 @@
 */
 
 @use "../../global" as g;
+@use "../../global/framework" as fr;
 
 .c-eyecatch {
     height: 40vh;
@@ -51,16 +52,16 @@
         @include g.eyecatchText(3rem, g.$us-main-color);
     }
     &.c-eyecatchMaxHeight {
-        @include g.media-breakpoint-down(sm) {
+        @include fr.media-breakpoint-down(sm) {
             max-height: 800px;
         }
-        @include g.media-breakpoint-only(md) {
+        @include fr.media-breakpoint-only(md) {
             max-height: 800px;
         }
-        @include g.media-breakpoint-only(lg) {
+        @include fr.media-breakpoint-only(lg) {
             max-height: 800px;
         }
-        @include g.media-breakpoint-up(xl) {
+        @include fr.media-breakpoint-up(xl) {
             max-height: 1080px;
         }
     }
