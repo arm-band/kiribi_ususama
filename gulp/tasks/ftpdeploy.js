@@ -1,7 +1,8 @@
-const _         = require('../plugin');
 const dir       = require('../dir');
 const functions = require('../functions');
-const objFtpDeploy = new _.ftpDeploy();
+const dotenv    = require('dotenv').config();
+const ftpDeploy = require('ftp-deploy');
+const objFtpDeploy = new ftpDeploy();
 
 const ftp = (done) => {
     if (process.env.DEV_MODE === 'demo' || process.env.DEV_MODE === 'prod') {

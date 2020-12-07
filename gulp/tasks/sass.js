@@ -1,14 +1,21 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
+const { src, dest } = require('gulp');
+const plumber       = require('gulp-plumber');
+const notify        = require('gulp-notify');
+const sass          = require('gulp-sass');
+const autoprefixer  = require('gulp-autoprefixer');
+const sourcemaps    = require('gulp-sourcemaps');
+const fs            = require('fs');
+const dir           = require('../dir');
+const functions     = require('../functions');
+sass.compiler       = require('sass');
+const Fiber         = require('fibers');
+const dotenv        = require('dotenv').config();
 const plugins = functions.getConfig(dir.config.plugins);
-_.sass.compiler = require('sass');
-const Fiber = require('fibers');
 
 //scssコンパイルタスク
 const scss = {
     yaml2sass: (done) => {
-        const strOrigin = _.fs.readFileSync(dir.config.dir + dir.config.commonvar, 'utf8');
+        const strOrigin = fs.readFileSync(dir.config.dir + dir.config.commonvar, 'utf8');
         let strDist = '';
         let strConvert = '';
         strConvert = strOrigin.replace(/\r/g, '');
@@ -26,7 +33,7 @@ const scss = {
         strDist = strDist.replace(/\"[\d\.]+(rem|px|em|\%)?\"/g, function() {
             return arguments[0].replace(/\"/g, '');
         });
-        _.fs.writeFileSync(`${dir.src.scss}/global/_var.scss`, strDist);
+        fs.writeFileSync(`${dir.src.scss}/global/_var.scss`, strDist);
         done();
     },
     sass: () => {
@@ -38,33 +45,33 @@ const scss = {
         if(!plugins.noscript) {
             ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
         }
-        let objGulp = _.gulp.src(
+        let objGulp = src(
             `${dir.src.scss}/**/*.scss`,
             {
                 ignore: ignoreListArray
             }
         );
         if(process.env.DEV_MODE === 'dev') {
-            objGulp = objGulp.pipe(_.sourcemaps.init());
+            objGulp = objGulp.pipe(sourcemaps.init());
         }
         objGulp = objGulp
-            .pipe(_.plumber({
-                errorHandler: _.notify.onError({
+            .pipe(plumber({
+                errorHandler: notify.onError({
                     message: 'Error: <%= error.message %>',
                     title: 'sass'
                 })
             }))
-            .pipe(_.sass({
+            .pipe(sass({
                 fiber: Fiber,
                 outputStyle: 'compressed'
-            }).on('error', _.sass.logError))
-            .pipe(_.autoprefixer({
+            }).on('error', sass.logError))
+            .pipe(autoprefixer({
                 cascade: false
             }));
             if(process.env.DEV_MODE === 'dev') {
-                objGulp = objGulp.pipe(_.sourcemaps.write())
+                objGulp = objGulp.pipe(sourcemaps.write())
             }
-            objGulp = objGulp.pipe(_.gulp.dest(dir.dist.css));
+            objGulp = objGulp.pipe(dest(dir.dist.css));
             return objGulp;
     }
 };

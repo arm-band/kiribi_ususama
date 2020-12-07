@@ -1,4 +1,4 @@
-const _         = require('../plugin');
+const fs        = require('fs');
 const dir       = require('../dir');
 const functions = require('../functions');
 
@@ -8,7 +8,7 @@ const sitemapxml = (done) => {
 
     //リスト出力先の存在確認
     try {
-        _.fs.statSync(dir.dist.html);
+        fs.statSync(dir.dist.html);
     } catch(err) {
         console.log(err);
         return false;
@@ -34,7 +34,7 @@ const sitemapxml = (done) => {
     xmlList += `</urlset>\n`;
 
     //書き出し
-    _.fs.writeFileSync(`${dir.dist.html}/${filename}`, xmlList);
+    fs.writeFileSync(`${dir.dist.html}/${filename}`, xmlList);
 
     done();
 };

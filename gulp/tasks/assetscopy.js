@@ -1,16 +1,18 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
+const { src, dest } = require('gulp');
+const plumber       = require('gulp-plumber');
+const notify        = require('gulp-notify');
+const dir           = require('../dir');
 
 //assets files
 const assetscopy = () => {
-    return _.gulp.src(`${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`)
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+    return src(`${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`)
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'assetscopy'
             })
         }))
-        .pipe(_.gulp.dest(dir.dist.assets));
+        .pipe(dest(dir.dist.assets));
 };
 
 module.exports = assetscopy;

@@ -1,4 +1,4 @@
-const _         = require('../gulp/plugin');
+const fs        = require('fs');
 const dir       = require('../gulp/dir');
 const functions = require('../gulp/functions');
 
@@ -15,4 +15,4 @@ const datetime = functions.formatDate('', '');
 
 const contentMD = functions.newContents(datetime, functions);
 //記事追加
-_.fs.writeFileSync(`${dir.contents.dir}/${filename}.md`, contentMD);
+fs.writeFileSync(`${dir.contents.dir}/${filename}.md`, contentMD);

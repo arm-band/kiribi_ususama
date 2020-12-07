@@ -17,7 +17,7 @@ const scrollElm = () => {
 //ページ内スクロール
 const pageScroll = (screlm) => {
     let navbarHeight = 0;
-    if (typeof plugins.fixedanchorjs === 'function') {
+    if (typeof plugins.fixedanchor_js === 'function') {
         navbarHeight = plugins.fixedanchor_js();
     }
     //ナビゲーションバー

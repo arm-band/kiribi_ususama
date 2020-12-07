@@ -1,7 +1,16 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
-const jsConfig  = require('../jsconfig');
+const { src, dest, series, parallel } = require('gulp');
+const plumber                         = require('gulp-plumber');
+const notify                          = require('gulp-notify');
+const rename                          = require('gulp-rename');
+const ejs                             = require('gulp-ejs');
+const data                            = require('gulp-data');
+const replace                         = require('gulp-replace');
+const htmlmin                         = require('gulp-htmlmin');
+const fs                              = require('fs');
+const axios                           = require('axios');
+const dir                             = require('../dir');
+const functions                       = require('../functions');
+const jsConfig                        = require('../jsconfig');
 const config = functions.getConfig(dir.config.config);
 const plugins = functions.getConfig(dir.config.plugins);
 const imagemin = require('../tasks/imagemin');
@@ -13,7 +22,7 @@ const commonsEjs = () => {
     const commonVar = functions.getConfig(dir.config.commonvar);
     const plugins = functions.getConfig(dir.config.plugins);
 
-    return _.gulp.src(
+    return src(
         `${dir.src.ejs}/**/*.ejs`,
         {
             ignore: [
@@ -24,20 +33,20 @@ const commonsEjs = () => {
                 `${dir.src.ejs}/article.ejs`
             ] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
         })
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'wpejs commonsEjs'
             })
         }))
-        .pipe(_.data((file) => {
+        .pipe(data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, plugins, parameters }))
-        .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.htmlmin(jsConfig.configHtmlMin))
-        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-        .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(ejs({ config, commonVar, plugins, parameters }))
+        .pipe(rename({ extname: '.html' }))
+        .pipe(htmlmin(jsConfig.configHtmlMin))
+        .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+        .pipe(dest(dir.dist.html));
 };
 //トップページ用のejsタスク
 const indexEjs = async (done) => {
@@ -55,7 +64,7 @@ const indexEjs = async (done) => {
         return;
     }
     try {
-        await _.axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
+        await axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
             .then(function (response) {
                 cntArray.totalArticles = Number(response.headers['x-wp-total']);
                 cntArray.totalPages = Number(response.headers['x-wp-totalpages']);
@@ -71,7 +80,7 @@ const indexEjs = async (done) => {
         newsLength = cntArray.totalArticles;
     }
     try {
-        await _.axios.get(config.param.news.wpapi + '?_embed&per_page=' + newsLength)
+        await axios.get(config.param.news.wpapi + '?_embed&per_page=' + newsLength)
             .then(function (response) { //_embedパラメータ付与でアイキャッチ画像のURLが付与される
                 const resJSON = response.data;
                 for(let i of Object.keys(resJSON)) {
@@ -81,9 +90,9 @@ const indexEjs = async (done) => {
                     if(resJSON[i]['_embedded']['wp:featuredmedia'] !== undefined && resJSON[i]['_embedded']['wp:featuredmedia'] !== null && resJSON[i]['_embedded']['wp:featuredmedia'].length > 0) {
                         const imgFileNameArray = resJSON[i]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'].split('/');
                         imgFilePath = imgFileNameArray[imgFileNameArray.length -1].split(/[\?#]+/gi, 1)[0];
-                        _.axios.get(resJSON[i]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'], {responseType: 'arraybuffer'})
+                        axios.get(resJSON[i]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'], {responseType: 'arraybuffer'})
                             .then(function (response) {
-                                _.fs.writeFileSync(`${dir.src.img}/thumbnails/${imgFilePath}`, new Buffer.from(response.data), 'binary');
+                                fs.writeFileSync(`${dir.src.img}/thumbnails/${imgFilePath}`, new Buffer.from(response.data), 'binary');
                             })
                             .catch((error) => {
                                 throw new Error(error);
@@ -100,21 +109,21 @@ const indexEjs = async (done) => {
                     };
                     newsBlock.push(attributes); //件数分スタック
                 }
-                _.gulp.src(`${dir.src.ejs}/index.ejs`)
-                    .pipe(_.plumber({
-                        errorHandler: _.notify.onError({
+                src(`${dir.src.ejs}/index.ejs`)
+                    .pipe(plumber({
+                        errorHandler: notify.onError({
                             message: 'Error: <%= error.message %>',
                             title: 'wpejs indexEjs'
                         })
                     }))
-                    .pipe(_.data((file) => {
+                    .pipe(data((file) => {
                         return { 'filename': file.path }
                     }))
-                    .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
-                    .pipe(_.rename({ extname: '.html' }))
-                    .pipe(_.htmlmin(jsConfig.configHtmlMin))
-                    .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-                    .pipe(_.gulp.dest(dir.dist.html));
+                    .pipe(ejs({ config, commonVar, plugins, newsBlock, parameters }))
+                    .pipe(rename({ extname: '.html' }))
+                    .pipe(htmlmin(jsConfig.configHtmlMin))
+                    .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+                    .pipe(dest(dir.dist.html));
             })
             .catch((error) => {
                 throw new Error(error);
@@ -144,7 +153,7 @@ const newsEjs = async (done) => {
         return;
     }
     try {
-        await _.axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
+        await axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
             .then(function (response) {
                 cntArray.totalArticles = Number(response.headers['x-wp-total']);
                 cntArray.totalPages = Number(response.headers['x-wp-totalpages']);
@@ -170,7 +179,7 @@ const newsEjs = async (done) => {
         try {
             let resJSON;
             let cnt;
-            await _.axios.get(config.param.news.wpapi + '?_embed&per_page=' + newsLength + '&page=' + i)
+            await axios.get(config.param.news.wpapi + '?_embed&per_page=' + newsLength + '&page=' + i)
                 .then(function (response) { //_embedパラメータ付与でアイキャッチ画像のURLが付与される
                     resJSON = response.data;
                     let attributes = {
@@ -187,9 +196,9 @@ const newsEjs = async (done) => {
                         if(resJSON[j]['_embedded']['wp:featuredmedia'] !== undefined && resJSON[j]['_embedded']['wp:featuredmedia'] !== null && resJSON[j]['_embedded']['wp:featuredmedia'].length > 0) {
                             const imgFileNameArray = resJSON[j]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'].split('/');
                             imgFilePath = imgFileNameArray[imgFileNameArray.length -1].split(/[\?#]+/gi, 1)[0];
-                            _.axios.get(resJSON[j]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'], {responseType: 'arraybuffer'})
+                            axios.get(resJSON[j]['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'], {responseType: 'arraybuffer'})
                                 .then(function (response) {
-                                    _.fs.writeFileSync(`${dir.src.img}/thumbnails/${imgFilePath}`, new Buffer.from(response.data), 'binary');
+                                    fs.writeFileSync(`${dir.src.img}/thumbnails/${imgFilePath}`, new Buffer.from(response.data), 'binary');
                                 })
                                 .catch((error) => {
                                     throw new Error(error);
@@ -218,21 +227,21 @@ const newsEjs = async (done) => {
                         //記事生成
                         const articleFileName = functions.articleURL(attributes, functions);
                         const body = resJSON[j].content.rendered;
-                        _.gulp.src(tempArticleFile)
-                            .pipe(_.plumber({
-                                errorHandler: _.notify.onError({
+                        src(tempArticleFile)
+                            .pipe(plumber({
+                                errorHandler: notify.onError({
                                     message: 'Error: <%= error.message %>',
                                     title: 'wpejs newsEjs: article page'
                                 })
                             }))
-                            .pipe(_.data((ejsFile) => {
+                            .pipe(data((ejsFile) => {
                                 return { 'filename': ejsFile.path }
                             }))
-                            .pipe(_.ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters }))
-                            .pipe(_.rename(`${articleFileName}.html`))
-                            .pipe(_.htmlmin(jsConfig.configHtmlMin))
-                            .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-                            .pipe(_.gulp.dest(dir.dist.articles));
+                            .pipe(ejs({ config, commonVar, plugins, attributes, body, name, pages, parameters }))
+                            .pipe(rename(`${articleFileName}.html`))
+                            .pipe(htmlmin(jsConfig.configHtmlMin))
+                            .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+                            .pipe(dest(dir.dist.articles));
 
                         //RSS
                         if(plugins.rss) {
@@ -241,21 +250,21 @@ const newsEjs = async (done) => {
                             }
                         }
 
-                        _.gulp.src(tempNewsFile)
-                            .pipe(_.plumber({
-                                errorHandler: _.notify.onError({
+                        src(tempNewsFile)
+                            .pipe(plumber({
+                                errorHandler: notify.onError({
                                     message: 'Error: <%= error.message %>',
                                     title: 'wpejs newsEjs: news page'
                                 })
                             }))
-                            .pipe(_.data((file) => {
+                            .pipe(data((file) => {
                                 return { 'filename': file.path }
                             }))
-                            .pipe(_.ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
-                            .pipe(_.rename(`${name}${pages}.html`))
-                            .pipe(_.htmlmin(jsConfig.configHtmlMin))
-                            .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-                            .pipe(_.gulp.dest(dir.dist.news));
+                            .pipe(ejs({ config, commonVar, plugins, newsBlock, name, pages, pageLength, parameters }))
+                            .pipe(rename(`${name}${pages}.html`))
+                            .pipe(htmlmin(jsConfig.configHtmlMin))
+                            .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+                            .pipe(dest(dir.dist.news));
                         cnt = Number(j);
                     }
                     newsBlock = []; //空にする
@@ -269,7 +278,7 @@ const newsEjs = async (done) => {
                         //RSS
                         if(plugins.rss) {
                             const xml = feed.xml({indent: true});
-                            _.fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml);
+                            fs.writeFileSync(`${dir.dist.html}/rss.xml`, xml);
                         }
                     }
                 });
@@ -286,7 +295,7 @@ const newslessEjs = () => {
     const plugins = functions.getConfig(dir.config.plugins);
     const newsBlock = [];
 
-    return _.gulp.src(
+    return src(
         `${dir.src.ejs}/**/*.ejs`,
         {
             ignore: [
@@ -296,20 +305,20 @@ const newslessEjs = () => {
                 `${dir.src.ejs}/article.ejs`
             ] //_*.ejs(パーツ)とプラグインとindex,news,article(別タスクで定義)はhtmlにしない
         })
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'wpejs newslessEjs'
             })
         }))
-        .pipe(_.data((file) => {
+        .pipe(data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, plugins, newsBlock, parameters }))
-        .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.htmlmin(jsConfig.configHtmlMin))
-        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-        .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(ejs({ config, commonVar, plugins, newsBlock, parameters }))
+        .pipe(rename({ extname: '.html' }))
+        .pipe(htmlmin(jsConfig.configHtmlMin))
+        .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+        .pipe(gulp.dest(dir.dist.html));
 };
 //HTMLファイル生成されるまでの時間スリープを挟む
 const sleep = async (done) => {
@@ -318,7 +327,7 @@ const sleep = async (done) => {
     const config = functions.getConfig(dir.config.config);
     const newsLength = config.param.news.newscount > config.param.news.indexcount ? config.param.news.newscount : config.param.news.indexcount;
     try {
-        await _.axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
+        await axios.get(config.param.news.wpapi + '?per_page=' + newsLength)
             .then(function (response) {
                 cnt = Number(response.headers['x-wp-total']);
                 done();
@@ -338,10 +347,10 @@ const sleep = async (done) => {
 
 let ejsArray = [];
 if(plugins.wordpress && (config.param.news.wpapi !== undefined && config.param.news.wpapi !== null && config.param.news.wpapi.length > 0)) {
-    ejsArray = _.gulp.parallel(commonsEjs, indexEjs, newsEjs);
+    ejsArray = parallel(commonsEjs, indexEjs, newsEjs);
 }
 else {
-    ejsArray = _.gulp.parallel(newslessEjs);
+    ejsArray = parallel(newslessEjs);
 }
 //上記をまとめておく
-module.exports = _.gulp.series(ejsArray, sleep, imagemin);
+module.exports = series(ejsArray, sleep, imagemin);

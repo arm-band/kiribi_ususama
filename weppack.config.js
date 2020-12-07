@@ -1,5 +1,8 @@
-const _         = require('./gulp/plugin');
-const dir       = require('./gulp/dir');
+const webpackTerser = require('terser-webpack-plugin');
+const path          = require('path');
+const glob          = require('glob');
+const dir           = require('./gulp/dir');
+const dotenv        = require('dotenv').config();
 
 const mode = () => {
     return process.env.DEV_MODE === 'dev' ? 'development' : 'production';
@@ -8,7 +11,7 @@ const modeFlag = () => {
     return process.env.DEV_MODE === 'dev' ? false : true;
 };
 const entry = () => {
-    const entries = _.glob
+    const entries = glob
         .sync(
             '**/*.js',
             {
@@ -19,7 +22,7 @@ const entry = () => {
             }
         )
         .map(function (key) {
-            return [key, _.path.resolve(dir.src.js, key)];
+            return [key, path.resolve(dir.src.js, key)];
         });
     return Object.fromEntries(entries)
 };
@@ -31,7 +34,7 @@ const configs = {
     },
     optimization: {
             minimizer: [
-            new _.webpackTerser({
+            new webpackTerser({
                 extractComments: 'some',
                 terserOptions: {
                     compress: {

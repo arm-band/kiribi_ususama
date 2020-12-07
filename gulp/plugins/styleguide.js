@@ -1,9 +1,18 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
-const plugins = functions.getConfig(dir.config.plugins);
-const scssTask = require('../tasks/sass');
-const sass = scssTask.sass;
+const { src, dest, series, watch, lastRun } = require('gulp');
+const plumber                               = require('gulp-plumber');
+const notify                                = require('gulp-notify');
+const frontnote                             = require('gulp-frontnote');
+const imagemin                              = require('gulp-imagemin');
+const imageminJpeg                          = require('imagemin-mozjpeg');
+const imageminPng                           = require('imagemin-pngquant');
+const imageminGif                           = require('imagemin-gifsicle');
+const imageminSvg                           = require('imagemin-svgo');
+const browserSync                           = require('browser-sync').create();
+const dir                                   = require('../dir');
+const functions                             = require('../functions');
+const plugins                               = functions.getConfig(dir.config.plugins);
+const scssTask                              = require('../tasks/sass');
+const sass                                  = scssTask.sass;
 const dirSg = {
     html       : './bin/styleguide/dist',
     md         : './readme.md',
@@ -18,7 +27,7 @@ const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dirSg
 
 //styleguide(FrontNote)
 const sg = () => {
-    return _.gulp.src(
+    return src(
         `${dir.src.scss}/**/*.scss`,
         {
             ignore: [
@@ -28,13 +37,13 @@ const sg = () => {
             ]
         }
     ) // 監視対象のファイルを指定
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'styleguide'
             })
         }))
-        .pipe(_.frontnote({
+        .pipe(frontnote({
             out: dirSg.html,
             title: functions.getConfig(dir.config.config).commons.sitename,
             css: [`${dirSg.css}/contents.css`, `${dirSg.css}/index.css`, `${dirSg.canceller}/fncanceller.css`],
@@ -47,38 +56,38 @@ const sg = () => {
 
 //画像圧縮
 const imageminify = () => {
-    return _.gulp.src(IMGDIR.src, {
-            since: _.gulp.lastRun(imageminify)
+    return src(IMGDIR.src, {
+            since: lastRun(imageminify)
         })
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'imageminify'
             })
         }))
-        .pipe(_.imagemin([
-            _.imageminPng({
+        .pipe(imagemin([
+            imageminPng({
                 quality: [.8, .9],
                 speed: 1
             }),
-            _.imageminJpeg({
+            imageminJpeg({
                 quality: 90
             }),
-            _.imageminSvg(),
-            _.imageminGif()
+            imageminSvg(),
+            imageminGif()
           ]))
-        .pipe(_.gulp.dest(IMGDIR.dist));
+        .pipe(dest(IMGDIR.dist));
 };
 //画像コピー(ファイルコピーのみ)
 const imagecopy = () => {
-    return _.gulp.src(IMGDIR.src)
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+    return src(IMGDIR.src)
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'imagecopy'
             })
         }))
-        .pipe(_.gulp.dest(IMGDIR.dist));
+        .pipe(dest(IMGDIR.dist));
 };
 
 let imageProc = [];
@@ -91,7 +100,7 @@ else {
 
 const sgsync = () => {
     const plugins = functions.getConfig(dir.config.plugins);
-    _.browserSync.init({
+    browserSync.init({
         server: {
             baseDir: './'
         },
@@ -100,25 +109,24 @@ const sgsync = () => {
         https: plugins.ssl
     });
 
-    const sScssSg = _.gulp.series(sass, sg, _.browserSync.reload);
-    const sSg = _.gulp.series(sg, imageProc, _.browserSync.reload);
-    _.gulp.watch(
+    const sScssSg = series(sass, sg, browserSync.reload);
+    const sSg = series(sg, imageProc, browserSync.reload);
+    watch(
         `${dirSg.template}/index.ejs`
     )
         .on('add',    sSg)
         .on('change', sSg)
         .on('unlink', sSg);
-    _.gulp.watch(
+    watch(
         `${dirSg.md}`
     )
         .on('add',    sSg)
         .on('change', sSg)
         .on('unlink', sSg);
-    _.gulp.watch(
+    watch(
         `${dir.src.scss}/**/*.scss`,
         {
             ignored: [
-                `${dir.src.scss}/global/_var.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
                 `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
@@ -128,7 +136,7 @@ const sgsync = () => {
         .on('add',    sScssSg)
         .on('change', sScssSg)
         .on('unlink', sScssSg);
-    _.gulp.watch(
+    watch(
         `${dirSg.js}/*.js`
     )
         .on('add',    sSg)
@@ -136,4 +144,4 @@ const sgsync = () => {
         .on('unlink', sSg);
 };
 
-module.exports = _.gulp.series(sg, imageProc, sgsync);
+module.exports = series(sg, imageProc, sgsync);

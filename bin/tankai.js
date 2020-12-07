@@ -1,5 +1,5 @@
-const _         = require('../gulp/plugin');
-const objFtpDeploy = new _.ftpDeploy();
+const ftpDeploy = require('ftp-deploy');
+const objFtpDeploy = new ftpDeploy();
 //FTPの設定
 let ftpConfig = {
     'user': '',

@@ -1,7 +1,16 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
-const jsConfig  = require('../jsconfig');
+const { src, dest } = require('gulp');
+const plumber       = require('gulp-plumber');
+const notify        = require('gulp-notify');
+const rename        = require('gulp-rename');
+const ejs           = require('gulp-ejs');
+const data          = require('gulp-data');
+const replace       = require('gulp-replace');
+const htmlmin       = require('gulp-htmlmin');
+const fs            = require('fs');
+const dir           = require('../dir');
+const functions     = require('../functions');
+const jsConfig      = require('../jsconfig');
+const dotenv        = require('dotenv').config();
 const nowDate = functions.formatDate('', 'nodelimiter');
 const parameters = [];
 
@@ -13,7 +22,7 @@ const sitesearch = () => {
 
     //リスト出力先の存在確認
     try {
-        _.fs.statSync(dir.dist.html);
+        fs.statSync(dir.dist.html);
     } catch(err) {
         console.log(err);
         return false;
@@ -29,21 +38,21 @@ const sitesearch = () => {
         htmlList += `<li><a href="${filepath}"><span class="searchTitle">${filename}</span></a><div class="searchText d-none">${fileList[i][2]}</div></li>\n`;
     }
 
-    return _.gulp.src(`${dir.plugins.ejs}/sitesearch/sitesearch.ejs`)
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+    return src(`${dir.plugins.ejs}/sitesearch/sitesearch.ejs`)
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'sitesearch'
             })
         }))
-        .pipe(_.data((file) => {
+        .pipe(data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList, nowDate, DEV_MODE }))
-        .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.htmlmin(jsConfig.configHtmlMin))
-        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-        .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(ejs({ config, commonVar, parameters, plugins, htmlList, nowDate, DEV_MODE }))
+        .pipe(rename({ extname: '.html' }))
+        .pipe(htmlmin(jsConfig.configHtmlMin))
+        .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+        .pipe(dest(dir.dist.html));
 };
 
 module.exports = sitesearch;

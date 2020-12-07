@@ -35,23 +35,26 @@ if(plugins.noscript) {
 <%- include('partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main container-fluid">
-        <aside class="container">
+        <div class="container">
+            <aside>
 <%- include('partial/_breadcrumb', { config, parameters, returnNews, pages, relPath }) %>
-        </aside>
-        <article class="py-5 container <%= id %>_contents" id="<%= id %>_contents">
+            </aside>
+        </div>
+        <div class="container">
+            <article class="py-5 <%= id %>_contents" id="<%= id %>_contents">
 <%
 const datetime = funcDateTimeFormat(attributes.date, "", "tz")
 const showDt = funcDateTimeFormat(attributes.date, "/", "ymd")
 const articleUrl = funcArticleUrl(config.commons.url, config.param.news.baseurl, attributes)
 -%>
-            <div class="c-article_article" id="<%= attributes.url %>">
-                <h2 class="c-article_header"><%= attributes.title %></h2>
-                <div class=" mb-3 c-article_createdatetime">
-                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="<%= datetime %>"><%= showDt %></time>
-                </div>
-                <div class="mb-3 c-article_contents">
-                    <%- contentBody %>
-                </div>
+                <div class="c-article_article" id="<%= attributes.url %>">
+                    <h2 class="c-article_header"><%= attributes.title %></h2>
+                    <div class=" mb-3 c-article_createdatetime">
+                        <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+                    </div>
+                    <div class="mb-3 c-article_contents">
+                        <%- contentBody %>
+                    </div>
 <%
 if(plugins.articlesns) {
 -%>
@@ -59,10 +62,11 @@ if(plugins.articlesns) {
 <%
 }
 -%>
-            </div>
-        </article>
+                </div>
+            </article>
+        </div>
         <div class="text-center pb-5">
-            <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>" class="btn btn-light rounded-0"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
+            <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
         </div>
     </main>
     <!-- /main -->

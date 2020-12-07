@@ -1,43 +1,50 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
+const { src, dest, lastRun, parallel } = require('gulp');
+const plumber                          = require('gulp-plumber');
+const notify                           = require('gulp-notify');
+const imagemin                         = require('gulp-imagemin');
+const imageminJpeg                     = require('imagemin-mozjpeg');
+const imageminPng                      = require('imagemin-pngquant');
+const imageminGif                      = require('imagemin-gifsicle');
+const imageminSvg                      = require('imagemin-svgo');
+const dir                              = require('../dir');
+const functions                        = require('../functions');
 const plugins = functions.getConfig(dir.config.plugins);
 const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dir.dist.img };
 
 //画像圧縮
 const imageminify = () => {
-    return _.gulp.src(IMGDIR.src, {
-            since: _.gulp.lastRun(imageminify)
+    return src(IMGDIR.src, {
+            since: lastRun(imageminify)
         })
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'imageminify'
             })
         }))
-        .pipe(_.imagemin([
-            _.imageminPng({
+        .pipe(imagemin([
+            imageminPng({
                 quality: [.8, .9],
                 speed: 1
             }),
-            _.imageminJpeg({
+            imageminJpeg({
                 quality: 90
             }),
-            _.imageminSvg(),
-            _.imageminGif()
+            imageminSvg(),
+            imageminGif()
           ]))
-        .pipe(_.gulp.dest(IMGDIR.dist));
+        .pipe(dest(IMGDIR.dist));
 };
 //画像コピー(ファイルコピーのみ)
 const imagecopy = () => {
-    return _.gulp.src(IMGDIR.src)
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+    return src(IMGDIR.src)
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'imagecopy'
             })
         }))
-        .pipe(_.gulp.dest(IMGDIR.dist));
+        .pipe(dest(IMGDIR.dist));
 };
 
 let imageProc = [];
@@ -49,4 +56,4 @@ else {
 }
 
 //コールタスク
-module.exports = _.gulp.parallel(imageProc);
+module.exports = parallel(imageProc);

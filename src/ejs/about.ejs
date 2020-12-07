@@ -23,12 +23,19 @@ parameters = {
 <%- include('partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main">
-        <aside class="container">
+        <div class="container">
+            <aside>
 <%- include('partial/_breadcrumb', { config, parameters, relPath }) %>
-        </aside>
-        <section class="py-5 container">
-            <!-- contents -->
-        </section>
+            </aside>
+        </div>
+        <div class="container">
+            <section class="py-5">
+                <!-- contents -->
+            </section>
+        </div>
+        <div class="text-center pb-5">
+            <a href="<%= relPath %>" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+        </div>
     </main>
     <!-- /main -->
 </div>

@@ -22,28 +22,34 @@ parameters = {
 <%- include('../../partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main" id="listSearch">
-        <aside class="container">
+        <div class="container">
+            <aside>
 <%- include('../../partial/_breadcrumb', { config, parameters, relPath }) %>
-        </aside>
-        <section class="inputSearch container pb-4">
-            <div class="page-header mb-3 text-center <%= id %>_header">
-                <h2>サイト内検索<small class="ml-3">Search</small></h2>
-            </div>
-            <div class="<%= id %>_contents">
-                <div class="form-group">
-                    <label for="inputSearch">サイト内検索</label>
-                    <input type="search" class="form-control search" id="inputSearch" placeholder="検索">
+            </aside>
+        </div>
+        <div class="container">
+            <section class="inputSearch pb-4">
+                <div class="page-header mb-3 text-center <%= id %>_header">
+                    <h2>サイト内検索<small class="ml-3">Search</small></h2>
                 </div>
-            </div>
-        </section>
-        <section class="container pb-5">
-            <h3><span id="hits" class="mr-2">-</span>件</h3>
-            <ul class="list">
-                <%- htmlList %>
-            </ul>
-        </section>
-        <div class="text-center my-4">
-            <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+                <div class="<%= id %>_contents">
+                    <div class="form-group">
+                        <label for="inputSearch">サイト内検索</label>
+                        <input type="search" class="form-control search" id="inputSearch" placeholder="検索">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <section class="pb-5">
+                <h3><span id="hits" class="mr-2">-</span>件</h3>
+                <ul class="list">
+                    <%- htmlList %>
+                </ul>
+            </section>
+        </div>
+        <div class="text-center pb-5">
+            <a href="<%= relPath %>" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
         </div>
     </main>
     <!-- /main -->

@@ -1,10 +1,10 @@
 {
     "name": "kiribi_ususama",
-    "version": "8.0.1-4.4.0",
+    "version": "8.1.0-4.4.0",
     "description": "gulpを使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
-        "om": "mkdirp dist dist/webfonts dist/assets dist/images bin/styleguide/dist src/contents src/scss/assets bin/config/subterranean",
+        "om": "mkdirp dist dist/webfonts dist/assets dist/images bin/styleguide/dist src/contents src/scss/assets/bootstrap/honoka bin/config/subterranean",
         "krodhana": "node ./bin/saicho",
         "hum": "npm-run-all -s kongou eshaku riken",
         "jah": "node ./bin/sculpture",

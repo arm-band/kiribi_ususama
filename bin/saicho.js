@@ -1,7 +1,7 @@
-const yaml      = require('yaml');
-const fs        = require('fs');
-const dir       = require('../gulp/dir');
-const randomjs  = require('./discover');
+const yaml     = require('yaml');
+const fs       = require('fs');
+const dir      = require('../gulp/dir');
+const randomjs = require('./discover');
 
 const s = Date.now();
 const bijaksara = 'हूं';

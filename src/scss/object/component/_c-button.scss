@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/*
+#overview
+ボタン
+*/
+
+/*
+#styleguide
+ボタン
+```
+<a href="#" class="btn btn-secondary">ボタン</a>
+```
+*/
+
+@use "../../global" as g;
+
+.btn {
+    &-secondary {
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:active,
+        &:focus {
+            color: g.$us-bg-color;
+        }
+    }
+}

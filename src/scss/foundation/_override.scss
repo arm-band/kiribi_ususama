@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+@use "../global/" as g;
+@use "../global/framework" as fr with (
+    $theme-colors: (
+        secondary: g.$us-link-color,
+    ),
+);

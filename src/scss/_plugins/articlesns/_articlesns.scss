@@ -2,7 +2,7 @@
 
 @use "sass:color";
 @use "sass:map";
-@use "../../../../node_modules/brand-colors/dist/latest/scss/brand-colors.latest" as bc; //ソーシャルメディアなどのブランドカラー
+@use "node_modules/brand-colors/dist/latest/scss/brand-colors.latest" as bc; //ソーシャルメディアなどのブランドカラー
 @use "../../global" as g;
 
 $sns-array: (
@@ -33,7 +33,7 @@ $sns-array: (
 );
 
 //SNSシェアボタンを付与
-.c-btn_news {
+.btn.c-btn_news {
     &,
     &:link,
     &:visited {

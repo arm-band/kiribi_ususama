@@ -24,22 +24,26 @@ parameters = {
 <%- include('partial/_eyecatch', { headerString }) %>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main">
-        <aside class="container">
-<%- include('partial/_breadcrumb', { config, parameters, relPath }) %>
-        </aside>
-        <section class="container py-5">
-            <div class="page-header mb-3 text-center <%= id %>_header">
-                <h2><%= config.param.news.title %></h2>
-            </div>
+        <div class="container">
+            <aside>
+                <%- include('partial/_breadcrumb', { config, parameters, relPath }) %>
+            </aside>
+        </div>
+        <div class="container">
+            <section class="py-5">
+                <div class="page-header mb-3 text-center <%= id %>_header">
+                    <h2><%= config.param.news.title %></h2>
+                </div>
 <%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
-            <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
+                <div class="row align-items-top my-4 <%= id %>_contents" id="<%= id %>_contents">
 <%- include('partial/_newscards', { relPath, newsBlock }) %>
-            </div>
+                </div>
 <%- include('partial/_pagination', { config, pages, pageLength, parameters }) %>
-            <div class="text-center my-4">
-                <a href="<%= relPath %>" class="btn btn-light"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
+            </section>
+            <div class="text-center pb-5">
+                <a href="<%= relPath %>" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>トップページへ戻る</a>
             </div>
-        </section>
+        </div>
     </main>
     <!-- /main -->
 </div>

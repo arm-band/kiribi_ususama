@@ -1,10 +1,13 @@
-const _         = require('./plugin');
-const dir       = require('./dir');
+const fs     = require('fs');
+const yaml   = require('yaml');
+const RSS    = require('rss');
+const crypto = require('crypto');
+const dir    = require('./dir');
 
 module.exports = {
     rssFeed: (config, functions) => { //RSS Feed
         const datetime = functions.formatDate('', '');
-        const feed = new _.RSS({
+        const feed = new RSS({
             title: config.commons.sitename,
             description: config.commons.description,
             feed_url: config.commons.url + 'rss.xml',
@@ -30,15 +33,15 @@ module.exports = {
         return feed;
     },
     getConfig: (ymlFile, path = dir.config.dir) => { //yamlファイル取得
-        const file = _.fs.readFileSync(path + ymlFile, 'utf8');
-        return _.yaml.parse(file);
+        const file = fs.readFileSync(path + ymlFile, 'utf8');
+        return yaml.parse(file);
     },
     getJson: (jsonFile, path = dir.contents.dir) => { //jsonファイル取得
-        const file = _.fs.readFileSync(path + jsonFile, 'utf8');
+        const file = fs.readFileSync(path + jsonFile, 'utf8');
         return JSON.parse(file);
     },
     getArticles: (directory, functions) => { //記事一覧をファイル名降順で取得
-        let fileList = _.fs.readdirSync(directory);
+        let fileList = fs.readdirSync(directory);
         //ファイル名(拡張子なし)でソート
         fileList = fileList.map((fn) => {
             return {
@@ -112,7 +115,7 @@ module.exports = {
         if(txt.length === 0) {
             return txt;
         }
-        let ciph = _.crypto.createCipher('aes-256-cbc', key);
+        let ciph = crypto.createCipher('aes-256-cbc', key);
         ciph.update(txt, 'utf8', 'hex');
         return ciph.final('hex');
     },
@@ -121,7 +124,7 @@ module.exports = {
         if(txt.length === 0) {
             return txt;
         }
-        let deciph = _.crypto.createDecipher('aes-256-cbc', key);
+        let deciph = crypto.createDecipher('aes-256-cbc', key);
         deciph.update(txt, 'hex', 'utf8');
         return deciph.final('utf8');
     },
@@ -141,19 +144,19 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
 先頭の\`---\`で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。\n`;
     },
     htmlWalk(functions, p, fileList, config) {
-        let files = _.fs.readdirSync(p);
+        let files = fs.readdirSync(p);
         for(let i = 0; i < files.length; i++) {
             let path = p;
             if(!/.*\/$/.test(p)) {
                 path += '/';
             }
             const fp = path + files[i];
-            if(_.fs.statSync(fp).isDirectory()) {
+            if(fs.statSync(fp).isDirectory()) {
                 functions.htmlWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
                 if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX.html」というファイル名でなければ
                     //ページ名
-                    const htmlStream = _.fs.readFileSync(fp, 'utf8');
+                    const htmlStream = fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
                         pageTitle = RegExp.$1.split(config.commons.titleseparator)[0].trim(); //後方参照でtitleタグの中の文字列を参照し、config.ymlのセパレータ文字で分離、最後に両端のスペースをトリム。標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
@@ -179,36 +182,36 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
         }
     },
     htmlMtimeWalk(functions, p, fileList) {
-        let files = _.fs.readdirSync(p);
+        let files = fs.readdirSync(p);
         for(let i = 0; i < files.length; i++) {
             let path = p;
             if(!/.*\/$/.test(p)) {
                 path += '/';
             }
             const fp = path + files[i];
-            if(_.fs.statSync(fp).isDirectory()) {
+            if(fs.statSync(fp).isDirectory()) {
                 functions.htmlMtimeWalk(functions, fp, fileList); //ディレクトリなら再帰
             } else {
                 if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop())) { //htmlファイルで、「errorXXX.html」というファイル名でなければ
-                    const mtime = _.fs.statSync(fp).mtime;
+                    const mtime = fs.statSync(fp).mtime;
                     fileList.push([fp, mtime]); //HTMLファイルならコールバック発動
                 }
             }
         }
     },
     htmlRemoveWalk(functions, p, fileList, config) {
-        let files = _.fs.readdirSync(p);
+        let files = fs.readdirSync(p);
         for(let i = 0; i < files.length; i++) {
             let path = p;
             if(!/.*\/$/.test(p)) {
                 path += '/';
             }
             const fp = path + files[i];
-            if(_.fs.statSync(fp).isDirectory()) {
+            if(fs.statSync(fp).isDirectory()) {
                 functions.htmlRemoveWalk(functions, fp, fileList, config); //ディレクトリなら再帰
             } else {
                 if(/.*\.html$/.test(fp) && !/^error(.*)\.html$/.test(fp.split('/').pop()) && !/sitesearch\.html$/.test(fp)) { //htmlファイルで、「errorXXX.html」や「sitesearch.html」というファイル名でなければ
-                    const htmlStream = _.fs.readFileSync(fp, 'utf8');
+                    const htmlStream = fs.readFileSync(fp, 'utf8');
                     let pageTitle = fp.replace(/^\.\/dist\//gi, ''); //標準はファイル名
                     if(/<title>(.*?)<\/title>/gi.test(htmlStream)) { //titleタグを抽出
                         pageTitle = RegExp.$1.split(config.commons.titleseparator)[0].trim(); //後方参照でtitleタグの中の文字列を参照し、config.ymlのセパレータ文字で分離、最後に両端のスペースをトリム。標準では「ページ名 | サイト名」の表記なので最初の要素のみ格納
@@ -222,7 +225,7 @@ excerpt: 記事の概要です。トップページと新着情報一覧で出�
     },
     isExistFile(file) {
         try {
-            _.fs.statSync(file);
+            fs.statSync(file);
             return true;
         } catch(err) {
             if(err.code === 'ENOENT') {

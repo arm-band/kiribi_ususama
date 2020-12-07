@@ -42,27 +42,31 @@ else {
 -%>
     <!-- main -->
     <main class="l-main m-0 p-0 <%= id %>main">
-        <section class="py-5 container fixed_anchor" id="contents">
-            <!-- contents -->
-        </section>
+        <div class="container fixed_anchor" id="contents">
+            <section class="py-5">
+                <!-- contents -->
+            </section>
+        </div>
 <%
 if(plugins.news && newsBlock !== undefined && newsBlock !== null && newsBlock.length > 0) {
     const counter = indexCounter();
 -%>
-        <section class="container pb-5 <%= config.param.news.baseurl %> fixed_anchor" id="<%= config.param.news.baseurl %>">
-            <div class="page-header mb-3 text-center <%= config.param.news.baseurl %>_header">
-                <h2><%= config.param.news.title %></h2>
-            </div>
-            <div class="<%= config.param.news.baseurl %>_contents">
-                <p class="text-center"><%= config.param.news.title %>一覧(<%= counter %>件)です。</p>
-                <div class="row align-items-top my-4">
-<%- include('partial/_newscards.ejs', { relPath, newsBlock }) %>
+        <div class="container <%= config.param.news.baseurl %> fixed_anchor" id="<%= config.param.news.baseurl %>">
+            <section class="pb-5">
+                <div class="page-header mb-3 text-center <%= config.param.news.baseurl %>_header">
+                    <h2><%= config.param.news.title %></h2>
                 </div>
-            </div>
-            <div class="text-center">
-                <a href="<%= relPath %><%= config.param.news.baseurl %>/news1.html" class="btn btn-light"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>過去の<%= config.param.news.title %></a>
-            </div>
-        </section>
+                <div class="<%= config.param.news.baseurl %>_contents">
+                    <p class="text-center"><%= config.param.news.title %>一覧(<%= counter %>件)です。</p>
+                    <div class="row align-items-top my-4">
+<%- include('partial/_newscards.ejs', { relPath, newsBlock }) %>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="<%= relPath %><%= config.param.news.baseurl %>/news1.html" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-right" aria-hidden="true"></i>過去の<%= config.param.news.title %></a>
+                </div>
+            </section>
+        </div>
 <%
 }
 -%>

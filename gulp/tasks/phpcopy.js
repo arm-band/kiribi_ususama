@@ -1,9 +1,11 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
+const { src, dest } = require('gulp');
+const plumber       = require('gulp-plumber');
+const notify        = require('gulp-notify');
+const dir           = require('../dir');
 
 //phpcopy
 const phpcopy = () => {
-    return _.gulp.src(
+    return src(
         [
             `${dir.src.php}/**/*.php`,
             `${dir.src.php}/**/*.md`,
@@ -14,13 +16,13 @@ const phpcopy = () => {
                 `${dir.src.php}/**/test/**`
             ]
         })
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'phpcopy'
             })
         }))
-        .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(dest(dir.dist.html));
 };
 
 module.exports = phpcopy;

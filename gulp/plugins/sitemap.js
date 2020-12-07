@@ -1,7 +1,17 @@
-const _         = require('../plugin');
-const dir       = require('../dir');
-const functions = require('../functions');
-const jsConfig  = require('../jsconfig');
+const { src, dest } = require('gulp');
+const plumber       = require('gulp-plumber');
+const notify        = require('gulp-notify');
+const rename        = require('gulp-rename');
+const ejs           = require('gulp-ejs');
+const data          = require('gulp-data');
+const replace       = require('gulp-replace');
+const htmlmin       = require('gulp-htmlmin');
+const fs            = require('fs');
+const _sortBy       = require('lodash.sortby');
+const dir           = require('../dir');
+const functions     = require('../functions');
+const jsConfig      = require('../jsconfig');
+const dotenv        = require('dotenv').config();
 const nowDate = functions.formatDate('', 'nodelimiter');
 const parameters = [];
 
@@ -13,7 +23,7 @@ const sitemap = () => {
 
     //リスト出力先の存在確認
     try {
-        _.fs.statSync(dir.dist.html);
+        fs.statSync(dir.dist.html);
     } catch(err) {
         console.log(err);
         return false;
@@ -22,7 +32,7 @@ const sitemap = () => {
     //探索
     functions.htmlWalk(functions, dir.dist.html, fileList, config);
     //ソート
-    fileList = _._sortBy(fileList, ['dirStr', 'depth']);
+    fileList = _sortBy(fileList, ['dirStr', 'depth']);
     //一覧生成
     let htmlList = '';
     const indexHtml = 'index.html';
@@ -31,7 +41,7 @@ const sitemap = () => {
         'dirStr': dir.dist.html,
         'depth': pathIndexHtml.split('/').length //., dist, index.html
     }
-    if(_.fs.statSync(pathIndexHtml)) {
+    if(fs.statSync(pathIndexHtml)) {
         htmlList += `<li><a href="${indexHtml}">ホーム</a></li>\n`;
     }
     for(let i = 0; i < fileList.length; i++) {
@@ -68,21 +78,21 @@ const sitemap = () => {
         htmlList += `${closeUl}`;
     }
 
-    return _.gulp.src(`${dir.plugins.ejs}/sitemap/sitemap.ejs`)
-        .pipe(_.plumber({
-            errorHandler: _.notify.onError({
+    return src(`${dir.plugins.ejs}/sitemap/sitemap.ejs`)
+        .pipe(plumber({
+            errorHandler: notify.onError({
                 message: 'Error: <%= error.message %>',
                 title: 'sitemap'
             })
         }))
-        .pipe(_.data((file) => {
+        .pipe(data((file) => {
             return { 'filename': file.path }
         }))
-        .pipe(_.ejs({ config, commonVar, parameters, plugins, htmlList, nowDate, DEV_MODE }))
-        .pipe(_.rename({ extname: '.html' }))
-        .pipe(_.htmlmin(jsConfig.configHtmlMin))
-        .pipe(_.replace(jsConfig.htmlSpaceLineDel, ''))
-        .pipe(_.gulp.dest(dir.dist.html));
+        .pipe(ejs({ config, commonVar, parameters, plugins, htmlList, nowDate, DEV_MODE }))
+        .pipe(rename({ extname: '.html' }))
+        .pipe(htmlmin(jsConfig.configHtmlMin))
+        .pipe(replace(jsConfig.htmlSpaceLineDel, ''))
+        .pipe(dest(dir.dist.html));
 };
 
 module.exports = sitemap;

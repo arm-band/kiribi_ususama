@@ -1,9 +1,9 @@
-const dir          = require('../gulp/dir');
-const functions    = require('../gulp/functions');
-const fs           = require('fs');
-const path         = require('path');
-const rimraf       = require('rimraf');
-const runAll       = require('npm-run-all');
+const dir       = require('../gulp/dir');
+const functions = require('../gulp/functions');
+const fs        = require('fs');
+const path      = require('path');
+const rimraf    = require('rimraf');
+const runAll    = require('npm-run-all');
 
 const plugins = functions.getConfig(dir.config.plugins);
 const pluginsStr = '_plugins';
@@ -52,7 +52,7 @@ const scssFileWrite = (scssPath) => {
         const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`);
         if(val) {
             if(key === keyStrLB) {
-                pluginCode += `@use "./node_modules/lightbox2/dist/css/lightbox.css";
+                pluginCode += `@use "node_modules/lightbox2/dist/css/lightbox.css";
 `;
                 runAll([`${keyStrLB}:*`], { parallel: true })
                     .then(() => {
@@ -64,8 +64,8 @@ const scssFileWrite = (scssPath) => {
             }
             else if(key === keyStrSlick) {
                 pluginCode += `@use "${pluginsStr}/us-${key}/us-${key}";
-@use "../../../node_modules/slick-carousel/slick/slick.scss";
-@use "../../../node_modules/slick-carousel/slick/slick-theme.scss";
+@use "node_modules/slick-carousel/slick/slick.scss";
+@use "node_modules/slick-carousel/slick/slick-theme.scss";
 `;
                 runAll([`${keyStrSlick}:*`], { parallel: true })
                     .then(() => {
