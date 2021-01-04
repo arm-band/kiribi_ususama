@@ -8,7 +8,7 @@ parameters = {
     ogpimage: 'img/eyecatch.jpg'
 };
 -%>
-<%- include('util/_init_load') -%>
+<%- include('util/_initLoad') -%>
 <%- include('util/_headset', { config, parameters, relPath }) -%>
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,7 +16,7 @@ parameters = {
 <%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
-<%- include('partial/_body_loader', { plugins }) %>
+<%- include('partial/_bodyLoader', { plugins }) %>
 <div id="wrapper">
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>
@@ -44,6 +44,6 @@ parameters = {
 </div>
 <%- include('partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include('partial/_js_loader', { parameters, relPath }) %>
+<%- include('partial/_jsLoader', { parameters, relPath }) %>
 </body>
 </html>

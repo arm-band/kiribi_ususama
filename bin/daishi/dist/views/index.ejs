@@ -5,7 +5,7 @@ parameters = {
     css: "index",
     js: "app.min"
 };
-%><%- include("./util/_init_load") %>
+%><%- include("./util/_initLoad") %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -178,6 +178,6 @@ if(plugins.ssl == true) {
 
 </div>
 
-<%- include("partial/_js_loader", { parameters }) %>
+<%- include("partial/_jsLoader", { parameters }) %>
 </body>
 </html>

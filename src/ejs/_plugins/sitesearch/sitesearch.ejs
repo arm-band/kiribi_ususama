@@ -8,7 +8,7 @@ parameters = {
     ogpimage: 'eyecatch.jpg'
 };
 -%>
-<%- include('../../util/_init_load') -%>
+<%- include('../../util/_initLoad') -%>
 <%- include('../../util/_headset', { config, parameters }) -%>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,6 +56,6 @@ parameters = {
 </div>
 <%- include('../../partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include('../../partial/_js_loader', { parameters, relPath }) %>
+<%- include('../../partial/_jsLoader', { parameters, relPath }) %>
 </body>
 </html>

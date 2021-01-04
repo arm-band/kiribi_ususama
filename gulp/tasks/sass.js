@@ -37,11 +37,7 @@ const scss = {
         done();
     },
     sass: () => {
-        let ignoreListArray = [
-            `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-            `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-            `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-        ];
+        let ignoreListArray = [];
         if(!plugins.noscript) {
             ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
         }

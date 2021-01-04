@@ -15,9 +15,6 @@ const entry = () => {
         .sync(
             '**/*.js',
             {
-                ignore: [
-                    '_plugins/**'
-                ],
                 cwd: dir.src.js
             }
         )

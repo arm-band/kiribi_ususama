@@ -13,7 +13,6 @@ module.exports = {
         ejs        : './src/ejs',
         php        : './src/php',
         scss       : './src/scss',
-        scssassets : '/assets',
         js         : './src/js',
         img        : './src/img',
         favicon    : './src/favicon',

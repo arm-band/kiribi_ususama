@@ -9,8 +9,8 @@ parameters = {
     ogpimage: 'img/eyecatch.jpg'
 };
 -%>
-<%- include('util/_init_load') -%>
-<%- include('util/_functions_article.ejs') -%>
+<%- include('util/_initLoad') -%>
+<%- include('util/_functionsArticle.ejs') -%>
 <%
 contentBody = funcURLConverter(body, relPath);
 -%>
@@ -21,7 +21,7 @@ contentBody = funcURLConverter(body, relPath);
 <%- include('partial/_head', { config, parameters, commonVar, metaTitle, metaDescription, metaOgpimage }) %>
 </head>
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
-<%- include('partial/_body_loader', { plugins }) %>
+<%- include('partial/_bodyLoader', { plugins }) %>
 <div id="wrapper">
 <%
 if(plugins.noscript) {
@@ -73,6 +73,6 @@ if(plugins.articlesns) {
 </div>
 <%- include('partial/_footer', { config, copyRightYear }) %>
 </div>
-<%- include('partial/_js_loader', { parameters, relPath }) %>
+<%- include('partial/_jsLoader', { parameters, relPath }) %>
 </body>
 </html>

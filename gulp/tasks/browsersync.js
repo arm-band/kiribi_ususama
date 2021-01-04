@@ -44,7 +44,7 @@ const browsersync = () => {
             base: dir.dist.html,
             bin: process.env.PHP_BIN,
             ini: process.env.PHP_INI
-        }, () =>{
+        }, () => {
             browserSync.init({
                 proxy: `${process.env.PROXY_HOST}:${process.env.PROXY_PORT}`,
                 open: 'external',
@@ -72,7 +72,7 @@ const browsersync = () => {
     const sPhp = series(phpcopy, browserSync.reload);
     if(plugins.usephp) {
         watch(
-            dir.src.php + '/**/*.php'
+            `${dir.src.php}/**/*.php`
         )
             .on('add',    sPhp)
             .on('change', sPhp)
@@ -101,11 +101,7 @@ const browsersync = () => {
         .on('change', sEnvfile)
         .on('unlink', sEnvfile);
     const sSass = series(sass, browserSync.reload);
-    let ignoreListArray = [
-        `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-        `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-        `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-    ];
+    let ignoreListArray = [];
     if(!plugins.noscript) {
         ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
     }
@@ -127,13 +123,7 @@ const browsersync = () => {
         .on('unlink', sImagemin);
     const sJs = series(jsBuild, browserSync.reload);
     watch(
-        `${dir.src.js}/**/*.js`,
-        {
-            ignored: [
-                `${dir.src.js}/concat/**`,
-                `${dir.src.js}/_plugins/**`
-            ]
-        }
+        `${dir.src.js}/**/*.js`
     )
         .on('add',    sJs)
         .on('change', sJs)

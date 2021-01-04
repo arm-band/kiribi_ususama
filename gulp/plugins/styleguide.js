@@ -28,14 +28,7 @@ const IMGDIR = { src: `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`, dist: dirSg
 //styleguide(FrontNote)
 const sg = () => {
     return src(
-        `${dir.src.scss}/**/*.scss`,
-        {
-            ignore: [
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-            ]
-        }
+        `${dir.src.scss}/**/*.scss`
     ) // 監視対象のファイルを指定
         .pipe(plumber({
             errorHandler: notify.onError({
@@ -124,14 +117,7 @@ const sgsync = () => {
         .on('change', sSg)
         .on('unlink', sSg);
     watch(
-        `${dir.src.scss}/**/*.scss`,
-        {
-            ignored: [
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/bootstrap.scss`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/bootstrap/**`,
-                `${dir.src.scss}${dir.src.scssassets}/bootstrap/honoka/honoka/**`
-            ]
-        }
+        `${dir.src.scss}/**/*.scss`
     )
         .on('add',    sScssSg)
         .on('change', sScssSg)

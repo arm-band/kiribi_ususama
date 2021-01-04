@@ -38,7 +38,7 @@ else {
     contents.linkTitle = "前の画面に戻る";
     contents.linkIcon = "fas fa-fw fa-undo";
 }
-%><% if(unpressed !== "true") { %><%- include("./util/_init_load") %><% } %>
+%><% if(unpressed !== "true") { %><%- include("./util/_initLoad") %><% } %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -81,7 +81,7 @@ else {
 
 </div>
 
-<%- include("partial/_js_loader", { parameters }) %>
+<%- include("partial/_jsLoader", { parameters }) %>
 </body>
 <% } else { %>
 <body>

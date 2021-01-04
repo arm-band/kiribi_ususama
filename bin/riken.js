@@ -34,6 +34,7 @@ const jsFileWrite = (jsPath) => {
             }
         }
     }, plugins);
+    sxportCode = sxportCode.replace(/((\r)?\n){1}$/g, '');
     const pluginsData = `${pluginCode}
 export default {
 ${sxportCode}

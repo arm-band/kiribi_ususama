@@ -9,7 +9,6 @@
     ],
     "syntax": "scss",
     "ignoreFiles": [
-        "src/scss/assets/**/*.scss",
         "src/scss/global/_var.scss"
     ],
     "rules": {

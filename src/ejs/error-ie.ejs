@@ -8,7 +8,7 @@ parameters = {
     ogpimage: 'img/eyecatch.jpg'
 };
 -%>
-<%- include('util/_init_load') -%>
+<%- include('util/_initLoad') -%>
 <%- include('util/_headset', { config, parameters, relPath }) -%>
 <!DOCTYPE html>
 <html lang="ja">
@@ -36,7 +36,7 @@ parameters = {
     </style>
 </head>
 <body data-offset="<%= navbarHeight %>" data-fixedanchor="<%= flagFixedAnchor %>" class="<%= id %>" id="<%= id %>">
-<%- include('partial/_body_loader', { plugins }) %>
+<%- include('partial/_bodyLoader', { plugins }) %>
 <div id="wrapper">
 <div class="l-upper">
 <!-- header -->
