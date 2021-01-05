@@ -1,5 +1,7 @@
 # ![Kiribi Ususama](https://raw.githubusercontent.com/arm-band/kiribi_ususama/master/misc/img/kiribi_ususama.png)
 
+[![ESLint/stylelint/html-cli Check](https://github.com/arm-band/kiribi_ususama/workflows/ESLint/stylelint/html-cli%20Check/badge.svg)](https://github.com/arm-band/kiribi_ususama/actions?query=workflow%3AESLint/stylelint/html-cli%20Check)
+
 ## Abstract
 
 gulpを使用した小・中規模Webサイト制作用のボイラープレートです。

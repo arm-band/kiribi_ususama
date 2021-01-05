@@ -1,4 +1,4 @@
-name: LintCheck
+name: ESLint/stylelint/html-cli Check
 
 on: [push]
 
