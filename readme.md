@@ -1,6 +1,6 @@
 # ![Kiribi Ususama](https://raw.githubusercontent.com/arm-band/kiribi_ususama/master/misc/img/kiribi_ususama.png)
 
-[![ESLint/stylelint/html-cli Check](https://github.com/arm-band/kiribi_ususama/workflows/ESLint/stylelint/html-cli%20Check/badge.svg)](https://github.com/arm-band/kiribi_ususama/actions?query=workflow%3AESLint/stylelint/html-cli%20Check)
+[![ESLint/stylelint/html-cli Check](https://github.com/arm-band/kiribi_ususama/workflows/ESLint/stylelint/html-cli%20Check/badge.svg)](https://github.com/arm-band/kiribi_ususama/actions?query=workflow%3A%22ESLint%2Fstylelint%2Fhtml-cli+Check%22)
 
 ## Abstract
 
