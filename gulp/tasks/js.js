@@ -4,7 +4,7 @@ const notify        = require('gulp-notify');
 const rename        = require('gulp-rename');
 const webpackStream = require('webpack-stream');
 const dir           = require('../dir');
-const webpackConfig = require('../../weppack.config');
+const webpackConfig = require('../../webpack.config');
 
 const jsBuild = () => {
     return webpackStream(webpackConfig)
