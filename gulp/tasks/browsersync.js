@@ -38,12 +38,10 @@ const taskBuild = parallel(taskArray, series(taskEjs));
 
 //自動リロード
 const browsersync = () => {
-    if(plugins.usephp && process.env.PHP_BIN && process.env.PHP_INI && process.env.PROXY_HOST && process.env.PROXY_PORT) { //php使うときはこっち
+    if(plugins.usephp && process.env.PROXY_HOST && process.env.PROXY_PORT) { //php使うときはこっち
         connect.server({
             port: process.env.PROXY_PORT,
             base: dir.dist.html,
-            bin: process.env.PHP_BIN,
-            ini: process.env.PHP_INI
         }, () => {
             browserSync.init({
                 proxy: `${process.env.PROXY_HOST}:${process.env.PROXY_PORT}`,
