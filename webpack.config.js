@@ -1,4 +1,5 @@
 const webpackTerser = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path          = require('path');
 const glob          = require('glob');
 const dir           = require('./gulp/dir');
@@ -15,7 +16,11 @@ const entry = () => {
         .sync(
             '**/*.js',
             {
-                cwd: dir.src.js
+                cwd: dir.src.js,
+                ignore: [
+                    '_plugins/**/*.js',
+                    '**/_*.js'
+                ]
             }
         )
         .map(function (key) {
@@ -29,17 +34,24 @@ const configs = {
     output: {
         filename: '[name]'
     },
+    plugins: [
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+                `${dir.dist.js}/**/*.js`
+            ]
+        })
+    ],
     optimization: {
             minimizer: [
             new webpackTerser({
                 extractComments: 'some',
                 terserOptions: {
                     compress: {
-                        drop_console: modeFlag(),
-                    },
-                },
-            }),
-        ],
+                        drop_console: modeFlag()
+                    }
+                }
+            })
+        ]
     }
 };
 if (process.env.DEV_MODE === 'dev') {
