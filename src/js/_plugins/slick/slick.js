@@ -7,10 +7,8 @@ export default () => {
     $slider.slick({
         autoplay: true,
         autoplaySpeed: 5000,
-        prevArrow:
-            '<div class="slide_arrow slide_arrowLeft"><i class="fa fa-fw fa-3x fa-chevron-left" aria-hidden="true"></i></div>',
-        nextArrow:
-            '<div class="slide_arrow slide_arrowRight"><i class="fa fa-fw fa-3x fa-chevron-right" aria-hidden="true"></i></div>',
+        prevArrow: '<div class="slide_arrow slide_arrowLeft"><i class="fa fa-fw fa-3x fa-chevron-left" aria-hidden="true"></i></div>',
+        nextArrow: '<div class="slide_arrow slide_arrowRight"><i class="fa fa-fw fa-3x fa-chevron-right" aria-hidden="true"></i></div>',
     });
     $slider.on({
         mouseenter: function () {

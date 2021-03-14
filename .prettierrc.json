@@ -1,0 +1,11 @@
+{
+    "endOfLine": "lf",
+    "printWidth": 160,
+    "proseWrap": "never",
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "arrowParens": "always",
+    "singleQuote": true,
+    "quoteProps": "as-needed"
+}

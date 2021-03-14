@@ -1,8 +1,0 @@
-{
-    "printWidth": 120,
-    "proseWrap": "never",
-    "indent": ["error", 4, { "SwitchCase": 1 }],
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": true
-}

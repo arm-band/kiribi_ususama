@@ -121,16 +121,10 @@ const pageScroll = (screlm) => {
                     }
                 }
                 //ナビゲーションバー
-                if (
-                    $(window).outerWidth() < breakpoint &&
-                    !$navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').hasClass('collapsed')
-                ) {
+                if ($(window).outerWidth() < breakpoint && !$navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').hasClass('collapsed')) {
                     //現在の表示がハンバーガーメニューの場合
                     $navbar.find('.navbar-toggler[data-target="#' + navBarListID + '"]').trigger('click'); //移動したらハンバーガーを折りたたむ
-                } else if (
-                    $(e.currentTarget).hasClass('dropdown-item') &&
-                    $(e.currentTarget).closest('.dropdown').hasClass('show')
-                ) {
+                } else if ($(e.currentTarget).hasClass('dropdown-item') && $(e.currentTarget).closest('.dropdown').hasClass('show')) {
                     //現在の表示がハンバーガーメニューではなく、ドロップダウン内のメニューをクリックした場合
                     $(e.currentTarget).closest('.dropdown').trigger('click'); //移動したらドロップダウンを折りたたむ
                 }
