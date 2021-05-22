@@ -4,7 +4,7 @@ const functions = require('../gulp/functions');
 
 const fileList = functions.getArticles(`${dir.contents.dir}/`, functions);
 let counter = 0;
-if(fileList !== null && fileList !== undefined && fileList.length >= 0) {
+if(fileList !== null && fileList !== undefined && fileList.length > 0) {
     counter = parseInt(fileList[0].noex) + 1;
 }
 else {
