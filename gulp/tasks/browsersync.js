@@ -36,6 +36,22 @@ if(plugins.sitesearch) {
 
 const taskBuild = parallel(taskArray, series(taskEjs));
 
+const bsOpenOptions = process.env.DOCKER_MODE === 'true' ? false : 'external';
+const watchOptions = process.env.DOCKER_MODE === 'true' ? {
+    usePolling: true
+} : {};
+let ignoreListArray = [];
+if(!plugins.noscript) {
+    ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
+}
+const watchSassOptions = process.env.DOCKER_MODE === 'true' ? {
+    ignored: ignoreListArray,
+    usePolling: true
+} : {
+    ignored: ignoreListArray
+};
+
+
 //自動リロード
 const browsersync = () => {
     if(plugins.usephp && process.env.PROXY_HOST && process.env.PROXY_PORT) { //php使うときはこっち
@@ -45,7 +61,7 @@ const browsersync = () => {
         }, () => {
             browserSync.init({
                 proxy: `${process.env.PROXY_HOST}:${process.env.PROXY_PORT}`,
-                open: 'external',
+                open: bsOpenOptions,
                 https: plugins.ssl
             });
         });
@@ -55,14 +71,15 @@ const browsersync = () => {
             server: {
                 baseDir: dir.dist.html
             },
-            open: 'external',
+            open: bsOpenOptions,
             https: plugins.ssl
         });
     }
 
     const sEjs = series(taskEjs, browserSync.reload);
     watch(
-        `${dir.src.ejs}/**/*.ejs`
+        `${dir.src.ejs}/**/*.ejs`,
+        watchOptions
     )
         .on('add',    sEjs)
         .on('change', sEjs)
@@ -70,7 +87,8 @@ const browsersync = () => {
     const sPhp = series(phpcopy, browserSync.reload);
     if(plugins.usephp) {
         watch(
-            `${dir.src.php}/**/*.php`
+            `${dir.src.php}/**/*.php`,
+            watchOptions
         )
             .on('add',    sPhp)
             .on('change', sPhp)
@@ -78,7 +96,8 @@ const browsersync = () => {
     }
     if(plugins.news && functions.isExistFile(`${dir.contents.dir}/1.md`)) {
         watch(
-            `${dir.contents.dir}/**/*.md`
+            `${dir.contents.dir}/**/*.md`,
+            watchOptions
         )
             .on('add',    sEjs)
             .on('change', sEjs)
@@ -86,49 +105,48 @@ const browsersync = () => {
     }
     const sFavicon = series(favicon, browserSync.reload);
     watch(
-        `${dir.src.favicon}/**/*.+(png|ico|icon)`
+        `${dir.src.favicon}/**/*.+(png|ico|icon)`,
+        watchOptions
     )
         .on('add',    sFavicon)
         .on('change', sFavicon)
         .on('unlink', sFavicon);
     const sEnvfile = series(envfile, browserSync.reload);
     watch(
-        `${dir.src.envfile}/**/*`
+        `${dir.src.envfile}/**/*`,
+        watchOptions
     )
         .on('add',    sEnvfile)
         .on('change', sEnvfile)
         .on('unlink', sEnvfile);
     const sSass = series(sass, browserSync.reload);
-    let ignoreListArray = [];
-    if(!plugins.noscript) {
-        ignoreListArray.push(`${dir.src.scss}/noscript.scss`);
-    }
     watch(
         `${dir.src.scss}/**/*.scss`,
-        {
-            ignored: ignoreListArray
-        }
+        watchSassOptions
     )
         .on('add',    sSass)
         .on('change', sSass)
         .on('unlink', sSass);
     const sImagemin = series(imagemin, browserSync.reload);
     watch(
-        `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`
+        `${dir.src.img}/**/*.+(jpg|jpeg|png|gif|svg)`,
+        watchOptions
     )
         .on('add',    sImagemin)
         .on('change', sImagemin)
         .on('unlink', sImagemin);
     const sJs = series(jsBuild, browserSync.reload);
     watch(
-        `${dir.src.js}/**/*.js`
+        `${dir.src.js}/**/*.js`,
+        watchOptions
     )
         .on('add',    sJs)
         .on('change', sJs)
         .on('unlink', sJs);
     const sAssetscopy = series(assetsCopy, browserSync.reload);
     watch(
-        `${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`
+        `${dir.src.assets}/**/*.+(pdf|docx|xlsx|pptx)`,
+        watchOptions
     )
         .on('add',    sAssetscopy)
         .on('change', sAssetscopy)
@@ -138,7 +156,8 @@ const browsersync = () => {
         [
             `${dir.config.dir}/config.yml`,
             `${dir.config.dir}/commonvar.yml`
-        ]
+        ],
+        watchOptions
     )
         .on('add',    sBuild)
         .on('change', sBuild);

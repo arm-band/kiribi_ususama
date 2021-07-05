@@ -1,14 +1,12 @@
 const { src, dest } = require('gulp');
 const plumber       = require('gulp-plumber');
 const notify        = require('gulp-notify');
-const sass          = require('gulp-sass');
+const sass          = require('gulp-sass')(require('sass'));
 const autoprefixer  = require('gulp-autoprefixer');
 const sourcemaps    = require('gulp-sourcemaps');
 const fs            = require('fs');
 const dir           = require('../dir');
 const functions     = require('../functions');
-sass.compiler       = require('sass');
-const Fiber         = require('fibers');
 const dotenv        = require('dotenv').config();
 const plugins = functions.getConfig(dir.config.plugins);
 
@@ -58,8 +56,8 @@ const scss = {
                 })
             }))
             .pipe(sass({
-                fiber: Fiber,
-                outputStyle: 'compressed'
+                outputStyle: 'compressed',
+                quietDeps: true
             }).on('error', sass.logError))
             .pipe(autoprefixer({
                 cascade: false
