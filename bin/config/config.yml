@@ -1,7 +1,7 @@
 commons:
     sitename: "Kiribi Ususama"
-    description: "gulpを使用した小・中規模Webサイト制作用のフレームワークです。"
-    year: 2019
+    description: "Gulp を使用した小・中規模Webサイト制作用のフレームワークです。"
+    year: 2021
     author: "アルム＝バンド"
     url: "https://example.com/"
     rootpath: "/"
