@@ -2,17 +2,19 @@
 
 @use "../../global" as g;
 
-a,
-a:link {
-    color: g.$us-link-color;
-    text-decoration: none;
-}
-a:visited {
-    color: g.$us-link-v-color;
-    text-decoration: none;
-}
-a:hover,
-a:active {
-    color: g.$us-link-ha-color;
-    text-decoration: underline;
+a {
+    &,
+    &:link {
+        color: g.$us-link-color;
+        text-decoration: none;
+    }
+    &:visited {
+        color: g.$us-link-v-color;
+        text-decoration: none;
+    }
+    &:hover,
+    &:active {
+        color: g.$us-link-ha-color;
+        text-decoration: underline;
+    }
 }

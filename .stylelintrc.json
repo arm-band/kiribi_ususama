@@ -25,6 +25,16 @@
         "function-comma-newline-after": "never-multi-line",
         "function-comma-newline-before": "never-multi-line",
         "declaration-block-no-shorthand-property-overrides": true,
-        "max-empty-lines": 2
+        "max-empty-lines": 2,
+        "rule-empty-line-before": [
+            "always",
+            {
+                "ignore": [
+                    "after-comment",
+                    "inside-block"
+                ]
+            }
+        ],
+        "selector-class-pattern": "^(([a-z][a-zA-Z0-9_]+)|([a-z][a-z0-9]*)(-[a-zA-Z0-9_]+)*)$"
     }
 }
