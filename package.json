@@ -1,6 +1,6 @@
 {
     "name": "kiribi_ususama",
-    "version": "8.4.2-4.4.0",
+    "version": "8.4.3-4.4.0",
     "description": "Gulp を使用した小・中規模Webサイト制作用のフレームワークです。",
     "main": "gulpfile.js",
     "scripts": {
@@ -117,6 +117,9 @@
         "stylelint-config-prettier": "^9.0.3",
         "prettier": "^2.4.1",
         "axios": "^0.24.0"
+    },
+    "resolutions": {
+        "gifsicle": "5.2.1"
     },
     "engines": {
         "node": ">=16.0.0",
