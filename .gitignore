@@ -9,3 +9,5 @@
 /bin/daishi/src/js/concat/
 /bin/styleguide/dist/
 .env
+/vendor/
+/src/php/vendor/
