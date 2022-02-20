@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-//bowserでUAにより付与。iOSバグ対策
+// bowserでUAにより付与。iOSバグ対策
 body.iosBG .c-eyecatch {
     background-attachment: scroll;
 }

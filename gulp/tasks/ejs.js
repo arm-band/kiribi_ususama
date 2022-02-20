@@ -128,7 +128,7 @@ const newsEjs = (done) => {
 
         //記事生成
         const articleFileName = functions.articleURL(attributes, functions);
-        const body = marked(content.body, {
+        const body = marked.parse(content.body, {
             headerIds: false
         });
         src(tempArticleFile)

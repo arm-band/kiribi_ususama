@@ -2,7 +2,7 @@
 
 @use "../global" as g;
 
-//フォント・行間・文字間指定
+// フォント・行間・文字間指定
 body {
     line-height: g.$us-line-height;
     letter-spacing: g.$us-letter-spacing;

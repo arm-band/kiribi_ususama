@@ -5,14 +5,14 @@
 ** foundation                                    **
 **                                               **
 ** ********************************************* */
-@use "foundation"; //foundation内ファイル読み込み(変数、ミックスイン、タイポグラフィ、プラグイン)
+@use "foundation"; // foundation内ファイル読み込み(変数、ミックスイン、タイポグラフィ、プラグイン)
 
 /* ********************************************* **
 **                                               **
 ** layout                                        **
 **                                               **
 ** ********************************************* */
-@use "layout/l-height100"; //.l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
+@use "layout/l-height100"; // .l-upperクラスを付けることで、コンテンツの表示高さが画面高さ100%未満の場合footerを下端に表示させる
 @use "layout/l-header";
 @use "layout/l-main";
 @use "layout/l-footer";
@@ -22,7 +22,7 @@
 ** object/utility                                **
 **                                               **
 ** ********************************************* */
-@use "object/utility/u-link"; //aタグの色
+@use "object/utility/u-link"; // aタグの色
 @use "object/utility/u-mg";
 
 /* ********************************************* **

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-//trasition
+// trasition
 @mixin t() {
     transition: all 0.3s ease;
 }
@@ -8,17 +8,17 @@
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-//font: round gothic
+// font: round gothic
 @mixin marugo() {
     font-family: "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", HGMaruGothicMPRO, sans-serif;
 }
 
-//font: serif
+// font: serif
 @mixin mincho() {
     font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
 }
 
-//eyecatch background-image
+// eyecatch background-image
 @mixin eyecatchBGImage($imgPath, $us-background-position) {
     background: {
         image: url($imgPath);
@@ -26,7 +26,7 @@
     }
 }
 
-//eyecatch text
+// eyecatch text
 @mixin eyecatchText($fontSize, $us-main-color) {
     color: $us-main-color;
     z-index: 3;
@@ -34,13 +34,13 @@
     @include mincho();
 }
 
-//疑似要素に「文字列:」を付与する(電話番号等)
+// 疑似要素に「文字列:」を付与する(電話番号等)
 @mixin pseudoColon($text: "", $spacer) {
     content: $text + ":";
     margin-right: ($spacer * 0.25);
 }
 
-//疑似要素にFont Awesomeを付与する
+// 疑似要素にFont Awesomeを付与する
 @mixin iconFA($icon: "", $type: "solid", $spacer) {
     font-family: "Font Awesome 5 Free", sans-serif;
     @if $type == "regular" or $type == "brands" {
