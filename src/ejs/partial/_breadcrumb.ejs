@@ -3,19 +3,19 @@
 <%
 if(id === 'index') {
 -%>
-        <li class="breadcrumb-item"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</li>
+        <li class="breadcrumb-item"><i class="fa-solid fa-fw fa-home" aria-hidden="true"></i>ホーム</li>
 <%
 }
 else if(id === 'article') {
 -%>
-        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fa-solid fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         <li class="breadcrumb-item"><a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>"><%= config.param.news.title %><%= pages %></a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= metaTitle %></li>
 <%
 }
 else {
 -%>
-        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fas fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
+        <li class="breadcrumb-item"><a href="<%= relPath %>"><i class="fa-solid fa-fw fa-home" aria-hidden="true"></i>ホーム</a></li>
         <li class="breadcrumb-item active" aria-current="page"><%= metaTitle %></li>
 <%
 }

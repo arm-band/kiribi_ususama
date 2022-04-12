@@ -50,7 +50,7 @@ const articleUrl = funcArticleUrl(config.commons.url, config.param.news.baseurl,
                 <div class="c-article_article" id="<%= attributes.url %>">
                     <h2 class="c-article_header"><%= attributes.title %></h2>
                     <div class=" mb-3 c-article_createdatetime">
-                        <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="<%= datetime %>"><%= showDt %></time>
+                        <i class="fa-solid fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="<%= datetime %>"><%= showDt %></time>
                     </div>
                     <div class="mb-3 c-article_contents">
                         <%- contentBody %>
@@ -66,7 +66,7 @@ if(plugins.articlesns) {
             </article>
         </div>
         <div class="text-center pb-5">
-            <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>" class="btn btn-secondary"><i class="fas fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
+            <a href="<%= relPath %><%= config.param.news.baseurl %>/<%= returnNews %>" class="btn btn-secondary"><i class="fa-solid fa-fw fa-chevron-left" aria-hidden="true"></i>記事一覧に戻る</a>
         </div>
     </main>
     <!-- /main -->

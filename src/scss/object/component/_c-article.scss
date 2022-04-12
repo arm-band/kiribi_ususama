@@ -13,7 +13,7 @@
             <div class="c-article_article" id="news">
                 <h2 class="c-article_header">コンテンツタイトル</h2>
                 <div class="mb-3 c-article_createdatetime">
-                    <i class="fas fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
+                    <i class="fa-solid fa-fw fa-history" aria-hidden="true"></i><time class="c-article_createtime" datetime="2020-08-16T14:11:47+09:00">2020/08/16</time>
                 </div>
                 <div class="mb-3 c-article_contents">
                     <h3 id="サンプル見出し">サンプル見出し</h3>
@@ -22,12 +22,12 @@
 <p>先頭の<code>---</code>で区切られた部分はタイトルや更新日時、記事ページのテンプレートを指定するメタ情報を含む部分となっています。</p>
                 </div>
                                     <div class="c-article_share row my-4 w-100 mx-auto">
-                                    <a class="btn c-btn_news c-btn_newsTwitter col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Twitterでツイート"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a>
-                                    <a class="btn c-btn_news c-btn_newsFacebook col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Facebookに投稿"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i>投稿</a>
-                                    <a class="btn c-btn_news c-btn_newsHatena col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="はてなブックマーク"><i class="fas fa-fw fa-bookmark" aria-hidden="true"></i>ブックマークする</a>
-                                    <a class="btn c-btn_news c-btn_newsLine col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="LINEトークに送る"><i class="fab fa-fw fa-line" aria-hidden="true"></i>送る</a>
-                                    <a class="btn c-btn_news c-btn_newsPocket col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Pocketに保存"><i class="fab fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a>
-                                    <a class="btn c-btn_news c-btn_newsFeedly col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Feedlyに登録"><i class="fas fa-fw fa-rss" aria-hidden="true"></i>Feedly</a>
+                                    <a class="btn c-btn_news c-btn_newsTwitter col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Twitterでツイート"><i class="fa-brands fa-fw fa-twitter" aria-hidden="true"></i>ツイート</a>
+                                    <a class="btn c-btn_news c-btn_newsFacebook col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Facebookに投稿"><i class="fa-brands fa-fw fa-facebook" aria-hidden="true"></i>投稿</a>
+                                    <a class="btn c-btn_news c-btn_newsHatena col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="はてなブックマーク"><i class="fa-solid fa-fw fa-bookmark" aria-hidden="true"></i>ブックマークする</a>
+                                    <a class="btn c-btn_news c-btn_newsLine col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="LINEトークに送る"><i class="fa-brands fa-fw fa-line" aria-hidden="true"></i>送る</a>
+                                    <a class="btn c-btn_news c-btn_newsPocket col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Pocketに保存"><i class="fa-brands fa-fw fa-get-pocket" aria-hidden="true"></i>あとで</a>
+                                    <a class="btn c-btn_news c-btn_newsFeedly col-6 col-lg-4 col-xl-3 mx-1 px-1 mb-3" href="#" target="_blank" rel="noopener" title="Feedlyに登録"><i class="fa-solid fa-fw fa-rss" aria-hidden="true"></i>Feedly</a>
                                 </div>
             </div>
         </article>
