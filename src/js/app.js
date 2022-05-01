@@ -1,6 +1,4 @@
-import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import 'jquery.easing/jquery.easing';
 import plugins from './_plugins/_plugins';
 
 
@@ -56,7 +54,7 @@ const hamburgerClose = (e) => {
     }
 };
 
-$(() => {
+window.addEventListener('load', () => {
     //iPhone・iPad背景画像バグ対処
     if (typeof plugins.ios === 'function') {
         plugins.ios();
@@ -83,4 +81,5 @@ $(() => {
     if (typeof plugins.sitesearch === 'function') {
         plugins.sitesearch();
     }
-});
+},
+false);

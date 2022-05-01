@@ -59,7 +59,6 @@
         "bowser": "^2.11.0",
         "brand-colors": "^2.1.1",
         "jquery": "^3.6.0",
-        "jquery.easing": "^1.4.1",
         "lightbox2": "^2.11.3",
         "list.js": "^2.3.1",
         "slick-carousel": "^1.8.1"
