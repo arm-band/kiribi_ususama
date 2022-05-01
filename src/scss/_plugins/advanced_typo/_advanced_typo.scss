@@ -67,13 +67,13 @@ $fibonacci-secondterm: 1;
     .u-mt-#{$i} {
         margin-top: #{$spacing-unit * $sequence-term} !important;
     }
-    .u-mr-#{$i} {
+    .u-me-#{$i} {
         margin-right: #{$spacing-unit * $sequence-term} !important;
     }
     .u-mb-#{$i} {
         margin-bottom: #{$spacing-unit * $sequence-term} !important;
     }
-    .u-ml-#{$i} {
+    .u-ms-#{$i} {
         margin-left: #{$spacing-unit * $sequence-term} !important;
     }
 

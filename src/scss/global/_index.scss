@@ -3,3 +3,4 @@
 @forward "var"; // 変数(ejs等と共通)
 @forward "scssVariables"; // 変数(Scssのみ)
 @forward "mixin"; // mixin
+@use "node_modules/@arm-band/alpha1-bootstrap-jp-sutra/src/scss/sutra/sutra";

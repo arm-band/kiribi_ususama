@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top l-navbar">
         <div class="container">
             <a class="navbar-brand my-0" href="<%= relPath %>"><%= config.commons.sitename %></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替">
                 <span class="navbar-toggler-icon"></span>
 <%
 if(plugins.svghexagon) {
@@ -15,7 +15,7 @@ if(plugins.svghexagon) {
             </button>
 <% const navPath = funcNavPath(relPath, id) -%>
             <div class="collapse navbar-collapse" id="navbarList">
-                <ul class="nav navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="<%= navPath %>#contents">コンテンツ</a>
                     </li>
