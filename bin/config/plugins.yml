@@ -14,7 +14,6 @@ themecolor: true
 ios: true
 chrome: true
 fixedanchor_scss: true
-fixedanchor_js: true
 lightbox: true
 slick: true
 svghexagon: false
