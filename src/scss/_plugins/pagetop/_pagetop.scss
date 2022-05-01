@@ -14,30 +14,43 @@
 */
 
 @use "../../global" as g;
+@use "sass:math";
 
 $rpt-size: 44px;
 
 .c-returnPageTop {
-    display: none;
     position: fixed;
     bottom: 4%;
     right: 6%;
     z-index: 90;
+    display: block;
+    text-decoration: none;
+    border-radius: math.div($rpt-size, 11);
+    background-color: g.$us-main-color_l;
+    @include g.t();
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: g.$us-main-color;
+        text-decoration: none;
+    }
+    &:not(.active) {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+    }
     .fa-fw {
-        font-size: $rpt-size / 2;
-        background-color: g.$us-main-color_l;
-        border-radius: $rpt-size / 11;
+        font-size: math.div($rpt-size, 2);
         color: g.$us-bg-color;
         cursor: pointer;
-        @include g.t();
-        display: block;
         width: $rpt-size;
         height: $rpt-size;
         line-height: $rpt-size;
         text-align: center;
-        &:hover,
-        &:active {
-            background-color: g.$us-main-color;
-        }
     }
 }
