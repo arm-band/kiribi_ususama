@@ -1,7 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle';
 import plugins from './_plugins/_plugins';
 
-
 const hamburgerClose = (e) => {
     const navbar = document.querySelector('#navbar');
     const navBarListID = 'navbarList';
@@ -72,9 +71,14 @@ window.addEventListener('load', () => {
         navLink.addEventListener('click', hamburgerClose, false);
     });
 
-    //slick
-    if (typeof plugins.slick === 'function') {
-        plugins.slick();
+    //swiper
+    if (typeof plugins.swiper === 'function') {
+        plugins.swiper();
+    }
+
+    // luminous lightbox
+    if (typeof plugins.lightbox === 'function') {
+        plugins.lightbox();
     }
 
     //search of list.js

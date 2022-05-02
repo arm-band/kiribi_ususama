@@ -5,8 +5,8 @@ module.exports = {
         easing     : './node_modules/jquery.easing',
         bootstrap  : './node_modules/bootstrap-honoka/dist/js',
         bowser     : './node_modules/bowser',
-        lightbox   : './node_modules/lightbox2/dist',
-        slick      : './node_modules/slick-carousel/slick',
+        lightbox   : './node_modules//luminous-lightbox/dist',
+        swiper     : './node_modules/swiper',
         listjs     : './node_modules/list.js/dist'
     },
     src: {

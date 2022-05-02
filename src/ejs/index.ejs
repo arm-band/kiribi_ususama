@@ -29,9 +29,9 @@ const indexCounter = () => {
 <div class="l-upper">
 <%- include('partial/_header', { config, commonVar }) %>
 <%
-if(plugins.slick) {
+if(plugins.swiper) {
 -%>
-    <%- include('_plugins/slick/slick', { relPath }) %>
+    <%- include('_plugins/swiper/swiper', { relPath }) %>
 <%
 }
 else {

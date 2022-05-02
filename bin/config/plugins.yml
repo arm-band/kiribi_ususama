@@ -15,7 +15,7 @@ ios: true
 chrome: true
 fixedanchor_scss: true
 lightbox: true
-slick: true
+swiper: true
 svghexagon: false
 imagemin: true
 sitesearch: false

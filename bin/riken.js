@@ -3,19 +3,18 @@ const functions = require('../gulp/functions');
 const fs        = require('fs');
 const path      = require('path');
 const rimraf    = require('rimraf');
-const runAll    = require('npm-run-all');
 
 const plugins = functions.getConfig(dir.config.plugins);
 const pluginsStr = '_plugins';
 const keyStrLB = 'lightbox';
-const keyStrSlick = 'slick';
+const keyStrSwiper = 'swiper';
 const pluginJsPath = path.join(dir.src.js, pluginsStr);
 const jsPath = path.join(pluginJsPath, `${pluginsStr}.js`);
 
 /* functions */
 const jsFileWrite = (jsPath) => {
     let pluginCode = '';
-    let sxportCode = '';
+    let exportCode = '';
     Object.keys(plugins).forEach(function(key) {
         const val = this[key];
         const pluginFile = `./${key}/${key}.js`;
@@ -23,21 +22,15 @@ const jsFileWrite = (jsPath) => {
             if(functions.isExistFile(path.join(path.join(pluginJsPath, key), `${key}.js`))) {
                 pluginCode += `import ${key} from '${pluginFile}';
 `;
-                sxportCode += `    ${key}: ${key},
-`;
-            }
-            else if(key === keyStrLB) {
-                pluginCode += `import lightbox from 'lightbox2/dist/js/lightbox.min.js';
-`;
-                sxportCode += `    ${key}: ${key},
+                exportCode += `    ${key}: ${key},
 `;
             }
         }
     }, plugins);
-    sxportCode = sxportCode.replace(/((\r)?\n){1}$/g, '');
+    exportCode = exportCode.replace(/((\r)?\n){1}$/g, '');
     const pluginsData = `${pluginCode}
 export default {
-${sxportCode}
+${exportCode}
 };
 `;
     fs.writeFileSync(jsPath, pluginsData, (err) => {
@@ -53,28 +46,16 @@ const scssFileWrite = (scssPath) => {
         const pluginFile = path.join(path.join(pluginScssPath, key), `_${key}.scss`);
         if(val) {
             if(key === keyStrLB) {
-                pluginCode += `@use "node_modules/lightbox2/dist/css/lightbox.css";
-`;
-                runAll([`${keyStrLB}:*`], { parallel: true })
-                    .then(() => {
-                        console.log(`${keyStrLB} files copy: done!`);
-                    })
-                    .catch((err) => {
-                        console.log(`${keyStrLB} files copy: failed!`);
-                    });
-            }
-            else if(key === keyStrSlick) {
                 pluginCode += `@use "${pluginsStr}/us-${key}/us-${key}";
-@use "node_modules/slick-carousel/slick/slick.scss";
-@use "node_modules/slick-carousel/slick/slick-theme.scss";
+@use "node_modules/luminous-lightbox/dist/luminous-basic.css";
 `;
-                runAll([`${keyStrSlick}:*`], { parallel: true })
-                    .then(() => {
-                        console.log(`${keyStrSlick} files copy: done!`);
-                    })
-                    .catch((err) => {
-                        console.log(`${keyStrSlick} files copy: failed!`);
-                    });
+            }
+            else if(key === keyStrSwiper) {
+                pluginCode += `@use "${pluginsStr}/us-${key}/us-${key}";
+@use "node_modules/${key}/${key}";
+@use "node_modules/${key}/modules/autoplay/autoplay";
+@use "node_modules/${key}/modules/navigation/navigation";
+`;
             }
             else if(functions.isExistFile(pluginFile)) {
                 pluginCode += `@use "${pluginsStr}/${key}/${key}";\n`;

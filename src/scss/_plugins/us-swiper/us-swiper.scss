@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+@use "../../global" as g;
+
+.swiper {
+    overflow: hidden;
+    position: relative;
+    height: 80vh;
+    margin-top: g.$us-navbar-height;
+    z-index: 1;
+    &-wrapper {
+        list-style: none outside;
+    }
+    &-slide {
+        img,
+        picture {
+            width: 100%;
+        }
+    }
+    & .swiper-button-prev,
+    & .swiper-button-next {
+        color: g.$us-accent-color;
+    }
+}
