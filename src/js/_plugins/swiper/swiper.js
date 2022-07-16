@@ -3,7 +3,7 @@ Swiper.use([Autoplay]);
 
 // init Swiper
 export default () => {
-    const swiper = new Swiper('.swiper', {
+    new Swiper('.swiper', {
         autoplay: {
             // 自動再生
             delay: 3000,

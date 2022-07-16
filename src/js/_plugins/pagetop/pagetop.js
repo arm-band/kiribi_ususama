@@ -6,7 +6,7 @@
  * @param {string} observeSelectorName - 監視対象要素のセレクタ名 (デフォルト: .l-main)
  * @param {string} targetSelectorName  - クラス付与要素のセレクタ名 (デフォルト: .c-returnPageTop)
  */
- class returnPageTop {
+class returnPageTop {
     /**
      * constructor
      *
@@ -40,7 +40,7 @@
             // 再度監視
             this.rptObserver = this.rptShow(this.clientHeight);
         });
-    }
+    };
     /**
      * IntersectionObserver で指定するコールバック関数。ページトップへ戻るのクリック対象要素を、 targetSelectorName で指定した要素と交差するかを判定して、その結果で表示・非表示を切り替えるための .activeクラス の着脱を行う
      *
@@ -63,7 +63,7 @@
                 }
             }
         }
-    }
+    };
     /**
      * observeSelectorName で指定した複数の要素(ページトップへ戻るボタン)を IntersectionObserverクラス による監視対象とする
      *
@@ -77,7 +77,7 @@
             observer.observe(selector);
         }
         return observer;
-    }
+    };
 };
 
-module.exports = returnPageTop;
+export default returnPageTop;
