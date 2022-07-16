@@ -37,7 +37,8 @@
             {
                 "ignoreFunctions": [
                     "/^map\\..+/",
-                    "/^color\\..+/"
+                    "/^color\\..+/",
+                    "/^math\\..+/"
                 ]
             }
         ],
