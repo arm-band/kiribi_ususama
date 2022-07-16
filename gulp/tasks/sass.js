@@ -55,7 +55,7 @@ const scss = {
                     title: 'sass'
                 })
             }))
-            .pipe(sass({
+            .pipe(sass.sync({
                 outputStyle: 'compressed',
                 quietDeps: true
             }).on('error', sass.logError))
