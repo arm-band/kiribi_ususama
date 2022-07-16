@@ -13,11 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run builds and deploys with ${{ matrix.node-version }}
+    - name: Run builds and lint with ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn install, build, and deploy
+    - name: yarn install, build, and lint
       run: |
         yarn
         yarn run build
